@@ -48,7 +48,11 @@
 (setq ranger-preview-delay 0.040)
 
 
+(setq default-buffer-file-coding-system 'utf-8)
+;; Default coding system (for new files) 默认buffer编码是utf-8,(写文件)
 
+(prefer-coding-system 'utf-8)
+;; 指定文件编码,此时buffer新建和读取都默认是utf-8,也可以M-x prefer-coding-system 只执行一次
 
 ;; ======= iswitch =======
 ;; (iswitchb-mode 1)
@@ -56,6 +60,7 @@
 
 
 
+;; ======= yasnippet =======
 (require 'yasnippet)
 (yas-global-mode 1)
 
