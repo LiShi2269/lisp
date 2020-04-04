@@ -66,6 +66,8 @@
 	monokai-theme
       	;; --- test package ---
 	ido
+	flx
+	flx-ido
 	ranger
 	)
  "Default packages")
