@@ -1,0 +1,13 @@
+;; ;; ======= keybindings =======
+(require 'smex)
+(evil-leader/set-key
+    "<SPC>" 'smex
+)
+
+
+
+
+
+
+
+(provide 'init-smex)
