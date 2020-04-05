@@ -31,6 +31,8 @@
 
 	;; highlight-symbol
 	;; mode-icons
+
+	ibuffer
 	
 	smex
 
