@@ -31,6 +31,7 @@
 
 	;; highlight-symbol
 	;; mode-icons
+	hydra
 
 	ibuffer
 	

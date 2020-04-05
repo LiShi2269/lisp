@@ -54,12 +54,17 @@
 
 (defun myinsert()
   (interactive)
+  ;; (evil-normal-state)
+  (evil-append 1)
   (insert "()")
-  (evil-backward-char)
   (evil-insert 1)
+  (evil-backward-char)
+  (evil-forward-char)
   )
-
 (key-chord-define evil-normal-state-map ".." 'myinsert)
 (key-chord-define evil-insert-state-map ".." 'myinsert)
+
+
+
 ;; ======= provide =======
 (provide 'init-keybindings)
