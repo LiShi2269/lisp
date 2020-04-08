@@ -23,17 +23,18 @@
 
 ;; ======= python ein =======
 
-
- (defun my-normal-mode-key()
-   (define-key key-translation-map (kbd ",") (kbd "<SPC> m"))
-   ;; (define-key key-translation-map (kbd ".") (kbd "<SPC> j"))
-   )
- (defun my-insert-mode-key()
-   (define-key key-translation-map (kbd ",") (kbd ","))
-   ;; (define-key key-translation-map (kbd ".") (kbd "."))
-   )
- (add-hook 'evil-normal-state-entry-hook 'my-normal-mode-key)
- (add-hook 'evil-insert-state-entry-hook 'my-insert-mode-key)
+;; ===========test=========================================
+;;  (defun my-normal-mode-key()
+;;    (define-key key-translation-map (kbd ",") (kbd "<SPC> m"))
+;;    ;; (define-key key-translation-map (kbd ".") (kbd "<SPC> j"))
+;;    )
+;;  (defun my-insert-mode-key()
+;;    (define-key key-translation-map (kbd ",") (kbd ","))
+;;    ;; (define-key key-translation-map (kbd ".") (kbd "."))
+;;    )
+;; ;; ===========test=========================================
+ ;;(add-hook 'evil-normal-state-entry-hook 'my-normal-mode-key)
+ ;;(add-hook 'evil-insert-state-entry-hook 'my-insert-mode-key)
 
 ;; ;; ======= import!!!!=======
 ;;(define-key 'evil-normal-state-map (kbd ",")

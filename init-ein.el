@@ -66,11 +66,9 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 
 (defun my-ein-set()
     (interactive)
-    (evil-normal-state)
 
 
-    
-
+    (define-key evil-normal-state-map "," 'hydra-ein/body)
     (evil-leader/set-key
 	"m." 'hydra-ein/body
 	"mo" 'ein:notebook-open-km
@@ -103,7 +101,6 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 	(define-key ein:notebook-mode-map (kbd "C-k") 'ein:worksheet-goto-prev-input-km)
 
 )
-
 
 (add-hook 'ein:notebook-mode-hook 'my-ein-set)
 (add-hook 'ein:notebook-mode-hook 'hydra-ein/body)
