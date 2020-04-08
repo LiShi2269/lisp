@@ -23,6 +23,8 @@
 	;; --- Better Editing ---
 	smartparens
 
+	evil-surround
+
 	py-autopep8
 
 	yasnippet
