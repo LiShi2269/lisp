@@ -38,7 +38,6 @@
 (setq lsp-ui-peek--list t)
 
 
-;; (setq lsp-ivy)
 
 
 
@@ -64,9 +63,23 @@
 
 
 
+(defhydra hydra-python ()
+   "
+
+   hydra-python
+
+   _Va_: Activate
+   _Vd_: Deactivate
+   _Vw_: Workon
+"
+   ("Va" pyvenv-activate)
+   ("Vd" pyvenv-deactivate)
+   ("Vw" pyvenv-workon)
+   )
 
 ;; ----- mypythonkey-----
 (defun my-python-set()
+    ;; ------ evil ------
     (evil-leader/set-key-for-mode 'python-mode
     ;; ------ pyenv ------
     "mVa" 'pyvenv-activate
@@ -81,11 +94,12 @@
     "myn" 'yas-new-snippet
     "mye" 'abbrev-expansion
     "m=" 'elpy-autopep8-fix-code
-    
     )
-(lsp-managed-mode -1)
-(display-line-numbers-mode 1)
-;; ======= which-key =======
+    ;; ------ hydra-python ------
+    (define-key evil-normal-state-map (kbd ",") 'hydra-python/body)
+    (lsp-managed-mode -1)
+    (display-line-numbers-mode 1)
+    ;; ======= which-key =======
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m V" "pyvenv")
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m s" "send")
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m " "major-mode")
@@ -96,7 +110,7 @@
 
 ;; ------- lsp hook -------
 (add-hook 'python-mode-hook #'lsp)
-(add-hook 'python-mode-hook 'my-python-set)
+(add-hook 'lsp-mode-hook 'my-python-set)
 (add-hook 'lsp-mode-hook (lambda()
 			      (lsp-managed-mode -1)))
 

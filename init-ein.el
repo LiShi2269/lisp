@@ -103,7 +103,7 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 )
 
 (add-hook 'ein:notebook-mode-hook 'my-ein-set)
-(add-hook 'ein:notebook-mode-hook 'hydra-ein/body)
+;; (add-hook 'ein:notebook-mode-hook 'hydra-ein/body)
 
 
 (evil-leader/set-key
