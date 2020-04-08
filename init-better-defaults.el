@@ -30,7 +30,7 @@
 
 
 ;; 显示行号
-(global-linum-mode 1)
+;; (global-linum-mode 1)
 
 (global-evil-surround-mode 1)
 ;; (require 'use-package)

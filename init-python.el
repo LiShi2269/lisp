@@ -26,7 +26,34 @@
 (setq lsp-ui-doc-position 'bottom)
 ;; ----- delay-----
 (setq lsp-ui-doc-delay 2)
+;; ======= test =======
+(setq lsp-print-performance t)
+(setq lsp-ui-doc-enablet t)
+(setq lsp-ui-peek-enable t)
+(setq lsp-enable-xref t)
+(setq lsp-treemacs-sync-mode t)
+(setq lsp-enable-imenu t)
+(setq lsp-ui-imenu-enable t)
+(setq lsp-ui-sideline-ignore-duplicate t)
+(setq lsp-ui-peek--list t)
 
+
+;; (setq lsp-ivy)
+
+
+
+(setq lsp-diagnostic-package 'flycheck)
+;; lsp-enable-indentation
+(setq lsp-enable-indentation t)
+;; lsp-enable-on-type-formatting
+(setq lsp-enable-on-type-formatting t)
+;; lsp-imenu-show-container-name
+(setq lsp-imenu-show-container-name t)
+;; lsp-imenu-container-name-separator
+(setq lsp-imenu-container-name-separator t)
+
+
+;; ======= test =======
 (require 'lsp-mode)
 
 
@@ -36,21 +63,10 @@
 (require 'python-mode)
 
 
-;; -----test my-py-transient-map -----
-
-;; (defvar my-py-transient-map
-;;   (let ((map (make-sparse-keymap)))
-;;     (define-key map (kbd "b") 'elpy-shell-send-buffer-and-step)
-;;     ;; (define-key map (kbd "n") 'my-forward-word)
-;;     map))
-;; (defun mytest()
-;;   (interactive)
-;;   (set-transient-map my-py-transient-map t)
-;;   )
 
 
 ;; ----- mypythonkey-----
-(defun mypythonkey()
+(defun my-python-set()
     (evil-leader/set-key-for-mode 'python-mode
     ;; ------ pyenv ------
     "mVa" 'pyvenv-activate
@@ -67,6 +83,8 @@
     "m=" 'elpy-autopep8-fix-code
     
     )
+(lsp-managed-mode -1)
+(display-line-numbers-mode 1)
 ;; ======= which-key =======
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m V" "pyvenv")
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m s" "send")
@@ -78,7 +96,9 @@
 
 ;; ------- lsp hook -------
 (add-hook 'python-mode-hook #'lsp)
-(add-hook 'python-mode-hook 'mypythonkey)
+(add-hook 'python-mode-hook 'my-python-set)
+(add-hook 'lsp-mode-hook (lambda()
+			      (lsp-managed-mode -1)))
 
 
 
@@ -92,10 +112,6 @@
 (with-eval-after-load 'lsp-mode
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 
-
-;;------- anaconda-mode -------
-;; (add-hook 'python-mode-hook 'anaconda-mode)
-;; (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 
 
 ;;------- 自动加载 -------
@@ -119,10 +135,10 @@
 
 
 ;; ------- enable Flycheck -------
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode)
-  )
+;; (when (require 'flycheck nil t)
+  ;; (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  ;; (add-hook 'elpy-mode-hook 'flycheck-mode)
+  ;; )
 ;; ------- enable autopep8 -------
 ;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 ;; (require 'py-autopep8)
