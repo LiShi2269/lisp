@@ -30,13 +30,6 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 
 "
 
-;; _j_: next    _S_: Save   _t_: show      _u_: toggle
-;; _k_: pre     _R_: Rename _E_: ExAll     _U_: Toggle
-;; _J_: move    _m_: merge  _l_: Clean     _C_: Exe 
-;; _K_: Move    _M_: Merge  _L_: CleanAll  _D_: Del
-;; _o_: InsBl   _c_: Copy   _Q_: Quit      _O_: InsAbo
-;; _O_: InsAbo  _p_: Paste  _/_: Split
-
     ("j" ein:worksheet-goto-next-input-km )
     ("k" ein:worksheet-goto-prev-input-km)
     ("J" ein:worksheet-move-cell-down-km)
@@ -63,12 +56,12 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 ;; (global-set-key (kbd "<f5>") 'hydra-ein/body)
 
 ;; ==========hydra================
-
+(evil-define-minor-mode-key 'normal 'ein:notebook-mode "," 'hydra-ein/body)
 (defun my-ein-set()
     (interactive)
 
 
-    (define-key evil-normal-state-map "," 'hydra-ein/body)
+    ;; (define-key evil-normal-state-map "," 'hydra-ein/body)
     (evil-leader/set-key
 	"m." 'hydra-ein/body
 	"mo" 'ein:notebook-open-km

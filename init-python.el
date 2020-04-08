@@ -96,7 +96,7 @@
     "m=" 'elpy-autopep8-fix-code
     )
     ;; ------ hydra-python ------
-    (define-key evil-normal-state-map (kbd ",") 'hydra-python/body)
+    ;; (define-key evil-normal-state-map (kbd ",") 'hydra-python/body)
     (lsp-managed-mode -1)
     (display-line-numbers-mode 1)
     ;; ======= which-key =======
@@ -105,7 +105,7 @@
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m " "major-mode")
 )
 
-
+(evil-define-key 'normal python-mode-map "," 'hydra-python/body)
 
 
 ;; ------- lsp hook -------
