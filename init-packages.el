@@ -20,15 +20,28 @@
 	company
 	;; --- Mini Buffer completion ---
 	ivy
+	
 	;; --- Better Editing ---
+	neotree
+	
 	smartparens
+	popwin
 
 	evil-surround
+	ivy-posframe
+
+	mini-frame
+
 
 	py-autopep8
 
 	yasnippet
 
+	dashboard
+
+	dracula-theme
+	monokai-theme
+	
 	yasnippet-snippets
 
 	;; highlight-symbol
@@ -39,17 +52,24 @@
 	
 	smex
 
+	pdf-tools
+
 	ein
 
 	use-package
 	
 	which-key
+	ido
+	ido-vertical-mode
+	flx
+	flx-ido
+	ranger
 	
 	;; --- Python ---
 	ein
 	elpy
 	jedi
-	anaconda-mode
+	;; anaconda-mode
 	python-mode
 	flycheck	
 	blacken
@@ -70,10 +90,7 @@
 	;; --- Themes ---
 	monokai-theme
       	;; --- test package ---
-	ido
-	flx
-	flx-ido
-	ranger
+	google-this
 	)
  "Default packages")
 

@@ -7,6 +7,20 @@
 (require 'evil-leader)
 (global-evil-leader-mode)
 
+
+
+
+
+;; ======= hydra ============
+(defhydra hydra-zoom ()
+  "zoom"
+  ("{" text-scale-increase "in")
+  ("}" text-scale-decrease "out"))
+
+
+
+
+
 ;; ======= yasnippet ============
 (yas-reload-all)
 (add-hook 'python-mode-hook #'yas-minor-mode)
@@ -18,6 +32,7 @@
     ;; ---- dir ----
     "ad" 'deer
     "ar" 'ranger
+;;    "an" 'neotree
     "ff" 'find-file
     ;; ---- buffer ----
     "<spc>" 'smex
@@ -42,17 +57,27 @@
     "wJ" 'evil-window-move-very-bottom
     "w=" 'balance-windows
     "wF" 'make-frame-command  
+    "wc" 'centered-window-mode
 
+    ;; ---- zoom ----
+    "z" 'hydra-zoom/body
     ;; ---- toggle ----
     "TF" 'toggle-frame-fullscreen
     ;; ---- quit ----
     "qq" 'kill-emacs
+    "qR" 'eval-buffer
     "qs" 'save-buffers-kill-emacs
     
-)
+    )
+
+
+
+
+    
+
+
 
 ;; ======= declare =======
 ;; (which-key-declare-prefixes-for-mode 'python-mode "SPC m" "Python")
-
 ;; ======= evil mode =======
 (provide 'init-evil)

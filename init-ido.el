@@ -1,4 +1,6 @@
 (require 'flx-ido)
+(require 'ido-vertical-mode)
+(ido-vertical-mode 1)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)

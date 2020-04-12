@@ -1,5 +1,15 @@
 
-;; ======= other configuration =======
+
+;; ======= dashboard =======
+(require 'dashboard)
+(dashboard-setup-startup-hook)
+(setq dashboard-banner-logo-title "！！每天都要努力写论文！！")
+;; (setq dashboard-startup-banner "C:/emacs/.emacs.d/logo/logo.png")
+;; (setq dashboard-startup-banner "e:/logo.png")
+
+(setq make-backup-files nil)
+
+;; (visual-line-mode 1)
 
 ;;which-key
 (which-key-mode 1)
@@ -68,5 +78,22 @@
       '("~/.emacs.d/snippets"                 ;; personal snippets
         ;; "~/.emacs.d/snippets/python-mode/"           ;; foo-mode and bar-mode snippet collection
         ))
+
+
+;; package must download manully
+(require 'centered-window)
+
+;; ====== mini-frame =============
+;; (require 'mini-frame)
+;; (mini-frame-mode t)
+;; (custom-set-variables
+ ;; '(mini-frame-show-parameters
+   ;; '((top . 20)
+     ;; (width . 0.7)
+     ;; (left . 0.5))))
+;; ====== snails =============
+
+
+
 ;; ======= provide =======
 (provide 'init-better-defaults)

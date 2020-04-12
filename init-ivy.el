@@ -1,5 +1,4 @@
 
-
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers nil)
 (setq ivy-count-format "(%d/%d) ")
@@ -11,6 +10,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+;; (require 'ivy-posframe)
+;; (ivy-posframe-mode 1)
+;; (ivy-posframe-display-at-frame-center 1)
+;; (setq evil-want-minibuffer t)
+;; (ivy-posframe-mode 1)
+;; (ivy-posframe-display-at-frame-bottom-left 1)
+;; (ivy-posframe-display-at-point 1)
 
 ;; ======= provide ======
 (provide 'init-ivy)
