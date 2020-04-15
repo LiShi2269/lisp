@@ -26,12 +26,13 @@
 	
 	smartparens
 	popwin
+	iedit
 
 	evil-surround
 	ivy-posframe
 
 	mini-frame
-
+	yasnippet-snippets
 
 	py-autopep8
 

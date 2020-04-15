@@ -50,8 +50,8 @@
 (setq lsp-imenu-show-container-name t)
 ;; lsp-imenu-container-name-separator
 (setq lsp-imenu-container-name-separator t)
-
-
+;; lsp snippet
+(setq lsp-enable-snippet t)
 ;; ======= test =======
 (require 'lsp-mode)
 
@@ -68,19 +68,32 @@
 
    hydra-python
 
-   _Va_: Activate
-   _Vd_: Deactivate
-   _Vw_: Workon
+   _Va_: pyvenv-activate     _sb_: send-buffer      
+   _Vd_: pyvenv-deactivate   _sB_: and go
+   _Vw_: pyenv-workon        _sr_: send-region
+   _=_: formatting           _sR_: and go
+                             _sf_: send function
+                             _sF_: and go
+                            
 "
    ("Va" pyvenv-activate)
    ("Vd" pyvenv-deactivate)
    ("Vw" pyvenv-workon)
+   ("sb" elpy-shell-send-buffer-and-step)
+   ("sB" elpy-shell-send-buffer)
+   ("sR" elpy-shell-send-region-or-buffer)
+   ("sr" elpy-shell-send-region-or-buffer-and-step)
+   ("sf" elpy-shell-send-defun)
+   ("sF" elpy-shell-send-defun-and-step)
+   ;; ("yn" yas-new-snippet)
+   ;; ("ye" abbrev-expansion)
+   ("=" elpy-autopep8-fix-code)
    )
 
 ;; ----- mypythonkey-----
 (defun my-python-set()
     ;; ------ evil ------
-    (evil-leader/set-key-for-mode 'python-mode
+    (evil-leader/set-key
     ;; ------ pyenv ------
     "mVa" 'pyvenv-activate
     "mVd" 'pyvenv-deactivate
@@ -102,6 +115,7 @@
     ;; ======= which-key =======
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m V" "pyvenv")
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m s" "send")
+    (which-key-declare-prefixes-for-mode 'python-mode "SPC m y" "yasnippet")
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m " "major-mode")
 )
 
@@ -113,7 +127,7 @@
 (add-hook 'lsp-mode-hook 'my-python-set)
 (add-hook 'lsp-mode-hook (lambda()
 			      (lsp-managed-mode -1)))
-
+(add-hook 'python-mode-hook #'yas-minor-mode)
 
 
 

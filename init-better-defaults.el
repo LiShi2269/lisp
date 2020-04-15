@@ -4,7 +4,7 @@
 (require 'dashboard)
 (dashboard-setup-startup-hook)
 (setq dashboard-banner-logo-title "！！每天都要努力写论文！！")
-;; (setq dashboard-startup-banner "C:/emacs/.emacs.d/logo/logo.png")
+;; (setq dashboard-startup-banner '("~/.emacs.d/logo/logo.png"))
 ;; (setq dashboard-startup-banner "e:/logo.png")
 
 (setq make-backup-files nil)
@@ -68,16 +68,6 @@
 ;; (iswitchb-mode 1)
 ;; (setq iswitchb-buffer-ignore '("^ " "*Buffer" "*Help*"))
 
-
-
-;; ======= yasnippet =======
-(require 'yasnippet)
-(yas-global-mode 1)
-
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"                 ;; personal snippets
-        ;; "~/.emacs.d/snippets/python-mode/"           ;; foo-mode and bar-mode snippet collection
-        ))
 
 
 ;; package must download manully

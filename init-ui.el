@@ -16,9 +16,6 @@
 (load-theme 'dracula 1)
 ;; (load-theme 'monokai 1)
 
-;;(require 'all-the-icons)
-;; (all-the-icons-icon-for-buffer "*dashborad*")
-;; (all-the-icons-icon-for-dir 'all-the-icons-fileicon)
 
 
 

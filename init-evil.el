@@ -21,9 +21,7 @@
 
 
 
-;; ======= yasnippet ============
-(yas-reload-all)
-(add-hook 'python-mode-hook #'yas-minor-mode)
+
 
 (evil-leader/set-leader "<SPC>")
 (evil-normalize-keymaps)
@@ -32,6 +30,7 @@
     ;; ---- dir ----
     "ad" 'deer
     "ar" 'ranger
+    "an" 'neotree-toggle
 ;;    "an" 'neotree
     "ff" 'find-file
     ;; ---- buffer ----
@@ -67,10 +66,12 @@
     "qq" 'kill-emacs
     "qR" 'eval-buffer
     "qs" 'save-buffers-kill-emacs
-    
+    ;; ---- quit ----
+    "se" 'iedit-mode
     )
 
-
+(define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )
+(define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 
 
     
@@ -78,6 +79,7 @@
 
 
 ;; ======= declare =======
+;; (which-key-declare-prefixes-for-mode 'python-mode "SPC m" "Python")
 ;; (which-key-declare-prefixes-for-mode 'python-mode "SPC m" "Python")
 ;; ======= evil mode =======
 (provide 'init-evil)
