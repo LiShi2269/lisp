@@ -3,8 +3,8 @@
 ;; ======= dashboard =======
 (require 'dashboard)
 (dashboard-setup-startup-hook)
+(setq dashboard-startup-banner "~/.emacs.d/logo/logo4.png")
 (setq dashboard-banner-logo-title "！！每天都要努力写论文！！")
-;; (setq dashboard-startup-banner '("~/.emacs.d/logo/logo.png"))
 ;; (setq dashboard-startup-banner "e:/logo.png")
 
 (setq make-backup-files nil)

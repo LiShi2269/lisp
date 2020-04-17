@@ -23,6 +23,8 @@
 	
 	;; --- Better Editing ---
 	neotree
+
+	general
 	
 	smartparens
 	popwin
