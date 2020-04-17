@@ -3,10 +3,11 @@
 
 
 (require 'magit)
-
+(require 'evil-magit)
 
 (general-define-key
- :keymaps 'normal
+ :states  '(normal motion)
+ :keymaps 'override
  :prefix "SPC"
 "gs" 'magit-status
 )

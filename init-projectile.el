@@ -1,6 +1,7 @@
 
 (general-define-key
- :keymaps 'normal
+ :states '(normal motion)
+ :keymaps 'override
  :prefix "SPC"
 "p" 'projectile-command-map
 )

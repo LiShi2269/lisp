@@ -27,7 +27,7 @@
 ;; "
 
 ("?\\T" neotree-enter)
-("<SPC>" neotree-quick-look)
+("e" neotree-quick-look)
 ( "q" neotree-hide)
 ( "<return>" neotree-enter)
 ( "r" neotree-refresh)

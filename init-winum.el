@@ -17,7 +17,11 @@
       map))
 (require 'winum)
 (winum-mode 1)
-(evil-leader/set-key
+
+(general-define-key
+ :states  '(normal motion)
+ :keymaps 'override
+ :prefix "SPC"
   "w0" 'winum-select-window-0
   "w1" 'winum-select-window-1
   "w2" 'winum-select-window-2
@@ -29,7 +33,6 @@
   "w8" 'winum-select-window-8
   "w9" 'winum-select-window-9
  )
-
 
 
 ;; ======= provide =======

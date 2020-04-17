@@ -20,7 +20,7 @@
 	company
 	;; --- Mini Buffer completion ---
 	ivy
-	
+	evil-magit
 	;; --- Better Editing ---
 	neotree
 

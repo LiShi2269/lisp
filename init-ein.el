@@ -52,24 +52,42 @@ _O_: InsAbo  _p_: Paste  _/_: Split
     ("/" ein:worksheet-split-cell-at-point-km )
     ("u" ein:worksheet-toggle-cell-type-km )
     ("U" ein:worksheet-change-cell-type-km ))
-
-;; (global-set-key (kbd "<f5>") 'hydra-ein/body)
-
 ;; ==========hydra================
-(evil-define-minor-mode-key 'normal 'ein:notebook-mode "," 'hydra-ein/body)
-(defun my-ein-set()
-    (interactive)
+(general-define-key
+ :states 'normal
+ :keymaps 'ein:notebook
+ :definer 'minor-mode
+
+	 "C-RET" 'ein:worksheet-execute-cell-and-goto-next
+	 "C-S-RET" 'ein:worksheet-execute-cell-and-insert-below-km
+	 "C-j" 'ein:worksheet-goto-next-input-km
+	 "C-k" 'ein:worksheet-goto-prev-input-km
+ )
 
 
-    ;; (define-key evil-normal-state-map "," 'hydra-ein/body)
-    (evil-leader/set-key
+
+
+
+
+(general-define-key
+ :states '(normal motion)
+ :keymaps 'override
+ :prefix "SPC"
+    "ain" 'ein:notebooklist-open
+ )
+
+(general-define-key
+ :states '(normal motion)
+ :keymaps 'ein:notebook-mode
+ :definer 'minor-mode
+ :prefix "SPC"
 	"m." 'hydra-ein/body
 	"mo" 'ein:notebook-open-km
 	"mj" 'ein:worksheet-goto-next-input-km 
 	"mk" 'ein:worksheet-goto-prev-input-km 
 	"mJ" 'ein:worksheet-move-cell-down-km 
 	"mK" 'ein:worksheet-move-cell-up-km 
-	"mS" 'ein:notebook-save-notebook-command-km 
+	;; "mS" 'ein:notebook-save-notebook-command-km 
 	"mR" 'ein:notebook-rename-command-km 
 	"mO" 'ein:worksheet-insert-cell-above-km 
 	"mo" 'ein:worksheet-insert-cell-below-km 
@@ -85,25 +103,36 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 	"m/" 'ein:worksheet-split-cell-at-point-km
 	"mu" 'ein:worksheet-toggle-cell-type-km 
 	"mU" 'ein:worksheet-change-cell-type-km
-    )
+ )
 
-	(which-key-declare-prefixes-for-mode 'python-mode "SPC m " "major-mode")
-	(define-key ein:notebook-mode-map (kbd "C-<return>") 'ein:worksheet-execute-cell-and-goto-next)
-	(define-key ein:notebook-mode-map (kbd "C-S-<return>") 'ein:worksheet-execute-cell-and-insert-below-km)
-	(define-key ein:notebook-mode-map (kbd "C-j") 'ein:worksheet-goto-next-input-km)
-	(define-key ein:notebook-mode-map (kbd "C-k") 'ein:worksheet-goto-prev-input-km)
-
-)
-
-(add-hook 'ein:notebook-mode-hook 'my-ein-set)
-;; (add-hook 'ein:notebook-mode-hook 'hydra-ein/body)
-
-
-(evil-leader/set-key
-    ;; ---- ipython notebook ----
-    "ain" 'ein:notebooklist-open
-)
-
+(general-define-key
+ :states '(normal motion)
+ :keymaps 'ein:notebook-mode
+ :definer 'minor-mode
+ :prefix ","
+	"." 'hydra-ein/body
+	"o" 'ein:notebook-open-km
+	"j" 'ein:worksheet-goto-next-input-km 
+	"k" 'ein:worksheet-goto-prev-input-km 
+	"J" 'ein:worksheet-move-cell-down-km 
+	"K" 'ein:worksheet-move-cell-up-km 
+	"S" 'ein:notebook-save-notebook-command-km 
+	"R" 'ein:notebook-rename-command-km 
+	"O" 'ein:worksheet-insert-cell-above-km 
+	"o" 'ein:worksheet-insert-cell-below-km 
+	"m" 'ein:worksheet-merge-cell-km 
+	"c" 'ein:worksheet-copy-cell-km 
+	"C" 'ein:worksheet-execute-all-cells 
+	"p" 'ein:worksheet-yank-cell-km 
+	"t" 'ein:worksheet-toggle-output-km
+	"D" 'ein:worksheet-kill-cell-km  
+	"l" 'ein:worksheet-clear-output-km 
+	"L" 'ein:worksheet-clear-all-output-km 
+	"Q" 'ein:notebook-kill-kernel-then-close-command-km
+	"/" 'ein:worksheet-split-cell-at-point-km
+	"u" 'ein:worksheet-toggle-cell-type-km 
+	"U" 'ein:worksheet-change-cell-type-km
+ )
 ;; -------------test---------------
 
 

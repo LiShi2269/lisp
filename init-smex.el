@@ -1,8 +1,11 @@
 ;; ;; ======= keybindings =======
-(evil-leader/set-key
-    "<SPC>" 'smex
-)
 
+(general-define-key
+ :states '(normal motion)
+ :keymaps 'override
+ :prefix "SPC"
+    "<SPC>" 'smex
+ )
 ;; ;; ======= hyphen  =======
 ;; How to modify smex so that typing a space will insert a hyphen ‘-’ like in normal M-x?
  (defadvice smex (around space-inserts-hyphen activate compile)

@@ -2,27 +2,16 @@
 
 
 
-;; (defun my-iedit-set()
-;;   (interactive)
-;;     (  (kbd "C-c") 'iedit-toggle-case-sensitive)
-;;     (  (kbd "C-n") 'iedit-next-occurrence)
-;;     (  (kbd "C-N") 'iedit-prev-occurrence)
-;;     (  (kbd "<tab>") 'iedit-toggle-selection)
-;;     (  (kbd "C-i") 'iedit-restrict-current-line)
-;;     (  (kbd "C-f") 'iedit-restrict-function)
-;;     (  (kbd "C-k") 'iedit-expand-down-to-occurrence)
-;;     (  (kbd "C-j") 'iedit-expand-up-to-occurrence)
-;; )
 
 (defhydra hydra-iedit()
    "
 
    hydra-python
 
-   _C-c_:    pyvenv-activate     _C-i_: send-buffer      
-   _n_:      pyvenv-deactivate   _C-f_: and go
-   _N_:      pyenv-workon        _j_:   send-region
-   _<tab>_:  formatting          _k_:   and go
+   _C-c_:    Case       _C-i_:    currentLine
+   _n_:      next       _C-f_:    currentFunc
+   _N_:      prev        _j_:     expendDown
+   _<tab>_:  toggle      _k_:     expandUp
                             
 "
     (   "C-c" iedit-toggle-case-sensitive)

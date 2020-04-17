@@ -23,8 +23,8 @@
 
 
 ;; (require 'ivy-posframe)
-;; (ivy-posframe-mode 1)
 ;; (ivy-posframe-display-at-frame-center 1)
+;; (ivy-posframe-mode 1)
 ;; (setq evil-want-minibuffer t)
 ;; (ivy-posframe-mode 1)
 ;; (ivy-posframe-display-at-frame-bottom-left 1)

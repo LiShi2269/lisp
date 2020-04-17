@@ -25,9 +25,9 @@
 
 ;; ;; ======= key-chord=======
 (require 'key-chord)
-;; (key-chord-define evil-normal-state-map ",," 'evil-force-normal-state)
 (key-chord-define evil-visual-state-map ",," 'evil-force-normal-state)
 (key-chord-define evil-insert-state-map ",," 'evil-normal-state)
+;; (key-chord-define isearch-mode-map ",," 'keyboard-escape-quit)
 (key-chord-define evil-replace-state-map ",," 'evil-normal-state)
 (key-chord-define ivy-mode-map ",," 'keyboard-escape-quit)
 (key-chord-mode +1)
