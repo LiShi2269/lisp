@@ -14,20 +14,20 @@
 (setq lsp-prefer-capf t)
 (setq lsp-idle-delay 0.500)
 ;; ;; ------- lsp ui feature -------
-;; (setq lsp-auto-configure t)
-;; (company-lsp t)
+(setq lsp-auto-configure t)
+(company-lsp t)
 ;; (lsp-ui-mode nil)
 (setq lsp-signature-auto-activate t)
-;; (setq lsp-ui-sideline-enable t)
+(setq lsp-ui-sideline-enable t)
 ;; ----- delay-----
-(setq lsp-ui-sideline-delay 3)
+(setq lsp-ui-sideline-delay 0.1)
 (setq lsp-ui-sideline-show-diagnostics t)
 (setq lsp-ui-sideline-show-hover t)
 (setq lsp-ui-sideline-show-code-actions t)
 (setq lsp-ui-sideline-update-mode t) 
 (setq lsp-ui-doc-position 'bottom)
 ;; ----- delay-----
-(setq lsp-ui-doc-delay 2)
+(setq lsp-ui-doc-delay 4)
 ;; ======= test =======
 ;; (lsp-ui-sideline-mode -1)
 ;; (lsp-ui-doc-mode -1)
@@ -45,7 +45,7 @@
 
 
 
-;; (setq lsp-diagnostic-package 'flycheck)
+(setq lsp-diagnostic-package 'flycheck)
 ;; lsp-enable-indentation
 (setq lsp-enable-indentation t)
 ;; lsp-enable-on-type-formatting
@@ -57,12 +57,11 @@
 ;; lsp snippet 开的话会很慢
 (setq lsp-enable-snippet nil)
 ;; ======= test =======
-;; (setq lsp-auto-configure t)
 (company-lsp t)
 (lsp-ui-mode nil)
 (require 'lsp-mode)
-
-
+;; (global-eldoc-mode nil)
+(setq lsp-eldoc-render-all t)
 
 
 
@@ -70,7 +69,6 @@
 
 
 
-(lsp-managed-mode -1)
 ;; ----- mypythonkey-----
 (defun my-python-set()
     (display-line-numbers-mode 1)
@@ -136,10 +134,21 @@
     )
 
 
+(defun disable-python-minor-modes()
+  (interactive)
+  (add-hook 'after-change-major-mode-hook
+	    (lambda()
+	      (eldoc-mode 0)
+	      ;; (lsp-managed-mode 0)
+	      )))
 
 
-
-;; (evil-define-key 'normal python-mode-map "," 'hydra-python/body)
+(defun disable-lsp-managed-mode()
+  (interactive)
+  (add-hook 'after-change-major-mode-hook
+	    (lambda()
+	      (lsp-managed-mode 0)
+	      )))
 
 
 ;; ------- lsp hook -------
@@ -147,16 +156,16 @@
 (add-hook 'lsp-mode-hook 'my-python-set)
 (add-hook 'python-mode-hook #'yas-minor-mode)
 ;; flycheck mode need pylint install in you python execute file
-;; (add-hook 'python-mode-hook #'flycheck-mode)
-(add-hook 'lsp-mode-hook (lambda()
-			   (lsp-managed-mode -1)(flycheck-mode -1)(flymake-mode -1)(lsp-ui-sideline-mode -1)(lsp-ui-doc-mode -1)))
+(add-hook 'python-mode-hook #'flycheck-mode)
+(add-hook 'python-mode-hook #'disable-python-minor-modes)
+;; (add-hook 'python-mode-hook #'disable-lsp-managed-mode)
 
 ;; ------- lsp company -------
 (setq company-minimum-prefix-length 1
       company-idle-delay 0.1) ;; default is 0.2
 ;; ------- lsp which key set -------
 (with-eval-after-load 'lsp-mode
-  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
+(add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 
 
 
@@ -190,8 +199,8 @@
 
 ;; ------- run-python -------
 
-(global-set-key (kbd "C-k") (lambda ()(interactive)(comint-previous-input 1)))
-(global-set-key (kbd "C-j") (lambda ()(interactive)(comint-next-input 1)))
+;; (global-set-key (kbd "C-k") (lambda ()(interactive)(comint-previous-input 1)))
+;; (global-set-key (kbd "C-j") (lambda ()(interactive)(comint-next-input 1)))
 
 
 
