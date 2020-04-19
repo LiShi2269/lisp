@@ -1,3 +1,15 @@
+
+;; ====================elpy key map forbidden =================
+;; 把elpy.el里面的这些禁用
+    ;; (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
+    ;; (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+
+    ;; (define-key map (kbd "<C-return>") 'elpy-shell-send-statement-and-step)
+
+;; ====================elpy key map forbidden =================
+
+
+
 ;;default python mode state
 (evil-set-initial-state 'python-mode 'normal) 
 (evil-set-initial-state 'inferior-python-mode 'normal) 
@@ -68,6 +80,10 @@
 (require 'python-mode)
 
 
+(defun disable-python-minor-modes()
+  (interactive)
+    (lsp-managed-mode -1)
+    (eldoc-mode -1))
 
 ;; ----- mypythonkey-----
 (defun my-python-set()
@@ -80,17 +96,30 @@
 )
 
 
+(defun my-run-python()
+"左边是原来的py右边是ipython，光标在左边"
+  (interactive)(delete-other-windows)(split-window-right)(evil-window-right 1)(run-python)(evil-window-left 1))
+
+
+
 (general-define-key
  :states '(normal motion insert)
  :keymaps 'inferior-python-mode-map
 "C-k" 'comint-previous-input
-"C-j" 'comint-next-input)
+"C-j" 'comint-next-input
+)
 
+(general-define-key
+ :state '(normal motion insert)
+ :keymaps 'lsp-mode-map
+ :definer 'minor-mode
+ "M-p" 'my-run-python
+ )
 
 
 (general-define-key
  :states '(normal motion)
- :keymaps 'elpy-mode
+ :keymaps 'lsp-mode
  :definer 'minor-mode
  :prefix "SPC"
     "mVa" 'pyvenv-activate
@@ -107,14 +136,13 @@
     "m=" 'elpy-autopep8-fix-code
     "mld" 'lsp-ui-doc-mode
     "mls" 'lsp-ui-sideline-mode
-
-    )
+    "mll" 'disable-python-minor-modes)
 
 
 
 (general-define-key
  :states '(normal motion)
- :keymaps 'elpy-mode
+ :keymaps 'lsp-mode
  :definer 'minor-mode
  :prefix ","
     "Va" 'pyvenv-activate
@@ -131,24 +159,9 @@
     "=" 'elpy-autopep8-fix-code
     "ld" 'lsp-ui-doc-mode
     "ls" 'lsp-ui-sideline-mode
-    )
+    "ll" 'disable-python-minor-modes)
 
 
-(defun disable-python-minor-modes()
-  (interactive)
-  (add-hook 'after-change-major-mode-hook
-	    (lambda()
-	      (eldoc-mode 0)
-	      ;; (lsp-managed-mode 0)
-	      )))
-
-
-(defun disable-lsp-managed-mode()
-  (interactive)
-  (add-hook 'after-change-major-mode-hook
-	    (lambda()
-	      (lsp-managed-mode 0)
-	      )))
 
 
 ;; ------- lsp hook -------
@@ -157,8 +170,6 @@
 (add-hook 'python-mode-hook #'yas-minor-mode)
 ;; flycheck mode need pylint install in you python execute file
 (add-hook 'python-mode-hook #'flycheck-mode)
-(add-hook 'python-mode-hook #'disable-python-minor-modes)
-;; (add-hook 'python-mode-hook #'disable-lsp-managed-mode)
 
 ;; ------- lsp company -------
 (setq company-minimum-prefix-length 1
@@ -192,10 +203,7 @@
 
 
 ;; ------- run-python -------
-(defun my-run-python()
-"左边是原来的py右边是ipython，光标在左边"
-  (interactive)(delete-other-windows)(split-window-right)(evil-window-right 1)(run-python)(evil-window-left 1))
-(add-hook 'python-mode-hook (lambda() (local-set-key (kbd "M-p") 'my-run-python)))
+;; (add-hook 'python-mode-hook (lambda() (local-set-key (kbd "M-p") 'my-run-python))
 
 ;; ------- run-python -------
 
@@ -205,6 +213,6 @@
 
 
 
-
+(global-unset-key (kbd "C-<return>"))
 ;; ====== provide =======
 (provide 'init-python)

@@ -53,21 +53,6 @@ _O_: InsAbo  _p_: Paste  _/_: Split
     ("u" ein:worksheet-toggle-cell-type-km )
     ("U" ein:worksheet-change-cell-type-km ))
 ;; ==========hydra================
-(general-define-key
- :states 'normal
- :keymaps 'ein:notebook
- :definer 'minor-mode
-
-	 "C-RET" 'ein:worksheet-execute-cell-and-goto-next
-	 "C-S-RET" 'ein:worksheet-execute-cell-and-insert-below-km
-	 "C-j" 'ein:worksheet-goto-next-input-km
-	 "C-k" 'ein:worksheet-goto-prev-input-km
- )
-
-
-
-
-
 
 (general-define-key
  :states '(normal motion)
@@ -78,7 +63,7 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 
 (general-define-key
  :states '(normal motion)
- :keymaps 'ein:notebook-mode
+ :keymaps 'ein:worksheet
  :definer 'minor-mode
  :prefix "SPC"
 	"m." 'hydra-ein/body
@@ -87,7 +72,7 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 	"mk" 'ein:worksheet-goto-prev-input-km 
 	"mJ" 'ein:worksheet-move-cell-down-km 
 	"mK" 'ein:worksheet-move-cell-up-km 
-	;; "mS" 'ein:notebook-save-notebook-command-km 
+	"C-s" 'ein:notebook-save-notebook-command-km 
 	"mR" 'ein:notebook-rename-command-km 
 	"mO" 'ein:worksheet-insert-cell-above-km 
 	"mo" 'ein:worksheet-insert-cell-below-km 
@@ -107,7 +92,7 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 
 (general-define-key
  :states '(normal motion)
- :keymaps 'ein:notebook-mode
+ :keymaps 'ein:worksheet
  :definer 'minor-mode
  :prefix ","
 	"." 'hydra-ein/body
@@ -144,9 +129,17 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 
 
 
+(define-key ein:notebook-mode-map (kbd "C-<return>") 'ein:worksheet-execute-cell-and-goto-next-km)
+(define-key ein:notebook-mode-map (kbd "C-S-<return>") 'ein:worksheet-execute-cell-and-insert-below-km)
+(define-key ein:notebook-mode-map (kbd "C-j") 'ein:worksheet-goto-next-input-km)
+(define-key ein:notebook-mode-map (kbd "C-k") 'ein:worksheet-goto-prev-input-km)
 
 
 
+;; 	 "C-RET" 'ein:worksheet-execute-cell-and-goto-next
+;; 	 "C-S-RET" 'ein:worksheet-execute-cell-and-insert-below-km
+;; 	 "C-j" 'ein:worksheet-goto-next-input-km
+;; 	 "C-k" 'ein:worksheet-goto-prev-input-km
 
 
 
