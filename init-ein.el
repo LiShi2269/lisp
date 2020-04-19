@@ -72,11 +72,12 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 	"mk" 'ein:worksheet-goto-prev-input-km 
 	"mJ" 'ein:worksheet-move-cell-down-km 
 	"mK" 'ein:worksheet-move-cell-up-km 
-	"C-s" 'ein:notebook-save-notebook-command-km 
+	"mS" 'ein:notebook-save-notebook-command-km 
 	"mR" 'ein:notebook-rename-command-km 
 	"mO" 'ein:worksheet-insert-cell-above-km 
 	"mo" 'ein:worksheet-insert-cell-below-km 
-	"mm" 'ein:worksheet-merge-cell-km 
+	"mm" 'ein:worksheet-merge-cell-down-km 
+	"mM" 'ein:worksheet-merge-cell-km 
 	"mc" 'ein:worksheet-copy-cell-km 
 	"mC" 'ein:worksheet-execute-all-cells 
 	"mp" 'ein:worksheet-yank-cell-km 
@@ -105,7 +106,8 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 	"R" 'ein:notebook-rename-command-km 
 	"O" 'ein:worksheet-insert-cell-above-km 
 	"o" 'ein:worksheet-insert-cell-below-km 
-	"m" 'ein:worksheet-merge-cell-km 
+	"m" 'ein:worksheet-merge-cell-down-km 
+	"M" 'ein:worksheet-merge-cell-km 
 	"c" 'ein:worksheet-copy-cell-km 
 	"C" 'ein:worksheet-execute-all-cells 
 	"p" 'ein:worksheet-yank-cell-km 

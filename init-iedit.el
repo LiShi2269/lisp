@@ -24,8 +24,12 @@
     (   "k" iedit-expand-up-to-occurrence)
    )
 
-
-
+(general-define-key
+:states '(normal motion)
+:key-map '(iedit-mode ein:notebook-mode)
+"?" 'hydra-iedit/body
+ )
+;; (evil-define-minor-mode-key '(normal motion) '(iedit-mode ein:notebook-mode) (kbd "?") 'hydra-iedit/body)
 
 
 (add-hook 'iedit-mode-hook 'hydra-iedit/body)

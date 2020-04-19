@@ -93,6 +93,7 @@
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m s" "send")
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m y" "yasnippet")
     (which-key-declare-prefixes-for-mode 'python-mode "SPC m " "major-mode")
+    (which-key-declare-prefixes-for-mode 'python-mode "SPC m l " "aboutLsp")
 )
 
 
