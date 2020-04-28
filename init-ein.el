@@ -13,7 +13,8 @@
   )
 
 
-
+(setq ein:use-auto-complete t)
+(setq ein:use-smartrep t)
 
 (defhydra hydra-ein()
  "
@@ -130,6 +131,8 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 (setq ein:use-smartrep t)
 
 
+(add-hook 'ein:notebook-mode-hook (lambda()(eldoc-mode -1)))
+
 
 (define-key ein:notebook-mode-map (kbd "C-<return>") 'ein:worksheet-execute-cell-and-goto-next-km)
 (define-key ein:notebook-mode-map (kbd "C-S-<return>") 'ein:worksheet-execute-cell-and-insert-below-km)
@@ -138,10 +141,6 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 
 
 
-;; 	 "C-RET" 'ein:worksheet-execute-cell-and-goto-next
-;; 	 "C-S-RET" 'ein:worksheet-execute-cell-and-insert-below-km
-;; 	 "C-j" 'ein:worksheet-goto-next-input-km
-;; 	 "C-k" 'ein:worksheet-goto-prev-input-km
 
 
 

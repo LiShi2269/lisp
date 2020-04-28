@@ -66,8 +66,9 @@
     "qq" 'kill-emacs
     "qR" 'eval-buffer
     "qs" 'save-buffers-kill-emacs
-    ;; ---- quit ----
+    ;; ----  ----
     "se" 'iedit-mode
+    "`"  'shell
     )
 
 (define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )

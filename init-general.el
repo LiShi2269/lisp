@@ -11,6 +11,7 @@
 
 
 
+
 ;; ======= hydra ============
 (defhydra hydra-zoom ()
   "zoom"
@@ -20,9 +21,19 @@
 
 
 
+
+;;(define-key bookmark-bmenu-mode-map (kbd "j") 'next-line)
+;;(define-key bookmark-bmenu-mode-map (kbd "k") 'previous-line)
+;;(define-key bookmark-bmenu-mode-map (kbd "<SPC>") 'smex)
+
+
+
+ 
+
+
 (general-define-key
- :states  '(normal motion)
- :keymaps 'override
+ :states  '(normal motion )
+ :keymaps 'override 
  :prefix "SPC"
     ;; ---- dir ----
     "ad" 'deer
@@ -55,6 +66,11 @@
     "wF" 'make-frame-command  
     "wc" 'centered-window-mode
 
+    ;; ---- book mark----
+    "Mm" 'bookmark-set
+    "Mj" 'bookmark-jump
+    "Ml" 'list-bookmarks
+    "Ms" 'bookmark-save
     ;; ---- zoom ----
     "z" 'hydra-zoom/body
     ;; ---- toggle ----
@@ -64,7 +80,8 @@
     "qR" 'eval-buffer
     "qs" 'save-buffers-kill-emacs
     ;; ---- quit ----
-    "se" 'iedit-mode)
+    "se" 'iedit-mode
+    "`"  'shell)
 
 
 (evil-normalize-keymaps)
@@ -72,9 +89,24 @@
 (define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )
 (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 
+(setq winum-keymap
+    (let ((map (make-sparse-keymap)))
+      (define-key map (kbd "C-`") 'winum-select-window-by-number)
+      (define-key map (kbd "C-²") 'winum-select-window-by-number)
+      (define-key map (kbd "M-0") 'winum-select-window-0-or-10)
+      (define-key map (kbd "M-1") 'winum-select-window-1)
+      (define-key map (kbd "M-2") 'winum-select-window-2)
+      (define-key map (kbd "M-3") 'winum-select-window-3)
+      (define-key map (kbd "M-4") 'winum-select-window-4)
+      (define-key map (kbd "M-5") 'winum-select-window-5)
+      (define-key map (kbd "M-6") 'winum-select-window-6)
+      (define-key map (kbd "M-7") 'winum-select-window-7)
+      (define-key map (kbd "M-8") 'winum-select-window-8)
+      map))
 
-    
+(require 'winum)
 
+(winum-mode)
 
 
 ;; ======= evil mode =======

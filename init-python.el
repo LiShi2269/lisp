@@ -15,7 +15,7 @@
 (evil-set-initial-state 'inferior-python-mode 'normal) 
 
 (setq python-indent-offset 4)
-
+(setq elpy-rpc-backend "jedi")
 
 
 ;; ------ lsp-mode ------
@@ -171,6 +171,8 @@
 (add-hook 'python-mode-hook #'yas-minor-mode)
 ;; flycheck mode need pylint install in you python execute file
 (add-hook 'python-mode-hook #'flycheck-mode)
+(add-hook 'python-mode-hook (lambda()(eldoc-mode -1)))
+(add-hook 'python-mode-hook (lambda()(lsp-managed-mode -1)))
 
 ;; ------- lsp company -------
 (setq company-minimum-prefix-length 1

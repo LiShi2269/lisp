@@ -23,12 +23,14 @@
 	evil-magit
 	;; --- Better Editing ---
 	neotree
-
+	proxy-mode
+	shell-pop
 	general
 	
 	smartparens
 	popwin
 	iedit
+	
 
 	evil-surround
 	ivy-posframe

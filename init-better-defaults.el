@@ -29,6 +29,16 @@
 
 ;; 自动加载外部修改过的文件
 (global-auto-revert-mode 1)
+(global-eldoc-mode -1)
+
+;; ;; 使用emacs内建的eww浏览器来进行url的执行
+;; (setq browse-url-browser-function 'eww-browse-url)
+
+;; (setq url-gateway-method 'socks)
+;; (setq socks-server '("Default server" "127.0.0.1" 443 5))
+
+
+
 
 
 ;; 关闭文件滑动控件

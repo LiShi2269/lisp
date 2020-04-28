@@ -30,6 +30,7 @@
 ;; (key-chord-define isearch-mode-map ",," 'keyboard-escape-quit)
 (key-chord-define evil-replace-state-map ",," 'evil-normal-state)
 (key-chord-define ivy-mode-map ",," 'keyboard-escape-quit)
+(setq key-chord-one-key-delay 0.4)     
 (key-chord-mode +1)
 
 
