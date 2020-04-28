@@ -3,12 +3,9 @@
 ;; 把elpy.el里面的这些禁用
     ;; (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
     ;; (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
-
     ;; (define-key map (kbd "<C-return>") 'elpy-shell-send-statement-and-step)
 
 ;; ====================elpy key map forbidden =================
-
-
 
 ;;default python mode state
 (evil-set-initial-state 'python-mode 'normal) 
@@ -16,8 +13,6 @@
 
 (setq python-indent-offset 4)
 (setq elpy-rpc-backend "jedi")
-
-
 ;; ------ lsp-mode ------
 (setq lsp-keymap-prefix "s-l")
 ;; ------- lsp feature -------
@@ -53,10 +48,6 @@
 (setq lsp-ui-sideline-ignore-duplicate t)
 (setq lsp-ui-peek--list t)
 
-
-
-
-
 (setq lsp-diagnostic-package 'flycheck)
 ;; lsp-enable-indentation
 (setq lsp-enable-indentation t)
@@ -74,9 +65,6 @@
 (require 'lsp-mode)
 ;; (global-eldoc-mode nil)
 (setq lsp-eldoc-render-all t)
-
-
-
 (require 'python-mode)
 
 
@@ -88,12 +76,6 @@
 ;; ----- mypythonkey-----
 (defun my-python-set()
     (display-line-numbers-mode 1)
-    ;; ======= which-key =======
-    (which-key-declare-prefixes-for-mode 'python-mode "SPC m V" "pyvenv")
-    (which-key-declare-prefixes-for-mode 'python-mode "SPC m s" "send")
-    (which-key-declare-prefixes-for-mode 'python-mode "SPC m y" "yasnippet")
-    (which-key-declare-prefixes-for-mode 'python-mode "SPC m " "major-mode")
-    (which-key-declare-prefixes-for-mode 'python-mode "SPC m l " "aboutLsp")
 )
 
 
@@ -110,59 +92,36 @@
 "C-j" 'comint-next-input
 )
 
-(general-define-key
- :state '(normal motion insert)
- :keymaps 'lsp-mode-map
- :definer 'minor-mode
- "M-p" 'my-run-python
- )
 
 
-(general-define-key
- :states '(normal motion)
- :keymaps 'lsp-mode
- :definer 'minor-mode
- :prefix "SPC"
-    "mVa" 'pyvenv-activate
-    "mVd" 'pyvenv-deactivate
-    "mVw" 'pyvenv-workon
-    "msB" 'elpy-shell-send-buffer-and-step
-    "msb" 'elpy-shell-send-buffer
-    "msr" 'elpy-shell-send-region-or-buffer
-    "msR" 'elpy-shell-send-region-or-buffer-and-step
-    "msf" 'elpy-shell-send-defun
-    "msF" 'elpy-shell-send-defun-and-step
-    "myn" 'yas-new-snippet
-    "mye" 'abbrev-expansion
-    "m=" 'elpy-autopep8-fix-code
-    "mld" 'lsp-ui-doc-mode
-    "mls" 'lsp-ui-sideline-mode
-    "mll" 'disable-python-minor-modes)
+(defhydra hydra-python()
+ "
 
+hydra-python
 
+_Va_: pyenv   _sb_: send   _yn_: yas     _sb_: sendBUffer
+_ll_: faster  _ls_: LSPui  _ld_: LSPDoc  _SB_: temp
+_sr_: temp    _Vw_: workon _Vd_: deact   _=_: formation
+_sf_: senFun  _sF_: temp   _sR_: temp
+  
 
-(general-define-key
- :states '(normal motion)
- :keymaps 'lsp-mode
- :definer 'minor-mode
- :prefix ","
-    "Va" 'pyvenv-activate
-    "Vd" 'pyvenv-deactivate
-    "Vw" 'pyvenv-workon
-    "sB" 'elpy-shell-send-buffer-and-go
-    "sb" 'elpy-shell-send-buffer
-    "sr" 'elpy-shell-send-region-or-buffer
-    "sR" 'elpy-shell-send-region-or-buffer-and-go
-    "sf" 'elpy-shell-send-defun
-    "sF" 'elpy-shell-send-defun-and-go
-    "yn" 'yas-new-snippet
-    "ye" 'abbrev-expansion
-    "=" 'elpy-autopep8-fix-code
-    "ld" 'lsp-ui-doc-mode
-    "ls" 'lsp-ui-sideline-mode
-    "ll" 'disable-python-minor-modes)
-
-
+"
+  
+    ("Va" pyvenv-activate )
+    ("Vd" pyvenv-deactivate)
+    ("Vw" pyvenv-workon)
+    ("sB" elpy-shell-send-buffer-and-go)
+    ("sb" elpy-shell-send-buffer)
+    ("sr" elpy-shell-send-region-or-buffer)
+    ("sR" elpy-shell-send-region-or-buffer-and-go)
+    ("sf" elpy-shell-send-defun)
+    ("sF" elpy-shell-send-defun-and-go)
+    ("yn" yas-new-snippet)
+    ("ye" abbrev-expansion)
+    ("=" elpy-autopep8-fix-code)
+    ("ld" lsp-ui-doc-mode)
+    ("ls" lsp-ui-sideline-mode)
+    ("ll" disable-python-minor-modes))
 
 
 ;; ------- lsp hook -------
@@ -173,7 +132,9 @@
 (add-hook 'python-mode-hook #'flycheck-mode)
 (add-hook 'python-mode-hook (lambda()(eldoc-mode -1)))
 (add-hook 'python-mode-hook (lambda()(lsp-managed-mode -1)))
-
+(evil-define-minor-mode-key 'normal 'lsp-mode (kbd ",") 'hydra-python/body)
+(evil-define-key 'normal 'python-mode-map (kbd "<SPC> m") 'hydra-python/body)
+(evil-define-minor-mode-key 'normal 'lsp-mode (kbd "M-p") 'my-run-python)
 ;; ------- lsp company -------
 (setq company-minimum-prefix-length 1
       company-idle-delay 0.1) ;; default is 0.2
@@ -205,17 +166,5 @@
 
 
 
-;; ------- run-python -------
-;; (add-hook 'python-mode-hook (lambda() (local-set-key (kbd "M-p") 'my-run-python))
-
-;; ------- run-python -------
-
-;; (global-set-key (kbd "C-k") (lambda ()(interactive)(comint-previous-input 1)))
-;; (global-set-key (kbd "C-j") (lambda ()(interactive)(comint-next-input 1)))
-
-
-
-
-(global-unset-key (kbd "C-<return>"))
 ;; ====== provide =======
 (provide 'init-python)

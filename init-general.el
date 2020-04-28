@@ -45,6 +45,8 @@
     "<spc>" 'smex
     "fs" 'save-buffer
     "bb" 'buffer-menu
+    ;; 返回dashboard
+    "bh" (lambda()(interactive)(switch-to-buffer "*dashboard*"))
     "bd" 'kill-this-buffer
     "<tab>" 'mode-line-other-buffer
     "bi" 'ido-switch-buffer
@@ -82,7 +84,6 @@
     ;; ---- quit ----
     "se" 'iedit-mode
     "`"  'shell)
-
 
 (evil-normalize-keymaps)
 
