@@ -1,7 +1,0 @@
-
-
-
-;; ======= provide =======
-(provide 'init-pdftools)
-
-
