@@ -26,7 +26,13 @@
 ;;(define-key bookmark-bmenu-mode-map (kbd "k") 'previous-line)
 ;;(define-key bookmark-bmenu-mode-map (kbd "<SPC>") 'smex)
 
-
+(general-define-key
+ :states  '(normal motion )
+ :keymaps 'override 
+ :prefix  "m"
+ "m" 'bookmark-set
+ "l" 'list-bookmarks
+ )
 
  
 
