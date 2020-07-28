@@ -22,8 +22,8 @@
 
 
 
-;;(define-key bookmark-bmenu-mode-map (kbd "j") 'next-line)
-;;(define-key bookmark-bmenu-mode-map (kbd "k") 'previous-line)
+(define-key bookmark-bmenu-mode-map (kbd "j") 'next-line)
+(define-key bookmark-bmenu-mode-map (kbd "k") 'previous-line)
 ;;(define-key bookmark-bmenu-mode-map (kbd "<SPC>") 'smex)
 
 (general-define-key
