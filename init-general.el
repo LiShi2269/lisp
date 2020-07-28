@@ -18,32 +18,32 @@
   ("{" text-scale-increase "in")
   ("}" text-scale-decrease "out"))
 
-
-
-
-
-(define-key bookmark-bmenu-mode-map (kbd "j") 'next-line)
-(define-key bookmark-bmenu-mode-map (kbd "k") 'previous-line)
-;;(define-key bookmark-bmenu-mode-map (kbd "<SPC>") 'smex)
-
 (general-define-key
  :states  '(normal motion )
  :keymaps 'override 
  :prefix  "m"
- "m" 'bookmark-set
- "l" 'list-bookmarks
+ (kbd "m") 'bookmark-set
+ (kbd "l") 'list-bookmarks
  )
+
+
+(add-hook 'bookmark-bmenu-mode-hook 'myset-bookmark-menu-function)
+(defun myset-bookmark-menu-function()
+    (define-key bookmark-bmenu-mode-map (kbd "j") 'next-line)
+    (define-key bookmark-bmenu-mode-map (kbd "k") 'previous-line)
+  )
+
+
+
 
  
 (general-define-key
  :states  '(normal motion )
  :keymaps 'override 
- ;; :prefix  "m"
  (kbd "M-l") 'evil-window-right
  (kbd "M-h") 'evil-window-left
  (kbd "M-j") 'evil-window-down
  (kbd "M-k") 'evil-window-up
- ;; "l" 'list-bookmarks
  )
 
 
@@ -84,11 +84,6 @@
     "wF" 'make-frame-command  
     "wc" 'centered-window-mode
 
-    ;; ---- book mark----
-    "Mm" 'bookmark-set
-    "Mj" 'bookmark-jump
-    "Ml" 'list-bookmarks
-    "Ms" 'bookmark-save
     ;; ---- zoom ----
     "z" 'hydra-zoom/body
     ;; ---- toggle ----
@@ -101,10 +96,10 @@
     "se" 'iedit-mode
     "`"  'shell)
 
-(evil-normalize-keymaps)
+;; (evil-normalize-keymaps)
 
-(define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )
-(define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
+;; (define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )
+;; (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 
 (setq winum-keymap
     (let ((map (make-sparse-keymap)))
