@@ -73,10 +73,12 @@
 	;; --- Python ---
 	ein
 	elpy
-	jedi
-	;; anaconda-mode
+	;;jedi是专门给auto-company使用的，company-jedi才是company用的
+	company-jedi
+	;;default
+	anaconda-mode
 	python-mode
-	flycheck	
+	;;flycheck	
 	blacken
 	py-autopep8
 	lsp-mode
@@ -84,8 +86,9 @@
 	lsp-treemacs
 	lsp-ivy
 	dap-mode
-	company-lsp
-	;; virtualenvwrapper
+	;; company-lsp已经不用了，见github相关
+	;; company-lsp
+	;;virtualenvwrapper
 	
       	;; --- evil mode---
 	evil

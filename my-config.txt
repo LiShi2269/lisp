@@ -1,0 +1,10 @@
+
+python 清华源
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython pandas numpy jupyter
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper-win
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-language-server[all]
+
+vmess://ewogICJ2IjogIjIiLAogICJwcyI6ICJ3dWxhYmluZ19saXNoaTIyNjkwOTM1Lnh5eiIsCiAgImFkZCI6ICJsaXNoaTIyNjkwOTM1Lnh5eiIsCiAgInBvcnQiOiAiNDQzIiwKICAiaWQiOiAiOTczNDZiZTgtMGZiMC00MWY1LWExZjAtOWU0MjgzYjA1MGJjIiwKICAiYWlkIjogIjIiLAogICJuZXQiOiAid3MiLAogICJ0eXBlIjogIm5vbmUiLAogICJob3N0IjogImxpc2hpMjI2OTA5MzUueHl6IiwKICAicGF0aCI6ICIvZDcwMi8iLAogICJ0bHMiOiAidGxzIgp9Cg== 
+
+
