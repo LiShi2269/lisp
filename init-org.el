@@ -23,18 +23,57 @@
 (defhydra hydra-org()
  "
 
-hydra-python
+;; hydra-python
 
 ;; _Va_: pyenv   _sb_: send   _yn_: yas     _sb_: sendBUffer
 ;; _ll_: faster  _ls_: LSPui  _ld_: LSPDoc  _SB_: temp
 ;; _sr_: temp    _Vw_: workon _Vd_: deact   _=_: formation
 ;; _sf_: senFun  _sF_: temp   _sR_: temp
-_sa_: outline-show-all
+;; _sa_: outline-show-all
   
 
 "
 ;; -------show something--------
 ("sa" outline-show-all)
+("s1" org-set-startup-visibility)
+("sc" outline-show-children)
+("s2" org-tree-to-indirect-buffer)
+
+
+;; -------motion--------
+("mj" org-forward-heading-same-level)
+("mk" org-backward-heading-same-level)
+("mu" outline-up-heading)
+("mg" org-goto)
+
+;; -------structure--------
+("<return>" org-insert-heading-respect-content)
+("xs" org-cut-subtree)
+("cs" org-copy-subtree)
+("cp" org-paste-subtree)
+("nb" org-narrow-to-block)
+("ns" org-narrow-to-subtree)
+("nw" widen)
+("*" org-toggle-heading)
+("`" org-sort)
+
+;; -------Sparse trees--------
+("S/" org-sparse-tree)
+("So" org-occur)
+("Sj" next-error)
+("Sk" previous-error)
+
+;; -------drawer--------
+("id" org-insert-drawer)
+
+;; -------drawer--------
+("i|" org-table-create-or-convert-from-region)
+("tr" org-table-align)
+("t<SPC>" org-table-blank-field)
+("ct" org-table-copy-region)
+("xt" org-table-cut-region)
+("pt" org-table-paste-rectangle)
+("t`" org-table-edit-field)
   
     )
 
