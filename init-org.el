@@ -12,6 +12,9 @@
 
 
 
+;; After that, everything will happen automatically. All diary entries including holidays, anniversaries, etc., will be included in the agenda buffer created by Org mode. <SPC>, <TAB>, and <RET> can be used from the agenda buffer to jump to the diary file in order to edit existing diary entries. The i command to insert new entries for the current date works in the agenda buffer, as well as the commands S, M, and C to display Sunrise/Sunset times, show lunar phases and to convert to other calendars, respectively. c can be used to switch back and forth between calendar and agenda.
+(setq org-agenda-include-diary t)
+
 (general-define-key
  :keymaps 'org-mode-map
  "C-j" 'org-next-visible-heading
@@ -59,6 +62,7 @@
 
 ;; -------Sparse trees--------
 ("S/" org-sparse-tree)
+("Sm" org-match-sparse-tree)
 ("So" org-occur)
 ("Sj" next-error)
 ("Sk" previous-error)
@@ -84,10 +88,38 @@
 ;; -------tag--------
 ("it" org-ctrl-c-ctrl-c)
 ("iT" org-set-tags-command)
-
 ("r" org-ctrl-c-ctrl-c)
 
-;; (org-set-tags-command &optional ARG)
+;; -------property--------
+
+("ip" org-set-property)
+("dp" org-delete-property)
+
+
+;; -------time--------
+(".." org-time-stamp)
+(".!" org-time-stamp-inactive)
+(".c" org-date-from-calendar)
+(".C" org-date-goto-calendar)
+("o" org-open-at-point)
+(".y" org-evaluate-time-range)
+
+;; -------todo--------
+("\\t" org-todo)
+("\\st" org-show-todo-tree)
+;; ("\\l" org-todo-list)
+("i\\" org-insert-todo-heading)
+
+;; -------Agenda--------
+("ai" org-agenda-file-to-front)
+("ad" org-remove-file)
+;; org switchb 应该是 global
+;; ("a<TAB>" 'org-switchb)
+;; ("" 'universal-argument)
+("asl" org-agenda-set-restriction-lock)
+("arl" org-agenda-remove-restriction-lock)
+
+
     )
 
 

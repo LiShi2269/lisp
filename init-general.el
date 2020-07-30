@@ -88,6 +88,13 @@
     "ad" 'deer
     "ar" 'ranger
     "an" 'neotree-toggle
+    "al" 'org-store-link
+    "aa" 'org-agenda
+    "ac" 'org-capture
+    "as" 'org-switchb
+    "aw" 'org-agenda-list
+    "at" 'org-todo-list
+
 ;;    "an" 'neotree
     "ff" 'find-file
     ;; ---- buffer ----
