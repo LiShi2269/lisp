@@ -31,10 +31,15 @@
 (general-define-key
  :states  '(normal motion )
  :keymaps 'override 
- ;; :prefix  "m"
- ;; (kbd "m") 'bookmark-set
  (kbd ",") 'my-major-mode-fun
+ ;; (kbd "<f6>") 'my-test-fun
  )
+
+;; (defun my-test-fun()(interactive)
+;;        ;; (print 'minor-mode-list)
+;;        ;; (print "asdf")
+;;        (if (bound-and-true-p ein:notebook-mode) (print "ein:notebook-mode")(print "no"))
+;;        )
 
 
 (defun my-major-mode-fun()(interactive)
@@ -44,7 +49,7 @@
     ;; 	    如果没有
     ;; 如果major-mode是org的话
        (cond ((equal major-mode 'python-mode)
-		    (if (member 'ein:notebook-mode minor-mode-list) (hydra-python/body) (hydra-ein/body))) 
+		    (if (bound-and-true-p ein:notebook-mode)  (hydra-ein/body) (hydra-python/body))) 
 	     ((equal major-mode 'emacs-lisp-mode) (print " emacs-lisp-mode do not have mode key")) 
              ((equal major-mode 'org-mode) (hydra-org/body))
 	     )
