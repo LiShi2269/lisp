@@ -1,5 +1,9 @@
-(elpy-enable)
+
+
+
+
 (require 'python-mode)
+
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
@@ -65,10 +69,23 @@ _sf_: senFun  _sF_: temp   _sR_: temp
 
 
 
+
+
+;; ------- company-backends -------
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+
 ;;------- 自动加载 -------
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 
 
+
+
+;;据说能解决elpy找不到python的问题
+(setq elpy-rpc-virtualenv-path 'current)
+(elpy-enable)
 
 ;; ====== provide =======
 (provide 'init-python)

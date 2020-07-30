@@ -27,6 +27,34 @@
  )
 
 
+;;major-mode-hydra
+(general-define-key
+ :states  '(normal motion )
+ :keymaps 'override 
+ ;; :prefix  "m"
+ ;; (kbd "m") 'bookmark-set
+ (kbd ",") 'my-major-mode-fun
+ )
+
+
+(defun my-major-mode-fun()(interactive)
+    ;; 如果major-mode是python
+    ;; 	查看minor-mode当中有无ein
+    ;; 	    如果有
+    ;; 	    如果没有
+    ;; 如果major-mode是org的话
+       (cond ((equal major-mode 'python-mode)
+		    (if (member 'ein:notebook-mode minor-mode-list) (hydra-python/body) (hydra-ein/body))) 
+	     ((equal major-mode 'emacs-lisp-mode) (print " emacs-lisp-mode do not have mode key")) 
+             ((equal major-mode 'org-mode) (hydra-org/body))
+	     )
+       )
+
+
+
+
+
+
 (add-hook 'bookmark-bmenu-mode-hook 'myset-bookmark-menu-function)
 (defun myset-bookmark-menu-function()
     (define-key bookmark-bmenu-mode-map (kbd "j") 'next-line)

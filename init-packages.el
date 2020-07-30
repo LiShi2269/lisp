@@ -69,6 +69,7 @@
 	flx
 	flx-ido
 	ranger
+	key-chord
 	
 	;; --- Python ---
 	ein
