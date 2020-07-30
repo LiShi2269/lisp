@@ -16,7 +16,7 @@
  :keymaps 'org-mode-map
  "C-j" 'org-next-visible-heading
  "C-k" 'org-previous-visible-heading
- "," 'hydra-org/body
+ ;; "," 'hydra-org/body
  )
 
 
@@ -66,7 +66,7 @@
 ;; -------drawer--------
 ("id" org-insert-drawer)
 
-;; -------drawer--------
+;; -------table--------
 ("i|" org-table-create-or-convert-from-region)
 ("tr" org-table-align)
 ("t<SPC>" org-table-blank-field)
@@ -75,6 +75,19 @@
 ("pt" org-table-paste-rectangle)
 ("t`" org-table-edit-field)
   
+;; -------link--------
+;; you need to use org-store-link
+("il" org-insert-link)
+("lj" org-next-link)
+("lk" org-previous-link)
+
+;; -------tag--------
+("it" org-ctrl-c-ctrl-c)
+("iT" org-set-tags-command)
+
+("r" org-ctrl-c-ctrl-c)
+
+;; (org-set-tags-command &optional ARG)
     )
 
 
