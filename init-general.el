@@ -35,11 +35,13 @@
  ;; (kbd "<f6>") 'my-test-fun
  )
 
-;; (defun my-test-fun()(interactive)
-;;        ;; (print 'minor-mode-list)
-;;        ;; (print "asdf")
-;;        (if (bound-and-true-p ein:notebook-mode) (print "ein:notebook-mode")(print "no"))
-;;        )
+;; (defun my-test-fun()
+;;   (interactive)
+;;   (loop for x in (buffer-list)
+;; 	    do (print x)
+    
+;;    ))
+   
 
 
 (defun my-major-mode-fun()(interactive)
@@ -78,6 +80,10 @@
  (kbd "M-j") 'evil-window-down
  (kbd "M-k") 'evil-window-up
  )
+
+
+
+
 
 
 (general-define-key

@@ -15,6 +15,8 @@
 ;; After that, everything will happen automatically. All diary entries including holidays, anniversaries, etc., will be included in the agenda buffer created by Org mode. <SPC>, <TAB>, and <RET> can be used from the agenda buffer to jump to the diary file in order to edit existing diary entries. The i command to insert new entries for the current date works in the agenda buffer, as well as the commands S, M, and C to display Sunrise/Sunset times, show lunar phases and to convert to other calendars, respectively. c can be used to switch back and forth between calendar and agenda.
 (setq org-agenda-include-diary t)
 
+
+
 (general-define-key
  :keymaps 'org-mode-map
  "C-j" 'org-next-visible-heading
@@ -26,13 +28,13 @@
 (defhydra hydra-org()
  "
 
-;; hydra-python
+hydra-python
 
-;; _Va_: pyenv   _sb_: send   _yn_: yas     _sb_: sendBUffer
-;; _ll_: faster  _ls_: LSPui  _ld_: LSPDoc  _SB_: temp
-;; _sr_: temp    _Vw_: workon _Vd_: deact   _=_: formation
-;; _sf_: senFun  _sF_: temp   _sR_: temp
-;; _sa_: outline-show-all
+s: show   m: move    x: cut
+c: copy   i: insert  n: narrow
+p: paste  *: heading S: SparseTree
+.: time   \\: ToDo   l: link
+a: agenda o: open    r: re 
   
 
 "
@@ -118,8 +120,6 @@
 ;; ("" 'universal-argument)
 ("asl" org-agenda-set-restriction-lock)
 ("arl" org-agenda-remove-restriction-lock)
-
-
     )
 
 
