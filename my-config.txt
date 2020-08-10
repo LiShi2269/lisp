@@ -4,7 +4,10 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython pandas numpy jup
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper-win
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-language-server[all]
+python -m pip install --upgrade pip
 
-vmess://ewogICJ2IjogIjIiLAogICJwcyI6ICJ3dWxhYmluZ19saXNoaTIyNjkwOTM1Lnh5eiIsCiAgImFkZCI6ICJsaXNoaTIyNjkwOTM1Lnh5eiIsCiAgInBvcnQiOiAiNDQzIiwKICAiaWQiOiAiOTczNDZiZTgtMGZiMC00MWY1LWExZjAtOWU0MjgzYjA1MGJjIiwKICAiYWlkIjogIjIiLAogICJuZXQiOiAid3MiLAogICJ0eXBlIjogIm5vbmUiLAogICJob3N0IjogImxpc2hpMjI2OTA5MzUueHl6IiwKICAicGF0aCI6ICIvZDcwMi8iLAogICJ0bHMiOiAidGxzIgp9Cg== 
 
 
+
+emacs-jupyter
+?先下载minGW?

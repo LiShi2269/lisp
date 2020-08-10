@@ -122,9 +122,17 @@ a: agenda o: open    r: re
 ("arl" org-agenda-remove-restriction-lock)
     )
 
+;; -------jupyter--------
+(setq org-confirm-babel-evaluate nil)
+;; (add-to-list 'org-src-lang-modes '("jupyter" . python))
 
-;; (evil-define-minor-mode-key 'normal 'lsp-mode (kbd ",") 'hydra-python/body)
-;; (evil-define-key 'normal 'org-mode-map (kbd "<SPC> m") 'hydra-python/body)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (python . t)
+   (jupyter . t)))
+
+
 
 
 ;; ======= provide =======
