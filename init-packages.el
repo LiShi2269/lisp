@@ -32,11 +32,13 @@
 	proxy-mode
 	shell-pop
 	general
+	nswbuff
 	
 	smartparens
 	popwin
 	iedit
 
+	;; --- jupyter ---
 	jupyter
 	simple-httpd
 	markdown-mode	

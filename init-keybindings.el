@@ -23,11 +23,19 @@
 
 
 
+
+;; ========== nswbuff 快速切换 ===============
+(global-set-key (kbd "C-S-h") 'nswbuff-switch-to-previous-buffer)
+(global-set-key (kbd "C-S-l") 'nswbuff-switch-to-next-buffer)
+;; 是否循环切换buffer
+(setq nswbuff-display-intermediate-buffers t)
+;; 是否过滤一些内容
+(setq nswbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
+
 ;; ;; ======= key-chord=======
 (require 'key-chord)
 (key-chord-define evil-visual-state-map ",," 'evil-force-normal-state)
 (key-chord-define evil-insert-state-map ",," 'evil-normal-state)
-;; (key-chord-define isearch-mode-map ",," 'keyboard-escape-quit)
 (key-chord-define evil-replace-state-map ",," 'evil-normal-state)
 (key-chord-define ivy-mode-map ",," 'keyboard-escape-quit)
 (setq key-chord-one-key-delay 0.4)     
@@ -45,7 +53,6 @@
   )
 (key-chord-define evil-normal-state-map ".." 'myinsert)
 (key-chord-define evil-insert-state-map ".." 'myinsert)
-
 
 
 ;; ======= provide =======
