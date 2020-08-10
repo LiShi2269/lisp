@@ -6,8 +6,6 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; ------key-map-set-----
-;; (define-key global-map "\C-cl" 'org-store-link)
-;; (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
 
@@ -16,11 +14,13 @@
 (setq org-agenda-include-diary t)
 
 
-
+;; -------- key setting -----------
 (general-define-key
  :keymaps 'org-mode-map
  "C-j" 'org-next-visible-heading
  "C-k" 'org-previous-visible-heading
+ "C-<return>" 'org-babel-execute-maybe
+ "S-<return>" 'org-insert-heading-respect-content 
  ;; "," 'hydra-org/body
  )
 
@@ -124,7 +124,6 @@ a: agenda o: open    r: re
 
 ;; -------jupyter--------
 (setq org-confirm-babel-evaluate nil)
-;; (add-to-list 'org-src-lang-modes '("jupyter" . python))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
