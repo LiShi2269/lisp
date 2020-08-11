@@ -88,29 +88,45 @@ a: agenda o: open    r: re
 ("lk" org-previous-link)
 
 ;; -------tag--------
-("it" org-ctrl-c-ctrl-c)
 ("iT" org-set-tags-command)
-("r" org-ctrl-c-ctrl-c)
+("sT" org-tags-view)
 
 ;; -------property--------
 
 ("ip" org-set-property)
 ("dp" org-delete-property)
+("Dp" org-delete-property-globally)
 
 
-;; -------time--------
+;; -------time & clock--------
 (".." org-time-stamp)
 (".!" org-time-stamp-inactive)
 (".c" org-date-from-calendar)
 (".C" org-date-goto-calendar)
 ("o" org-open-at-point)
 (".y" org-evaluate-time-range)
+(".i" org-clock-in)
+(".o" org-clock-out)
+(".l" org-clock-in-last)
+(".c" org-evaluate-time-range)
+(".q" org-clock-cancel)
+("s." org-clock-display)
 
 ;; -------todo--------
 ("\\t" org-todo)
 ("\\st" org-show-todo-tree)
 ;; ("\\l" org-todo-list)
 ("i\\" org-insert-todo-heading)
+("\\l" org-shiftcontrolright)
+("\\h" org-shiftcontrolleft)
+
+;; -------deadline & schedule--------
+("id" org-deadline)
+("is" org-schedule)
+("sd" org-check-deadlines)
+("ss" org-schedule)
+("sD" org-check-before-date)
+("sA" org-check-After-date)
 
 ;; -------Agenda--------
 ("ai" org-agenda-file-to-front)
@@ -118,9 +134,26 @@ a: agenda o: open    r: re
 ;; org switchb 应该是 global
 ;; ("a<TAB>" 'org-switchb)
 ;; ("" 'universal-argument)
-("asl" org-agenda-set-restriction-lock)
-("arl" org-agenda-remove-restriction-lock)
+("as" org-agenda-set-restriction-lock)
+("ar" org-agenda-remove-restriction-lock)
     )
+
+
+;; --------- todo list -----------
+(setq org-todo-keywords
+      '(
+	(sequence "TODO" "DELAY" "CHANGE" "|" "DONE")
+	(sequence "one" "two" "three" "four" "five" "|" "DONE")
+	(sequence "a" "b" "c" "e" "f" "|" "DONE")
+	(sequence "1" "2" "3" "4" "5" "|" "DONE")
+        ;; (sequence "REPORT" "BUG" "KNOWNCAUSE" "|" "FIXED")
+        ;; (sequence "|" "CANCELED")
+	))
+
+
+;; -------clock--------
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
 
 ;; -------jupyter--------
 (setq org-confirm-babel-evaluate nil)

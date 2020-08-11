@@ -35,14 +35,9 @@
  ;; (kbd "<f6>") 'my-test-fun
  )
 
-;; (defun my-test-fun()
-;;   (interactive)
-;;   (loop for x in (buffer-list)
-;; 	    do (print x)
-    
-;;    ))
-   
-
+(defun my-save-buffer()(interactive)
+       (if (bound-and-true-p ein:notebook)(ein:notebook-save-notebook-command-km)(save-buffer))
+       )
 
 (defun my-major-mode-fun()(interactive)
     ;; 如果major-mode是python
@@ -101,11 +96,11 @@
     "aw" 'org-agenda-list
     "at" 'org-todo-list
 
-;;    "an" 'neotree
     "ff" 'find-file
     ;; ---- buffer ----
     "<spc>" 'smex
-    "fs" 'save-buffer
+    "fs" 'my-save-buffer
+    ;; "fs" 'save-buffer
     "bb" 'buffer-menu
     ;; 返回dashboard
     "bh" (lambda()(interactive)(switch-to-buffer "*dashboard*"))
@@ -142,7 +137,6 @@
     "se" 'iedit-mode
     "`"  'shell)
 
-;; (evil-normalize-keymaps)
 
 ;; (define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )
 ;; (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
