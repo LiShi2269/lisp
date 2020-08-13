@@ -1,0 +1,72 @@
+#+TAGS: @work(w)  @home(h)  @tennisclub(t)  laptop(l)  pc(p)
+    #+PROPERTY: NDisks_ALL 1 2 3 4
+    #+COLUMNS: %25ITEM %TAGS %15PRIORITY %c(asdf){+} %6TODO
+* a1
+** 
+** 
+** 
+** 
+** 
+** ASdfasdf
+** b2
+:test:
+test drawer
+:END:
+   
+
+** b3
+** b4
+** b5
+*** c1
+*** c2
+*** c3
+    test words
+*** 
+** f   :properti()es:
+:as: asdfasdf
+:dd: as
+:ff: fff
+:NDisks_ALL: a s, 
+** TODO sdfasd                                                   :test:sdgf:
+* jupyter
+
+#+begin_src jupyter-python :results output :session  one cache:yes
+print("asdfasdf")
+#+END_SRC
+
+#+RESULTS:
+: asdfasdf
+
+#+begin_src jupyter-python :results output :session one cache:
+import pandas as pd
+
+df=pd.DataFrame
+#+END_SRC
+* a asdfasdf 
+* 
+* [#A] test 
+  :PROPERTIES:
+  :b:        asdf
+  :c:        ddd
+  :END:
+* [#B] protest
+:properties:
+:a: asdfasdf
+:b: fff
+:c: ddd
+:end:
+
+** TODO Top node for columns view
+   :PROPERTIES:
+   :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
+   :END:
+
+* TODO iasdfasdf-
+
+* table ENG CHN
+| asdfasdfasdf |                          |          |   |
+|--------------+--------------------------+----------+---|
+|              | 士大夫话说地方还是的回复 | asdfasdf |   |
+|              |                          |          |   |
+|              |                          |          |   |
+

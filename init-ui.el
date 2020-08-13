@@ -8,7 +8,8 @@
     (set-fontset-font (frame-parameter nil 'font) charset
                       (font-spec :family chinese :size chinese-size))))
 
-(set-font "Source Code Pro" "simsun"  22 22)
+;; (set-font "Source Code Pro" "simsun"  22 22)
+(set-font "Sarasa Mono HC Light" "Sarasa Mono HC Light"  22 22)
 
 
 ;; ======= Theme manage=======

@@ -61,7 +61,8 @@
 	
 	yasnippet-snippets
 
-	;; highlight-symbol
+	highlight-symbol
+	;; 不好用的mode-icons
 	;; mode-icons
 	hydra
 

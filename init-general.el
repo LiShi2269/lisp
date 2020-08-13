@@ -108,6 +108,10 @@
     "<tab>" 'mode-line-other-buffer
     "bi" 'ido-switch-buffer
 
+    ;; ---- Hight-symbol ----
+    "sh" 'highlight-symbol
+    "s>" 'highlight-symbol-next
+    "s<" 'highlight-symbol-prev
     ;; ---- window ----
     "w-" 'split-window-below
     "w/" 'split-window-horizontally

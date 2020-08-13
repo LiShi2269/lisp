@@ -1,0 +1,69 @@
+* 论文任务
+** DONE 结合rta数据
+** DONE 做各种交互效应
+** DONE 利用交互相应设计问题
+** DELAY 添加控制变量
+** DONE 整理一下欧式距离计算问题
+** DONE WGI尝试代入
+** DONE 做出三个交乘项的论文的数据和图片（直接使用google到的方法，而不是使用去中心化的方法）
+*** margins, dydx(x) at(w=($Hw $Lw) z=($Hz $Lz)) vsquish pwcompare(effects)
+Pairwise comparisons of average marginal effectsairwi 
+后面那个是什么？
+** DONE 看看交乘项的图如何
+** CHANGETARGET 插值法：什么情况下可以用什么插值法
+** DONE 构造函数，能够根据不同的变量，不同的插值方法，是否采用插值方法来确定所选取的数据集合
+*** 构造了插值函数，使用了pandas的interplot方法，
+*** 构造了识别函数能够识别不同的年份当中有多少国家组队是完整的。
+** DONE 测试一下函数，主要是interplot方法，看看图形是否合理
+** CHANGETARGET 把函数变成多进程模式。
+** TODO 了解常用的控制变量，并且下载
+*** 看论文找
+    详细记录在其他org contribution2文件夹里面
+*** 下载 并且总结 程序
+** TODO 合并，然后找出最优的选项
+* 新的论文思考点！！！
+** 有一种效应是斯托尔帕和萨缪尔森（ stolper and Samuelson）.改效应是否在空间上也能产生作用，也就是导致收入分配不均匀
+** 地缘风险指数构建及其跨国比较 刘文革
+   当中 哈罗德 克鲁德森 Harold Knudsen 构建了国家征收偏向模型并解释了一国的 征收偏好与该国的经济低落水平和大量fdi之间
+的相互作密切关系
+是否可以把这个用来解释 贸易。最近还看到一个模型，贸易会导致收入不均匀的问题。这三者是否能够互动
+** 一带一路 公共服务 外溢效应
+
+* emacs学习任务
+** org mode 的学习以及快捷键设置
+*** TODO 隐藏星星 默认
+*** DONE todo 等的设置
+*** TODO 表格
+*** DONE 改变heading的层级和顺序的快捷键
+*** DONE 了解block的使用
+*** DONE 块使用
+*** TODO letax以及图片
+*** TODO 文献引用格式
+*** DONE 怎样新建todo完成等内容
+*** org-mode 插入图片并且整理
+*** DONE 设置折叠选项
+    使用origami-mode,并且利用z作为快捷键。已经设置了全局模式
+** 关闭flymake-mode 好像没有什么用 
+** bookmark 使用
+*** DONE 修改bookmark启动快捷键 修改为m 直接m 而不是spc后 m
+*** TODO bookmarklist 当中，要可以按esc推出
+*** DELAY 快捷键 
+** TODO org-python
+*** 怎样使用虚拟python环境 
+*** 怎样避免使用yes，而是直接输出结果
+*** 怎样补全python，甚至使用pls
+*** 怎样输出图片
+** TODO ibuffer 使用和替换原来的buffer
+** TODO treemake??是这个名字码
+* python
+** TODO map dataframe的map
+** TODO apply()
+* common lisp 学习
+* 微观经济学
+* TODO 临时的学习任务
+
+* 新的系统安装
+  
+
+
+
