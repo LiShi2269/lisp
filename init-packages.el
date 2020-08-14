@@ -40,6 +40,7 @@
 
 
 	beacon
+	rainbow-delimiters
 	;; --- jupyter ---
 	jupyter
 	simple-httpd
