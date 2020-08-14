@@ -59,8 +59,9 @@ Pairwise comparisons of average marginal effectsairwi
 ** TODO undo-tree
 ** DONE hightlight-symbol
    CLOSED: [2020-08-13 周四 20:50]
-** TODO rainbow-mode
-** TODO 
+** DONE rainbow-mode
+   CLOSED: [2020-08-14 周五 16:48]
+** TODO smartparens修改部分共功能
 * python
 ** TODO map dataframe的map
 ** TODO apply()

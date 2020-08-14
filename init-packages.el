@@ -39,6 +39,7 @@
 	iedit
 
 
+	minimap
 	beacon
 	rainbow-delimiters
 	;; --- jupyter ---

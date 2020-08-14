@@ -146,8 +146,10 @@
     "qq" 'kill-emacs
     "qR" 'eval-buffer
     "qs" 'save-buffers-kill-emacs
-    ;; ---- quit ----
+    ;; ---- iedit ----
     "se" 'iedit-mode
+    ;; ---- iedit ----
+    "sm" 'minimap-mode
     "`"  'shell)
 
 
