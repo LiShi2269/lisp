@@ -18,6 +18,8 @@
 
 ;; 和beacon-mode在一起效果不好
 (global-hl-line-mode t)
+;; 比linum-mode 好用，快速
+(global-display-line-numbers-mode t)
 
 ;; ------ star with full screen -------
 (add-hook 'emacs-startup-hook 'toggle-frame-fullscreen)

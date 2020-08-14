@@ -62,6 +62,7 @@ Pairwise comparisons of average marginal effectsairwi
 ** DONE rainbow-mode
    CLOSED: [2020-08-14 周五 16:48]
 ** TODO smartparens修改部分共功能
+** TODO pdf-tools
 * python
 ** TODO map dataframe的map
 ** TODO apply()
