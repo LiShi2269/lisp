@@ -4,6 +4,15 @@
 (require 'general)
 (evil-mode )
 
+
+
+;; ===== beacon mode =====
+;; 为了使用beacon把evil-next-line 换成 next-line
+;; (evil-define-key 'normal 'global "j" (lambda()(interactive)(next-line 1)))
+;; (evil-define-key 'normal 'global "k" (lambda()(interactive)(previous-line 1)))
+
+
+
 (require 'evil-leader)
 ;; (global-evil-leader-mode)
 

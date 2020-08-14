@@ -33,11 +33,13 @@
 	shell-pop
 	general
 	nswbuff
-	
+	focus	
 	smartparens
 	popwin
 	iedit
 
+
+	beacon
 	;; --- jupyter ---
 	jupyter
 	simple-httpd

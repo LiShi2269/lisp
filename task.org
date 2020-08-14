@@ -55,6 +55,12 @@ Pairwise comparisons of average marginal effectsairwi
 *** 怎样输出图片
 ** TODO ibuffer 使用和替换原来的buffer
 ** TODO treemake??是这个名字码
+** TODO Ace-jump
+** TODO undo-tree
+** DONE hightlight-symbol
+   CLOSED: [2020-08-13 周四 20:50]
+** TODO rainbow-mode
+** TODO 
 * python
 ** TODO map dataframe的map
 ** TODO apply()

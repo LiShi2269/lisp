@@ -17,7 +17,8 @@
 ;;shut-down-alarm
 (setq visible-bell 0)
 
-(global-hl-line-mode 1)
+;; 和beacon-mode在一起效果不好
+(global-hl-line-mode t)
 
 ;; ------ star with full screen -------
 (add-hook 'emacs-startup-hook 'toggle-frame-fullscreen)
@@ -91,9 +92,19 @@
    ;; '((top . 20)
      ;; (width . 0.7)
      ;; (left . 0.5))))
-;; ====== snails =============
+;; ====== focus =============
+;; 不好用
 
-
+;; ====== beacon =============
+(require 'beacon)
+(beacon-mode 1)
+(setq beacon-color "#FF69B4")
+(setq beacon-size 30)
+(setq beacon-blink-duration 1.5)
+(setq beacon-blink-delay 0)
+;; (setq beacon-blink-when-point-moves-horizontally -5)
+(setq beacon-blink-when-point-moves-vertically 5)
+(setq beacon-push-mark 1)
 
 ;; ======= provide =======
 (provide 'init-better-defaults)
