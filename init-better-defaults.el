@@ -26,8 +26,9 @@
 
 ;; ------ smartparens -------
 (smartparens-global-mode)		;enable
-
 (show-smartparens-global-mode)
+
+(add-hook 'emacs-lisp-mode  (sp-pair "'" nil :actions :rem))
 
 ;; 自动加载外部修改过的文件
 (global-auto-revert-mode 1)
