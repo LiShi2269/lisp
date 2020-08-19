@@ -14,7 +14,8 @@
 
 ;; ======= Theme manage=======
 
-(load-theme 'dracula 1)
+(load-theme 'monokai 1)
+;; (load-theme 'dracula 1)
 ;; (load-theme 'monokai 1)
 
 

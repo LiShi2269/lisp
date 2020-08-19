@@ -38,7 +38,6 @@
 	popwin
 	iedit
 
-
 	minimap
 	beacon
 	rainbow-delimiters

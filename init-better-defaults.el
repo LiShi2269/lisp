@@ -105,6 +105,10 @@
 ;; (setq beacon-blink-when-point-moves-horizontally -5)
 ;; (setq beacon-blink-when-point-moves-vertically 5)
 (setq beacon-push-mark 1)
+(add-to-list 'beacon-dont-blink-major-modes 'dashboard-mode)
+(add-to-list 'beacon-dont-blink-major-modes 'bookmark-bmenu-mode)
+(add-to-list 'beacon-dont-blink-major-modes 'Buffer-menu-mode)
+(add-to-list 'beacon-dont-blink-major-modes 'dired-mode)
 
 ;; ====== rainbow =============
 (require 'rainbow-delimiters)
@@ -130,6 +134,8 @@
 (require 'minimap)
 
 
-
+;; ====== undo-tree =============
+(require 'undo-tree)
+(global-undo-tree-mode t)
 ;; ======= provide =======
 (provide 'init-better-defaults)

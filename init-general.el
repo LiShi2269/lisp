@@ -121,6 +121,10 @@
     "sh" 'highlight-symbol
     "s>" 'highlight-symbol-next
     "s<" 'highlight-symbol-prev
+    ;; ---- undo-tree ----
+    "uu" 'undo-tree-visualize
+    "us" 'undo-tree-save-history
+    "ul" 'undo-tree-load-history
     ;; ---- window ----
     "w-" 'split-window-below
     "w/" 'split-window-horizontally
