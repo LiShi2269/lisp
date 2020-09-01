@@ -1,13 +1,18 @@
 
 python 清华源
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython pandas numpy jupyter
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython pandas numpy jupyter 
+::pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper-win
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-language-server[all]
-python -m pip install --upgrade pip
+
+stata
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple psutil ipystata
+
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple psutil matplotlib
 
 
 
+::更新
+python -m pip install -i  https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade pip
 
-emacs-jupyter
-?先下载minGW?
+

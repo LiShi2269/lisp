@@ -16,8 +16,7 @@
 (evil-set-initial-state 'inferior-python-mode 'normal) 
 
 (setq python-indent-offset 4)
-(setq elpy-rpc-backend "company-jedi")
-;; (setq elpy-rpc-backend "jedi")
+(setq elpy-rpc-backend "jedi")
 
 
 ;; ------ lsp-mode ------
@@ -194,12 +193,7 @@
 
 
 
-(use-package lsp-jedi
-  :ensure t
-  :config
-  (with-eval-after-load "lsp-mode"
-    (add-to-list 'lsp-disabled-clients 'pyls)
-    (add-to-list 'lsp-enabled-clients 'jedi)))
+
 
 
 

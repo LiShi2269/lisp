@@ -18,6 +18,7 @@
 
  ;; Add Packages
  (defvar my/packages '(
+
 	;; --- magit ---
 	magit
 	;; --- projectile ---
@@ -47,6 +48,8 @@
 	markdown-mode	
 	zmq
 	
+	
+
 	evil-surround
 	ivy-posframe
 
@@ -97,6 +100,7 @@
 	python-mode
 	;;flycheck	
 	blacken
+	lsp-jedi
 	py-autopep8
 	lsp-mode
 	lsp-ui
@@ -104,7 +108,7 @@
 	lsp-ivy
 	dap-mode
 	;; company-lsp已经不用了，见github相关
-	;; company-lsp
+	company-lsp
 	;;virtualenvwrapper
 	
       	;; --- evil mode---

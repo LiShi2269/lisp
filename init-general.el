@@ -70,6 +70,7 @@
 (defun myset-bookmark-menu-function()
     (define-key bookmark-bmenu-mode-map (kbd "j") 'next-line)
     (define-key bookmark-bmenu-mode-map (kbd "k") 'previous-line)
+    ;; (define-key bookmark-bmenu-mode-map (kbd "ESC") 'quit-window)
   )
 
 
