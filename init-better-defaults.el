@@ -1,12 +1,25 @@
-
-(require 'cl-lib)
+;; (require 'cl-lib)
 ;; ======= dashboard =======
-(require 'dashboard)
-(dashboard-setup-startup-hook)
-(setq dashboard-startup-banner "~/.emacs.d/logo/logo4.png")
-(setq dashboard-banner-logo-title "！！每天都要努力写论文！！")
-;; (setq dashboard-startup-banner "e:/logo.png")
-(setq make-backup-files nil)
+;; (require 'dashboard)
+;; (dashboard-setup-startup-hook)
+;; (setq dashboard-startup-banner "~/.emacs.d/logo/logo4.png")
+;; (setq dashboard-banner-logo-title "！！每天都要努力写论文！！")
+;; ;; (setq dashboard-startup-banner "e:/logo.png")
+;; (setq make-backup-files nil)
+(use-package dashboard
+  ;; :config ((dashboard-setup-startup-hook t)
+  :ensure
+  :init
+  (dashboard-setup-startup-hook)
+ (setq dashboard-startup-banner "~/.emacs.d/logo/logo4.png")
+ (setq dashboard-banner-logo-title "！！每天都要努力写论文！！")
+	;; ( dashboard-startup-banner "e:/logo.png")
+	(setq make-backup-files nil)
+
+  )
+
+
+
 
 ;; (visual-line-mode 1)
 
@@ -58,6 +71,9 @@
 ;; (require 'use-package)
 
 ;; ======= ranger =======
+(use-package ranger
+  :init
+
 (setq ranger-show-hidden t)
 (setq ranger-show-literal t)
 (setq ranger-parent-depth 2)
@@ -68,12 +84,26 @@
 ;; ------- delay -------
 (setq ranger-footer-delay 0.2)
 (setq ranger-preview-delay 0.040)
+  )
 
 
-;; (setq default-buffer-file-coding-system 'utf-8)
+
+;; (setq ranger-show-hidden t)
+;; (setq ranger-show-literal t)
+;; (setq ranger-parent-depth 2)
+;; (setq ranger-width-parents 0.12)
+;; (setq ranger-max-parent-width 0.12)
+;; (setq ranger-max-preview-size 10)
+;; (setq ranger-dont-show-binary t)
+;; ;; ------- delay -------
+;; (setq ranger-footer-delay 0.2)
+;; (setq ranger-preview-delay 0.040)
+
+
+(setq default-buffer-file-coding-system 'utf-8)
 ;; Default coding system (for new files) 默认buffer编码是utf-8,(写文件)
 
-;; (prefer-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 ;; 指定文件编码,此时buffer新建和读取都默认是utf-8,也可以M-x prefer-coding-system 只执行一次
 
 ;; ======= iswitch =======
@@ -97,22 +127,67 @@
 ;; 不好用
 
 ;; ====== beacon =============
-(require 'beacon)
-(beacon-mode 1)
-(setq beacon-color "#FF69B4")
-(setq beacon-size 30)
-(setq beacon-blink-duration 1.5)
-(setq beacon-blink-delay 0)
-;; (setq beacon-blink-when-point-moves-horizontally -5)
-;; (setq beacon-blink-when-point-moves-vertically 5)
-(setq beacon-push-mark 1)
-(add-to-list 'beacon-dont-blink-major-modes 'dashboard-mode)
-(add-to-list 'beacon-dont-blink-major-modes 'bookmark-bmenu-mode)
-(add-to-list 'beacon-dont-blink-major-modes 'Buffer-menu-mode)
-(add-to-list 'beacon-dont-blink-major-modes 'dired-mode)
+;; (require 'beacon)
+;; (beacon-mode 1)
+;; (setq beacon-color "#FF69B4")
+;; (setq beacon-size 30)
+;; (setq beacon-blink-duration 1.5)
+;; (setq beacon-blink-delay 0)
+;; ;; (setq beacon-blink-when-point-moves-horizontally -5)
+;; ;; (setq beacon-blink-when-point-moves-vertically 5)
+;; (setq beacon-push-mark 1)
+;; (add-to-list 'beacon-dont-blink-major-modes 'dashboard-mode)
+;; (add-to-list 'beacon-dont-blink-major-modes 'bookmark-bmenu-mode)
+;; (add-to-list 'beacon-dont-blink-major-modes 'Buffer-menu-mode)
+;; (add-to-list 'beacon-dont-blink-major-modes 'dired-mode)
+
+(use-package beacon
+  :ensure
+  :init
+  (beacon-mode 1)
+    (setq beacon-color "#FF69B4")
+    (setq beacon-size 30)
+    (setq beacon-blink-duration 1.5)
+    (setq beacon-blink-delay 0)
+    ;; (setq beacon-blink-when-point-moves-horizontally -5)
+    ;; (setq beacon-blink-when-point-moves-vertically 5)
+    (setq beacon-push-mark 1)
+    (add-to-list 'beacon-dont-blink-major-modes 'dashboard-mode)
+    (add-to-list 'beacon-dont-blink-major-modes 'bookmark-bmenu-mode)
+    (add-to-list 'beacon-dont-blink-major-modes 'Buffer-menu-mode)
+    (add-to-list 'beacon-dont-blink-major-modes 'dired-mode)
+  )
+
+
+
+
+
+
 
 ;; ====== rainbow =============
-(require 'rainbow-delimiters)
+;; (require 'rainbow-delimiters)
+;; (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook 'python-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
+
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(rainbow-delimiters-depth-1-face ((t (:foreground "#FF69B4"))))
+;;  '(rainbow-delimiters-depth-2-face ((t (:foreground "deep pink"))))
+;;  '(rainbow-delimiters-depth-3-face ((t (:foreground "chartreuse"))))
+;;  '(rainbow-delimiters-depth-4-face ((t (:foreground "deep sky blue"))))
+;;  '(rainbow-delimiters-depth-5-face ((t (:foreground "yellow"))))
+;;  '(rainbow-delimiters-depth-6-face ((t (:foreground "orchid"))))
+;;  '(rainbow-delimiters-depth-7-face ((t (:foreground "spring green"))))
+;;  '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1")))))
+
+(use-package rainbow-delimiters
+;; :ensure t
+  :config
+
 (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'python-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
@@ -130,6 +205,11 @@
  '(rainbow-delimiters-depth-6-face ((t (:foreground "orchid"))))
  '(rainbow-delimiters-depth-7-face ((t (:foreground "spring green"))))
  '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1")))))
+  )
+
+
+
+
 
 ;; ====== minimap =============
 (require 'minimap)

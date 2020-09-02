@@ -108,7 +108,7 @@
 	lsp-ivy
 	dap-mode
 	;; company-lsp已经不用了，见github相关
-	company-lsp
+	;; company-lsp
 	;;virtualenvwrapper
 	
       	;; --- evil mode---

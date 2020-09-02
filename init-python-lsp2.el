@@ -16,20 +16,24 @@
 (evil-set-initial-state 'inferior-python-mode 'normal) 
 
 (setq python-indent-offset 4)
-(setq elpy-rpc-backend "jedi")
+(setq elpy-rpc-backend "company-jedi")
+;; (setq elpy-rpc-backend "jedi")
 
 
 ;; ------ lsp-mode ------
 (setq lsp-keymap-prefix "s-l")
-;; ------- lsp feature -------
+;; ------- lsp performance website -------
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 2048 2048)) ;; 1mb
 (setq lsp-prefer-capf t)
 (setq lsp-idle-delay 0.500)
-;; ;; ------- lsp ui feature -------
+(setq lsp-enable-file-watchers nil)
+(setq lsp-print-performance t)
+;; ;; ------- lsp ui website -------
 (setq lsp-auto-configure t)
 (company-lsp t)
 ;; (lsp-ui-mode nil)
+
 (setq lsp-signature-auto-activate t)
 (setq lsp-ui-sideline-enable t)
 ;; ----- delay-----
@@ -167,7 +171,7 @@
 
 
 ;; ------- lsp hook -------
-(add-hook 'python-mode-hook #'lsp)
+(add-hook 'python-mode-hook #'lsp-mode)
 (add-hook 'lsp-mode-hook 'my-python-set)
 (add-hook 'python-mode-hook #'yas-minor-mode)
 ;; flycheck mode need pylint install in you python execute file
@@ -193,7 +197,12 @@
 
 
 
-
+(use-package lsp-jedi
+  :ensure t
+  :config
+  (with-eval-after-load "lsp-mode"
+    (add-to-list 'lsp-disabled-clients 'pyls)
+    (add-to-list 'lsp-enabled-clients 'jedi)))
 
 
 
@@ -207,16 +216,16 @@
 
 
 ;; ------- run-python -------
-;; (add-hook 'python-mode-hook (lambda() (local-set-key (kbd "M-p") 'my-run-python))
+(add-hook 'python-mode-hook (lambda() (local-set-key (kbd "M-p") 'my-run-python))
 
 ;; ------- run-python -------
 
-;; (global-set-key (kbd "C-k") (lambda ()(interactive)(comint-previous-input 1)))
-;; (global-set-key (kbd "C-j") (lambda ()(interactive)(comint-next-input 1)))
+(global-set-key (kbd "C-k") (lambda ()(interactive)(comint-previous-input 1)))
+(global-set-key (kbd "C-j") (lambda ()(interactive)(comint-next-input 1)))
 
 
 
 
-(global-unset-key (kbd "C-<return>"))
+;; (global-unset-key (kbd "C-<return>"))
 ;; ====== provide =======
 (provide 'init-python-lsp)
