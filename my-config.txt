@@ -1,14 +1,14 @@
 
 python 清华源
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython pandas numpy jupyter 
-::pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper-win
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-language-server[all]
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-language-server[all] pyls-black pyls-isort pyls-mypy jedi
 
-stata
+::stata
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple psutil ipystata
 
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple psutil matplotlib
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  matplotlib
 
 
 

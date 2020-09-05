@@ -96,6 +96,7 @@
  :keymaps 'override 
  :prefix "SPC"
     ;; ---- dir ----
+ "<SPC>" 'smex
     "ad" 'deer
     "ar" 'ranger
     "an" 'neotree-toggle

@@ -15,6 +15,7 @@
 
  ;; cl - Common Lisp Extension
  (require 'cl)
+ (require 'cl-lib)
 
  ;; Add Packages
  (defvar my/packages '(
@@ -74,7 +75,9 @@
 
 	ibuffer
 	
+	;; 27.1不能用了？
 	smex
+	;;amx
 
 	pdf-tools
 
@@ -100,13 +103,16 @@
 	python-mode
 	;;flycheck	
 	blacken
-	lsp-jedi
+	;; lsp-jedi
+	;; lsp-python-ms
+	;; lsp-pyright
+
 	py-autopep8
 	lsp-mode
 	lsp-ui
-	lsp-treemacs
-	lsp-ivy
-	dap-mode
+	;; lsp-treemacs
+	;; lsp-ivy
+	;; dap-mode
 	;; company-lsp已经不用了，见github相关
 	;; company-lsp
 	;;virtualenvwrapper

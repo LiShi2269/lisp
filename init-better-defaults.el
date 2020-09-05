@@ -18,8 +18,12 @@
 
   )
 
+;; ======= smex =======
+;; (require 'smex)
+;; (smex-initialize)
 
-
+;; ======= amx =======
+(require 'amx)
 
 ;; (visual-line-mode 1)
 

@@ -14,16 +14,16 @@
 (setq ido-use-filename-at-point 'guess)
 
 
-;; (defun uuid ()
-;;   (format "%08x-%08x-%08x-%08x"
-;;           (random (expt 16 4))
-;;           (random (expt 16 4))
-;;           (random (expt 16 4))
-;;           (random (expt 16 4))))
-;; (benchmark-run 1
-;;   (let ((cache (flx-make-filename-cache)))
-;;     (dolist (i (number-sequence 0 10000))
-;;       (flx-process-cache (uuid) cache))))
+(defun uuid ()
+  (format "%08x-%08x-%08x-%08x"
+          (random (expt 16 4))
+          (random (expt 16 4))
+          (random (expt 16 4))
+          (random (expt 16 4))))
+(benchmark-run 1
+  (let ((cache (flx-make-filename-cache)))
+    (dolist (i (number-sequence 0 10000))
+      (flx-process-cache (uuid) cache))))
 
 
 

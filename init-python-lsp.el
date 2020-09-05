@@ -45,6 +45,19 @@ _sf_: senFun  _sF_: temp   _sR_: temp
     ("ll" disable-python-minor-modes))
 
 
+;; ------- lsp-microsoft -------
+;; (require 'lsp-python-ms)
+;; (setq lsp-python-ms-auto-install-server t)
+;; (add-hook 'python-mode-hook #'lsp) ; or lsp-deferred
+
+;; (use-package lsp-python-ms
+;;   :ensure t
+;;   :init (setq lsp-python-ms-auto-install-server t)
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-python-ms)
+;;                           (lsp))))  ; or lsp-deferred
+;; 很慢不好用
+
 ;; ------- lsp-jedi -------
 (use-package lsp-jedi
   :ensure t
@@ -53,7 +66,13 @@ _sf_: senFun  _sF_: temp   _sR_: temp
     (add-to-list 'lsp-disabled-clients 'pyls)
     (add-to-list 'lsp-enabled-clients 'jedi)))
 
-
+;; ------- lsp-pyright -------
+;; (use-package lsp-pyright
+;;   :ensure t
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-pyright)
+;;                           (lsp))))  ; or lsp-deferred
+;; 很慢，不好用
 
 
 ;; ------- use ipython as interpretor -------
@@ -63,8 +82,17 @@ _sf_: senFun  _sF_: temp   _sR_: temp
 ;; -------completion-------
 (add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))))
 
+
+
+
+
+
+
 ;; ------- mode hooks -------
+;; (require 'lsp-mode)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-;; (add-hook python-mode-hook elpy-mode)
+;; (add-hook 'python-mode-hook #'lsp)
+;; (require lsp-clients)
+
 (elpy-enable)
 (provide 'init-python-lsp)

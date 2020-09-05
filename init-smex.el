@@ -1,12 +1,12 @@
 ;; ;; ======= keybindings =======
 
-(general-define-key
- :states '(normal motion)
- :keymaps 'override
- :prefix "SPC"
-    "<SPC>" 'smex
- )
-;; ;; ======= hyphen  =======
+;; (general-define-key
+;;  :states '(normal motion)
+;;  :keymaps 'override
+;;  :prefix "SPC"
+;;     "<SPC>" 'smex
+;;  )
+;; ;; ;; ======= hyphen  =======
 ;; How to modify smex so that typing a space will insert a hyphen ‘-’ like in normal M-x?
  (defadvice smex (around space-inserts-hyphen activate compile)
         (let ((ido-cannot-complete-command 
@@ -65,6 +65,10 @@
 
     ;; ...else, run the original ido-set-matches-1
     ad-do-it))
+
+
+
+
 
 
 
