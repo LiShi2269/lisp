@@ -212,11 +212,8 @@
   )
 
 
-
-
-
-;; ====== minimap =============
-(require 'minimap)
+;;====== minimap =============
+;; (require 'minimap)
 
 
 ;; ====== undo-tree =============
