@@ -94,7 +94,12 @@ _sf_: senFun  _sF_: temp   _sR_: temp
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 ;; ------- lsp-ui 设定 -------
-
+;; ------- lsp-ui-doc 设定 -------
+(setq lsp-ui-doc-delay 3)
+;; ------- lsp-ui-sideline 设定 -------
+(setq lsp-ui-sideline-show-hover t)
+(setq lsp-ui-sideline-show-code-actions nil)
+(setq lsp-ui-sideline-update-mode t)
 ;; ------- use ipython as interpretor -------
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
