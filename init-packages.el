@@ -103,7 +103,7 @@
 	python-mode
 	;;flycheck	
 	blacken
-	;; lsp-jedi
+	lsp-jedi
 	;; lsp-python-ms
 	;; lsp-pyright
 

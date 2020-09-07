@@ -57,23 +57,43 @@ _sf_: senFun  _sF_: temp   _sR_: temp
 ;;                           (require 'lsp-python-ms)
 ;;                           (lsp))))  ; or lsp-deferred
 ;; 很慢不好用
+;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+;; (setq lsp-keymap-prefix "s-l")
 
 ;; ------- lsp-jedi -------
-(use-package lsp-jedi
-  :ensure t
-  :config
-  (with-eval-after-load "lsp-mode"
-    (add-to-list 'lsp-disabled-clients 'pyls)
-    (add-to-list 'lsp-enabled-clients 'jedi)))
+;; (use-package lsp-jedi
+;;   :ensure t
+;;   :config
+;;   (with-eval-after-load "lsp-mode"
+;;     (add-to-list 'lsp-disabled-clients 'pyls)
+;;     (add-to-list 'lsp-enabled-clients 'jedi)))
 
 ;; ------- lsp-pyright -------
-;; (use-package lsp-pyright
-;;   :ensure t
-;;   :hook (python-mode . (lambda ()
-;;                           (require 'lsp-pyright)
-;;                           (lsp))))  ; or lsp-deferred
-;; 很慢，不好用
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
 
+;; ------- lsp-mode 设定 -------
+(use-package lsp-mode
+    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+            (python-mode . lsp)
+            ;; if you want which-key integration
+            (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp)
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+;; if you are ivy user
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; optionally if you want to use debugger
+;; (use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+;; ------- lsp-ui 设定 -------
 
 ;; ------- use ipython as interpretor -------
 (setq python-shell-interpreter "ipython"
@@ -89,10 +109,7 @@ _sf_: senFun  _sF_: temp   _sR_: temp
 
 
 ;; ------- mode hooks -------
-;; (require 'lsp-mode)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-;; (add-hook 'python-mode-hook #'lsp)
-;; (require lsp-clients)
 
 (elpy-enable)
 (provide 'init-python-lsp)
