@@ -40,9 +40,70 @@ _sf_: senFun  _sF_: temp   _sR_: temp
     ;; ("yn" yas-new-snippet)
     ("ye" abbrev-expansion)
     ("=" elpy-autopep8-fix-code)
-    ("ld" lsp-ui-doc-mode)
-    ("ls" lsp-ui-sideline-mode)
-    ("ll" disable-python-minor-modes))
+;; ---------lsp function ----------------
+    ("lsd" my-toggle-sideline-show-diagnostics)
+    ("lsh" my-toggle-sideline-show-hover)
+    ("lsa" my-toggle-sideline-show-code-actions)
+    ("lsu" my-toggle-sideline-update-mode)
+    ("ldp"  my-toggle-doc-position)
+    ("lm"  my-toggle-imenu)
+    )
+
+(setq lsp-ui-sideline-show-diagnostics nil)
+;; (defun my-test()(interactive)
+       ;; (setq lsp-ui-sideline-show-diagnostics t)
+       ;; (message "did it"))
+
+;; (global-set-key (kbd "<f8>") 'my-test)
+
+(defun my-toggle-sideline-show-diagnostics()(interactive)
+       (if (equal lsp-ui-sideline-show-diagnostics t)
+	   (setq lsp-ui-sideline-show-diagnostics nil)
+	   (setq lsp-ui-sideline-show-diagnostics t)
+	 ))
+
+(defun my-toggle-sideline-show-hover()(interactive)
+       (if (equal lsp-ui-sideline-show-hover t)
+	   (setq lsp-ui-sideline-show-hover nil)
+	   (setq lsp-ui-sideline-show-hover t)
+	 ))
+
+(defun my-toggle-sideline-show-code-actions()(interactive)
+       (if (equal lsp-ui-sideline-show-code-actions t)
+	   (setq lsp-ui-sideline-show-code-actions nil)
+	   (setq lsp-ui-sideline-show-code-actions t)
+	 ))
+
+(defun my-toggle-sideline-update-mode()(interactive)
+       (if (equal lsp-ui-sideline-update-mode t)
+	   (setq lsp-ui-sideline-update-mode nil)
+	   (setq lsp-ui-sideline-update-mode t)
+	 ))
+
+(defun my-toggle-ui-doc-show()(interactive)
+       (if (equal lsp-ui-doc-enable t)
+	   (setq lsp-ui-doc-enable nil)
+	   (setq lsp-ui-doc-enable t)
+	 ))
+
+(defun my-toggle-doc-position()(interactive)
+       (cond ((equal lsp-ui-doc-position 'at-point) (setq lsp-ui-doc-position 'bottom))
+       ((equal lsp-ui-doc-position 'bottom) (setq lsp-ui-doc-position 'top))
+        ((equal lsp-ui-doc-position 'top) (setq lsp-ui-doc-position 'at-point))
+	 ))
+
+;; (defun my-toggle-imenu()(interactive)
+;;        (if (get-buffer "*lsp-ui-imenu*")
+;; 	   (lambda()())
+;; 	   ;; (switch-to-buffer "*lsp-ui-imenu*")
+;; 	   (lsp-ui-imenu)
+;; 	 ))
+;; ;; (defun my-test()(interactive)
+;;        ;; (if (equal lsp-ui-doc-position 'at-point)(message "at point")(message "no")))
+
+;; (global-set-key (kbd "<f9>") 'my-toggle-imenu)
+;; (global-set-key (kbd "<f8>") 'my-test)
+
 
 
 ;; ------- lsp-microsoft -------
