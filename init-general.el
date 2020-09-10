@@ -141,7 +141,7 @@
     "wj" 'evil-window-down
     "wJ" 'evil-window-move-very-bottom
     "w=" 'balance-windows
-    "wF" 'make-frame-command  
+    "wF" 'make-frame
     "wc" 'centered-window-mode
 
     ;; ---- zoom ----
@@ -158,7 +158,7 @@
     "sm" 'minimap-mode
     "`"  'shell)
 
-
+(add-hook 'after-make-frame-functions 'toggle-frame-fullscreen)
 ;; (define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )
 ;; (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 
