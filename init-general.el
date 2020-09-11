@@ -162,6 +162,13 @@
 ;; (define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )
 ;; (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 
+
+;; ------ lisp-mode key config -------
+(evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'eval-defun)
+
+
+
+
 (setq winum-keymap
     (let ((map (make-sparse-keymap)))
       (define-key map (kbd "C-`") 'winum-select-window-by-number)

@@ -19,14 +19,14 @@
 
 ;; ------- hydra-python-------
 (defhydra hydra-python()
- "
-hydra-python
-_Va_: pyenv   _sb_: send   _yn_: yas     _sb_: sendBUffer
-_ll_: faster  _ls_: LSPui  _ld_: LSPDoc  _SB_: temp
-_sr_: temp    _Vw_: workon _Vd_: deact   _=_: formation
-_sf_: senFun  _sF_: temp   _sR_: temp
+;;  "
+;; hydra-python
+;; _Va_: pyenv   _sb_: send   _yn_: yas     _sb_: sendBUffer
+;; _ll_: faster  _ls_: LSPui  _ld_: LSPDoc  _SB_: temp
+;; _sr_: temp    _Vw_: workon _Vd_: deact   _=_: formation
+;; _sf_: senFun  _sF_: temp   _sR_: temp
   
-"
+;; "
   
     ("Va" pyvenv-activate )
     ("Vd" pyvenv-deactivate)
@@ -49,7 +49,7 @@ _sf_: senFun  _sF_: temp   _sR_: temp
     ("lm"  my-toggle-imenu)
     )
 
-(setq lsp-ui-sideline-show-diagnostics nil)
+;; (setq lsp-ui-sideline-show-diagnostics nil)
 ;; (defun my-test()(interactive)
        ;; (setq lsp-ui-sideline-show-diagnostics t)
        ;; (message "did it"))
