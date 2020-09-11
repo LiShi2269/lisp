@@ -17,7 +17,6 @@
 	(setq make-backup-files nil)
 
   )
-
 ;; ======= smex =======
 ;; (require 'smex)
 ;; (smex-initialize)
