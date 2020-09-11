@@ -2,7 +2,17 @@
 ;; ------- my functions -------
 (defun my-run-python()
 "左边是原来的py右边是ipython，光标在左边"
-  (interactive)(delete-other-windows)(split-window-right)(evil-window-right 1)(run-python)(evil-window-left 1))
+(interactive)
+;; (run-python)
+    (progn
+	(delete-other-windows)
+	(split-window-right)
+	(run-python)
+	(switch-to-buffer "*Python*")
+	(evil-window-move-far-right)
+	(evil-window-left 1)
+	)
+)
 
 
 
@@ -14,8 +24,6 @@
 "C-j" 'comint-next-input
 )
 
-(evil-define-key '(normal visual move) python-mode-map (kbd "M-p") 'my-run-python)
-;; (evil-define-key '(normal visual move) python-mode-map (kbd "C-<RET>") 'my-run-python)
 
 ;; ------- hydra-python-------
 (defhydra hydra-python()
@@ -47,14 +55,9 @@
     ("lsu" my-toggle-sideline-update-mode)
     ("ldp"  my-toggle-doc-position)
     ("lm"  my-toggle-imenu)
+    ("run"  my-run-python)
     )
 
-;; (setq lsp-ui-sideline-show-diagnostics nil)
-;; (defun my-test()(interactive)
-       ;; (setq lsp-ui-sideline-show-diagnostics t)
-       ;; (message "did it"))
-
-;; (global-set-key (kbd "<f8>") 'my-test)
 
 (defun my-toggle-sideline-show-diagnostics()(interactive)
        (if (equal lsp-ui-sideline-show-diagnostics t)
@@ -92,16 +95,17 @@
         ((equal lsp-ui-doc-position 'top) (setq lsp-ui-doc-position 'at-point))
 	 ))
 
-;; (defun my-toggle-imenu()(interactive)
-;;        (if (get-buffer "*lsp-ui-imenu*")
-;; 	   (lambda()())
-;; 	   ;; (switch-to-buffer "*lsp-ui-imenu*")
-;; 	   (lsp-ui-imenu)
-;; 	 ))
-;; ;; (defun my-test()(interactive)
-;;        ;; (if (equal lsp-ui-doc-position 'at-point)(message "at point")(message "no")))
+(defun my-toggle-imenu()(interactive)
+       (if (get-buffer-window "*lsp-ui-imenu*")
+	   ;; (message "being")
+	   (progn
+	    (switch-to-buffer-other-window "*lsp-ui-imenu*") (kill-buffer-and-window)
+	     )
+	   (lsp-ui-imenu)
+	   )
+       )
 
-;; (global-set-key (kbd "<f9>") 'my-toggle-imenu)
+(global-set-key (kbd "<f9>") 'my-toggle-imenu)
 ;; (global-set-key (kbd "<f8>") 'my-test)
 
 
