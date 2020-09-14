@@ -105,7 +105,7 @@
 	   )
        )
 
-(global-set-key (kbd "<f9>") 'my-toggle-imenu)
+;; (global-set-key (kbd "<f9>") 'my-toggle-imenu)
 ;; (global-set-key (kbd "<f8>") 'my-test)
 
 

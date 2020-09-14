@@ -1,4 +1,10 @@
 
+;; ======= theme manage=======
+
+;; (load-theme 'deeper-blue 1)
+;; (load-theme 'dracula 1)
+(load-theme 'monokai 1)
+
 ;; ======= Font =======
 
 (defun set-font (english chinese english-size chinese-size)
@@ -12,11 +18,20 @@
 (set-font "Sarasa Mono HC Light" "Sarasa Mono HC Light"  22 22)
 
 
-;; ======= Theme manage=======
+;; 和beacon-mode在一起效果不好
+;; =============== hl-line-mode ========================
+(global-hl-line-mode t)
+(set-face-attribute 'region nil :weight 'normal :box "#FFFFFF" :underline nil)
 
-(load-theme 'monokai 1)
-;; (load-theme 'dracula 1)
-;; (load-theme 'monokai 1)
+
+
+
+
+
+
+
+
+
 
 
 

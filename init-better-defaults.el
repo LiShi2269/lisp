@@ -32,8 +32,7 @@
 ;;shut-down-alarm
 (setq visible-bell 0)
 
-;; 和beacon-mode在一起效果不好
-(global-hl-line-mode t)
+
 ;; 比linum-mode 好用，快速
 (global-display-line-numbers-mode t)
 
@@ -126,9 +125,11 @@
      ;; (width . 0.7)
      ;; (left . 0.5))))
 ;; ====== focus =============
-;; 不好用
+;; 不好用 除了focus的字体外，其他字体会改变颜色，不利于编程
+
 
 ;; ====== beacon =============
+;; 能够在光标移动后产生光晕的效果
 ;; (require 'beacon)
 ;; (beacon-mode 1)
 ;; (setq beacon-color "#FF69B4")
@@ -143,23 +144,22 @@
 ;; (add-to-list 'beacon-dont-blink-major-modes 'Buffer-menu-mode)
 ;; (add-to-list 'beacon-dont-blink-major-modes 'dired-mode)
 
-(use-package beacon
-  :ensure
-  :init
-  (beacon-mode 1)
-    (setq beacon-color "#FF69B4")
-    (setq beacon-size 30)
-    (setq beacon-blink-duration 1.5)
-    (setq beacon-blink-delay 0)
-    ;; (setq beacon-blink-when-point-moves-horizontally -5)
-    ;; (setq beacon-blink-when-point-moves-vertically 5)
-    (setq beacon-push-mark 1)
-    (add-to-list 'beacon-dont-blink-major-modes 'dashboard-mode)
-    (add-to-list 'beacon-dont-blink-major-modes 'bookmark-bmenu-mode)
-    (add-to-list 'beacon-dont-blink-major-modes 'Buffer-menu-mode)
-    (add-to-list 'beacon-dont-blink-major-modes 'dired-mode)
-  )
-
+;; (use-package beacon
+;;   :ensure
+;;   :init
+;;   (beacon-mode 1)
+;;     (setq beacon-color "#FF69B4")
+;;     (setq beacon-size 30)
+;;     (setq beacon-blink-duration 1.5)
+;;     (setq beacon-blink-delay 0)
+;;     (setq beacon-blink-when-point-moves-horizontally 0)
+;;     ;; (setq beacon-blink-when-point-moves-vertically 5)
+;;     (setq beacon-push-mark 1)
+;;     (add-to-list 'beacon-dont-blink-major-modes 'dashboard-mode)
+;;     (add-to-list 'beacon-dont-blink-major-modes 'bookmark-bmenu-mode)
+;;     (add-to-list 'beacon-dont-blink-major-modes 'Buffer-menu-mode)
+;;     (add-to-list 'beacon-dont-blink-major-modes 'dired-mode)
+;;   )
 
 
 
