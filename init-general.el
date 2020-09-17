@@ -163,8 +163,6 @@
 ;; (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 
 
-;; ------ lisp-mode key config -------
-(evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'eval-defun)
 
 
 

@@ -14,15 +14,43 @@
 (setq org-agenda-include-diary t)
 
 
-;; -------- key setting -----------
+
+;; ------ lisp-mode key config -------
+;; (evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'eval-defun)
+(evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
+
+
+
+(defun my-major-mode-c-return-fun()(interactive)
+       "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
+       "如果major mode 是lisp-interaction-mode那么c-ret就是eval-defun"
+       (cond ((equal major-mode 'lisp-interaction-mode)(eval-defun)) 
+	     ;; ((equal major-mode 'org-mode) (org-babel-execute-src-block-maybe)) 
+	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
+       ))
+
+
+(evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
+(evil-define-key 'normal  'org-mode-map (kbd "S-<return>") 'org-insert-heading-respect-content)
+
+
+
 (general-define-key
  :keymaps 'org-mode-map
  "C-j" 'org-next-visible-heading
  "C-k" 'org-previous-visible-heading
- "C-<return>" 'org-babel-execute-maybe
- "S-<return>" 'org-insert-heading-respect-content 
+ ;; "C-<RET>" 'my-major-mode-c-return-fun
+ ;; "S-<RET>" 'org-insert-heading-respect-content 
  ;; "," 'hydra-org/body
  )
+(evil-define-key)
+
+
+
+
+
+
+
 
 
 (defhydra hydra-org()
@@ -48,8 +76,8 @@ a: agenda o: open    r: re
 ;; -------motion--------
 ("mj" org-forward-heading-same-level)
 ("mk" org-backward-heading-same-level)
-("mu" outline-up-heading)
-("mg" org-goto)
+;; ("mu" outline-up-heading)
+;; ("mg" org-goto)
 
 ;; -------structure--------
 ("<return>" org-insert-heading-respect-content)
@@ -131,6 +159,12 @@ a: agenda o: open    r: re
 ("ss" org-schedule)
 ("Ds" org-check-before-date)
 ("As" org-check-After-date)
+
+
+;; ------- src-block --------
+("ji" jupyter-org-insert-src-block)
+("it" org-toggle-inline-images)
+
 
 ;; -------Agenda--------
 ("ai" org-agenda-file-to-front)
