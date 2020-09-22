@@ -16,18 +16,16 @@
 
 
 ;; ------ lisp-mode key config -------
-;; (evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'eval-defun)
-(evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
-
-
 
 (defun my-major-mode-c-return-fun()(interactive)
        "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
        "如果major mode 是lisp-interaction-mode那么c-ret就是eval-defun"
-       (cond ((equal major-mode 'lisp-interaction-mode)(eval-defun)) 
+       (cond ((equal major-mode 'emacs-lisp-mode)(elisp--eval-defun)) 
 	     ;; ((equal major-mode 'org-mode) (org-babel-execute-src-block-maybe)) 
 	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
        ))
+
+
 
 
 (evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
@@ -39,17 +37,8 @@
  :keymaps 'org-mode-map
  "C-j" 'org-next-visible-heading
  "C-k" 'org-previous-visible-heading
- ;; "C-<RET>" 'my-major-mode-c-return-fun
- ;; "S-<RET>" 'org-insert-heading-respect-content 
  ;; "," 'hydra-org/body
  )
-(evil-define-key)
-
-
-
-
-
-
 
 
 
@@ -58,7 +47,7 @@
 
 hydra-python
 
-s: show   m: move    x: cut
+s: show   m: move    x: cut    draw:draw
 c: copy   i: insert  n: narrow
 p: paste  *: heading S: SparseTree
 .: time   \\: ToDo   l: link
@@ -101,7 +90,7 @@ a: agenda o: open    r: re
 ("Sk" previous-error)
 
 ;; -------drawer--------
-("di" org-insert-drawer)
+("drawi" org-insert-drawer)
 
 ;; -------table--------
 ("|i" org-table-create-or-convert-from-region)
@@ -152,7 +141,6 @@ a: agenda o: open    r: re
 ;; 有快捷键，自带好用
 ;; ("\\l" org-shiftcontrolright)
 ;; ("\\h" org-shiftcontrolleft)
-
 ;; -------deadline & schedule--------
 ("di" org-deadline)
 ("ds" org-check-deadlines)
@@ -200,7 +188,6 @@ a: agenda o: open    r: re
    (python . t)
    (latex . t)
    (jupyter . t)))
-
 
 
 
