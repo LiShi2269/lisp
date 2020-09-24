@@ -42,127 +42,174 @@
 
 
 
-(defhydra hydra-org()
- "
+(defhydra hydra-org(:exit t)
+;; s sub
+  ("s" org-subtree/body "subtree")
+;; * heading
+  ("*" org-toggle-heading "heading")
+;; U up heading
+  ("U" outline-up-heading "up")
+;; n narrow
+  ("n" org-narrow/body "narrow")
+;; . time
+  ("." org-time/body "time")
+;; \\ ToDo
+  ("\\" org-todo/body "todo")
+;; l link
+  ("l" org-link/body "link")
+;; a agenda
+  ("a" org-agenda/body "agenda")
+;; S SparseTree
+  ("S" org-Sparsetree/body "Sparse")
+;; i image
+  ("i" org-image/body "image")
+;; | table
+  ("|" org-table/body "table")
+;; D deadline
+  ("D" org-deadline-date/body "DeadTime")
+;; d draw
+  ("d" org-draw/body "draw")
+;; T tag
+  ("T" org-tag/body "tag")
+;; p property
+  ("p" org-property/body "property")
+;; v show
+  ("v" org-show/body "vision")
+;;sort
+    ("`" org-sort "sort")
+;;src
+    ("S" org-src/body "src")
+  )
 
-hydra-python
+(defhydra org-subtree(:exit t)
+("x" org-cut-subtree "cut")
+("c" org-copy-subtree "copy")
+("p" org-paste-subtree "paste")
+  )
 
-s: show   m: move    x: cut    draw:draw
-c: copy   i: insert  n: narrow
-p: paste  *: heading S: SparseTree
-.: time   \\: ToDo   l: link
-a: agenda o: open    r: re 
-  
+(defhydra org-narrow(:exit t)
+("b" org-narrow-to-block "nBlock")
+("s" org-narrow-to-subtree "nSubtree")
+("w" widen "widen")
+  )
 
-"
-;; -------show something--------
-("sa" outline-show-all)
-("s1" org-set-startup-visibility)
-;; ("sc" outline-show-children)
-("s2" org-tree-to-indirect-buffer)
-
-
-;; -------motion--------
-("mj" org-forward-heading-same-level)
-("mk" org-backward-heading-same-level)
-;; ("mu" outline-up-heading)
-;; ("mg" org-goto)
-
-;; -------structure--------
-("<return>" org-insert-heading-respect-content)
-;; -------sbtree--------
-("sx" org-cut-subtree)
-("sc" org-copy-subtree)
-("sp" org-paste-subtree)
-;; -------narrow--------
-("nb" org-narrow-to-block)
-("ns" org-narrow-to-subtree)
-("nw" widen)
-
-("*" org-toggle-heading)
-("`" org-sort)
-
-;; -------Sparse trees--------
-("S/" org-sparse-tree)
-("Sm" org-match-sparse-tree)
-("So" org-occur)
-("Sj" next-error)
-("Sk" previous-error)
-
-;; -------drawer--------
-("drawi" org-insert-drawer)
-
-;; -------table--------
-("|i" org-table-create-or-convert-from-region)
-("|r" org-table-align)
-("|<SPC>" org-table-blank-field)
-("|c" org-table-copy-region)
-("|x" org-table-cut-region)
-("|p" org-table-paste-rectangle)
-("|`" org-table-edit-field)
-  
-;; -------link--------
-;; you need to use org-store-link
-("li" org-insert-link)
-("lj" org-next-link)
-("lk" org-previous-link)
-
-;; -------tag--------
-("Ti" org-set-tags-command)
-("Ts" org-tags-view)
-
-;; -------property--------
-
-("pi" org-set-property)
-("pd" org-delete-property)
-("pD" org-delete-property-globally)
+(defhydra org-time(:exit t)
+("." org-time-stamp "stamp")
+("!" org-time-stamp-inactive "stampInactive")
+("c" org-date-from-calendar "dateFromCalendar")
+("C" org-date-goto-calendar "dateGotoCalendar")
+;; ("o" org-open-at-point) ;;what is this?
+("r" org-evaluate-time-range "tameRange")
+("i" org-clock-in "clockIn")
+("o" org-clock-out "clockOut")
+("l" org-clock-in-last "clockLast")
+;; (".c" org-evaluate-time-range)
+("q" org-clock-cancel "clockCancel")
+("v" org-clock-display "clockDisplay")
+)
 
 
-;; -------time & clock--------
-(".." org-time-stamp)
-(".!" org-time-stamp-inactive)
-(".c" org-date-from-calendar)
-(".C" org-date-goto-calendar)
-
-("o" org-open-at-point) ;;what is this?
-
-(".y" org-evaluate-time-range)
-(".i" org-clock-in)
-(".o" org-clock-out)
-(".l" org-clock-in-last)
-(".c" org-evaluate-time-range)
-(".q" org-clock-cancel)
-(".s" org-clock-display)
-;; -------todo--------
-("\\t" org-todo)
-("\\st" org-show-todo-tree)
-;; ("\\l" org-todo-list)
-("\\i" org-insert-todo-heading)
-;; 有快捷键，自带好用
-;; ("\\l" org-shiftcontrolright)
-;; ("\\h" org-shiftcontrolleft)
-;; -------deadline & schedule--------
-("di" org-deadline)
-("ds" org-check-deadlines)
-("ss" org-schedule)
-("Ds" org-check-before-date)
-("As" org-check-After-date)
+(defhydra org-todo(:exit t)
+ ("t" org-todo "todo")
+ ("vt" org-show-todo-tree "showTodoTree")
+ ;; ("\\l" org-todo-list)
+ ("i" org-insert-todo-heading "insert")
+ )
 
 
-;; ------- src-block --------
-("ji" jupyter-org-insert-src-block)
-("it" org-toggle-inline-images)
+(defhydra org-link(:exit t)
+ ;; you need to use org-store-link
+ ("i" org-insert-link "insert")
+ ("j" org-next-link "next")
+ ("k" org-previous-link "previous")
+ )
 
 
-;; -------Agenda--------
-("ai" org-agenda-file-to-front)
-("ad" org-remove-file)
-;; org switchb 应该是 global
-;; ("a<TAB>" 'org-switchb)
-;; ("" 'universal-argument)
-("as" org-agenda-set-restriction-lock)
-("ar" org-agenda-remove-restriction-lock)
-    )
+
+(defhydra org-agenda(:exit t)
+ ("i" org-agenda-file-to-front "insertTocalenda")
+ ("d" org-remove-file "DeleteTocalenda")
+ ;; org switchb 应该是 global
+ ;; ("a<TAB>" 'org-switchb)
+ ;; ("" 'universal-argument)
+ ("s" org-agenda-set-restriction-lock "restriction")
+ ("r" org-agenda-remove-restriction-lock "unrestriction")
+ )
+
+
+(defhydra org-Sparsetree(:exit t)
+ ;; -------Sparse trees--------
+ ("/" org-sparse-tree "sparseTree")
+ ("m" org-match-sparse-tree "MatchSparse")
+ ("o" org-occur "occur")
+ ("j" next-error "nextError")
+ ("k" previous-error "prviousError")
+ )
+
+
+(defhydra org-image(:exit t)
+ ("t" org-toggle-inline-images "toggleImage")
+ )
+
+
+(defhydra org-table(:exit t)
+ ;; -------table--------
+ ("i" org-table-create-or-convert-from-region "insert")
+ ("r" org-table-align "align")
+ ("<SPC>" org-table-blank-field "blank")
+ ("c" org-table-copy-region "copy")
+ ("x" org-table-cut-region "cut")
+ ("p" org-table-paste-rectangle "paste")
+ ("`" org-table-edit-field "edit")
+ )
+
+
+(defhydra org-deadline-date(:exit t)
+ ("i" org-deadline "insertDeadline")
+ ("s" org-check-deadlines "checkDeadline")
+ ("s" org-schedule "schedule")
+ ("s" org-check-before-date "checkBeforeDate")
+ ("s" org-check-After-date "checkAfterDate")
+ )
+
+
+(defhydra org-draw(:exit t)
+ ;; -------drawer--------
+ ("i" org-insert-drawer "insertDraw")
+ )
+
+
+(defhydra org-tag(:exit t)
+("i" org-set-tags-command "insert")
+("s" org-tags-view "view")
+ )
+
+
+(defhydra org-property(:exit t)
+ ;; -------property--------
+ ("pi" org-set-property "insert")
+ ("pd" org-delete-property "delete")
+ ("pD" org-delete-property-globally "deleteAll")
+ )
+
+
+
+(defhydra org-show(:exit t)
+ ;; -------show something--------
+ ("a" outline-show-all "showAll")
+ ("1" org-set-startup-visibility "startupVisibility")
+ ;; ("sc" outline-show-children)
+ ("2" org-tree-to-indirect-buffer "indirectBuffer")
+ )
+
+
+
+(defhydra org-src(:exit t)
+ ("i" jupyter-org-insert-src-block "insert")
+ )
+
+
+
 
 
 ;; --------- todo list -----------
