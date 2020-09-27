@@ -77,7 +77,7 @@
 	
 	;; 27.1不能用了？
 	smex
-	;;amx
+	amx
 
 	pdf-tools
 

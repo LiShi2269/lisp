@@ -1,5 +1,5 @@
 
-python 清华源
+::python 清华源
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython pandas numpy jupyter 
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper-win

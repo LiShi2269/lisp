@@ -15,7 +15,8 @@
                       (font-spec :family chinese :size chinese-size))))
 
 ;; (set-font "Source Code Pro" "simsun"  22 22)
-(set-font "Sarasa Mono HC Light" "Sarasa Mono HC Light"  22 22)
+;; (set-font "Sarasa Mono HC Light" "Sarasa Mono HC Light"  22 22)
+(set-font "等距更纱黑体 SC"  "等距更纱黑体 SC" 24 24)
 
 
 ;; 和beacon-mode在一起效果不好
