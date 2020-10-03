@@ -21,8 +21,8 @@
        "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
        "如果major mode 是lisp-interaction-mode那么c-ret就是eval-defun"
        (cond ((equal major-mode 'emacs-lisp-mode)(elisp--eval-defun)) 
-	     ;; ((equal major-mode 'org-mode) (org-babel-execute-src-block-maybe)) 
 	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
+	     ((equal major-mode 'python-mode) (elpy-shell-send-statement-and-step)) 
        ))
 
 
@@ -75,16 +75,25 @@
   ("p" org-property/body "property")
 ;; v show
   ("v" org-show/body "vision")
+;; e envirenment
+  ("e" org-env/body "environments")
 ;;sort
     ("`" org-sort "sort")
-;;src
-    ("S" org-src/body "src")
+;;src-code
+    ("C" org-src/body "src")
+;;edit-special
+    ("'" org-edit-special "org special edit")
   )
 
 (defhydra org-subtree(:exit t)
 ("x" org-cut-subtree "cut")
 ("c" org-copy-subtree "copy")
 ("p" org-paste-subtree "paste")
+  )
+
+(defhydra org-env(:exit t)
+("w" pyvenv-workon "pyvenv-workon")
+("R" (lambda()(interactive)(org-babel-jupyter-aliases-from-kernelspecs)) "JupyterAliase")
   )
 
 (defhydra org-narrow(:exit t)
@@ -187,9 +196,9 @@
 
 (defhydra org-property(:exit t)
  ;; -------property--------
- ("pi" org-set-property "insert")
- ("pd" org-delete-property "delete")
- ("pD" org-delete-property-globally "deleteAll")
+ ("i" org-set-property "insert")
+ ("d" org-delete-property "delete")
+ ("D" org-delete-property-globally "deleteAll")
  )
 
 
@@ -205,7 +214,8 @@
 
 
 (defhydra org-src(:exit t)
- ("i" jupyter-org-insert-src-block "insert")
+ ("ij" jupyter-org-insert-src-block "insert")
+ ("s" org-edit-special "edit-special")
  )
 
 
@@ -236,7 +246,7 @@
    (latex . t)
    (jupyter . t)))
 
-
+(org-babel-jupyter-override-src-block "python")
 
 ;; ======= provide =======
 (provide 'init-org)

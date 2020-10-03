@@ -56,6 +56,7 @@
     ("ldp"  my-toggle-doc-position)
     ("lm"  my-toggle-imenu)
     ("run"  my-run-python)
+    ("'" org-edit-src-abort "org special edit")
     )
 
 
@@ -172,7 +173,7 @@
 ;; -------completion-------
 (add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))))
 
-
+(setq lsp-enable-snippet t)
 
 
 

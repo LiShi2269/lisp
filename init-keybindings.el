@@ -60,21 +60,18 @@
 
 
 ;; ------ lisp-mode key config -------
-;; (evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'eval-defun)
-(evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
+;; (evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
 
 
 
-(defun my-major-mode-c-return-fun()(interactive)
-       "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
-       "如果major mode 是lisp-interaction-mode那么c-ret就是eval-defun"
-       (cond ((equal major-mode 'lisp-interaction-mode)(eval-defun)) 
-	     ;; ((equal major-mode 'org-mode) (org-babel-execute-src-block-maybe)) 
-	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
-       ))
-;; (eval-defun 'my-major-mode-c-return-fun)
+;; (defun my-major-mode-c-return-fun()(interactive)
+;;        "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
+;;        "如果major mode 是lisp-interaction-mode那么c-ret就是eval-defun"
+;;        (cond ((equal major-mode 'lisp-interaction-mode)(eval-defun)) 
+;; 	     ;; ((equal major-mode 'org-mode) (org-babel-execute-src-block-maybe)) 
+;; 	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
+;;        ))
 
-;; (message "3")
 
 ;; ======= provide =======
 (provide 'init-keybindings)

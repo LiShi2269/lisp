@@ -154,8 +154,10 @@
     "qs" 'save-buffers-kill-emacs
     ;; ---- iedit ----
     "se" 'iedit-mode
-    ;; ---- iedit ----
     "sm" 'minimap-mode
+    "syn" 'yas-new-snippet
+    "syv" 'yas-visit-snippet-file
+    ;; ---- iedit ----
     "`"  'shell)
 
 (add-hook 'after-make-frame-functions 'toggle-frame-fullscreen)
