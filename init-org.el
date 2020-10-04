@@ -198,7 +198,7 @@
  ;; -------property--------
  ("i" org-set-property "insert")
  ("d" org-delete-property "delete")
- ("D" org-delete-property-globally "deleteAll")
+ ("D" org-delete-property-globally "deleteGlobally")
  )
 
 
@@ -248,5 +248,6 @@
 
 (org-babel-jupyter-override-src-block "python")
 
+(setq org-src-preserve-indentation t)
 ;; ======= provide =======
 (provide 'init-org)
