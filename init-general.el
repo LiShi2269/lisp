@@ -100,16 +100,24 @@
     "ad" 'deer
     "ar" 'ranger
     "an" 'neotree-toggle
-    "al" 'org-store-link
-    "aa" 'org-agenda
-    "ac" 'org-capture
-    "as" 'org-switchb
-    "aw" 'org-agenda-list
-    "at" 'org-todo-list
+    "at" 'treemacs
+    ;; ---- treemacs ----
+    "Te" 'treemacs-edit-workspaces
+    "Tf" 'treemacs-finish-edit
+    "TB" 'treemacs-set-fallback-workspace
+    "Ta" 'treemacs-add-and-display-current-project
+    "Tr" 'treemacs-remove-project-from-workspace
+
+    ;; ---- agenda ----
+    "Al" 'org-store-link
+    "Aa" 'org-agenda
+    "Ac" 'org-capture
+    "As" 'org-switchb
+    "AL" 'org-agenda-list
+    "At" 'org-todo-list
 
     "ff" 'find-file
     ;; ---- buffer ----
-    "<spc>" 'smex
     "fs" 'my-save-buffer
     ;; "fs" 'save-buffer
     "bb" 'buffer-menu
@@ -141,13 +149,11 @@
     "wj" 'evil-window-down
     "wJ" 'evil-window-move-very-bottom
     "w=" 'balance-windows
-    "wF" 'make-frame
+    "wf" 'make-frame
     "wc" 'centered-window-mode
-
+    "wF" 'toggle-frame-fullscreen
     ;; ---- zoom ----
     "z" 'hydra-zoom/body
-    ;; ---- toggle ----
-    "TF" 'toggle-frame-fullscreen
     ;; ---- quit ----
     "qq" 'kill-emacs
     "qR" 'eval-buffer

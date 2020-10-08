@@ -28,6 +28,7 @@
 
 
 ;; =============== all-the-icons ========================
+;; 安装方法：从github下载all-the-icons的zip，解压后直接安装字体
 (use-package all-the-icons)
 ;; ( all-the-icons-icon-for-buffer )
 ;; (all-the-icons-icon-for-dir)
