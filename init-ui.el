@@ -22,13 +22,19 @@
 ;; 和beacon-mode在一起效果不好
 ;; =============== hl-line-mode ========================
 (global-hl-line-mode t)
-(set-face-attribute 'region nil :weight 'normal :box "#FFFFFF" :underline nil)
+;; 被选择的区域的样子
+;; (set-face-attribute 'region nil :weight 'normal :box "#FFFFFF" :underline nil)
+(set-face-attribute 'region nil :weight 'normal :box nil :underline "#FFFFFF")
 
 
-
-
-
-
+;; =============== all-the-icons ========================
+(use-package all-the-icons)
+;; ( all-the-icons-icon-for-buffer )
+;; (all-the-icons-icon-for-dir)
+;; (all-the-icons-icon-for-file)
+;; (all-the-icons-icon-for-mode)
+;; (all-the-icons-icon-for-url)
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 
 

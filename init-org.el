@@ -225,7 +225,7 @@
 ;; --------- todo list -----------
 (setq org-todo-keywords
       '(
-	(sequence "TODO" "DELAY" "CHANGE" "|" "DONE")
+	(sequence "TODO"  "CHANGE" "|" "DONE" "DELAY")
 	(sequence "one" "two" "three" "four" "five" "|" "DONE")
 	(sequence "a" "b" "c" "e" "f" "|" "DONE")
 	(sequence "1" "2" "3" "4" "5" "|" "DONE")
@@ -248,6 +248,7 @@
 
 (org-babel-jupyter-override-src-block "python")
 
+;; 关于org src 模式导出是不是前面要有空格
 (setq org-src-preserve-indentation t)
 ;; ======= provide =======
 (provide 'init-org)

@@ -48,6 +48,7 @@
 	simple-httpd
 	markdown-mode	
 	zmq
+	;; --- treemacs ---
 	
 	
 
@@ -71,6 +72,12 @@
 	highlight-symbol
 	;; 不好用的mode-icons
 	;; mode-icons
+	all-the-icons
+	all-the-icons-dired
+
+
+
+
 	hydra
 
 	ibuffer
@@ -125,7 +132,7 @@
 	;; --- Themes ---
 	monokai-theme
       	;; --- test package ---
-	google-this
+	;; google-this
 	)
  "Default packages")
 
