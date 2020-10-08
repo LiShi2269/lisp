@@ -152,6 +152,8 @@
     "wf" 'make-frame
     "wc" 'centered-window-mode
     "wF" 'toggle-frame-fullscreen
+    "w#s" 'desktop-save
+    "w#r" 'desktop-read
     ;; ---- zoom ----
     "z" 'hydra-zoom/body
     ;; ---- quit ----
