@@ -30,11 +30,6 @@
 ;; =============== all-the-icons ========================
 ;; 安装方法：从github下载all-the-icons的zip，解压后直接安装字体
 (use-package all-the-icons)
-;; ( all-the-icons-icon-for-buffer )
-;; (all-the-icons-icon-for-dir)
-;; (all-the-icons-icon-for-file)
-;; (all-the-icons-icon-for-mode)
-;; (all-the-icons-icon-for-url)
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 
