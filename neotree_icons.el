@@ -7,47 +7,23 @@
 (require 'all-the-icons)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-
+(setq neo-window-width 40)
+(setq neo-window-fixed-size 20)
 
 
 
 
 (defhydra hydra-neotree()
-;;  "
+ "
+hydra-neotree
+TAB:Enter       SPC:quick-Look     q:hide            RET:Enter
+r: refresh      j:next-Line        k:pre-Line        A:stretch-Toggle
+H:hidden-File   R:rename           C:create-Node     D:delete-Node
+c:copy-Node     h:up-Node          U:change-Root 
 
-;; hydra-ein
+"
 
-;; _j_: next    _S_: Save   _t_: show      _u_: toggle
-;; _k_: pre     _R_: Rename _E_: ExAll     _U_: Toggle
-;; _J_: move    _m_: merge  _l_: Clean     _C_: Exe 
-;; _K_: Move    _M_: Merge  _L_: CleanAll  _D_: Del
-;; _o_: InsBl   _c_: Copy   _Q_: Quit      _O_: InsAbo
-;; _O_: InsAbo  _p_: Paste  _/_: Split
-
-;; "
-
-("?\\T" neotree-enter)
-("e" neotree-quick-look)
-( "q" neotree-hide)
-( "<return>" neotree-enter)
-( "r" neotree-refresh)
-( "j" neotree-next-line)
-( "k" neotree-previous-line)
-( "A" neotree-stretch-toggle)
-( "H" neotree-hidden-file-toggle)
-( "R" neotree-rename-node)
-( "C" neotree-create-node)
-( "D" neotree-delete-node)
-( "c" neotree-copy-node)
-( "h" neotree-select-up-node))
-
-
-
-
-
-
-
-
+)
 
 
 
@@ -67,6 +43,7 @@
 (evil-define-key 'normal neotree-mode-map (kbd "D") 'neotree-delete-node)
 (evil-define-key 'normal neotree-mode-map (kbd "c") 'neotree-copy-node)
 (evil-define-key 'normal neotree-mode-map (kbd "h") 'neotree-select-up-node)
+(evil-define-key 'normal neotree-mode-map (kbd "U") 'neotree-change-root)
 (evil-define-key 'normal neotree-mode-map (kbd "?") 'hydra-neotree/body)
 
 

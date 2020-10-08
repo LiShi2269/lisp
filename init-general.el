@@ -102,11 +102,11 @@
     "an" 'neotree-toggle
     "at" 'treemacs
     ;; ---- treemacs ----
-    "Te" 'treemacs-edit-workspaces
-    "Tf" 'treemacs-finish-edit
-    "TB" 'treemacs-set-fallback-workspace
-    "Ta" 'treemacs-add-and-display-current-project
-    "Tr" 'treemacs-remove-project-from-workspace
+    "aTe" 'treemacs-edit-workspaces
+    "aTf" 'treemacs-finish-edit
+    "aTB" 'treemacs-set-fallback-workspace
+    "aTa" 'treemacs-add-and-display-current-project
+    "aTr" 'treemacs-remove-project-from-workspace
 
     ;; ---- agenda ----
     "Al" 'org-store-link
@@ -158,9 +158,11 @@
     "qq" 'kill-emacs
     "qR" 'eval-buffer
     "qs" 'save-buffers-kill-emacs
+
     ;; ---- iedit ----
     "se" 'iedit-mode
     "sm" 'minimap-mode
+    "sl" 'linum-relative-toggle
     "syn" 'yas-new-snippet
     "syv" 'yas-visit-snippet-file
     ;; ---- iedit ----

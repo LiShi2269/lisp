@@ -136,9 +136,14 @@
 ;;   )
 
 
+;; ====== popup-kill-ring =============
+;; (require 'popup-kill-ring)
+;; (global-set-key (kbd "M-p") 'popup-kill-ring)
+;; (global-set-key (kbd "<f9>") 'popup-kill-ring-hide)
+;; (define-key popup-kill-ring-keymap (kbd "C-j") 'popup-kill-ring-next)
+;; (define-key popup-kill-ring-keymap (kbd "C-k") 'popup-kill-ring-previous)
 
-
-
+ 
 
 ;; ====== rainbow =============
 ;; (require 'rainbow-delimiters)

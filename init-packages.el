@@ -39,6 +39,15 @@
 	smartparens
 	popwin
 	iedit
+	linum-relative
+	;; 不知道怎么退出
+	;; popup-kill-ring
+	browse-kill-ring
+
+	toc-org
+
+
+
 
 	minimap
 	beacon
@@ -80,15 +89,13 @@
 	;; mode-icons
 	all-the-icons
 	all-the-icons-dired
-
-
-
+	;; 不知道怎么用的powerline
+	;; powerline
 
 	hydra
 
 	ibuffer
 	
-	;; 27.1不能用了？
 	smex
 	amx
 
