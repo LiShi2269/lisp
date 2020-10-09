@@ -107,6 +107,7 @@
     "aTB" 'treemacs-set-fallback-workspace
     "aTa" 'treemacs-add-and-display-current-project
     "aTr" 'treemacs-remove-project-from-workspace
+    "aTs" 'treemacs-switch-workspace
 
     ;; ---- agenda ----
     "Al" 'org-store-link

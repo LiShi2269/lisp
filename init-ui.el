@@ -33,9 +33,17 @@
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 
-
-
-
+;; =============== golden-ratio ========================
+;; 用鼠标才可以，差评
+;; (require 'golden-ratio)
+;; (golden-ratio-mode 1)
+;; (setq golden-ratio-auto-scale t)
+;; =============== zoom ========================
+(require 'zoom)
+(custom-set-variables
+ '(zoom-mode t))
+(custom-set-variables
+ '(zoom-size '(0.618 . 0.618)))
 
 
 

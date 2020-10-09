@@ -41,12 +41,11 @@
 	iedit
 	linum-relative
 	;; 不知道怎么退出
-	;; popup-kill-ring
-	browse-kill-ring
-
-	toc-org
-
-
+	popup-kill-ring
+	;; browse-kill-ring
+	;; 用鼠标才可以？
+	;; golden-ratio
+	zoom
 
 
 	minimap

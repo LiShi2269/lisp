@@ -33,8 +33,10 @@
 (setq visible-bell 0)
 
 
+;; 显示行号
+;; (global-linum-mode 1)
 ;; 比linum-mode 好用，快速
-(global-display-line-numbers-mode t)
+;; (global-display-line-numbers-mode nil)
 
 ;; ------ star with full screen -------
 (add-hook 'emacs-startup-hook 'toggle-frame-fullscreen)
@@ -65,8 +67,6 @@
 (menu-bar-mode 0)
 
 
-;; 显示行号
-;; (global-linum-mode 1)
 
 (global-evil-surround-mode 1)
 ;; (require 'use-package)
