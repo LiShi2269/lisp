@@ -10,24 +10,23 @@
   ;; :config ((dashboard-setup-startup-hook t)
   :ensure
   :init
-  (dashboard-setup-startup-hook)
- (setq dashboard-startup-banner "~/.emacs.d/logo/logo4.png")
- (setq dashboard-banner-logo-title "！！每天都要努力写论文！！")
+    (dashboard-setup-startup-hook)
+    ;; (setq dashboard-startup-banner "~/.emacs.d/logo/logo4.png")
+    (setq dashboard-banner-logo-title "！！每天都要努力写论文！！")
 	;; ( dashboard-startup-banner "e:/logo.png")
-	(setq make-backup-files nil)
+    (setq make-backup-files nil)
 
   )
-;; ======= smex =======
-;; (require 'smex)
-;; (smex-initialize)
 
-;; ======= amx =======
-(require 'amx)
-
+ 
 ;; (visual-line-mode 1)
 
+(use-package which-key
+  :init
+  (which-key-mode 1)
+  )
 ;;which-key
-(which-key-mode 1)
+;; (which-key-mode 1)
 
 ;;shut-down-alarm
 (setq visible-bell 0)
@@ -196,5 +195,11 @@
 ;; ====== undo-tree =============
 (require 'undo-tree)
 (global-undo-tree-mode t)
+
+
+;; ====== neotree =============
+
+
+
 ;; ======= provide =======
 (provide 'init-better-defaults)

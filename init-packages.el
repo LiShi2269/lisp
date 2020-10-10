@@ -96,7 +96,6 @@
 	ibuffer
 	
 	smex
-	amx
 
 	pdf-tools
 

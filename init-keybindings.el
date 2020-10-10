@@ -62,8 +62,6 @@
 ;; ------ lisp-mode key config -------
 ;; (evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
 
-
-
 ;; (defun my-major-mode-c-return-fun()(interactive)
 ;;        "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
 ;;        "如果major mode 是lisp-interaction-mode那么c-ret就是eval-defun"
@@ -71,6 +69,22 @@
 ;; 	     ;; ((equal major-mode 'org-mode) (org-babel-execute-src-block-maybe)) 
 ;; 	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
 ;;        ))
+
+
+;; ======================== popup-ring ======================
+;; (use-package popup-kill-ring
+;;   :ensure t
+;;   :bind (:map popup-kill-ring-keymap
+;;               ([escape] . keyboard-quit)
+;; 	      ))
+;; (global-set-key (kbd "<insert>") 'popup-kill-ring)
+;; (evil-define-ke (kbd "<insert>") 'popup-kill-ring)
+
+
+;; ======================== ivy-mode ======================
+(global-set-key (kbd "<f9>") 'ivy-mode)
+
+
 
 
 ;; ======= provide =======
