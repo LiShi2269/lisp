@@ -35,16 +35,13 @@
 
 ;; A nice collection of unicode bullets:
 ;; http://nadeausoftware.com/articles/2007/11/latency_friendly_customized_bullets_using_unicode_characters
+
 (defcustom org-bullets-bullet-list
   '(;;; Large
     "◉"
     "○"
+    "✸"
     "✿"
-    "▸"
-    "◇"
-    "◇"
-    "❀"
-    "♦"
     ;; ♥ ● ◇ ✚ ✜ ☯ ◆ ♠ ♣ ♦ ☢ ❀ ◆ ◖ ▶
     ;;; Small
     ;; ► • ★ ▸
@@ -53,6 +50,9 @@
 It can contain any number of symbols, which will be repeated."
   :group 'org-bullets
   :type '(repeat (string :tag "Bullet character")))
+
+
+
 
 (defcustom org-bullets-face-name nil
   "This variable allows the org-mode bullets face to be

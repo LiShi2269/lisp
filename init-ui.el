@@ -61,19 +61,17 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/spaceline-master/")
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
+;; 会跟随着evil状态改变颜色
+(setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
 
-
-
-
-
-
-
-
-
-
-
-
-
+;; (set-face-attribute 'spaceline-evil-normal nil :foreground "#2f4f4f")
+;; (set-face-attribute 'spaceline-evil-insert nil :foreground "#7D8BAC")
+(set-face-attribute 'spaceline-evil-normal nil :foreground "#ffffff" :background "#2f4f4f")
+;; (set-face-attribute 'spaceline-evil-insert nil :foreground "#3E3D31" :background "7D8BAC" :inherit 'mode-line)
+(set-face-attribute 'spaceline-evil-insert nil :inherit 'mode-line :foreground "#3E3D31" :background "#7D8BAC" )
+(setq spaceline-workspace-numbers-unicode t)
+(setq spaceline-window-numbers-unicode t)
+;; spaceline-workspace-numbers-unicode and spaceline-window-numbers-unicode to t
 
 
 

@@ -5,7 +5,7 @@
   :ensure
   :init
     (dashboard-setup-startup-hook)
-    ;; (setq dashboard-startup-banner "~/.emacs.d/lisp/dashboardLogo/PngItem_4036681.png")
+    (setq dashboard-startup-banner "~/.emacs.d/lisp/dashboardLogo/myDashboardLogo.png")
     (setq dashboard-banner-logo-title "！！每天都要努力写论文！！")
 	;; ( dashboard-startup-banner "e:/logo.png")
     (setq make-backup-files nil)
