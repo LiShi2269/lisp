@@ -24,8 +24,21 @@
 ;; ======= hydra ============
 (defhydra hydra-zoom ()
   "zoom"
-  ("{" text-scale-increase "in")
-  ("}" text-scale-decrease "out"))
+  ("}" text-scale-increase "bigger")
+  ("{" text-scale-decrease "smaller"))
+
+(defhydra hydra-highlight-symbol ()
+  "hightlight-symbol"
+  ("h" highlight-symbol)
+  (">" highlight-symbol-next "next")
+  ("<" highlight-symbol-prev "pre")
+  ("]" highlight-symbol-next-in-defun "nextFun")
+  ("[" highlight-symbol-prev-in-defun "preFun")
+  )
+
+
+
+
 
 (general-define-key
  :states  '(normal motion )
@@ -127,11 +140,8 @@
     "bd" 'kill-this-buffer
     "<tab>" 'mode-line-other-buffer
     "bi" 'ido-switch-buffer
+    "bs" '(lambda()(interactive)(switch-to-buffer "*scratch*"))
 
-    ;; ---- Hight-symbol ----
-    "sh" 'highlight-symbol
-    "s>" 'highlight-symbol-next
-    "s<" 'highlight-symbol-prev
     ;; ---- undo-tree ----
     "uu" 'undo-tree-visualize
     "us" 'undo-tree-save-history
@@ -164,10 +174,15 @@
 
     ;; ---- iedit ----
     "se" 'iedit-mode
+    ;; ---- Hight-symbol ----
+    "sh" 'hydra-highlight-symbol/body
+    "sD" 'dynamic-spaces-mode
     "sm" 'minimap-mode
     "sl" 'linum-relative-toggle
     "syn" 'yas-new-snippet
     "syv" 'yas-visit-snippet-file
+
+
     ;; ---- iedit ----
     "`"  'shell)
 

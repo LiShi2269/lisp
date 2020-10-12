@@ -73,6 +73,7 @@
 	mini-frame
 	yasnippet-snippets
 
+	dynamic-spaces
 	py-autopep8
 
 	yasnippet
