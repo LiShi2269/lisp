@@ -23,7 +23,6 @@
 
 
 
-
 ;; ========== nswbuff 快速切换 ===============
 (global-set-key (kbd "C-S-h") 'nswbuff-switch-to-previous-buffer)
 (global-set-key (kbd "C-S-l") 'nswbuff-switch-to-next-buffer)
@@ -31,6 +30,12 @@
 (setq nswbuff-display-intermediate-buffers t)
 ;; 是否过滤一些内容
 (setq nswbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
+;; ========== swbuff-x 快速切换 ===============
+;; (require 'swbuff-x)
+
+
+
+
 
 ;; ;; ======= key-chord=======
 (require 'key-chord)
@@ -55,12 +60,12 @@
   )
 
 
-(key-chord-define evil-normal-state-map ".." 'myinsert)
+;; (key-chord-define evil-normal-state-map ".." 'myinsert)
 (key-chord-define evil-insert-state-map ".." 'myinsert)
 
 
 ;; ------ lisp-mode key config -------
-;; (evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
+(evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
 
 ;; (defun my-major-mode-c-return-fun()(interactive)
 ;;        "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"

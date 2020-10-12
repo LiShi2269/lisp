@@ -26,7 +26,7 @@
 
 
 ;; ------- hydra-python-------
-(defhydra hydra-python()
+(defhydra hydra-python(:exit t)
 ;;  "
 ;; hydra-python
 ;; _Va_: pyenv   _sb_: send   _yn_: yas     _sb_: sendBUffer
@@ -36,26 +36,26 @@
   
 ;; "
   
-    ("Va" pyvenv-activate )
-    ("Vd" pyvenv-deactivate)
-    ("Vw" pyvenv-workon)
+    ("Va" pyvenv-activate "pyvenvActivate")
+    ("Vd" pyvenv-deactivate "pyvenvDeactivate")
+    ("Vw" pyvenv-workon "workon")
     ;; ("sB" elpy-shell-send-buffer-and-go)
-    ("sb" elpy-shell-send-buffer)
-    ("sr" elpy-shell-send-region-or-buffer)
-    ("sR" elpy-shell-send-region-or-buffer-and-go)
-    ("sf" elpy-shell-send-defun)
-    ("sF" elpy-shell-send-defun-and-go)
+    ("sb" elpy-shell-send-buffer "sendBuffer")
+    ("sr" elpy-shell-send-region-or-buffer "sendRegion")
+    ("sR" elpy-shell-send-region-or-buffer-and-go "sendRegion_go")
+    ("sf" elpy-shell-send-defun "sendFunc")
+    ("sF" elpy-shell-send-defun-and-go "sendFunc_go")
     ;; ("yn" yas-new-snippet)
-    ("ye" abbrev-expansion)
-    ("=" elpy-autopep8-fix-code)
+    ("ye" abbrev-expansion "abbrevExpansion")
+    ("=" elpy-autopep8-fix-code "fixCode")
 ;; ---------lsp function ----------------
-    ("lsd" my-toggle-sideline-show-diagnostics)
+    ("lsd" my-toggle-sideline-show-diagnostics "")
     ("lsh" my-toggle-sideline-show-hover)
     ("lsa" my-toggle-sideline-show-code-actions)
     ("lsu" my-toggle-sideline-update-mode)
     ("ldp"  my-toggle-doc-position)
     ("lm"  my-toggle-imenu)
-    ("run"  my-run-python)
+    ("run"  my-run-python "runPython")
     ("'" org-edit-src-abort "org special edit")
     )
 
@@ -106,8 +106,6 @@
 	   )
        )
 
-;; (global-set-key (kbd "<f9>") 'my-toggle-imenu)
-;; (global-set-key (kbd "<f8>") 'my-test)
 
 
 

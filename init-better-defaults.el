@@ -25,8 +25,6 @@
   :init
   (which-key-mode 1)
   )
-;;which-key
-;; (which-key-mode 1)
 
 ;;shut-down-alarm
 (setq visible-bell 0)
@@ -41,13 +39,19 @@
 (add-hook 'emacs-startup-hook 'toggle-frame-fullscreen)
 
 ;; ------ smartparens -------
-(smartparens-global-mode)		;enable
-(show-smartparens-global-mode)
-(add-hook 'emacs-lisp-mode  (sp-pair "'" nil :actions :rem))
+(use-package smartparens
+    :init
+    (smartparens-global-mode)		;enable
+    (show-smartparens-global-mode)
+    :config
+    (add-hook 'emacs-lisp-mode-hook  (sp-pair "'" nil :actions :rem))
+    (add-hook 'lisp-interaction-mode-hook  (sp-pair "'" nil :actions :rem))
+  )
 
 ;; 自动加载外部修改过的文件
 (global-auto-revert-mode 1)
-(global-eldoc-mode -1)
+;; 之前做python的修改，现在不知道有没有用
+;; (global-eldoc-mode -1)
 
 ;; ;; 使用emacs内建的eww浏览器来进行url的执行
 ;; (setq browse-url-browser-function 'eww-browse-url)
@@ -66,9 +70,11 @@
 (menu-bar-mode 0)
 
 
-
-(global-evil-surround-mode 1)
-;; (require 'use-package)
+(use-package evil-surround
+  :init
+  (global-evil-surround-mode 1)
+  )
+;; (global-evil-surround-mode 1)
 
 
 
@@ -87,7 +93,11 @@
 
 
 ;; package must download manully
-(require 'centered-window)
+(use-package centered-window
+  :init
+  :commands centered-window-mode
+  )
+;; (require 'centered-window)
 
 ;; ====== mini-frame =============
 ;; (require 'mini-frame)
@@ -144,60 +154,17 @@
 
  
 
-;; ====== rainbow =============
-;; (require 'rainbow-delimiters)
-;; (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
-;; (add-hook 'python-mode-hook #'rainbow-delimiters-mode)
-;; (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
-
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(rainbow-delimiters-depth-1-face ((t (:foreground "#FF69B4"))))
-;;  '(rainbow-delimiters-depth-2-face ((t (:foreground "deep pink"))))
-;;  '(rainbow-delimiters-depth-3-face ((t (:foreground "chartreuse"))))
-;;  '(rainbow-delimiters-depth-4-face ((t (:foreground "deep sky blue"))))
-;;  '(rainbow-delimiters-depth-5-face ((t (:foreground "yellow"))))
-;;  '(rainbow-delimiters-depth-6-face ((t (:foreground "orchid"))))
-;;  '(rainbow-delimiters-depth-7-face ((t (:foreground "spring green"))))
-;;  '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1")))))
-
-(use-package rainbow-delimiters
-;; :ensure t
-  :config
-
-(add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'python-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'org-mode-hook #'rainbow-delimiters-mode)
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(rainbow-delimiters-depth-1-face ((t (:foreground "#FF69B4"))))
- '(rainbow-delimiters-depth-2-face ((t (:foreground "deep pink"))))
- '(rainbow-delimiters-depth-3-face ((t (:foreground "chartreuse"))))
- '(rainbow-delimiters-depth-4-face ((t (:foreground "deep sky blue"))))
- '(rainbow-delimiters-depth-5-face ((t (:foreground "yellow"))))
- '(rainbow-delimiters-depth-6-face ((t (:foreground "orchid"))))
- '(rainbow-delimiters-depth-7-face ((t (:foreground "spring green"))))
- '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1")))))
-  )
-
-
 ;;====== minimap =============
 ;; (require 'minimap)
 
 
 ;; ====== undo-tree =============
-(require 'undo-tree)
-(global-undo-tree-mode t)
-
-
-;; ====== neotree =============
+;; (require 'undo-tree)
+;; (global-undo-tree-mode t)
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode 1)
+  )
 
 
 

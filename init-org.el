@@ -18,9 +18,11 @@
 ;; ------ lisp-mode key config -------
 
 (defun my-major-mode-c-return-fun()(interactive)
+       "但是！lisp-interaction 不是major mode！"
        "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
        "如果major mode 是lisp-interaction-mode那么c-ret就是eval-defun"
        (cond ((equal major-mode 'emacs-lisp-mode)(elisp--eval-defun)) 
+	    ;; ((equal major-mode 'elisp-mode)(eval-last-sexp)) 
 	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
 	     ((equal major-mode 'python-mode) (elpy-shell-send-statement-and-step)) 
        ))

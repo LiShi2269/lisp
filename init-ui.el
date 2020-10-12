@@ -3,7 +3,104 @@
 
 ;; (load-theme 'deeper-blue 1)
 ;; (load-theme 'dracula 1)
-(load-theme 'monokai 1)
+;; (load-theme 'monokai 1)
+(load-theme 'spolsky 1)
+;; (load-theme 'atom-one-dark 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(require 'perfect-margin)
+(perfect-margin-mode 1)
+
+
+(use-package rainbow-delimiters
+;; :ensure t
+  :config
+
+(add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'python-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'org-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'lisp-interaction-mode-hook #'rainbow-delimiters-mode)
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "#FF69B4"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "deep pink"))))
+ '(rainbow-delimiters-depth-3-face ((t (:foreground "chartreuse"))))
+ '(rainbow-delimiters-depth-4-face ((t (:foreground "deep sky blue"))))
+ '(rainbow-delimiters-depth-5-face ((t (:foreground "yellow"))))
+ '(rainbow-delimiters-depth-6-face ((t (:foreground "orchid"))))
+ '(rainbow-delimiters-depth-7-face ((t (:foreground "spring green"))))
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1")))))
+  )
+
+
+
+;; ====== power-line =============
+;; (require 'powerline)
+;; (powerline-default-theme)
+;; (powerline-center-theme)
+;; (powerline-center-evil-theme)
+;; (powerline-vim-theme)
+;; (powerline-nano-theme)
+
+
+;; ====== powerline-evil =============
+;; (require 'powerline-evil)
+;; (powerline-evil-vim-color-theme)
+
+
+
+(add-to-list 'load-path "~/.emacs.d/lisp/spaceline-master/")
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ;; ======= Font =======
 
@@ -16,7 +113,7 @@
 
 ;; (set-font "Source Code Pro" "simsun"  22 22)
 ;; (set-font "Sarasa Mono HC Light" "Sarasa Mono HC Light"  22 22)
-(set-font "等距更纱黑体 SC"  "等距更纱黑体 SC" 24 24)
+(set-font "等距更纱黑体 SC"  "等距更纱黑体 SC" 19 19)
 
 
 ;; 和beacon-mode在一起效果不好
@@ -41,11 +138,38 @@
 ;; =============== zoom ========================
 (require 'zoom)
 (custom-set-variables
- '(zoom-mode t))
-(custom-set-variables
- '(zoom-size '(0.618 . 0.618)))
+ '(zoom-mode t)
+ '(zoom-size '(0.618 . 0.618))
+ '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode python-mode))
+ '(zoom-ignored-buffer-names '("^nswbuff" *nswbuff-1*  *nswbuff*))
+ '(temp-buffer-resize-mode t)
+ ;; '(zoom-ignored-buffer-name-regexps '("."))
+ )
+
+
+;; =============== line-spacing ========================
+;; (setq line-spacing 0.2)
+(setq-default line-spacing 0)
 
 
 
-;; ======= provide =======
+
+
+;; (defun test()(interactive)
+;;        (buffer-list)
+;;        ;; (message buffer-list)
+;;        )
+;; (global-set-key (kbd "<f8>") 'buffer-list)
+;; (buffer-list)
+
+
+
+
+
+
+
+
+
+
+;; ;; ======= provide =======
 (provide 'init-ui)

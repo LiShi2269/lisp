@@ -10,7 +10,6 @@
 
 
 
-
 ;; 注意 elpa.emacs-china.org 是 Emacs China 中文社区在国内搭建的一个 ELPA 镜像
 
  ;; cl - Common Lisp Extension
@@ -47,6 +46,8 @@
 	;; golden-ratio
 	zoom
 
+	powerline
+	powerline-evil
 
 	minimap
 	beacon
@@ -80,6 +81,11 @@
 
 	dracula-theme
 	monokai-theme
+	;; atom-one-dark-theme
+	;; 不能用?
+	;; doom-themes
+	sublime-themes
+	
 	
 	yasnippet-snippets
 
@@ -91,6 +97,7 @@
 	;; 不知道怎么用的powerline
 	;; powerline
 
+	perfect-margin
 	hydra
 
 	ibuffer
