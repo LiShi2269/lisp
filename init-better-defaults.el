@@ -55,7 +55,6 @@
 
 
 
-
 ;; 关闭文件滑动控件
 (scroll-bar-mode -1)
 ;; 关闭工具栏
@@ -159,6 +158,13 @@
   :init
   (global-undo-tree-mode 1)
   )
+
+;; ====== sace-place =============
+
+(add-to-list 'load-path "~/.emacs.d/lisp/save-place.el")
+(require 'saveplace)
+(save-place-mode 1)
+
 
 
 
