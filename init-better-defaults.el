@@ -9,9 +9,16 @@
     (setq dashboard-banner-logo-title "！！每天都要努力写论文！！")
 	;; ( dashboard-startup-banner "e:/logo.png")
     (setq make-backup-files nil)
-
+    ;; dashboard 在中间
+    (setq dashboard-center-content t)
+    (setq dashboard-set-heading-icons t)
+    (setq dashboard-set-file-icons t)
   )
+    ;; (add-hook 'dashboard-mode-hook (set-frame-parameter nil 'alpha 70))
 
+    ;; (add-hook 'dashboard-mode-hook (lambda()(set-frame-parameter "*dashboard*" 'alpha 90)))
+     ;; (set-frame-parameter (selected-frame) 'alpha 90)
+   ;; (set-frame-parameter (selected-frame) 'alpha value))
  
 ;; (visual-line-mode 1)
 

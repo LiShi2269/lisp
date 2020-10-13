@@ -31,7 +31,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(rainbow-delimiters-depth-1-face ((t (:foreground "cyanic"))))
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "cyan"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "deep pink"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "chartreuse"))))
  '(rainbow-delimiters-depth-4-face ((t (:foreground "deep sky blue"))))
@@ -105,7 +105,7 @@
  '(zoom-mode t)
  '(zoom-size '(0.618 . 0.618))
  '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode python-mode))
- ;; '(zoom-ignored-buffer-names '(" *nswbuff*" "*scratch*" "init-ui.el"))
+ '(zoom-ignored-buffer-names '("*scratch*"    " *nswbuff*"))
  '(temp-buffer-resize-mode t)
  ;; '(zoom-ignored-buffer-name-regexps '("^\b"))
  )
@@ -125,6 +125,26 @@
 ;;        )
 ;; (global-set-key (kbd "<f8>") 'buffer-list)
 ;; (buffer-list)
+
+
+
+
+
+
+
+
+
+;; just dashboard transparency
+(add-hook 'buffer-list-update-hook (lambda()
+					  (if (equal (buffer-name) "*dashboard*")
+					      (set-frame-parameter (selected-frame) 'alpha 90)
+					    (set-frame-parameter (selected-frame) 'alpha 100)
+					      ;; (message "dashboard")
+					      ;; (message "other")
+					    )))
+
+
+
 
 
 
