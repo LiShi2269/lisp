@@ -144,7 +144,6 @@
 ;;     (add-to-list 'beacon-dont-blink-major-modes 'dired-mode)
 ;;   )
 
-
 ;; ====== popup-kill-ring =============
 ;; (require 'popup-kill-ring)
 ;; (global-set-key (kbd "M-p") 'popup-kill-ring)

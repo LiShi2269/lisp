@@ -64,16 +64,12 @@
 ;; 会跟随着evil状态改变颜色
 (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
 
-;; (set-face-attribute 'spaceline-evil-normal nil :foreground "#2f4f4f")
-;; (set-face-attribute 'spaceline-evil-insert nil :foreground "#7D8BAC")
-(set-face-attribute 'spaceline-evil-normal nil :foreground "#ffffff" :background "#2f4f4f")
-;; (set-face-attribute 'spaceline-evil-insert nil :foreground "#3E3D31" :background "7D8BAC" :inherit 'mode-line)
-(set-face-attribute 'spaceline-evil-insert nil :inherit 'mode-line :foreground "#3E3D31" :background "#7D8BAC" )
+(set-face-attribute 'spaceline-evil-normal nil :foreground "#f3f3f3" :background "#2f4f4f")
+(set-face-attribute 'spaceline-evil-insert nil :inherit 'mode-line :foreground "#f3f3f3" :background "#14153c" )
+(set-face-attribute 'powerline-active0 nil :inherit 'mode-line :foreground "#f3f3f3" :background "#2f4f4f" )
+(set-face-attribute 'powerline-active1 nil :inherit 'mode-line :foreground "#f3f3f3" :background "#2f4f4f" )
 (setq spaceline-workspace-numbers-unicode t)
 (setq spaceline-window-numbers-unicode t)
-;; spaceline-workspace-numbers-unicode and spaceline-window-numbers-unicode to t
-
-
 
 
 
@@ -104,10 +100,10 @@
 (custom-set-variables
  '(zoom-mode t)
  '(zoom-size '(0.618 . 0.618))
- '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode python-mode))
- '(zoom-ignored-buffer-names '("*scratch*"    " *nswbuff*"))
+ ;; '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode python-mode))
+ '(zoom-ignored-buffer-names '( *nswbuff*))
  '(temp-buffer-resize-mode t)
- ;; '(zoom-ignored-buffer-name-regexps '("^\b"))
+ '(zoom-ignored-buffer-name-regexps '("^ .*nswbuff.*" "^\b.*Minibuf.*"))
  )
 
 
@@ -117,36 +113,13 @@
 
 
 
-
-
-;; (defun test()(interactive)
-;;        (buffer-list)
-;;        ;; (message buffer-list)
-;;        )
-;; (global-set-key (kbd "<f8>") 'buffer-list)
-;; (buffer-list)
-
-
-
-
-
-
-
-
-
-;; just dashboard transparency
-(add-hook 'buffer-list-update-hook (lambda()
-					  (if (equal (buffer-name) "*dashboard*")
-					      (set-frame-parameter (selected-frame) 'alpha 90)
-					    (set-frame-parameter (selected-frame) 'alpha 100)
-					      ;; (message "dashboard")
-					      ;; (message "other")
-					    )))
-
-
-
-
-
+;; ===============just dashboard transparency ========================
+;; (add-hook 'window-configuration-change-hook (lambda() (if (equal "*dashboard*" (buffer-name)) (set-frame-parameter (selected-frame) 'alpha 90) (set-frame-parameter (selected-frame) 'alpha 100) )))
+;; (add-hook 'window-configuration-change-hook (lambda() (if (equal 'dashboard-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90) (set-frame-parameter (selected-frame) 'alpha 100) )))
+(add-hook 'window-configuration-change-hook (lambda() (cond ((equal 'dashboard-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
+						            ((equal 'treemacs-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
+						            (t (set-frame-parameter (selected-frame) 'alpha 100) )
+						        )))
 
 
 
