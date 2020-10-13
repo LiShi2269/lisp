@@ -113,13 +113,16 @@
 
 
 
-;; ===============just dashboard transparency ========================
-;; (add-hook 'window-configuration-change-hook (lambda() (if (equal "*dashboard*" (buffer-name)) (set-frame-parameter (selected-frame) 'alpha 90) (set-frame-parameter (selected-frame) 'alpha 100) )))
-;; (add-hook 'window-configuration-change-hook (lambda() (if (equal 'dashboard-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90) (set-frame-parameter (selected-frame) 'alpha 100) )))
-(add-hook 'window-configuration-change-hook (lambda() (cond ((equal 'dashboard-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
-						            ((equal 'treemacs-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
-						            (t (set-frame-parameter (selected-frame) 'alpha 100) )
-						        )))
+;; =============== just dashboard transparency ========================
+(add-hook 'window-configuration-change-hook (lambda()
+(cond
+((equal 'dashboard-mode major-mode) (progn (set-frame-parameter (selected-frame) 'alpha 85) (evil-goto-first-line) (next-line 8) (evil-forward-WORD-begin)))
+;; ((equal 'dashboard-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 85))
+((equal 'treemacs-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
+((equal 'ranger-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
+((equal 'neotree-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
+(t (set-frame-parameter (selected-frame) 'alpha 100) )
+)))
 
 
 
