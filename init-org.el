@@ -1,5 +1,4 @@
 ;; init file for org-mode
-
 (require 'org)
 ;;---------bullets------------
 (require 'org-bullets)
@@ -17,21 +16,17 @@
 
 ;; ------ lisp-mode key config -------
 
-(defun my-major-mode-c-return-fun()(interactive)
-       "但是！lisp-interaction 不是major mode！"
-       "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
-       "如果major mode 是lisp-interaction-mode那么c-ret就是eval-defun"
-       (cond ((equal major-mode 'emacs-lisp-mode)(elisp--eval-defun)) 
-	    ;; ((equal major-mode 'elisp-mode)(eval-last-sexp)) 
-	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
-	     ((equal major-mode 'python-mode) (elpy-shell-send-statement-and-step)) 
-       ))
+;; (defun my-major-mode-c-return-fun()(interactive)
+;;        "但是！lisp-interaction 不是major mode！"
+;;        "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
+;;        "如果major mode 是lisp-interaction-mode那么c-ret就是eval-defun"
+;;        (cond ((equal major-mode 'emacs-lisp-mode)(elisp--eval-defun)) 
+;; 	    ;; ((equal major-mode 'elisp-mode)(eval-last-sexp)) 
+;; 	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
+;; 	     ((equal major-mode 'python-mode) (elpy-shell-send-statement-and-step)) 
+;;        ))
 
 
-
-
-(evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
-(evil-define-key 'normal  'org-mode-map (kbd "S-<return>") 'org-insert-heading-respect-content)
 
 
 
@@ -39,8 +34,11 @@
  :keymaps 'org-mode-map
  "C-j" 'org-next-visible-heading
  "C-k" 'org-previous-visible-heading
- ;; "," 'hydra-org/body
+ "," 'hydra-org/body
+ ;; "C-<RET>" 'org-babel-execute-src-block
  )
+(define-key org-mode-map (kbd "C-<return>") 'org-babel-execute-src-block)
+(define-key org-mode-map (kbd "S-<return>") 'org-insert-heading-respect-content)
 
 
 
@@ -228,9 +226,9 @@
 (setq org-todo-keywords
       '(
 	(sequence "TODO"  "CHANGE" "|" "DONE" "DELAY")
-	(sequence "one" "two" "three" "four" "five" "|" "DONE")
-	(sequence "a" "b" "c" "e" "f" "|" "DONE")
-	(sequence "1" "2" "3" "4" "5" "|" "DONE")
+	;; (sequence "one" "two" "three" "four" "five" "|" "DONE")
+	;; (sequence "a" "b" "c" "e" "f" "|" "DONE")
+	;; (sequence "1" "2" "3" "4" "5" "|" "DONE")
 	))
 
 
@@ -243,7 +241,8 @@
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((emacs-lisp . t)
+ '(
+   ;; (emacs-lisp . t)
    (python . t)
    (latex . t)
    (jupyter . t)))

@@ -13,7 +13,12 @@
     (setq dashboard-center-content t)
     (setq dashboard-set-heading-icons t)
     (setq dashboard-set-file-icons t)
-    ;; (add-hook 'dashboard-mode (lambda()(progn (next-line 8)(evil-forward-WORD-begin))))
+ (setq dashboard-items '((recents  . 10)
+                        (bookmarks . 5)
+                        (projects . 5)
+                        ;; (agenda . 5)
+                        ;; (registers . 5)
+			))
   )
  
 ;; (visual-line-mode 1)

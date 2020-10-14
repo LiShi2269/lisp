@@ -145,7 +145,12 @@
             (python-mode . lsp)
             ;; if you want which-key integration
             (lsp-mode . lsp-enable-which-key-integration))
-    :commands lsp)
+    :commands lsp
+    :bind(
+	  :map lsp-mode-map
+	  ("C-<RET>" . elpy-shell-send-statement-and-step)
+	  )
+    )
 
 ;; optionally
 (use-package lsp-ui :commands lsp-ui-mode)

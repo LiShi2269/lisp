@@ -65,13 +65,16 @@
 (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
 
 (set-face-attribute 'spaceline-evil-normal nil :foreground "#f3f3f3" :background "#2f4f4f")
-(set-face-attribute 'spaceline-evil-insert nil :inherit 'mode-line :foreground "#f3f3f3" :background "#14153c" )
+(set-face-attribute 'spaceline-evil-insert nil :inherit 'mode-line :foreground "#f3f3f3" :background "cornflower blue")
 (set-face-attribute 'powerline-active0 nil :inherit 'mode-line :foreground "#f3f3f3" :background "#2f4f4f" )
 (set-face-attribute 'powerline-active1 nil :inherit 'mode-line :foreground "#f3f3f3" :background "#2f4f4f" )
 (setq spaceline-workspace-numbers-unicode t)
 (setq spaceline-window-numbers-unicode t)
 
-
+;; modeline use all the icons but doesn't work
+;; (propertize (all-the-icons-octicon "package")
+            ;; 'face `(:family ,(all-the-icons-octicon-family) :height 1.2)
+            ;; 'display '(raise -0.1))
 
 
 
@@ -82,6 +85,7 @@
 ;; (set-face-attribute 'region nil :weight 'normal :box "#FFFFFF" :underline nil)
 ;; (set-face-attribute 'region nil :weight 'normal :box nil :underline "#FFFFFF")
 (set-face-attribute 'hl-line nil :weight 'normal :box nil :underline nil :background "dark slate gray")
+(set-face-attribute 'region nil  :background "royal blue")
 
 
 ;; =============== all-the-icons ========================
@@ -121,11 +125,25 @@
 ((equal 'treemacs-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
 ((equal 'ranger-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
 ((equal 'neotree-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
+((equal 'ivy-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
 (t (set-frame-parameter (selected-frame) 'alpha 100) )
 )))
 
 
+;; =============== company tool ========================
 
+(custom-set-variables
+ (set-face-attribute 'company-scrollbar-bg nil :background "#2f4f4f")
+ (set-face-attribute 'company-scrollbar-fg nil :background "#293b3b")
+ (set-face-attribute 'company-tooltip nil :background "#2f4f4f" :foreground "ivory")
+ (set-face-attribute 'company-tooltip-selection nil :background "dim gray" )
+ (set-face-attribute 'company-tooltip-common nil :foreground "#c19696" )
+ (set-face-attribute 'cursor nil :background "deep pink" )
+ ;; (set-face-attribute 'cursor nil :background "deep sky blue" )
+ )
+
+
+   
 
 ;; ======= Font =======
 (defun set-font (english chinese english-size chinese-size)
@@ -138,7 +156,6 @@
 ;; (set-font "Source Code Pro" "simsun"  22 22)
 ;; (set-font "Sarasa Mono HC Light" "Sarasa Mono HC Light"  22 22)
 (set-font "等距更纱黑体 SC"  "等距更纱黑体 SC" 18 18)
-
 
 
 

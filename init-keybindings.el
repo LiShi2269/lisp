@@ -65,7 +65,7 @@
 
 
 ;; ------ lisp-mode key config -------
-(evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
+;; (evil-define-key 'normal  'lisp-interaction-mode-map (kbd "C-<return>") 'my-major-mode-c-return-fun)
 
 ;; (defun my-major-mode-c-return-fun()(interactive)
 ;;        "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
