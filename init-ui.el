@@ -104,7 +104,7 @@
 (custom-set-variables
  '(zoom-mode t)
  '(zoom-size '(0.618 . 0.618))
- ;; '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode python-mode))
+ '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode neotree-mode evil-leader-mode))
  '(zoom-ignored-buffer-names '( *nswbuff*))
  '(temp-buffer-resize-mode t)
  '(zoom-ignored-buffer-name-regexps '("^ .*nswbuff.*" "^\b.*Minibuf.*"))
@@ -138,8 +138,8 @@
  (set-face-attribute 'company-tooltip nil :background "#2f4f4f" :foreground "ivory")
  (set-face-attribute 'company-tooltip-selection nil :background "dim gray" )
  (set-face-attribute 'company-tooltip-common nil :foreground "#c19696" )
- (set-face-attribute 'cursor nil :background "deep pink" )
- ;; (set-face-attribute 'cursor nil :background "deep sky blue" )
+ ;; (set-face-attribute 'cursor nil :background "#c1a187" )
+ (set-face-attribute 'cursor nil :background "#82a7a7" )
  )
 
 

@@ -248,7 +248,7 @@
    (jupyter . t)))
 
 (org-babel-jupyter-override-src-block "python")
-
+(setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
 (setq org-src-preserve-indentation t)
 ;; ======= provide =======

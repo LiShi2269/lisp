@@ -1,0 +1,103 @@
+;; -*- mode: emacs-lisp; lexical-binding:t; coding: utf-8-emacs; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Thu Oct  8 17:06:38 2020
+;; Desktop file format version 208
+;; Emacs version 27.1
+
+;; Global section:
+(setq desktop-saved-frameset (vector 'frameset 1 '(24446 54942 991706 0) '(desktop . "208") "LiShi@DESKTOP-V76CC8D" nil nil (list (list (list '(minibuffer . t) '(undecorated) '(skip-taskbar) '(font . "-outline-等距更纱黑体 SC-normal-normal-normal-mono-24-*-*-*-c-*-iso8859-1") '(border-width . 0) '(internal-border-width . 0) '(right-divider-width . 0) '(bottom-divider-width . 0) '(vertical-scroll-bars) '(horizontal-scroll-bars) '(foreground-color . "#F8F8F2") '(background-color . "#272822") '(mouse-color . "#F8F8F2") '(border-color . "black") '(screen-gamma) '(line-spacing) '(left-fringe . 8) '(right-fringe . 8) '(no-focus-on-map) '(no-accept-focus) '(no-special-glyphs) '(alpha) '(menu-bar-lines . 0) '(tab-bar-lines . 0) '(height . 36) '(tool-bar-lines . 0) '(title) '(icon-type) '(auto-raise) '(auto-lower) '(cursor-type . box) '(scroll-bar-width . 21) '(scroll-bar-height . 21) '(fullscreen . fullboth) '(z-group) '(visibility . t) '(display-type . color) '(background-mode . dark) '(cursor-color . "#F8F8F2") '(environment) '(fullscreen-restore) '(last-focus-update . t) '(ranger-minimal) '(ranger-current-file . "c:/emacs/.emacs.d/lisp/init-shell.el") '(tabs (current-tab (name . "*Edit Treemacs Workspaces*") (explicit-name))) (list 'window-state '((min-height . 4) (min-width . 57) (min-height-ignore . 3) (min-width-ignore . 12) (min-height-safe . 1) (min-width-safe . 6) (min-pixel-height . 120) (min-pixel-width . 684) (min-pixel-height-ignore . 90) (min-pixel-width-ignore . 144) (min-pixel-height-safe . 30) (min-pixel-width-safe . 72)) 'hc '(pixel-width . 2560) '(pixel-height . 1050) '(total-width . 213) '(total-height . 35) '(normal-height . 1.0) '(normal-width . 1.0) '(combination-limit) '(parameters (clone-of . "Unprintable entity")) (list 'leaf '(pixel-width . 444) '(pixel-height . 1050) '(total-width . 37) '(total-height . 35) '(normal-height . 1.0) '(normal-width . 0.171875) '(parameters (clone-of . "Unprintable entity") (window-side . left) (window-slot . 0)) (list 'buffer "Unprintable entity" '(selected) '(hscroll . 0) '(fringes 8 8 nil nil) '(margins nil) '(scroll-bars nil 0 t nil 0 t nil) '(vscroll . 0) '(dedicated . t) (desktop-list* 'point (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 616 (get-buffer " *Treemacs-Scoped-Buffer-#<frame emacs@DESKTOP-V76CC8D 0000000005581450>*")))) mk)) (desktop-list* 'start (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 1 (get-buffer " *Treemacs-Scoped-Buffer-#<frame emacs@DESKTOP-V76CC8D 0000000005581450>*")))) mk))) (list 'prev-buffers (list "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 1 (get-buffer " *Treemacs-Scoped-Buffer-#<frame emacs@DESKTOP-V76CC8D 0000000005581450>*")))) mk) (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 616 (get-buffer " *Treemacs-Scoped-Buffer-#<frame emacs@DESKTOP-V76CC8D 0000000005581450>*")))) mk)))) (list 'hc '(last . t) '(pixel-width . 2116) '(pixel-height . 1050) '(total-width . 176) '(total-height . 35) '(normal-height . 1.0) '(normal-width . 0.828125) '(combination-limit . t) '(parameters (clone-of . "Unprintable entity")) (list 'leaf '(pixel-width . 1060) '(pixel-height . 1050) '(total-width . 88) '(total-height . 35) '(normal-height . 1.0) '(normal-width . 0.5) '(parameters (clone-of . "Unprintable entity")) (list 'buffer "Unprintable entity" '(selected . t) '(hscroll . 0) '(fringes 8 8 nil nil) '(margins nil) '(scroll-bars nil 0 t nil 0 t nil) '(vscroll . 0) '(dedicated) (desktop-list* 'point (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 1 (get-buffer "my-config.txt")))) mk)) (desktop-list* 'start (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 1 (get-buffer "my-config.txt")))) mk))) (list 'prev-buffers (list "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 1 (get-buffer "add_value.org")))) mk) (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 1 (get-buffer "add_value.org")))) mk)) (list "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 1 (get-buffer "*dashboard*")))) mk) (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 1241 (get-buffer "*dashboard*")))) mk)))) (list 'leaf '(last . t) '(pixel-width . 1056) '(pixel-height . 1050) '(total-width . 88) '(total-height . 35) '(normal-height . 1.0) '(normal-width . 0.5) '(parameters (clone-of . "Unprintable entity")) (list 'buffer "Unprintable entity" '(selected) '(hscroll . 0) '(fringes 8 8 nil nil) '(margins nil) '(scroll-bars nil 0 t nil 0 t nil) '(vscroll . 0) '(dedicated) (desktop-list* 'point (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 1 (get-buffer "add_value.org")))) mk)) (desktop-list* 'start (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (lambda nil (set-marker mk 1 (get-buffer "add_value.org")))) mk)))))) '(frameset--id . "8701-2CC9-C2AD-8ECA") '(frameset--mini t . t) '(width . 212) '(modeline . t) '(unsplittable) '(left . 0) '(top . 0) '(icon-name) '(display . "w32") '(explicit-name) '(tool-bar-position . top)) '((min-height . 4) (min-width . 57) (min-height-ignore . 3) (min-width-ignore . 12) (min-height-safe . 1) (min-width-safe . 6) (min-pixel-height . 120) (min-pixel-width . 684) (min-pixel-height-ignore . 90) (min-pixel-width-ignore . 144) (min-pixel-height-safe . 30) (min-pixel-width-safe . 72)) 'hc '(pixel-width . 2560) '(pixel-height . 1050) '(total-width . 213) '(total-height . 35) '(normal-height . 1.0) '(normal-width . 1.0) '(combination-limit) '(leaf (pixel-width . 444) (pixel-height . 1050) (total-width . 37) (total-height . 35) (normal-height . 1.0) (normal-width . 0.17343750000000002) (parameters (window-side . left) (window-slot . 0)) (buffer " *Treemacs-Scoped-Buffer-#<frame emacs@DESKTOP-V76CC8D 0000000005581450>*" (selected) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated . t) (point . 616) (start . 1)) (prev-buffers (" *Treemacs-Scoped-Buffer-#<frame emacs@DESKTOP-V76CC8D 0000000005581450>*" 1 616))) '(hc (last . t) (pixel-width . 2116) (pixel-height . 1050) (total-width . 176) (total-height . 35) (normal-height . 1.0) (normal-width . 0.8265625) (combination-limit . t) (leaf (pixel-width . 1056) (pixel-height . 1050) (total-width . 88) (total-height . 35) (normal-height . 1.0) (normal-width . 0.499054820415879) (buffer "add_value.org" (selected) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1)) (prev-buffers ("add_value.org" 1 1))) (leaf (last . t) (pixel-width . 1060) (pixel-height . 1050) (total-width . 88) (total-height . 35) (normal-height . 1.0) (normal-width . 0.500945179584121) (buffer "my-config.txt" (selected . t) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1)) (prev-buffers ("add_value.org" 1 1) ("*dashboard*" 1 1241))))))))
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring '(#("rang" 0 4 (isearch-case-fold-search t)) #("neo" 0 3 (isearch-case-fold-search t))))
+(setq register-alist '((113) (48 . #("* contribution2\n" 0 1 (face org-level-1 keymap (keymap (mouse-1 . org-cycle) (mouse-2 lambda (e) (interactive "e") (mouse-set-point e) (org-cycle))) composition (0 1 [9673]) fontified t yank-handler (evil-yank-line-handler nil t)) 1 2 (face org-level-1 keymap (keymap (mouse-1 . org-cycle) (mouse-2 lambda (e) (interactive "e") (mouse-set-point e) (org-cycle))) fontified t yank-handler (evil-yank-line-handler nil t)) 2 15 (face org-level-1 fontified t yank-handler (evil-yank-line-handler nil t)) 15 16 (fontified t yank-handler (evil-yank-line-handler nil t))))))
+(setq file-name-history '(#("c:/emacs/.emacs.d/lisp/" 0 23 (ivy-index 0)) "~/.emacs.d/lisp/init-packages.el" "f:/org/task.org" "f:/org/test.org" "~/.emacs.d/bookmarks" "~/.emacs.d/lisp/init-better-defaults.el" "~/.emacs.d/lisp/init-general.el" "~/.emacs.d/lisp/neotree_icons.el" "~/.emacs.d/lisp/init-ranger.el" "~/.emacs.d/lisp/init-python-lsp.el" "~/.emacs.d/lisp/init-keybindings.el" "~/.emacs.d/.cache/treemacs-persist" "~/.emacs.d/lisp/init-ui.el" "~/.emacs.d/lisp/init-python-lsp-backup.el" "~/.emacs.d/lisp/init-treemacs.el" "f:/contribution2/contribution2_py/add_value.org" "~/.emacs.d/lisp/treemacsPath.org" "f:/data/9_unvote/py/p1.py" "~/.emacs.d/lisp/ido-vertical-mode.el" "~/.emacs.d/lisp/centered-window.el" "~/.emacs.d/lisp/my-config.txt"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "c:/emacs/.emacs.d/lisp/my-config.txt"
+  "my-config.txt"
+  'text-mode
+  '(which-key-mode smartparens-mode global-auto-revert-mode undo-tree-mode general-override-mode magit-file-mode ivy-mode company-mode projectile-mode yas-minor-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24446 54919 267010 0) (buffer-file-coding-system . utf-8-dos) (overwrite-mode))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "f:/contribution2/contribution2_py/add_value.org"
+  "add_value.org"
+  'org-mode
+  '(which-key-mode smartparens-mode global-auto-revert-mode undo-tree-mode rainbow-delimiters-mode general-override-mode magit-file-mode ivy-mode company-mode projectile-mode yas-minor-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24446 54919 267010 0) (buffer-file-coding-system . utf-8-dos) (overwrite-mode) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "c:/emacs/.emacs.d/lisp/init-general.el"
+  "init-general.el"
+  'emacs-lisp-mode
+  '(which-key-mode smartparens-mode global-auto-revert-mode undo-tree-mode rainbow-delimiters-mode general-override-mode magit-file-mode ivy-mode company-mode projectile-mode yas-minor-mode)
+  1
+  '(1 nil)
+  nil
+  nil
+  '((buffer-display-time 24446 54249 928654 0) (buffer-file-coding-system . utf-8-dos) (overwrite-mode))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  "c:/emacs/.emacs.d/lisp/init-keybindings.el"
+  "init-keybindings.el"
+  'emacs-lisp-mode
+  '(which-key-mode smartparens-mode global-auto-revert-mode undo-tree-mode rainbow-delimiters-mode general-override-mode magit-file-mode ivy-mode company-mode projectile-mode yas-minor-mode)
+  1689
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24446 53335 626238 0) (buffer-file-coding-system . utf-8-dos) (overwrite-mode))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "c:/emacs/.emacs.d/lisp/init-evil.el"
+  "init-evil.el"
+  'emacs-lisp-mode
+  '(which-key-mode smartparens-mode global-auto-revert-mode undo-tree-mode rainbow-delimiters-mode general-override-mode magit-file-mode ivy-mode company-mode projectile-mode yas-minor-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24446 53312 842543 0) (buffer-file-coding-system . prefer-utf-8-dos) (overwrite-mode))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "f:/org/task.org"
+  "task.org"
+  'org-mode
+  '(which-key-mode smartparens-mode global-auto-revert-mode undo-tree-mode rainbow-delimiters-mode general-override-mode ivy-mode company-mode projectile-mode yas-minor-mode)
+  3726
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24446 53225 738949 0) (buffer-file-coding-system . utf-8-dos) (overwrite-mode) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "f:/org/test.org"
+  "test.org"
+  'org-mode
+  '(which-key-mode smartparens-mode global-auto-revert-mode undo-tree-mode rainbow-delimiters-mode general-override-mode ivy-mode company-mode projectile-mode yas-minor-mode cwarn-mode)
+  80
+  '(80 nil)
+  nil
+  nil
+  '((buffer-display-time 24446 48338 805817 0) (buffer-file-coding-system . undecided-dos) (overwrite-mode) (truncate-lines . t))
+  '((mark-ring nil)))
+

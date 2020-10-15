@@ -48,6 +48,7 @@
 
 	powerline
 	powerline-evil
+	;; spaceline-all-the-icons
 
 	minimap
 	beacon
