@@ -23,7 +23,7 @@
 ;;        (cond ((equal major-mode 'emacs-lisp-mode)(elisp--eval-defun)) 
 ;; 	    ;; ((equal major-mode 'elisp-mode)(eval-last-sexp)) 
 ;; 	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
-;; 	     ((equal major-mode 'python-mode) (elpy-shell-send-statement-and-step)) 
+;; 	     ((equal major-mode 'python-mode (elpy-shell-send-satement-and-step)) 
 ;;        ))
 
 
@@ -34,11 +34,12 @@
  :keymaps 'org-mode-map
  "C-j" 'org-next-visible-heading
  "C-k" 'org-previous-visible-heading
- "," 'hydra-org/body
- ;; "C-<RET>" 'org-babel-execute-src-block
+ ;; "," 'hydra-org/body
+ ;; "C-<RET>" 'org-babel-execute-src-blok
  )
 (define-key org-mode-map (kbd "C-<return>") 'org-babel-execute-src-block)
 (define-key org-mode-map (kbd "S-<return>") 'org-insert-heading-respect-content)
+(evil-define-key '('normal 'visual) org-mode-map (kbd ",") 'hydra-org/body)
 
 
 

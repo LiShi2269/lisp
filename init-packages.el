@@ -65,6 +65,7 @@
 	treemacs-magit
 	treemacs-icons-dired
 	treemacs-all-the-icons
+	undo-tree
 	
 	
 

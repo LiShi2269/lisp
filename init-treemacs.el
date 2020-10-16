@@ -6,9 +6,9 @@
 :bind
 (:map treemacs-mode-map
  ;; ([f4] . (lambda()(interactive)(message "test"))))
- ("C-<return>" . (lambda()(interactive)(treemacs-RET-action))))
+ ("C-<return>" . (lambda()(interactive)(treemacs-RET-action)))
 ("<return>" . (lambda()(interactive)(progn (treemacs-RET-action)(treemacs))))
-)
+))
  ;; ("C-<return>" . 'treemacs))
  ;; ([f4] . (lambda()(interactive)(message "test"))))
   
