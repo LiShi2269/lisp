@@ -103,13 +103,13 @@
 
 
 
-
 (general-define-key
  :states  '(normal motion )
  :keymaps 'override 
  :prefix "SPC"
     ;; ---- dir ----
  "<SPC>" 'smex
+    "a" '(:ignore t :which-key "mode")
     "ad" 'deer
     "ar" 'ranger
     "an" 'neotree-toggle
@@ -130,23 +130,27 @@
     "AL" 'org-agenda-list
     "At" 'org-todo-list
 
+    "f" '(:ignore t :which-key "file")
     "ff" 'find-file
     ;; ---- buffer ----
     "fs" 'my-save-buffer
     ;; "fs" 'save-buffer
+    "<tab>" 'mode-line-other-buffer
+    "b" '(:ignore t :which-key "buffer")
     "bb" 'buffer-menu
     ;; 返回dashboard
     "bh" (lambda()(interactive)(switch-to-buffer "*dashboard*"))
     "bd" 'kill-this-buffer
-    "<tab>" 'mode-line-other-buffer
     "bi" 'ido-switch-buffer
     "bs" '(lambda()(interactive)(switch-to-buffer "*scratch*"))
 
     ;; ---- undo-tree ----
+    "u" '(:ignore u :which-key "undotree")
     "uu" 'undo-tree-visualize
     "us" 'undo-tree-save-history
     "ul" 'undo-tree-load-history
     ;; ---- window ----
+    "w" '(:ignore t :which-key "window")
     "w-" 'split-window-below
     "w/" 'split-window-horizontally
     "wd" 'delete-window
@@ -166,12 +170,15 @@
     "w#s" 'desktop-save
     "w#r" 'desktop-read
     ;; ---- zoom ----
+    "z" '(:ignore t :which-key "zoom")
     "z" 'hydra-zoom/body
     ;; ---- quit ----
+    "q" '(:ignore t :which-key "quit")
     "qq" 'kill-emacs
     "qR" 'eval-buffer
     "qs" 'save-buffers-kill-emacs
 
+    "s" '(:ignore t :which-key "setEdit")
     ;; ---- iedit ----
     "se" 'iedit-mode
     ;; ---- Hight-symbol ----

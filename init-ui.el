@@ -1,4 +1,3 @@
-
 ;; ======= theme manage=======
 
 ;; (load-theme 'deeper-blue 1)
@@ -105,7 +104,7 @@
  '(zoom-mode t)
  '(zoom-size '(0.618 . 0.618))
  '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode neotree-mode evil-leader-mode))
- '(zoom-ignored-buffer-names '(" *nswbuff*" " *which-key*"))
+ '(zoom-ignored-buffer-names '("*nswbuff*" ))
  '(temp-buffer-resize-mode t)
  ;; '(zoom-ignored-buffer-name-regexps '("^ .*nswbuff.*" "^\b.*Minibuf.*"))
  )
@@ -143,6 +142,26 @@
  )
 
 
+;; =============== which-key-posframe ========================
+(use-package which-key-posframe
+  ;; :load-path "path/to/which-key-posframe.el"
+  :init
+  (which-key-posframe-mode 1)
+;; position
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-left-corner)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-right-corner)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-right-corner)
+(setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-left-corner)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-right-corner)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-left-corner)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-right-corner)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-top-left-corner)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
+  )
    
 
 ;; ======= Font =======
