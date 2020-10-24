@@ -164,6 +164,12 @@
   )
    
 
+(custom-set-variables
+ (set-face-attribute 'which-key-posframe nil :background "#2f4f4f" )
+ )
+
+
+
 ;; ======= Font =======
 (defun set-font (english chinese english-size chinese-size)
   (set-face-attribute 'default nil :font

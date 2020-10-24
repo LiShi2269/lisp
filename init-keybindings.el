@@ -45,6 +45,7 @@
 (key-chord-define evil-insert-state-map ",," 'evil-normal-state)
 (key-chord-define evil-replace-state-map ",," 'evil-normal-state)
 (key-chord-define ivy-mode-map ",," 'keyboard-escape-quit)
+(key-chord-define evil-insert-state-map ".." 'myinsert)
 (setq key-chord-one-key-delay 0.4)     
 (key-chord-mode +1)
 
@@ -62,8 +63,6 @@
   )
 
 
-;; (key-chord-define evil-normal-state-map ".." 'myinsert)
-(key-chord-define evil-insert-state-map ".." 'myinsert)
 
 
 ;; ------ lisp-mode key config -------
@@ -78,18 +77,13 @@
 ;;        ))
 
 
-;; ======================== popup-ring ======================
-;; (use-package popup-kill-ring
-;;   :ensure t
-;;   :bind (:map popup-kill-ring-keymap
-;;               ([escape] . keyboard-quit)
-;; 	      ))
-;; (global-set-key (kbd "<insert>") 'popup-kill-ring)
-;; (evil-define-ke (kbd "<insert>") 'popup-kill-ring)
 
 
 ;; ======================== ivy-mode ======================
 (global-set-key (kbd "<f9>") 'ivy-mode)
+
+
+
 
 
 
