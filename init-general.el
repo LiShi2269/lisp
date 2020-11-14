@@ -139,7 +139,7 @@
     "b" '(:ignore t :which-key "buffer")
     "bb" 'buffer-menu
     ;; 返回dashboard
-    "bh" (lambda()(interactive)(switch-to-buffer "*dashboard*"))
+    "bh" (lambda()(interactive)(progn(switch-to-buffer "*dashboard*")))
     "bd" 'kill-this-buffer
     "bi" 'ido-switch-buffer
     "bs" '(lambda()(interactive)(switch-to-buffer "*scratch*"))
@@ -165,6 +165,7 @@
     "wJ" 'evil-window-move-very-bottom
     "w=" 'balance-windows
     "wf" 'make-frame
+    "w;" 'toggle-truncate-lines
     "wc" 'centered-window-mode
     "wF" 'toggle-frame-fullscreen
     "w#s" 'desktop-save

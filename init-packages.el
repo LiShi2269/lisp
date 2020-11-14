@@ -80,6 +80,7 @@
 
 	dynamic-spaces
 	py-autopep8
+	youdao-dictionary
 
 
 	yasnippet
@@ -110,8 +111,13 @@
 	ibuffer
 	
 	smex
+	pandoc
+	openwith
 
 	pdf-tools
+	org-pdftools
+	org-noter-pdftools
+	org-noter
 
 	ein
 

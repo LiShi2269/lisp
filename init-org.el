@@ -84,6 +84,12 @@
     ("C" org-src/body "src")
 ;;edit-special
     ("'" org-edit-special "org special edit")
+;;mode-setting
+    ("m" org-mode-config/body "org mode config")
+  )
+
+(defhydra org-mode-config(:exit t)
+("n" org-num-face "orgNum")
   )
 
 (defhydra org-subtree(:exit t)
@@ -226,7 +232,7 @@
 ;; --------- todo list -----------
 (setq org-todo-keywords
       '(
-	(sequence "TODO"  "CHANGE" "|" "DONE" "DELAY")
+	(sequence "TODO" "DELAY" "|" "CHANGE" "DONE" "GiveUp" )
 	;; (sequence "one" "two" "three" "four" "five" "|" "DONE")
 	;; (sequence "a" "b" "c" "e" "f" "|" "DONE")
 	;; (sequence "1" "2" "3" "4" "5" "|" "DONE")
@@ -252,5 +258,29 @@
 (setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
 (setq org-src-preserve-indentation t)
+
+
+;; 排版
+
+;; hard indent？？？
+;; (setq org-adapt-indentation t
+      ;; org-hide-leading-stars t
+      ;; org-odd-levels-only t)
+
+;; don’t display the emphasis markers
+;; change the face of a headline if it is marked DONE
+;; hide the stars
+;; show entities as UTF8 characters.
+;; odd levels only
+;; I feel this makes for a cleaner look of the buffer.
+
+(setq org-hide-emphasis-markers t
+      org-fontify-done-headline t
+      org-hide-leading-stars t
+      org-pretty-entities t
+      org-odd-levels-only t)
+
+
+
 ;; ======= provide =======
 (provide 'init-org)

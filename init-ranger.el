@@ -124,6 +124,9 @@
 ;; ------- delay -------
 (setq ranger-footer-delay 0.2)
 (setq ranger-preview-delay 0.040)
+:bind
+(:map ranger-mode-map
+ ("C-<return>" . (lambda()(interactive)(progn(openwith-mode 1)(ranger-find-file)))))
   )
 
 

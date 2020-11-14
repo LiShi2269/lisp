@@ -117,7 +117,7 @@
 
 
 ;; =============== just dashboard transparency ========================
-(add-hook 'window-configuration-change-hook (lambda()
+(add-hook 'window-configuration-change-hook (lambda()(openwith-mode 0)
 (cond
 ((equal 'dashboard-mode major-mode) (progn (set-frame-parameter (selected-frame) 'alpha 85) (evil-goto-first-line) (next-line 8) (evil-forward-WORD-begin)))
 ;; ((equal 'dashboard-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 85))
@@ -148,13 +148,13 @@
   :init
   (which-key-posframe-mode 1)
 ;; position
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
+(setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-left-corner)
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-right-corner)
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-right-corner)
-(setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-left-corner)
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-right-corner)
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-left-corner)
@@ -162,13 +162,21 @@
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-top-left-corner)
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
   )
-   
 
 (custom-set-variables
  (set-face-attribute 'which-key-posframe nil :background "#2f4f4f" )
  )
 
+;; =============== which-key-config ========================
+;; (setq which-key-popup-type 'side-window)
+;; (which-key-setup-side-window-bottom)
+;; (setq which-key-side-window-location 'bottom)
+;; (setq which-key-popup-type 'frame)
+;; max width of which-key frame: number of columns (an integer)
+;; (setq which-key-frame-max-width 60)
 
+;; max height of which-key frame: number of lines (an integer)
+;; (setq which-key-frame-max-height 20)
 
 ;; ======= Font =======
 (defun set-font (english chinese english-size chinese-size)

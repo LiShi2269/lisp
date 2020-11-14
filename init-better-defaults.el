@@ -19,6 +19,9 @@
                         ;; (agenda . 5)
                         ;; (registers . 5)
 			))
+ ;; 在dashboard使用openwith外部打开
+ ;; :bind(:map dashboard-mode-map
+	    ;; ("C-<return>" . (lambda()(interactive)(progn(openwith-mode 1)(evil-ret)))))
   )
  
 ;; (visual-line-mode 1)
@@ -158,6 +161,12 @@
 ;; (require 'minimap)
 
 
+;; ====== neotree =============
+(use-package neotree
+  :ensure t
+  :bind(:map neotree-mode-map
+	     ("C-<return>" . (lambda()(interactive)(progn (openwith-mode 1)(neotree-enter)))))
+  )
 ;; ====== undo-tree =============
 ;; (require 'undo-tree)
 ;; (global-undo-tree-mode t)
@@ -167,13 +176,38 @@
   )
 
 ;; ====== sace-place =============
-
 (add-to-list 'load-path "~/.emacs.d/lisp/save-place.el")
 (require 'saveplace)
 (save-place-mode 1)
 
 
+;; ====== openwith =============
+(use-package openwith
+  :ensure t
+  :init
+  (openwith-mode 0)
 
+ '(openwith-associations
+   '(("\\.pdf\\'" "PDF-Viewer"
+      (file))
+     ;; ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer"
+      ;; ("-idx" file))
+     ;; ("\\.\\(?:jp?g\\|png\\)\\'" "display"
+      ;; (file))
+     ))
+  )
+
+
+
+;; ====== pdf configuration =============
+(use-package org-pdftools
+  :hook (org-mode . org-pdftools-setup-link))
+
+(use-package org-noter-pdftools
+  :after org-noter
+  :config
+  (with-eval-after-load 'pdf-annot
+    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 ;; ======= provide =======
 (provide 'init-better-defaults)
