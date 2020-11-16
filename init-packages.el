@@ -144,6 +144,7 @@
 	lsp-jedi
 	;; lsp-python-ms
 	;; lsp-pyright
+	
 
 	py-autopep8
 	lsp-mode

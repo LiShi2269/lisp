@@ -2,7 +2,9 @@
 (require 'org)
 ;;---------bullets------------
 (require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
+(setq header-line-format "    ")
+			   ))
 
 ;; ------key-map-set-----
 (setq org-log-done t)
@@ -279,6 +281,15 @@
       org-hide-leading-stars t
       org-pretty-entities t
       org-odd-levels-only t)
+
+(custom-set-faces
+ '(header-line ((default :background "#161a1f")))
+ '(org-level-1 ((t :family "等距更纱黑体 SC" :height 1.5 )))
+ )
+
+
+
+
 
 
 

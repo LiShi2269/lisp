@@ -1,16 +1,13 @@
-;; ======= theme manage=======
-
-;; (load-theme 'deeper-blue 1)
-;; (load-theme 'dracula 1)
-;; (load-theme 'monokai 1)
-(load-theme 'spolsky 1)
-;; (load-theme 'atom-one-dark 1)
 
 
+(defun set-font(f h)
+  "set font"
+ (set-face-attribute 'default nil :family f :height h)
+ (set-fontset-font t 'han (font-spec :family f :height h))
+  )
 
-
-
-
+(set-font "等距更纱黑体 SC" 150)
+;; (set-font "Courier New" 130)
 
 (require 'perfect-margin)
 (perfect-margin-mode 1)
@@ -77,15 +74,6 @@
 
 
 
-;; 和beacon-mode在一起效果不好
-;; =============== hl-line-mode ========================
-(global-hl-line-mode t)
-;; 被选择的区域的样子
-;; (set-face-attribute 'region nil :weight 'normal :box "#FFFFFF" :underline nil)
-;; (set-face-attribute 'region nil :weight 'normal :box nil :underline "#FFFFFF")
-(set-face-attribute 'hl-line nil :weight 'normal :box nil :underline nil :background "dark slate gray")
-(set-face-attribute 'region nil  :background "royal blue")
-
 
 ;; =============== all-the-icons ========================
 ;; 安装方法：从github下载all-the-icons的zip，解压后直接安装字体
@@ -129,8 +117,55 @@
 )))
 
 
-;; =============== company tool ========================
 
+
+;; =============== which-key-config ========================
+;; (setq which-key-popup-type 'side-window)
+;; (which-key-setup-side-window-bottom)
+;; (setq which-key-side-window-location 'bottom)
+;; (setq which-key-popup-type 'frame)
+;; max width of which-key frame: number of columns (an integer)
+;; (setq which-key-frame-max-width 60)
+
+;; max height of which-key frame: number of lines (an integer)
+;; (setq which-key-frame-max-height 20)
+
+
+
+
+
+;; ;; ======= Font old function =======
+;; (defun set-font (english chinese english-size chinese-size)
+;;   (set-face-attribute 'default nil :font
+;;                       (format   "%s:pixelsize=%d"  english english-size))
+;;   (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;     (set-fontset-font (frame-parameter nil 'font) charset
+;;                       (font-spec :family chinese :size chinese-size))))
+
+;; ;; (set-font "Source Code Pro" "simsun"  22 22)
+;; (set-font "Sarasa Mono HC Light" "Sarasa Mono HC Light"  22 22)
+;; (set-font "等距更纱黑体 SC"  "等距更纱黑体 SC" 18 18)
+
+
+
+
+
+
+
+
+;; =============== company tool ========================
+;; (custom-set-variables
+;;  (set-face-attribute 'company-scrollbar-bg nil :background "#2f4f4f")
+;;  (set-face-attribute 'company-scrollbar-fg nil :background "#293b3b")
+;;  (set-face-attribute 'company-tooltip nil :background "#2f4f4f" :foreground "ivory")
+;;  (set-face-attribute 'company-tooltip-selection nil :background "dim gray" )
+;;  (set-face-attribute 'company-tooltip-common nil :foreground "#c19696" )
+;;  (set-face-attribute 'cursor nil :background "#82a7a7" )
+
+;;  )
+
+
+;; =============== company tool ========================
 (custom-set-variables
  (set-face-attribute 'company-scrollbar-bg nil :background "#2f4f4f")
  (set-face-attribute 'company-scrollbar-fg nil :background "#293b3b")
@@ -139,7 +174,33 @@
  (set-face-attribute 'company-tooltip-common nil :foreground "#c19696" )
  ;; (set-face-attribute 'cursor nil :background "#c1a187" )
  (set-face-attribute 'cursor nil :background "#82a7a7" )
+ 
+
+;; =============== which key face========================
+ ;; (set-face-attribute 'which-key-posframe nil :background "#2f4f4f" )
  )
+
+
+
+
+
+;; ======= theme manage=======
+;; (load-theme 'deeper-blue 1)
+;; (load-theme 'dracula 1)
+;; (load-theme 'monokai 1)
+(load-theme 'spolsky 1)
+;; (load-theme 'atom-one-dark 1)
+
+
+;; 和beacon-mode在一起效果不好
+;; =============== hl-line-mode ========================
+(global-hl-line-mode t)
+;; 被选择的区域的样子
+;; (set-face-attribute 'region nil :weight 'normal :box "#FFFFFF" :underline nil)
+;; (set-face-attribute 'region nil :weight 'normal :box nil :underline "#FFFFFF")
+
+(set-face-attribute 'hl-line nil :weight 'normal :box nil :underline nil :background "dark slate gray")
+(set-face-attribute 'region nil  :background "royal blue")
 
 
 ;; =============== which-key-posframe ========================
@@ -163,35 +224,6 @@
 ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
   )
 
-(custom-set-variables
- (set-face-attribute 'which-key-posframe nil :background "#2f4f4f" )
- )
 
-;; =============== which-key-config ========================
-;; (setq which-key-popup-type 'side-window)
-;; (which-key-setup-side-window-bottom)
-;; (setq which-key-side-window-location 'bottom)
-;; (setq which-key-popup-type 'frame)
-;; max width of which-key frame: number of columns (an integer)
-;; (setq which-key-frame-max-width 60)
-
-;; max height of which-key frame: number of lines (an integer)
-;; (setq which-key-frame-max-height 20)
-
-;; ======= Font =======
-(defun set-font (english chinese english-size chinese-size)
-  (set-face-attribute 'default nil :font
-                      (format   "%s:pixelsize=%d"  english english-size))
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font) charset
-                      (font-spec :family chinese :size chinese-size))))
-
-;; (set-font "Source Code Pro" "simsun"  22 22)
-;; (set-font "Sarasa Mono HC Light" "Sarasa Mono HC Light"  22 22)
-(set-font "等距更纱黑体 SC"  "等距更纱黑体 SC" 18 18)
-
-
-
-
-;; ;; ======= provide =======
+;; ;; ;; ======= provide =======
 (provide 'init-ui)

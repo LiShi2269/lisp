@@ -89,7 +89,8 @@
 
 (prefer-coding-system 'utf-8)
 ;; 指定文件编码,此时buffer新建和读取都默认是utf-8,也可以M-x prefer-coding-system 只执行一次
-
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
 ;; ======= iswitch =======
 ;; (iswitchb-mode 1)
 ;; (setq iswitchb-buffer-ignore '("^ " "*Buffer" "*Help*"))
