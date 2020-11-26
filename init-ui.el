@@ -1,14 +1,5 @@
 
 
-(defun set-font(f h)
-  "set font"
- (set-face-attribute 'default nil :family f :height h)
- (set-fontset-font t 'han (font-spec :family f :height h))
-  )
-
-(set-font "等距更纱黑体 SC" 150)
-;; (set-font "Courier New" 130)
-
 (require 'perfect-margin)
 (perfect-margin-mode 1)
 
@@ -91,6 +82,7 @@
 (custom-set-variables
  '(zoom-mode t)
  '(zoom-size '(0.618 . 0.618))
+ ;; 忽略的模式
  '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode neotree-mode evil-leader-mode))
  '(zoom-ignored-buffer-names '("*nswbuff*" ))
  '(temp-buffer-resize-mode t)
@@ -100,7 +92,7 @@
 
 ;; =============== line-spacing ========================
 ;; (setq line-spacing 0.2)
-(setq-default line-spacing 0.1)
+(setq-default line-spacing 0.2)
 
 
 
@@ -115,7 +107,11 @@
 ((equal 'ivy-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 90))
 (t (set-frame-parameter (selected-frame) 'alpha 100) )
 )))
-
+;; ===============  dashboard color ========================
+(custom-set-variables
+ (set-face-attribute 'page-break-lines nil :foreground "dark slate grey"   )
+ (set-face-attribute 'dashboard-footer nil :foreground "Deep Sky Blue1"   )
+ )
 
 
 
@@ -188,7 +184,7 @@
 ;; (load-theme 'deeper-blue 1)
 ;; (load-theme 'dracula 1)
 ;; (load-theme 'monokai 1)
-(load-theme 'spolsky 1)
+;; (load-theme 'spolsky 1)
 ;; (load-theme 'atom-one-dark 1)
 
 
@@ -225,5 +221,28 @@
   )
 
 
-;; ;; ;; ======= provide =======
+;; ===============  font  ========================
+(defun set-font(f h fcolor bgcolor)
+  "set font"
+ (set-face-attribute 'default nil :family f :height h :foreground fcolor :background bgcolor)
+ (set-fontset-font t 'han (font-spec :family f :height h :foreground fcolor :background bgcolor) )
+  )
+
+(set-font "等距更纱黑体 SC" 135 "#E9E7EF" "#161823")
+
+
+;; ===============  other color  ========================
+
+(custom-set-variables
+ ;; (set-face-attribute 'font-lock-comment-face nil :foreground "#bbcdc5"   )
+ (set-face-attribute 'font-lock-comment-face nil :foreground "dodger blue"   )
+ (set-face-attribute 'font-lock-builtin-face nil :foreground "#1bd1a5"   )
+ (set-face-attribute 'font-lock-string-face nil :foreground "#7397ab"   )
+ )
+
+
+
+
+
+;; ======= provide =======
 (provide 'init-ui)

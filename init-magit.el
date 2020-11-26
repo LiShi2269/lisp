@@ -9,6 +9,7 @@
  :states  '(normal motion)
  :keymaps 'override
  :prefix "SPC"
+ "g" '(:ignore t :which-key "magit")
 "gs" 'magit-status
 )
 

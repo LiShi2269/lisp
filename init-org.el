@@ -2,8 +2,13 @@
 (require 'org)
 ;;---------bullets------------
 (require 'org-bullets)
+
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
 (setq header-line-format "    ")
+(setq line-spacing 0.2)
+(custom-set-faces
+ '(header-line ((default :background "#161a1f")))
+)
 			   ))
 
 ;; ------key-map-set-----
@@ -88,6 +93,8 @@
     ("'" org-edit-special "org special edit")
 ;;mode-setting
     ("m" org-mode-config/body "org mode config")
+;;org-open
+    ("o" org-open-at-point "org open at point")
   )
 
 (defhydra org-mode-config(:exit t)
@@ -184,10 +191,10 @@
 
 (defhydra org-deadline-date(:exit t)
  ("i" org-deadline "insertDeadline")
- ("s" org-check-deadlines "checkDeadline")
+ ("c" org-check-deadlines "checkDeadline")
  ("s" org-schedule "schedule")
- ("s" org-check-before-date "checkBeforeDate")
- ("s" org-check-After-date "checkAfterDate")
+ ("<" org-check-before-date "checkBeforeDate")
+ (">" org-check-After-date "checkAfterDate")
  )
 
 
@@ -276,17 +283,26 @@
 ;; odd levels only
 ;; I feel this makes for a cleaner look of the buffer.
 
-(setq org-hide-emphasis-markers t
-      org-fontify-done-headline t
-      org-hide-leading-stars t
-      org-pretty-entities t
-      org-odd-levels-only t)
+(setq
+      org-hide-emphasis-markers t
+      ;; org-fontify-done-headline t
+      ;; org-hide-leading-stars t
+      ;; org-pretty-entities t
+      ;; org-odd-levels-only t
+      )
 
 (custom-set-faces
  '(header-line ((default :background "#161a1f")))
- '(org-level-1 ((t :family "等距更纱黑体 SC" :height 1.5 )))
+ '(org-level-1 ((t :height 1.3 :weight normal :foreground "light sky blue")))
+ '(org-level-2 ((t :height 1.2 :weight normal :foreground "pale turquoise")))
+ '(org-level-3 ((t :height 1.1 :foreground "DarkTurquoise")))
+ '(org-level-4 ((t :height 1.1 :foreground "DarkTurquoise")))
+ '(org-level-5 ((t :height 1.1 :foreground "medium aquamarine")))
+ '(org-level-6 ((t :height 1.1 :foreground "indian red")))
+ '(org-level-6 ((t :height 1.1 :foreground "violet")))
+ ;; '(org-blank-before-new-entry ((heading . always) (plain-list-item . auto)))
  )
-
+;; (setq org-cycle-separator-lines 0)
 
 
 
