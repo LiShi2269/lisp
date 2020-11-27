@@ -60,11 +60,11 @@
 	zmq
 	;; --- treemacs ---
 	treemacs
-	;; treemacs-evil
-	;; treemacs-projectile
-	;; treemacs-magit
-	;; treemacs-icons-dired
-	;; treemacs-all-the-icons
+	treemacs-evil
+	treemacs-projectile
+	treemacs-magit
+	treemacs-icons-dired
+	treemacs-all-the-icons
 	undo-tree
 
 	posframe

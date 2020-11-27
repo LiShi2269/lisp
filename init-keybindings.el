@@ -29,10 +29,10 @@
 ;; 是否循环切换buffer
 (setq nswbuff-display-intermediate-buffers t)
 ;; 是否过滤一些内容
-(setq nswbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
+(setq nswbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*" "Treemacs Update*"))
 ;; (setq nswbuff-include-buffer-regexps '("\*scratch\*" "\*Python\*" ))
 ;; (setq nswbuff-exclude-buffer-regexps '("^\*.*\*$" ))
-
+;; test
 
 
 

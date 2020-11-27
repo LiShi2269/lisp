@@ -231,13 +231,12 @@
 (set-font "等距更纱黑体 SC" 135 "#E9E7EF" "#161823")
 
 
-;; ===============  other color  ========================
+;  ===============  other color  ========================
 
 (custom-set-variables
- ;; (set-face-attribute 'font-lock-comment-face nil :foreground "#bbcdc5"   )
- (set-face-attribute 'font-lock-comment-face nil :foreground "dodger blue"   )
+ (set-face-attribute 'font-lock-comment-face nil :foreground "dark sea green"   )
  (set-face-attribute 'font-lock-builtin-face nil :foreground "#1bd1a5"   )
- (set-face-attribute 'font-lock-string-face nil :foreground "#7397ab"   )
+ (set-face-attribute 'font-lock-string-face nil :foreground "deep sky blue"   )
  )
 
 

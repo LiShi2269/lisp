@@ -144,7 +144,8 @@
     ;; "fs" 'save-buffer
     "<tab>" 'mode-line-other-buffer
     "b" '(:ignore t :which-key "buffer")
-    "bb" 'buffer-menu
+    ;; "bb" 'buffer-menu
+    "bb" (lambda()(interactive) (progn (kill-treemacs-buffer)(buffer-menu)))
     ;; 返回dashboard
     "bh" (lambda()(interactive)(progn(switch-to-buffer "*dashboard*")))
     "bd" 'kill-this-buffer
@@ -228,6 +229,27 @@
 (require 'winum)
 
 (winum-mode)
+
+
+(defun kill-treemacs-buffer()
+    (condition-case nil
+	(kill-buffer "Treemacs Update Single File Process")
+	(error nil))
+    (setq a 2)
+    (while (< a 10)
+      (condition-case nil
+	  (kill-buffer
+	   (concatenate 'string "Treemacs Update Single File Process<" (number-to-string a) ">")
+	   )
+	(error nil)
+	  )
+      ;; (print (concatenate 'string "asdf" (number-to-string a) "asdcf"))
+      (setq a (+ a 1))
+      )
+  )
+
+
+
 
 
 ;; ======= evil mode =======
