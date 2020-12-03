@@ -9,8 +9,8 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-language-server[a
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple psutil ipystata
 
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  matplotlib
-
-
+:: numpy有问题
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy==1.19.3
 
 ::更新
 python -m pip install -i  https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade pip

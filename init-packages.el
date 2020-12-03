@@ -162,9 +162,11 @@
 	;; --- window ---
 	winum
 	;; --- Themes ---
-	monokai-theme
+	;; monokai-theme
       	;; --- test package ---
 	;; google-this
+      	;; --- windows 不能用 ---
+	;; auctex
 	)
  "Default packages")
 

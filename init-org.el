@@ -268,8 +268,12 @@
 ;; 关于org src 模式导出是不是前面要有空格
 (setq org-src-preserve-indentation t)
 
+ 	
+;;====================== latex ===========================
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
 
-;; 排版
+;;====================== 排版 ===========================
 
 ;; hard indent？？？
 ;; (setq org-adapt-indentation t

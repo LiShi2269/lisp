@@ -1,11 +1,8 @@
-
-
-
-
-
-(defun test()(interactive)
-       ;; (buffer-list)
-       ;; (message buffer-list)
-       (message (buffer-name))
-       )
-(global-set-key (kbd "<f8>") 'test)
+#+Title： Edit workspace
+# asdf
+# asdf
+* default Workspace
+** task
+ - path :: f:/task
+** lisp
+ - path :: ~/.emacs.d/lisp
