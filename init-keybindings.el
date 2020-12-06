@@ -21,7 +21,9 @@
 (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
 
-
+;; ======= shell-mode =======
+(define-key shell-mode-map (kbd "C-j") 'comint-next-input)
+(define-key shell-mode-map (kbd "C-k") 'comint-previous-input)
 
 ;; ========== nswbuff 快速切换 ===============
 (global-set-key (kbd "C-S-h") 'nswbuff-switch-to-previous-buffer)
