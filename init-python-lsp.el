@@ -47,7 +47,7 @@
     ("sF" elpy-shell-send-defun-and-go "sendFunc_go")
     ;; ("yn" yas-new-snippet)
     ("ye" abbrev-expansion "abbrevExpansion")
-    ("=" elpy-autopep8-fix-code "fixCode")
+    ("=" py-autopep8 "fixCode")
 ;; ---------lsp function ----------------
     ("lsd" my-toggle-sideline-show-diagnostics "")
     ("lsh" my-toggle-sideline-show-hover)
@@ -125,19 +125,19 @@
 ;; (setq lsp-keymap-prefix "s-l")
 
 ;; ------- lsp-jedi -------
-;; (use-package lsp-jedi
-;;   :ensure t
-;;   :config
-;;   (with-eval-after-load "lsp-mode"
-;;     (add-to-list 'lsp-disabled-clients 'pyls)
-;;     (add-to-list 'lsp-enabled-clients 'jedi)))
+(use-package lsp-jedi
+  :ensure t
+  :config
+  (with-eval-after-load "lsp-mode"
+    (add-to-list 'lsp-disabled-clients 'pyls)
+    (add-to-list 'lsp-enabled-clients 'jedi)))
 
 ;; ------- lsp-pyright -------
-(use-package lsp-pyright
-  :ensure t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp))))  ; or lsp-deferred
+;; (use-package lsp-pyright
+;;   :ensure t
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-pyright)
+;;                           (lsp))))  ; or lsp-deferred
 
 ;; ------- lsp-mode 设定 -------
 (use-package lsp-mode
@@ -168,7 +168,7 @@
 ;; ------- lsp-ui-sideline 设定 -------
 (setq lsp-ui-sideline-show-hover t)
 (setq lsp-ui-sideline-show-code-actions nil)
-(setq lsp-ui-sideline-update-mode t)
+(setq lsp-ui-sideline-update-mode nil)
 ;; ------- use ipython as interpretor -------
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
