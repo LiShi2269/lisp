@@ -45,7 +45,7 @@
 (key-chord-define evil-insert-state-map ",," 'evil-normal-state)
 (key-chord-define evil-replace-state-map ",," 'evil-normal-state)
 (key-chord-define ivy-mode-map ",," 'keyboard-escape-quit)
-(key-chord-define evil-insert-state-map ".." 'myinsert)
+;; (key-chord-define evil-insert-state-map ".." 'myinsert)
 (setq key-chord-one-key-delay 0.4)     
 (key-chord-mode +1)
 

@@ -158,9 +158,6 @@
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
-;; optionally if you want to use debugger
-;; (use-package dap-mode)
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 ;; ------- lsp-ui 设定 -------
 ;; ------- lsp-ui-doc 设定 -------
@@ -178,9 +175,11 @@
 
 (setq lsp-enable-snippet t)
 
-
-
-
+(key-chord-define python-mode-map ".." 'myinsert)
+(key-chord-define inferior-python-mode-map ".." 'myinsert)
+;; (add-hook 'python-mode-hook (lambda()
+;; 	    (key-chord-define evil-insert-state-map ".." 'myinsert)
+;; 			      ))
 
 ;; ------- mode hooks -------
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
