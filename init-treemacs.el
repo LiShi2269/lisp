@@ -32,7 +32,7 @@
 ;; (treemacs-git-mode 'deferred)
 
   
-
+(setq treemacs-persist-file "/home/lishi/.emacs.d/lisp/treemacs-persist" )
 
 
 
