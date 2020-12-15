@@ -139,7 +139,7 @@
 	;;default
 	anaconda-mode
 	python-mode
-	;;flycheck	
+	flycheck	
 	blacken
 	lsp-jedi
 	;; lsp-python-ms

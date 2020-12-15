@@ -171,18 +171,25 @@
       python-shell-interpreter-args "-i --simple-prompt")
 
 ;; -------completion-------
-(add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))))
+(add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))
+				   (flycheck-mode)))
 
 (setq lsp-enable-snippet t)
 
 (key-chord-define python-mode-map ".." 'myinsert)
 (key-chord-define inferior-python-mode-map ".." 'myinsert)
-;; (add-hook 'python-mode-hook (lambda()
-;; 	    (key-chord-define evil-insert-state-map ".." 'myinsert)
-;; 			      ))
 
 ;; ------- mode hooks -------
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
+
+
+(use-package flycheck
+  :ensure t
+  )
+
+
+
 
 (elpy-enable)
 (provide 'init-python-lsp)
