@@ -110,27 +110,24 @@
 
 
 ;; ------- lsp-microsoft -------
-;; (require 'lsp-python-ms)
-;; (setq lsp-python-ms-auto-install-server t)
-;; (add-hook 'python-mode-hook #'lsp) ; or lsp-deferred
 
-;; (use-package lsp-python-ms
-;;   :ensure t
-;;   :init (setq lsp-python-ms-auto-install-server t)
-;;   :hook (python-mode . (lambda ()
-;;                           (require 'lsp-python-ms)
-;;                           (lsp))))  ; or lsp-deferred
-;; 很慢不好用
-;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-;; (setq lsp-keymap-prefix "s-l")
+(use-package lsp-python-ms
+  :ensure t
+  :init (setq lsp-python-ms-auto-install-server t)
+        (setq lsp-log-io t)
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))  ; or lsp-deferred
+;; 如果是linux需要安装依赖，archlinux中在yay有相关内容
+
 
 ;; ------- lsp-jedi -------
-(use-package lsp-jedi
-  :ensure t
-  :config
-  (with-eval-after-load "lsp-mode"
-    (add-to-list 'lsp-disabled-clients 'pyls)
-    (add-to-list 'lsp-enabled-clients 'jedi)))
+;; (use-package lsp-jedi
+  ;; :ensure t
+  ;; :config
+  ;; (with-eval-after-load "lsp-mode"
+    ;; (add-to-list 'lsp-disabled-clients 'pyls)
+    ;; (add-to-list 'lsp-enabled-clients 'jedi)))
 
 ;; ------- lsp-pyright -------
 ;; (use-package lsp-pyright
@@ -161,18 +158,25 @@
 
 ;; ------- lsp-ui 设定 -------
 ;; ------- lsp-ui-doc 设定 -------
-(setq lsp-ui-doc-delay 3)
+;; (setq lsp-ui-doc-delay 3)
 ;; ------- lsp-ui-sideline 设定 -------
-(setq lsp-ui-sideline-show-hover t)
-(setq lsp-ui-sideline-show-code-actions nil)
-(setq lsp-ui-sideline-update-mode nil)
+;; (setq lsp-ui-sideline-show-hover t)
+;; (setq lsp-ui-sideline-show-diagnostics t)
+;; (setq lsp-ui-sideline-show-code-actions t)
+;; (setq lsp-ui-sideline-update-mode t)
 ;; ------- use ipython as interpretor -------
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
 
 ;; -------completion-------
-(add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))
-				   (flycheck-mode)))
+;; (add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))
+;; 				   (flycheck-mode)))
+
+
+(add-hook 'lsp-managed-mode-hook (lambda () (flycheck-mode)))
+(setq lsp-python-ms-python-executable  "/home/lishi/.pyenv/versions/3.6.8/bin/python")
+(setq lsp-python-ms-extra-paths  '("/home/lishi/.pyenv/versions/3.6.8/lib"  ))
+
 
 (setq lsp-enable-snippet t)
 
