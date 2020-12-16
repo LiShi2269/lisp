@@ -106,8 +106,7 @@
 	   )
        )
 
-
-
+(add-hook 'inferior-python-mode-hook (lambda()(company-mode -1)))
 
 ;; ------- lsp-microsoft -------
 
