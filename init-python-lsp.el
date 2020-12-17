@@ -1,4 +1,3 @@
-
 ;; ------- my functions -------
 (defun my-run-python()
 "左边是原来的py右边是ipython，光标在左边"
@@ -11,6 +10,7 @@
 	(switch-to-buffer "*Python*")
 	(evil-window-move-far-right)
 	(evil-window-left 1)
+	(if (treemacs-get-local-window) (treemacs)(print ""))
 	)
 )
 

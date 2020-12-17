@@ -85,8 +85,8 @@
     ;; (define-key bookmark-bmenu-mode-map (kbd "ESC") 'quit-window)
   )
 
-
-
+;; 在进入ipython的时候evil应该要采用normal-state
+(evil-set-initial-state 'inferior-python-mode 'normal)
 
  
 (general-define-key
