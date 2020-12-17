@@ -135,6 +135,7 @@
 ;;                           (require 'lsp-pyright)
 ;;                           (lsp))))  ; or lsp-deferred
 
+
 ;; ------- lsp-mode 设定 -------
 (use-package lsp-mode
     :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
@@ -148,21 +149,23 @@
 	  )
     )
 
+
 ;; optionally
-(use-package lsp-ui :commands lsp-ui-mode)
+;; (use-package lsp-ui :commands lsp-ui-mode)
 ;; if you are ivy user
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+;; (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
 
 ;; ------- lsp-ui 设定 -------
-;; ------- lsp-ui-doc 设定 -------
-;; (setq lsp-ui-doc-delay 3)
-;; ------- lsp-ui-sideline 设定 -------
+;; (setq lsp-ui-doc-delay 5)
 ;; (setq lsp-ui-sideline-show-hover t)
-;; (setq lsp-ui-sideline-show-diagnostics t)
-;; (setq lsp-ui-sideline-show-code-actions t)
-;; (setq lsp-ui-sideline-update-mode t)
+;; (setq lsp-ui-sideline-show-diagnostics nil)
+;; (setq lsp-ui-sideline-show-code-actions nil)
+;; (setq lsp-ui-sideline-update-mode nil)
+
+
+
 ;; ------- use ipython as interpretor -------
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
@@ -172,9 +175,19 @@
 ;; 				   (flycheck-mode)))
 
 
-(add-hook 'lsp-managed-mode-hook (lambda () (flycheck-mode)))
+(add-hook 'lsp-mode-hook (lambda () (flycheck-mode)))
 (setq lsp-python-ms-python-executable  "/home/lishi/.pyenv/versions/3.6.8/bin/python")
-(setq lsp-python-ms-extra-paths  '("/home/lishi/.pyenv/versions/3.6.8/lib"  ))
+(setq lsp-python-ms-extra-paths  '("/home/lishi/.pyenv/versions/3.6.8/lib" "/home/lishi/.pyenv/versions/3.6.8/bin/" "/home/lishi/.pyenv/versions/3.6.8/include/" "/home/lishi/.pyenv/versions/3.6.8/etc" "/home/lishi/.pyenv/versions/3.6.8/share"))
+
+
+
+(add-hook 'hack-local-variables-hook
+      (lambda ()
+    (when (derived-mode-p 'python-mode)
+      (require 'lsp-python-ms)
+      (lsp)))) ; or lsp-deferred
+
+
 
 
 (setq lsp-enable-snippet t)
