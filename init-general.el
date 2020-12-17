@@ -5,7 +5,6 @@
 (evil-mode )
 
 
-
 ;; ===== beacon mode =====
 ;; 为了使用beacon把evil-next-line 换成 next-line
 ;; (evil-define-key 'normal 'global "j" (lambda()(interactive)(next-line 1)))
@@ -99,7 +98,11 @@
  (kbd "M-k") 'evil-window-up
  )
 
-
+(defun delete-other-window-and-quite-treemacs()(interactive)
+       "删除出了当前窗口外的所有窗口并且关掉treemacs窗口"
+       (progn (if (treemacs-get-local-window) (treemacs)(print ""))
+	      (delete-other-windows))
+       )
 
 
 
@@ -162,7 +165,8 @@
     "w-" 'split-window-below
     "w/" 'split-window-horizontally
     "wd" 'delete-window
-    "wD" 'delete-other-windows 
+    ;; "wD" 'delete-other-windows 
+    "wD" 'delete-other-window-and-quite-treemacs
     "wl" 'evil-window-right
     "wL" 'evil-window-move-far-right
     "wh" 'evil-window-left
