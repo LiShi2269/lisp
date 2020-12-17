@@ -148,7 +148,12 @@
 	  ("C-<RET>" . elpy-shell-send-statement-and-step)
 	  )
     )
-
+(use-package lsp-python-ms
+  :ensure t
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))  ; or lsp-deferred
 
 ;; optionally
 ;; (use-package lsp-ui :commands lsp-ui-mode)
@@ -176,9 +181,13 @@
 
 
 (add-hook 'lsp-mode-hook (lambda () (flycheck-mode)))
-(setq lsp-python-ms-python-executable  "/home/lishi/.pyenv/versions/3.6.8/bin/python")
-(setq lsp-python-ms-extra-paths  '("/home/lishi/.pyenv/versions/3.6.8/lib" "/home/lishi/.pyenv/versions/3.6.8/bin/" "/home/lishi/.pyenv/versions/3.6.8/include/" "/home/lishi/.pyenv/versions/3.6.8/etc" "/home/lishi/.pyenv/versions/3.6.8/share"))
 
+;; (setq lsp-python-ms-python-executable  "/home/lishi/.pyenv/versions/3.6.8/bin/python")
+;; (setq lsp-python-ms-extra-paths  '("/home/lishi/.pyenv/versions/3.6.8/lib" ))
+
+
+(setq lsp-python-ms-python-executable  "/home/lishi/Envs/jupyter/bin/python")
+(setq lsp-python-ms-extra-paths  '("/home/lishi/Envs/jupyter/lib" ))
 
 
 (add-hook 'hack-local-variables-hook
