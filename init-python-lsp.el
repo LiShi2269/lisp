@@ -180,7 +180,7 @@
 ;; 				   (flycheck-mode)))
 
 
-(add-hook 'lsp-mode-hook (lambda () (flycheck-mode)))
+(add-hook 'lsp-mode-hook (lambda () (flycheck-mode)(hs-minor-mode)))
 
 ;; (setq lsp-python-ms-python-executable  "/home/lishi/.pyenv/versions/3.6.8/bin/python")
 ;; (setq lsp-python-ms-extra-paths  '("/home/lishi/.pyenv/versions/3.6.8/lib" ))
@@ -202,6 +202,10 @@
 (setq lsp-enable-snippet t)
 
 (key-chord-define python-mode-map ".." 'myinsert)
+(key-chord-define python-mode-map "zz" 'elpy-folding-toggle-at-point)
+(key-chord-define python-mode-map "z;" 'elpy-folding-toggle-comments)
+(key-chord-define python-mode-map "zs" 'hs-hide-all)
+(key-chord-define python-mode-map "zS" 'hs-show-all)
 (key-chord-define inferior-python-mode-map ".." 'myinsert)
 
 ;; ------- mode hooks -------
