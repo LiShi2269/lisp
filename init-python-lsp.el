@@ -186,8 +186,10 @@
 ;; (setq lsp-python-ms-extra-paths  '("/home/lishi/.pyenv/versions/3.6.8/lib" ))
 
 
-(setq lsp-python-ms-python-executable  "/home/lishi/Envs/jupyter/bin/python")
-(setq lsp-python-ms-extra-paths  '("/home/lishi/Envs/jupyter/lib" ))
+;; (setq lsp-python-ms-python-executable  "/home/lishi/Envs/jupyter/bin/python")
+(setq lsp-python-ms-python-executable  "c:/HOME/.pyenv/pyenv-win/versions/3.6.8/python.exe")
+;; (setq lsp-python-ms-extra-paths  '("/home/lishi/Envs/jupyter/lib" ))
+(setq lsp-python-ms-extra-paths  '("c:/HOME/.pyenv/pyenv-win/versions/3.6.8/Lib" ))
 
 
 (add-hook 'hack-local-variables-hook

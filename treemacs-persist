@@ -2,12 +2,12 @@
 ** lisp
  - path :: ~/.emacs.d/lisp
 ** PI
- - path :: /mnt/study/data-preprocessing/PI
+ - path :: F:/data-preprocessing/PI
 ** task
- - path :: /mnt/study/task
+ - path :: F:/task
 ** contribution2
- - path :: /mnt/study/contribution2/contribution2_py
+ - path :: F:/contribution2/contribution2_py
 ** contribution1
- - path :: /mnt/study/contribution1/contribution1-py-org
+ - path :: F:/contribution1/contribution1-py-org
 ** function-processing
- - path :: /mnt/study/function_package_module/preprocessing
+ - path :: F:/function_package_module/preprocessing
