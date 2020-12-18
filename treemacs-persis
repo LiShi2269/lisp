@@ -1,0 +1,15 @@
+* default-working-space
+** lisp
+ - path :: ~/.emacs.d/lisp
+** PI
+ - path :: /mnt/study/data-preprocessing/PI
+** task
+ - path :: /mnt/study/task
+** contribution2
+ - path :: /mnt/study/contribution2/contribution2_py
+** contribution1
+ - path :: /mnt/study/contribution1/contribution1-py-org
+** function-preprocessing
+ - path :: /mnt/study/function_package_module/preprocessing
+** function-trade
+ - path :: /mnt/study/function_package_module/trade

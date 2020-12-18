@@ -1,4 +1,3 @@
-
 ;; ------- my functions -------
 (defun my-run-python()
 "左边是原来的py右边是ipython，光标在左边"
@@ -11,6 +10,7 @@
 	(switch-to-buffer "*Python*")
 	(evil-window-move-far-right)
 	(evil-window-left 1)
+	(if (treemacs-get-local-window) (treemacs)(print ""))
 	)
 )
 
@@ -106,31 +106,27 @@
 	   )
        )
 
-
-
+(add-hook 'inferior-python-mode-hook (lambda()(company-mode -1)))
 
 ;; ------- lsp-microsoft -------
-;; (require 'lsp-python-ms)
-;; (setq lsp-python-ms-auto-install-server t)
-;; (add-hook 'python-mode-hook #'lsp) ; or lsp-deferred
 
-;; (use-package lsp-python-ms
-;;   :ensure t
-;;   :init (setq lsp-python-ms-auto-install-server t)
-;;   :hook (python-mode . (lambda ()
-;;                           (require 'lsp-python-ms)
-;;                           (lsp))))  ; or lsp-deferred
-;; 很慢不好用
-;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-;; (setq lsp-keymap-prefix "s-l")
+(use-package lsp-python-ms
+  :ensure t
+  :init (setq lsp-python-ms-auto-install-server t)
+        (setq lsp-log-io t)
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))  ; or lsp-deferred
+;; 如果是linux需要安装依赖，archlinux中在yay有相关内容
+
 
 ;; ------- lsp-jedi -------
-(use-package lsp-jedi
-  :ensure t
-  :config
-  (with-eval-after-load "lsp-mode"
-    (add-to-list 'lsp-disabled-clients 'pyls)
-    (add-to-list 'lsp-enabled-clients 'jedi)))
+;; (use-package lsp-jedi
+  ;; :ensure t
+  ;; :config
+  ;; (with-eval-after-load "lsp-mode"
+    ;; (add-to-list 'lsp-disabled-clients 'pyls)
+    ;; (add-to-list 'lsp-enabled-clients 'jedi)))
 
 ;; ------- lsp-pyright -------
 ;; (use-package lsp-pyright
@@ -138,6 +134,7 @@
 ;;   :hook (python-mode . (lambda ()
 ;;                           (require 'lsp-pyright)
 ;;                           (lsp))))  ; or lsp-deferred
+
 
 ;; ------- lsp-mode 设定 -------
 (use-package lsp-mode
@@ -151,39 +148,77 @@
 	  ("C-<RET>" . elpy-shell-send-statement-and-step)
 	  )
     )
+(use-package lsp-python-ms
+  :ensure t
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))  ; or lsp-deferred
 
 ;; optionally
-(use-package lsp-ui :commands lsp-ui-mode)
+;; (use-package lsp-ui :commands lsp-ui-mode)
 ;; if you are ivy user
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+;; (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
-;; optionally if you want to use debugger
-;; (use-package dap-mode)
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 ;; ------- lsp-ui 设定 -------
-;; ------- lsp-ui-doc 设定 -------
-(setq lsp-ui-doc-delay 3)
-;; ------- lsp-ui-sideline 设定 -------
-(setq lsp-ui-sideline-show-hover t)
-(setq lsp-ui-sideline-show-code-actions nil)
-(setq lsp-ui-sideline-update-mode nil)
+;; (setq lsp-ui-doc-delay 5)
+;; (setq lsp-ui-sideline-show-hover t)
+;; (setq lsp-ui-sideline-show-diagnostics nil)
+;; (setq lsp-ui-sideline-show-code-actions nil)
+;; (setq lsp-ui-sideline-update-mode nil)
+
+
+
 ;; ------- use ipython as interpretor -------
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
 
 ;; -------completion-------
-(add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))))
+;; (add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))
+;; 				   (flycheck-mode)))
+
+
+(add-hook 'lsp-mode-hook (lambda () (flycheck-mode)(hs-minor-mode)))
+
+;; (setq lsp-python-ms-python-executable  "/home/lishi/.pyenv/versions/3.6.8/bin/python")
+;; (setq lsp-python-ms-extra-paths  '("/home/lishi/.pyenv/versions/3.6.8/lib" ))
+
+
+(setq lsp-python-ms-python-executable  "/home/lishi/Envs/jupyter/bin/python")
+(setq lsp-python-ms-extra-paths  '("/home/lishi/Envs/jupyter/lib" ))
+
+
+(add-hook 'hack-local-variables-hook
+      (lambda ()
+    (when (derived-mode-p 'python-mode)
+      (require 'lsp-python-ms)
+      (lsp)))) ; or lsp-deferred
+
+
+
 
 (setq lsp-enable-snippet t)
 
-
-
-
+(key-chord-define python-mode-map ".." 'myinsert)
+(key-chord-define python-mode-map "zz" 'elpy-folding-toggle-at-point)
+(key-chord-define python-mode-map "z;" 'elpy-folding-toggle-comments)
+(key-chord-define python-mode-map "zs" 'hs-hide-all)
+(key-chord-define python-mode-map "zS" 'hs-show-all)
+(key-chord-define inferior-python-mode-map ".." 'myinsert)
 
 ;; ------- mode hooks -------
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
+
+
+(use-package flycheck
+  :ensure t
+  )
+
+
+
 
 (elpy-enable)
 (provide 'init-python-lsp)
