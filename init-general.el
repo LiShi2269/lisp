@@ -144,7 +144,6 @@
     "ff" 'find-file
     ;; ---- buffer ----
     "fs" 'my-save-buffer
-    ;; "fs" 'save-buffer
     "<tab>" 'mode-line-other-buffer
     "b" '(:ignore t :which-key "buffer")
     ;; "bb" 'buffer-menu

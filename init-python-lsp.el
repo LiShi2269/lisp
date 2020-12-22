@@ -176,14 +176,12 @@
       python-shell-interpreter-args "-i --simple-prompt")
 
 ;; -------completion-------
-;; (add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))
-;; 				   (flycheck-mode)))
+(add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))
+				   ))
 
 
 (add-hook 'lsp-mode-hook (lambda () (flycheck-mode)(hs-minor-mode)))
 
-;; (setq lsp-python-ms-python-executable  "/home/lishi/.pyenv/versions/3.6.8/bin/python")
-;; (setq lsp-python-ms-extra-paths  '("/home/lishi/.pyenv/versions/3.6.8/lib" ))
 
 
 (setq lsp-python-ms-python-executable  "/home/lishi/Envs/jupyter/bin/python")
@@ -210,6 +208,8 @@
 
 ;; ------- mode hooks -------
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
+
 
 
 

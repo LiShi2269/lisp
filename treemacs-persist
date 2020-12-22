@@ -3,6 +3,8 @@
  - path :: ~/.emacs.d/lisp
 ** PI
  - path :: /mnt/study/data-preprocessing/PI
+** sea-distance
+ - path :: /mnt/study/data-preprocessing/sea-distance
 ** task
  - path :: /mnt/study/task
 ** contribution2
