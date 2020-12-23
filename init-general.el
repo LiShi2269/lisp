@@ -171,6 +171,8 @@
     "wh" 'evil-window-left
     "wH" 'evil-window-move-far-left
     "wk" 'evil-window-up
+    "wz" 'zoom-mode
+    "wp" 'perfect-margin-mode
     "wK" 'evil-window-move-very-top
     "wj" 'evil-window-down
     "wJ" 'evil-window-move-very-bottom
