@@ -204,17 +204,22 @@
 
 
 
+
 ;; ====== for folding mode in lisp =============
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
-;; ====== pdf configuration =============
-(use-package org-pdftools
-  :hook (org-mode . org-pdftools-setup-link))
 
-(use-package org-noter-pdftools
-  :after org-noter
-  :config
-  (with-eval-after-load 'pdf-annot
-    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+
+
+;; ====== pdf configuration =============
+;; (use-package org-pdftools
+;;   :hook (org-mode . org-pdftools-setup-link))
+
+;; (use-package org-noter-pdftools
+;;   :after org-noter
+;;   :config
+;;   (with-eval-after-load 'pdf-annot
+;;     (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 ;; ======= provide =======
 (provide 'init-better-defaults)

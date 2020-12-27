@@ -54,10 +54,10 @@
 	beacon
 	rainbow-delimiters
 	;; --- jupyter ---
-	jupyter
-	simple-httpd
-	markdown-mode	
-	zmq
+	;; jupyter
+	;; simple-httpd
+	;; markdown-mode	
+	;; zmq
 	;; --- treemacs ---
 	treemacs
 	treemacs-evil
@@ -114,10 +114,10 @@
 	pandoc
 	openwith
 
-	pdf-tools
-	org-pdftools
-	org-noter-pdftools
-	org-noter
+	;; pdf-tools
+	;; org-pdftools
+	;; org-noter-pdftools
+	;; org-noter
 
 	ein
 
