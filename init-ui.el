@@ -83,7 +83,7 @@
  '(zoom-mode t)
  '(zoom-size '(0.618 . 0.618))
  ;; 忽略的模式
- '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode neotree-mode evil-leader-mode nswbuff python-mode inferior-python-mode))
+ '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode neotree-mode evil-leader-mode nswbuff ))
  '(zoom-ignored-buffer-names '("*nswbuff*" ))
  '(temp-buffer-resize-mode t)
  )
