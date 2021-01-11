@@ -57,9 +57,8 @@
  )
 
 ;; ============如果是有用ein模式则要换成这个方法=========
-;; (defun my-save-buffer()(interactive)
-       ;; (if (bound-and-true-p ein:notebook)(ein:notebook-save-notebook-command-km)(save-buffer))
-       ;; )
+(defun my-save-buffer()(interactive)
+       (if (bound-and-true-p ein:notebook)(ein:notebook-save-notebook-command-km)(save-buffer)))
 
 (defun my-major-mode-fun()(interactive)
    " 如果major-mode是python
@@ -144,8 +143,8 @@
     "f" '(:ignore t :which-key "file")
     "ff" 'find-file
     ;; ---- buffer ----
-    ;; "fs" 'my-save-buffer
-    "fs" 'save-buffer
+    "fs" 'my-save-buffer
+    ;; "fs" 'save-buffer
     "<tab>" 'mode-line-other-buffer
     "b" '(:ignore t :which-key "buffer")
     "bb" 'buffer-menu

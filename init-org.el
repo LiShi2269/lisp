@@ -12,12 +12,11 @@
 			   ))
 
 ;; ------key-map-set-----
-(setq org-log-done t)
-
+;; (setq org-log-done nil)
 
 
 ;; After that, everything will happen automatically. All diary entries including holidays, anniversaries, etc., will be included in the agenda buffer created by Org mode. <SPC>, <TAB>, and <RET> can be used from the agenda buffer to jump to the diary file in order to edit existing diary entries. The i command to insert new entries for the current date works in the agenda buffer, as well as the commands S, M, and C to display Sunrise/Sunset times, show lunar phases and to convert to other calendars, respectively. c can be used to switch back and forth between calendar and agenda.
-(setq org-agenda-include-diary t)
+;; (setq org-agenda-include-diary t)
 
 
 
@@ -44,6 +43,7 @@
  ;; "," 'hydra-org/body
  ;; "C-<RET>" 'org-babel-execute-src-blok
  )
+
 (define-key org-mode-map (kbd "C-<return>") 'org-babel-execute-src-block)
 (define-key org-mode-map (kbd "S-<return>") 'org-insert-heading-respect-content)
 (evil-define-key '('normal 'visual) org-mode-map (kbd ",") 'hydra-org/body)
@@ -258,20 +258,21 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
-   ;; (emacs-lisp . t)
-   (python . t)
+   (emacs-lisp . t)
+   ;; (python . t)
    (latex . t)
    (jupyter . t)))
 
-(org-babel-jupyter-override-src-block "python")
+;; (org-babel-jupyter-override-src-block "python")
+
 (setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
-(setq org-src-preserve-indentation t)
+;; (setq org-src-preserve-indentation t)
 
  	
 ;;====================== latex ===========================
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
+;; (setq TeX-auto-save t)
+;; (setq TeX-parse-self t)
 
 ;;====================== 排版 ===========================
 
@@ -306,6 +307,7 @@
  '(org-level-6 ((t :height 1.1 :foreground "violet")))
  ;; '(org-blank-before-new-entry ((heading . always) (plain-list-item . auto)))
  )
+
 ;; (setq org-cycle-separator-lines 0)
 
 
