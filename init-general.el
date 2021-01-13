@@ -11,10 +11,12 @@
 ;; (evil-define-key 'normal 'global "k" (lambda()(interactive)(previous-line 1)))
 
 
+;; ===== undo tree mode =====
+(evil-define-key 'normal 'global "u" 'undo-tree-undo)
+(evil-define-key 'normal 'global (kbd "C-r") 'undo-tree-redo)
 
 (require 'evil-leader)
 ;; (global-evil-leader-mode)
-
 
 
 

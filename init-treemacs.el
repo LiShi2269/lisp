@@ -12,13 +12,13 @@
 (setq treemacs-width 39)
 (setq treemacs-show-cursor nil)
 
-(setq treemacs-silent-filewatch t)
-(setq treemacs-silent-refresh t)
+(setq treemacs-silent-filewatch nil)
+(setq treemacs-silent-refresh nil)
 
 ;; test
 ;; test
 
-(add-hook 'treemacs-update-node (lambda () (kill-buffer "Treemacs Update Single File Process")))
+;; (add-hook 'treemacs-update-node (lambda () (kill-buffer "Treemacs Update Single File Process")))
 
 
 

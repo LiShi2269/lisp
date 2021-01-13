@@ -259,8 +259,6 @@
  'org-babel-load-languages
  '(
    (emacs-lisp . t)
-   ;; (python . t)
-   (latex . t)
    (jupyter . t)))
 
 ;; (org-babel-jupyter-override-src-block "python")

@@ -65,7 +65,7 @@
 	treemacs-magit
 	treemacs-icons-dired
 	treemacs-all-the-icons
-	undo-tree
+	;; undo-tree
 
 	posframe
 	which-key-posframe
@@ -87,8 +87,8 @@
 
 	dashboard
 
-	dracula-theme
-	monokai-theme
+	;; dracula-theme
+	;; monokai-theme
 	;; atom-one-dark-theme
 	;; 不能用?
 	;; doom-themes
