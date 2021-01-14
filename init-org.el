@@ -6,6 +6,7 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
 (setq header-line-format "    ")
 (setq line-spacing 0.2)
+(toggle-truncate-lines t)
 (custom-set-faces
  '(header-line ((default :background "#161a1f")))
 )
@@ -298,7 +299,7 @@
  '(header-line ((default :background "#161a1f")))
  '(org-level-1 ((t :height 1.3 :weight normal :foreground "light sky blue")))
  '(org-level-2 ((t :height 1.2 :weight normal :foreground "pale turquoise")))
- '(org-level-3 ((t :height 1.1 :foreground "DarkTurquoise")))
+ '(org-level-3 ((t :height 1.1 :weight  :foreground "salmon")))
  '(org-level-4 ((t :height 1.1 :foreground "DarkTurquoise")))
  '(org-level-5 ((t :height 1.1 :foreground "medium aquamarine")))
  '(org-level-6 ((t :height 1.1 :foreground "indian red")))

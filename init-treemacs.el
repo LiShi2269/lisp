@@ -1,24 +1,27 @@
 
 (require 'treemacs)
 
-(define-key treemacs-mode-map (kbd "<return>")
-  (lambda()(interactive)
-    (progn (treemacs-RET-action)
-	   (treemacs))))
+;; (define-key treemacs-mode-map (kbd "<return>")
+  ;; (lambda()(interactive)
+    ;; (progn (treemacs-RET-action)
+	   ;; (treemacs))))
 
-(define-key treemacs-mode-map (kbd "C-<return>") 'treemacs-RET-action)
+;; (define-key treemacs-mode-map (kbd "C-<return>") 'treemacs-RET-action)
 ;; (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
 
-(setq treemacs-width 39)
-(setq treemacs-show-cursor nil)
+;; (setq treemacs-width 39)
+;; (setq treemacs-show-cursor nil)
 
 (setq treemacs-silent-filewatch nil)
 (setq treemacs-silent-refresh nil)
+(setq treemacs-filewatch-mode nil)
 
-;; test
-;; test
+;; =-============= 能够自动切换工作空间 =================
+;; (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
+;;   :after treemacs persp-mode ;;or perspective vs. persp-mode
+;;   :ensure t
+;;   :config (treemacs-set-scope-type 'Perspectives))
 
-;; (add-hook 'treemacs-update-node (lambda () (kill-buffer "Treemacs Update Single File Process")))
 
 
 
@@ -40,3 +43,4 @@
 
 
 (provide 'init-treemacs)
+G
