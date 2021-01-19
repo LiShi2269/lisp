@@ -102,7 +102,8 @@
 
 (defun delete-other-window-and-quite-treemacs()(interactive)
        "删除出了当前窗口外的所有窗口并且关掉treemacs窗口"
-       (progn (if (treemacs-get-local-window) (treemacs)(print ""))
+       (progn (if (treemacs-get-local-window) (treemacs)())
+	      (neotree-hide)
 	      (delete-other-windows))
        )
 
