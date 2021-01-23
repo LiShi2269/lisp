@@ -47,7 +47,7 @@
     ("sF" elpy-shell-send-defun-and-go "sendFunc_go")
     ;; ("yn" yas-new-snippet)
     ("ye" abbrev-expansion "abbrevExpansion")
-    ("=" py-autopep8 "fixCode")
+    ("=" elpy-format-code "fixCode")
 ;; ---------lsp function ----------------
     ("lsd" my-toggle-sideline-show-diagnostics "")
     ("lsh" my-toggle-sideline-show-hover)
