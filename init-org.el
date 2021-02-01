@@ -41,8 +41,8 @@
  :keymaps 'org-mode-map
  "C-j" 'org-next-visible-heading
  "C-k" 'org-previous-visible-heading
- ;; "," 'hydra-org/body
- ;; "C-<RET>" 'org-babel-execute-src-blok
+ "C-S-j" (lambda()(interactive)(progn (search-forward "#+begin_src" nil t)(next-line)))
+ "C-S-k" (lambda()(interactive)(progn (search-backward "#+begin_src" nil t)(next-line)))
  )
 
 (define-key org-mode-map (kbd "C-<return>") 'org-babel-execute-src-block)
