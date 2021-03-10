@@ -42,7 +42,9 @@
  "C-j" 'org-next-visible-heading
  "C-k" 'org-previous-visible-heading
  "C-S-j" (lambda()(interactive)(progn (search-forward "#+begin_src" nil t)(next-line)))
- "C-S-k" (lambda()(interactive)(progn (search-backward "#+begin_src" nil t) (search-backward "#+begin_src" nil t)(next-line)))
+ "C-S-k" (lambda()(interactive)(progn (search-backward "#+begin_src" nil t)
+				      (search-backward "#+begin_src" nil t)
+				      (next-line)))
  )
 
 
