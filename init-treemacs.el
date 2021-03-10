@@ -17,7 +17,7 @@
 ;; 路径当中要有python路径才可以
 (setq treemacs-filewatch-mode t)
 ;; 能够相当于word文档的文档结构工具
-(setq treemacs-tag-follow-mode t)
+(treemacs-tag-follow-mode )
 
 ;; =-============= 能够自动切换工作空间 =================
 ;; (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
