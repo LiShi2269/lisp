@@ -155,6 +155,7 @@
                           (require 'lsp-python-ms)
                           (lsp))))  ; or lsp-deferred
 
+
 ;; optionally
 ;; (use-package lsp-ui :commands lsp-ui-mode)
 ;; if you are ivy user
@@ -175,6 +176,7 @@
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
 
+
 ;; -------completion-------
 ;; (add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))
 ;; 				   (flycheck-mode)))
@@ -182,11 +184,9 @@
 
 (add-hook 'lsp-mode-hook (lambda () (flycheck-mode)(hs-minor-mode)))
 
-;; (setq lsp-python-ms-python-executable  "/home/lishi/.pyenv/versions/3.6.8/bin/python")
-;; (setq lsp-python-ms-extra-paths  '("/home/lishi/.pyenv/versions/3.6.8/lib" ))
-(setq lsp-python-ms-python-executable  "c:/HOME/.pyenv/pyenv-win/versions/3.6.8/python.exe")
-(setq lsp-python-ms-extra-paths  '("c:/HOME/.pyenv/pyenv-win/versions/3.6.8/Lib" ))
-
+(setq lsp-python-ms-python-executable  "c:/pyenv-win/pyenv-win/versions/3.9.2/python.exe")
+;; C:\pyenv-win\versions\3.6.8\python.exe
+(setq lsp-python-ms-extra-paths  '("c:/pyenv-win/pyenv-win/versions/3.9.2/Lib" ))
 
 (add-hook 'hack-local-variables-hook
       (lambda ()
@@ -194,8 +194,7 @@
       (require 'lsp-python-ms)
       (lsp)))) ; or lsp-deferred
 
-
-
+;; (setq elpy-rpc-virtualenv-path 'current)
 
 (setq lsp-enable-snippet t)
 
