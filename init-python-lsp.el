@@ -1,3 +1,17 @@
+;; 和python有关的环境变量
+;; path
+;; C:\HOME\.pyenv\pyenv-win\bin
+;; C:\HOME\.pyenv\pyenv-win\shims
+;; C:\HOME\.pyenv\pyenv-win\versions\3.6.8\Scripts
+;; C:\HOME\.pyenv\pyenv-win\versions\3.6.8\python.exe
+
+;; PYENV
+;; PYENV_HOME
+;; pyenv-win
+
+;; WORKON_HOME
+
+
 ;; ------- my functions -------
 (defun my-run-python()
 "左边是原来的py右边是ipython，光标在左边"
@@ -13,7 +27,6 @@
 	(if (treemacs-get-local-window) (treemacs)(print ""))
 	)
 )
-
 
 
 ;; ------- key-configuring-------
@@ -158,9 +171,10 @@
 
 ;; optionally
 ;; (use-package lsp-ui :commands lsp-ui-mode)
+
 ;; if you are ivy user
-;; (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
 
 ;; ------- lsp-ui 设定 -------
@@ -181,12 +195,10 @@
 ;; (add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))
 ;; 				   (flycheck-mode)))
 
-
-(add-hook 'lsp-mode-hook (lambda () (flycheck-mode)(hs-minor-mode)))
-
-(setq lsp-python-ms-python-executable  "c:/pyenv-win/pyenv-win/versions/3.9.2/python.exe")
-;; C:\pyenv-win\versions\3.6.8\python.exe
-(setq lsp-python-ms-extra-paths  '("c:/pyenv-win/pyenv-win/versions/3.9.2/Lib" ))
+;; lsp-completion-mode会导致不能在lspmode中补全路径
+(add-hook 'lsp-mode-hook (lambda () (flycheck-mode 1)(hs-minor-mode 1)(lsp-completion-mode 0)))
+(setq lsp-python-ms-python-executable  "C:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe")
+(setq lsp-python-ms-extra-paths  '("C:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe" ))
 
 (add-hook 'hack-local-variables-hook
       (lambda ()

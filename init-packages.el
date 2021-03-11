@@ -149,8 +149,8 @@
 	py-autopep8
 	lsp-mode
 	lsp-ui
-	;; lsp-treemacs
-	;; lsp-ivy
+	lsp-treemacs
+	lsp-ivy
 	;; dap-mode
 	;; company-lsp已经不用了，见github相关
 	;; company-lsp

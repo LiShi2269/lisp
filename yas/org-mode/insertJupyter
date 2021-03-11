@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: insertJupyter
+# key: jupyter
+# --
+
+#+begin_src jupyter-python :results display :session one
+$0
+#+end_src
