@@ -247,7 +247,7 @@
 (setq org-todo-keywords
       '(
 	(sequence "TODO" "DELAY" "|" "CHANGE" "DONE" "GiveUp" )
-	;; (sequence "one" "two" "three" "four" "five" "|" "DONE")
+	(sequence "one" "two" "three" "four" "five" "|" "DONE")
 	;; (sequence "a" "b" "c" "e" "f" "|" "DONE")
 	;; (sequence "1" "2" "3" "4" "5" "|" "DONE")
 	))
@@ -268,7 +268,7 @@
 
 ;; (org-babel-jupyter-override-src-block "python")
 
-(setq org-image-actual-width nil)
+;; (setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
 ;; (setq org-src-preserve-indentation t)
 

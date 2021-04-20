@@ -18,7 +18,7 @@
 (setq treemacs-filewatch-mode t)
 ;; 能够相当于word文档的文档结构工具
 (treemacs-tag-follow-mode )
-
+(setq treemacs-python-executable "c:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe")
 ;; =-============= 能够自动切换工作空间 =================
 ;; (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
 ;;   :after treemacs persp-mode ;;or perspective vs. persp-mode

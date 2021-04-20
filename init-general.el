@@ -150,8 +150,8 @@
     ;; "fs" 'save-buffer
     "<tab>" 'mode-line-other-buffer
     "b" '(:ignore t :which-key "buffer")
-    ;; "bb" 'buffer-menu
-    "bb" (lambda()(interactive) (progn (kill-treemacs-buffer)(buffer-menu)))
+    "bb" 'buffer-menu
+    ;; "bb" (lambda()(interactive) (progn (kill-treemacs-buffer)(buffer-menu)))
     ;; 返回dashboard
     "bh" (lambda()(interactive)(progn(switch-to-buffer "*dashboard*")))
     "bd" 'kill-this-buffer
