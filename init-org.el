@@ -291,13 +291,14 @@
 ;; odd levels only
 ;; I feel this makes for a cleaner look of the buffer.
 
-(setq
-      org-hide-emphasis-markers t
-      ;; org-fontify-done-headline t
-      ;; org-hide-leading-stars t
-      ;; org-pretty-entities t
-      ;; org-odd-levels-only t
-      )
+;; (setq
+;;       org-hide-emphasis-markers nil
+;;       org org-adapt-indentation nil
+;;       org-fontify-done-headline nil
+;;       org-hide-leading-stars t
+;;       ;; org-pretty-entities t
+;;       ;; org-odd-levels-only t
+;;       )
 
 (custom-set-faces
  '(header-line ((default :background "#161a1f")))
