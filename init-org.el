@@ -314,9 +314,23 @@
 
 ;; (setq org-cycle-separator-lines 0)
 
+;; org-roam
+;; 需要在环境变量当中添加下面的文件夹
+(add-to-list 'exec-path "c:/HOME/bin/sqlite-tools-win32-x86-3350500/sqlite3.exe")
+(add-hook 'after-init-hook 'org-roam-mode)
+;;; Define key bindings for Org-roam
+(global-set-key (kbd "C-c n r") #'org-roam-buffer-toggle-display)
+(global-set-key (kbd "C-c n i") #'org-roam-insert)
+(global-set-key (kbd "C-c n /") #'org-roam-find-file)
+(global-set-key (kbd "C-c n b") #'org-roam-switch-to-buffer)
+(global-set-key (kbd "C-c n d") #'org-roam-find-directory)
 
+;;; Recommendation for Windows users for performance
+;;; https://github.com/org-roam/org-roam/issues/1289#issuecomment-744046148
+(setq org-roam-db-update-method 'immediate)
 
-
+;;; Let's also assign C-z to undo here
+;; (global-set-key (kbd "C-S-z") 'undo) ;Emacs default is bound to hide Emacs.
 
 
 ;; ======= provide =======

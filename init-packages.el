@@ -119,6 +119,8 @@
 	;; org-noter-pdftools
 	;; org-noter
 
+	org-roam
+
 	ein
 
 	use-package

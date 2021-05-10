@@ -163,6 +163,7 @@
     "uu" 'undo-tree-visualize
     "us" 'undo-tree-save-history
     "ul" 'undo-tree-load-history
+    "U" 'undo
     ;; ---- window ----
     "w" '(:ignore t :which-key "window")
     "w-" 'split-window-below
