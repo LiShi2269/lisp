@@ -1,5 +1,6 @@
 ;; (require 'cl-lib)
 ;; ======= dashboard =======
+(server-start)
 (use-package dashboard
   ;; :config ((dashboard-setup-startup-hook t)
   :ensure
