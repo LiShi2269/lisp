@@ -1,5 +1,6 @@
 ;; init file for org-mode
 (require 'org)
+(require 'org-ref)
 ;;---------bullets------------
 (require 'org-bullets)
 
@@ -22,7 +23,6 @@
 
 
 ;; ------ lisp-mode key config -------
-
 ;; (defun my-major-mode-c-return-fun()(interactive)
 ;;        "但是！lisp-interaction 不是major mode！"
 ;;        "如果major mode 是org-mode但是minor-mode是lisp-interaction-mode那么c-ret就是org-babel-execute-src-block"
@@ -32,6 +32,32 @@
 ;; 	     ((equal major-mode 'org-mode) (org-babel-execute-src-block)) 
 ;; 	     ((equal major-mode 'python-mode (elpy-shell-send-satement-and-step)) 
 ;;        ))
+
+;; org-ref
+(setq reftex-default-bibliography '("f:/test/Graduate-Thesis.bib"))
+
+;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes "f:/test/test.org"
+      org-ref-default-bibliography '("f:/test/Graduate-Thesis.bib")
+      ;; org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/"
+      )
+
+(setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
+(require 'org-protocol)
+(require 'org-roam-protocol)
+(load-file "~/.emacs.d/lisp/+org-protocol-check-filename-for-protocol.el")
+(advice-add 'org-protocol-check-filename-for-protocol :override '+org-protocol-check-filename-for-protocol)
+(require 'org-roam-server)
+(setq org-roam-server-host "127.0.0.1"
+       org-roam-server-port 8181
+       org-roam-server-export-inline-images t
+       org-roam-server-authenticate nil
+       org-roam-server-network-poll t
+       org-roam-server-network-arrows nil
+       org-roam-server-network-label-truncate t
+       org-roam-server-network-label-truncate-length 60
+       org-roam-server-network-label-wrap-length 20)
+
 
 
 
@@ -49,8 +75,8 @@
 
 
 
-(define-key org-mode-map (kbd "C-<return>") 'org-babel-execute-src-block)
-(define-key org-mode-map (kbd "S-<return>") 'org-insert-heading-respect-content)
+;; (define-key org-mode-map (kbd "C-<return>") 'org-babel-execute-src-block)
+;; (define-key org-mode-map (kbd "S-<return>") 'org-insert-heading-respect-content)
 (evil-define-key '('normal 'visual) org-mode-map (kbd ",") 'hydra-org/body)
 
 
@@ -325,7 +351,7 @@
 (global-set-key (kbd "C-c n b") #'org-roam-switch-to-buffer)
 (global-set-key (kbd "C-c n d") #'org-roam-find-directory)
 
-;;; Recommendation for Windows users for performance
+(setq org-roam-directory "f:/org-roam")
 ;;; https://github.com/org-roam/org-roam/issues/1289#issuecomment-744046148
 (setq org-roam-db-update-method 'immediate)
 

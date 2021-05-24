@@ -120,6 +120,9 @@
 	;; org-noter
 
 	org-roam
+	org-roam-server
+	org-roam-bibtex
+	org-ref
 
 	ein
 
