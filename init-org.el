@@ -5,7 +5,8 @@
 (require 'org-bullets)
 
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
-(setq header-line-format "    ")
+(openwith-mode 1)
+;; (setq header-line-format "    ")
 (setq line-spacing 0.2)
 (toggle-truncate-lines t)
 (custom-set-faces
@@ -38,8 +39,7 @@
 
 ;; see org-ref for use of these variables
 (setq org-ref-bibliography-notes "f:/test/test.org"
-      org-ref-default-bibliography '("f:/test/Graduate-Thesis.bib")
-      ;; org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/"
+      org-ref-default-bibliography '("f:/org-roam/Graduate.bib")
       )
 
 (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
@@ -82,6 +82,7 @@
 
 
 (defhydra hydra-org(:exit t)
+  ("o" 'org-open-at-point "openwith")
 ;; s sub
   ("s" org-subtree/body "subtree")
 ;; * heading

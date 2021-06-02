@@ -206,6 +206,12 @@
     "syn" 'yas-new-snippet
     "syv" 'yas-visit-snippet-file
 
+    "r" '(:ignore t :which-key "orgRoam")
+    "rr" 'org-roam-buffer-toggle-display
+    "ri" 'org-roam-insert
+    "r/" 'org-roam-find-file
+    "rb" 'org-roam-switch-to-buffer
+    "rd" 'org-roam-find-directory
 
     ;; ---- iedit ----
     "`"  'shell)
