@@ -84,7 +84,7 @@
  '(zoom-size '(0.618 . 0.618))
  ;; 忽略的模式
  '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode neotree-mode evil-leader-mode))
- '(zoom-ignored-buffer-names '("*nswbuff*" ))
+ ;; '(zoom-ignored-buffer-names '(" *nswbuff*" ))
  '(temp-buffer-resize-mode t)
  ;; '(zoom-ignored-buffer-name-regexps '("^ .*nswbuff.*" "^\b.*Minibuf.*"))
  )
