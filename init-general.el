@@ -114,19 +114,22 @@
  :keymaps 'override 
  :prefix "SPC"
     ;; ---- dir ----
- "<SPC>" 'smex
+    "<SPC>" 'smex
     "a" '(:ignore t :which-key "mode")
     "ad" 'deer
     "ar" 'ranger
     "an" 'neotree-toggle
     "at" 'treemacs
     ;; ---- treemacs ----
+    "aT" '(:ignore t  :which-key "treemacs")
     "aTe" 'treemacs-edit-workspaces
     "aTf" 'treemacs-finish-edit
     "aTB" 'treemacs-set-fallback-workspace
     "aTa" 'treemacs-add-and-display-current-project
     "aTr" 'treemacs-remove-project-from-workspace
     "aTs" 'treemacs-switch-workspace
+
+    ;; ---- treemacs ----
 
     ;; ---- agenda ----
     "A" '(:ignore t  :which-key "agenda")
@@ -213,6 +216,9 @@
     "rb" 'org-roam-switch-to-buffer
     "rd" 'org-roam-find-directory
 
+    ;; ---- ace-jump ----
+    "j" '(:ignore t :which-key "AceJump")
+    "j" 'ace-jump-mode
     ;; ---- iedit ----
     "`"  'shell)
 
