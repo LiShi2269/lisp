@@ -2,8 +2,11 @@
 
 (require 'perfect-margin)
 (perfect-margin-mode 1)
+;; =========================== org mode =========================
 
-
+(set-face-attribute 'org-verbatim nil :foreground "deep sky blue" :slant 'italic )
+(set-face-attribute 'bold nil :foreground "gold" )
+;; ====================================================
 (use-package rainbow-delimiters
 ;; :ensure t
   :config
@@ -171,7 +174,6 @@
  ;; (set-face-attribute 'cursor nil :background "#c1a187" )
  (set-face-attribute 'cursor nil :background "#82a7a7" )
  
-
 ;; =============== which key face========================
  ;; (set-face-attribute 'which-key-posframe nil :background "#2f4f4f" )
  )
@@ -195,7 +197,8 @@
 ;; (set-face-attribute 'region nil :weight 'normal :box "#FFFFFF" :underline nil)
 ;; (set-face-attribute 'region nil :weight 'normal :box nil :underline "#FFFFFF")
 
-(set-face-attribute 'hl-line nil :weight 'normal :box nil :underline nil :background "dark slate gray")
+;; (set-face-attribute 'hl-line nil :weight 'normal :box nil :underline nil :background "dark slate gray")
+(set-face-attribute 'hl-line nil  :box nil :underline nil :background "dark slate gray")
 (set-face-attribute 'region nil  :background "royal blue")
 
 

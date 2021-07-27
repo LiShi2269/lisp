@@ -297,7 +297,7 @@
 
 ;; (setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
-;; (setq org-src-preserve-indentation t)
+(setq org-src-preserve-indentation nil)
 
  	
 ;;====================== latex ===========================
