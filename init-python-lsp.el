@@ -166,8 +166,8 @@
   :init (setq lsp-python-ms-auto-install-server t)
   :hook (python-mode . (lambda ()
                           (require 'lsp-python-ms)
-                          (lsp))))  ; or lsp-deferred
-
+                          (lsp)))
+  )  ; or lsp-deferred
 
 ;; optionally
 ;; (use-package lsp-ui :commands lsp-ui-mode)
@@ -209,6 +209,7 @@
 ;; (setq elpy-rpc-virtualenv-path 'current)
 
 (setq lsp-enable-snippet t)
+(setq lsp-completion-enable nil)
 
 (key-chord-define python-mode-map ".." 'myinsert)
 (key-chord-define python-mode-map "zz" 'elpy-folding-toggle-at-point)
