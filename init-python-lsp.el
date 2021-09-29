@@ -69,7 +69,7 @@
     ("ldp"  my-toggle-doc-position)
     ("lm"  my-toggle-imenu)
     ("run"  my-run-python "runPython")
-    ("'" org-edit-src-abort "org special edit")
+    ;; ("'" org-edit-src-abort "org special edit") ;
     )
 
 
@@ -119,6 +119,7 @@
 	   )
        )
 
+;; ipython补全很慢
 (add-hook 'inferior-python-mode-hook (lambda()(company-mode -1)))
 
 ;; ------- lsp-microsoft -------

@@ -4,7 +4,7 @@
 (perfect-margin-mode 1)
 ;; =========================== org mode =========================
 
-(set-face-attribute 'org-verbatim nil :foreground "deep sky blue" :slant 'italic )
+;; (set-face-attribute 'org-verbatim nil :foreground "deep sky blue" :slant 'italic )
 (set-face-attribute 'bold nil :foreground "gold" )
 ;; ====================================================
 (use-package rainbow-delimiters
@@ -112,7 +112,7 @@
 )))
 ;; ===============  dashboard color ========================
 (custom-set-variables
- (set-face-attribute 'page-break-lines nil :foreground "dark slate grey"   )
+ ;; (set-face-attribute 'page-break-lines nil :foreground "dark slate grey"   )
  (set-face-attribute 'dashboard-footer nil :foreground "Deep Sky Blue1"   )
  )
 
@@ -240,7 +240,7 @@
  (set-face-attribute 'font-lock-comment-face nil :foreground "dark sea green"   )
  (set-face-attribute 'font-lock-builtin-face nil :foreground "#1bd1a5"   )
  (set-face-attribute 'font-lock-string-face nil :foreground "deep sky blue"   )
- (set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   )
+ ;; (set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   )
  )
 
 

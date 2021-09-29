@@ -37,26 +37,41 @@
 ;; org-ref
 (setq reftex-default-bibliography '("f:/test/Graduate-Thesis.bib"))
 
+
+
+
+
+
+;; v2 是否使用
+;; (setq org-roam-v2-ack t)
+
+;; 来源 https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/v1/90.org-protocol.md
+(setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe")
+
+
 ;; see org-ref for use of these variables
 (setq org-ref-bibliography-notes "f:/test/test.org"
       org-ref-default-bibliography '("f:/org-roam/Graduate.bib")
       )
 
-(setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
-(require 'org-protocol)
-(require 'org-roam-protocol)
-(load-file "~/.emacs.d/lisp/+org-protocol-check-filename-for-protocol.el")
-(advice-add 'org-protocol-check-filename-for-protocol :override '+org-protocol-check-filename-for-protocol)
-(require 'org-roam-server)
-(setq org-roam-server-host "127.0.0.1"
-       org-roam-server-port 8181
-       org-roam-server-export-inline-images t
-       org-roam-server-authenticate nil
-       org-roam-server-network-poll t
-       org-roam-server-network-arrows nil
-       org-roam-server-network-label-truncate t
-       org-roam-server-network-label-truncate-length 60
-       org-roam-server-network-label-wrap-length 20)
+;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
+;; (setq org-roam-graph-viewer nil)
+
+;; (require 'org-protocol)
+;; (require 'org-roam-protocol)
+;; (load-file "~/.emacs.d/lisp/+org-protocol-check-filename-for-protocol.el")
+;; (advice-add 'org-protocol-check-filename-for-protocol :override '+org-protocol-check-filename-for-protocol)
+
+;; (require 'org-roam-server)
+;; (setq org-roam-server-host "127.0.0.1"
+;;       org-roam-server-port 8181
+;;       org-roam-server-export-inline-images t
+;;       org-roam-server-authenticate nil
+;;       org-roam-server-network-poll t
+;;       org-roam-server-network-arrows nil
+;;       org-roam-server-network-label-truncate t
+;;       org-roam-server-network-label-truncate-length 60
+;;       org-roam-server-network-label-wrap-length 20)
 
 
 
@@ -75,8 +90,6 @@
 
 
 
-;; (define-key org-mode-map (kbd "C-<return>") 'org-babel-execute-src-block)
-;; (define-key org-mode-map (kbd "S-<return>") 'org-insert-heading-respect-content)
 (evil-define-key '('normal 'visual) org-mode-map (kbd ",") 'hydra-org/body)
 
 
@@ -290,10 +303,27 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
-   (emacs-lisp . t)
-   (jupyter . t)))
+   ;; (emacs-lisp . t)
+   (python . t)
+   ;; (jupyter . t)
+   ))
 
 ;; (org-babel-jupyter-override-src-block "python")
+
+;;========== 出现 org-babel-execute-src-block: No org-babel-execute function 问题==========================================
+;; jupyter-run-repl
+;; (shell-command-to-string "jupyter kernelspecs list")
+;; (org-babel-jupyter-aliases-from-kernelspecs)
+;; (executable-find "jupyter")
+;; (jupyter-available-kernelspecs)
+;;=========================================================================================================================
+
+;; "c:/HOME/.pyenv/pyenv-win/shims/jupyter.bat"
+
+
+
+
+
 
 ;; (setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
@@ -341,24 +371,83 @@
 
 ;; (setq org-cycle-separator-lines 0)
 
-;; org-roam
+
+
+
+
+;; -------------- org-roam ---------------------
 ;; 需要在环境变量当中添加下面的文件夹
-(add-to-list 'exec-path "c:/HOME/bin/sqlite-tools-win32-x86-3350500/sqlite3.exe")
+(add-to-list 'exec-path "c:/HOME/sqlite/sqlite3.exe")
+(add-to-list 'exec-path "c:/HOME/sqlite")
+(add-to-list 'exec-path "c:/HOME/msys64/usr/bin/cc.exe")
+(add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
 (add-hook 'after-init-hook 'org-roam-mode)
-;;; Define key bindings for Org-roam
-(global-set-key (kbd "C-c n r") #'org-roam-buffer-toggle-display)
-(global-set-key (kbd "C-c n i") #'org-roam-insert)
-(global-set-key (kbd "C-c n /") #'org-roam-find-file)
-(global-set-key (kbd "C-c n b") #'org-roam-switch-to-buffer)
-(global-set-key (kbd "C-c n d") #'org-roam-find-directory)
 
-(setq org-roam-directory "f:/org-roam")
-;;; https://github.com/org-roam/org-roam/issues/1289#issuecomment-744046148
-(setq org-roam-db-update-method 'immediate)
+;; Define key bindings for Org-roam
+;; (global-set-key (kbd "C-c n r") #'org-roam-buffer-toggle-display)
+;; (global-set-key (kbd "C-c n i") #'org-roam-insert)
+;; (global-set-key (kbd "C-c n /") #'org-roam-find-file)
+;; (global-set-key (kbd "C-c n b") #'org-roam-switch-to-buffer)
+;; (global-set-key (kbd "C-c n d") #'org-roam-find-directory)
 
-;;; Let's also assign C-z to undo here
-;; (global-set-key (kbd "C-S-z") 'undo) ;Emacs default is bound to hide Emacs.
+(setq org-roam-directory "f:/org-roam/")
+(org-roam-db-autosync-mode)
+(setq org-roam-v2-ack t)
 
+
+;; One can also set org-roam-db-node-include-function. For example, to exclude all headlines with the ATTACH tag from the Org-roam database, one can set:
+;; (setq org-roam-db-node-include-function
+;;       (lambda ()
+;;         (not (member "ATTACH" (org-get-tags)))))
+
+;; 不自动保存
+;; However, depending on how large your Org files are, database updating can be a slow operation. You can disable the automatic updating of the database by setting org-roam-db-update-on-save to nil.
+
+
+
+;; 7.2 Configuring what is displayed in the buffer
+;; There are currently 3 provided widget types:
+
+;; BacklinksView (preview of) nodes that link to this node
+;; Reference LinksNodes that reference this node (see Refs)
+;; Unlinked referencesView nodes that contain text that match the nodes title/alias but are not linked
+;; To configure what sections are displayed in the buffer, set org-roam-mode-section-functions.
+;; ;; (setq org-roam-mode-section-functions
+;;       (list #'org-roam-backlinks-section
+;;             #'org-roam-reflinks-section
+;;             ;; #'org-roam-unlinked-references-section
+;;             ))
+
+
+;; 7.3 Configuring the Org-roam buffer display
+;; (add-to-list 'display-buffer-alist
+;;              '("\\*org-roam\\*"
+;;                (display-buffer-in-direction)
+;;                (direction . right)
+;;                (window-width . 0.33)
+;;                (window-height . fit-window-to-buffer))
+
+;; (add-to-list 'display-buffer-alist
+;;              '("\\*org-roam\\*"
+;;                (display-buffer-in-side-window)
+;;                (side . right)
+;;                (slot . 0)
+;;                (window-width . 0.33)
+;;                (window-parameters . ((no-other-window . t)
+;;                                      (no-delete-other-windows . t)))))
+
+
+;; roam 在任何位置可以补全
+(setq org-roam-completion-everywhere t)
+
+;; org-roam 图需要用注册表 graphviz 软件
+
+;; 用chrome打开
+(setq org-roam-graph-viewer "c:/Program Files/Google/Chrome/Application/chrome.exe")
+;; (setq org-roam-graph-viewer nil)
+
+;; (require 'org-download)
+;; (setq org-download-method 'attach)
 
 ;; ======= provide =======
 (provide 'init-org)

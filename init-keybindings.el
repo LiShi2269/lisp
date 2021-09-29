@@ -17,6 +17,14 @@
 (add-hook 'ido-setup-hook 'ido-my-keys)
 
 
+
+;; ======= iBuffer =======
+;; (define-key ibuffer-mode-map (kbd "C-j") 'next-line)
+(define-key ibuffer-mode-map (kbd "j") 'next-line)
+;; (define-key ibuffer-mode-map (kbd "C-k") 'previous-line)
+(define-key ibuffer-mode-map (kbd "k") 'previous-line)
+
+
 ;; ======= ivy =======
 (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
@@ -26,8 +34,8 @@
 (define-key shell-mode-map (kbd "C-k") 'comint-previous-input)
 
 ;; ========== nswbuff 快速切换 ===============
-(global-set-key (kbd "C-S-h") 'nswbuff-switch-to-previous-buffer)
 (global-set-key (kbd "C-S-l") 'nswbuff-switch-to-next-buffer)
+(global-set-key (kbd "C-S-h") 'nswbuff-switch-to-previous-buffer)
 ;; 是否循环切换buffer
 (setq nswbuff-display-intermediate-buffers t)
 ;; 是否过滤一些内容
@@ -45,8 +53,8 @@
 (key-chord-define evil-insert-state-map ",," 'evil-normal-state)
 (key-chord-define evil-replace-state-map ",," 'evil-normal-state)
 (key-chord-define ivy-mode-map ",," 'keyboard-escape-quit)
-(key-chord-define elpy-mode-map "KK" 'beginning-of-defun)
-(key-chord-define elpy-mode-map "JJ" 'end-of-defun)
+;; (key-chord-define elpy-mode-map "KK" 'beginning-of-defun)
+;; (key-chord-define elpy-mode-map "JJ" 'end-of-defun)
 ;; (key-chord-define evil-insert-state-map ".." 'myinsert)
 (setq key-chord-one-key-delay 0.4)     
 (key-chord-mode +1)

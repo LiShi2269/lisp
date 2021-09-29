@@ -153,8 +153,8 @@
     ;; "fs" 'save-buffer
     "<tab>" 'mode-line-other-buffer
     "b" '(:ignore t :which-key "buffer")
-    "bb" 'buffer-menu
-    ;; "bb" (lambda()(interactive) (progn (kill-treemacs-buffer)(buffer-menu)))
+    ;; "bb" 'buffer-menu
+    "bb" 'ibuffer
     ;; 返回dashboard
     "bh" (lambda()(interactive)(progn(switch-to-buffer "*dashboard*")))
     "bd" 'kill-this-buffer
@@ -198,7 +198,7 @@
     "qR" 'eval-buffer
     "qs" 'save-buffers-kill-emacs
 
-    "s" '(:ignore t :which-key "setEdit")
+    ;; "s" '(:ignore t :which-key File is missing: Cannot open load file, No such file or directory, ob-jupyter"setEdit")
     ;; ---- iedit ----
     "se" 'iedit-mode
     ;; ---- Hight-symbol ----
@@ -210,11 +210,16 @@
     "syv" 'yas-visit-snippet-file
 
     "r" '(:ignore t :which-key "orgRoam")
-    "rr" 'org-roam-buffer-toggle-display
-    "ri" 'org-roam-insert
-    "r/" 'org-roam-find-file
-    "rb" 'org-roam-switch-to-buffer
-    "rd" 'org-roam-find-directory
+    "rt" 'org-roam-buffer-toggle-display
+    "rs" 'org-roam-db-sync
+    "ri" 'org-roam-node-insert
+    "r/" 'org-roam-node-find
+    "rc" 'org-roam-capture
+    "rt" 'org-roam-buffer-toggle
+    "rA" 'org-roam-alias-add
+    "rR" 'org-roam-alias-remove
+    "rra" 'org-roam-ref-add
+    "rrr" 'org-roam-ref-remove
 
     ;; ---- ace-jump ----
     "j" '(:ignore t :which-key "AceJump")
@@ -226,8 +231,13 @@
 ;; (define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )
 ;; (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 
+;; One can also set org-roam-db-node-include-function. For example, to exclude all headlines with the ATTACH tag from the Org-roam database, one can set:
+;; (setq org-roam-db-node-include-function
+;;       (lambda ()
+;;         (not (member "ATTACH" (org-get-tags)))))
 
-
+;; 不自动保存
+;; However, depending on how large your Org files are, database updating can be a slow operation. You can disable the automatic updating of the database by setting org-roam-db-update-on-save to nil.
 
 
 

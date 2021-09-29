@@ -3,7 +3,7 @@
 
 
 (require 'magit)
-(require 'evil-magit)
+;;(require 'evil-magit)
 
 (general-define-key
  :states  '(normal motion)

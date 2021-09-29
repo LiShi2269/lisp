@@ -8,7 +8,11 @@
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")			
 			      )))
 
-
+;; https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/main/30.setup-org-roam.md
+;; (require 'package)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (package-initialize)
+;; (setq package-check-signature nil)
 
 ;; 注意 elpa.emacs-china.org 是 Emacs China 中文社区在国内搭建的一个 ELPA 镜像
 
@@ -27,7 +31,7 @@
 	company
 	;; --- Mini Buffer completion ---
 	ivy
-	evil-magit
+	
 	;; --- Better Editing ---
 	neotree
 	proxy-mode
@@ -121,10 +125,11 @@
 	;; org-noter
 
 	org-roam
-	org-roam-server
-	org-roam-bibtex
-	org-ref
-
+	emacsql-sqlite3
+	;; org-download              ;windows好像不可以
+	;;org-roam-server
+	;;org-roam-bibtex
+	;;org-ref
 	ein
 
 	use-package
@@ -192,7 +197,14 @@
        (when (not (package-installed-p pkg))
          (package-install pkg))))
 
-
+;; 能下载图片直接放到org里面去
+;; (use-package org-download
+;;   :after org
+;;   :bind
+;;   ;; (:map org-mode-map
+;;         ;; (("s-Y" . org-download-screenshot)
+;;          ;; ("s-y" . org-download-yank)))
+;;   )
 
 
 ;; ======= probide =======

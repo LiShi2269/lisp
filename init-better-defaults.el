@@ -210,6 +210,8 @@
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
 
+;; ====== company 补全 org-roam =============
+;;(add-to-list 'company-backends '(company-capf))
 
 ;; ====== pdf configuration =============
 ;; (use-package org-pdftools
@@ -220,6 +222,11 @@
 ;;   :config
 ;;   (with-eval-after-load 'pdf-annot
 ;;     (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+
+(winner-mode +1)
+(define-key winner-mode-map (kbd "<M-left>") #'winner-undo)
+(define-key winner-mode-map (kbd "<M-right>") #'winner-redo)
 
 ;; ======= provide =======
 (provide 'init-better-defaults)
