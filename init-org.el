@@ -305,7 +305,7 @@
  '(
    ;; (emacs-lisp . t)
    (python . t)
-   ;; (jupyter . t)
+   (jupyter . t)
    ))
 
 ;; (org-babel-jupyter-override-src-block "python")

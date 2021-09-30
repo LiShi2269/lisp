@@ -69,7 +69,7 @@
     ("ldp"  my-toggle-doc-position)
     ("lm"  my-toggle-imenu)
     ("run"  my-run-python "runPython")
-    ;; ("'" org-edit-src-abort "org special edit") ;
+    ("'" org-edit-src-abort "org special edit") ;
     )
 
 

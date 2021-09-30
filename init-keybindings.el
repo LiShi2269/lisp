@@ -19,10 +19,12 @@
 
 
 ;; ======= iBuffer =======
-;; (define-key ibuffer-mode-map (kbd "C-j") 'next-line)
 (define-key ibuffer-mode-map (kbd "j") 'next-line)
-;; (define-key ibuffer-mode-map (kbd "C-k") 'previous-line)
 (define-key ibuffer-mode-map (kbd "k") 'previous-line)
+(define-key ibuffer-mode-map (kbd "M-l") 'evil-window-right)
+(define-key ibuffer-mode-map (kbd "M-h") 'evil-window-left)
+(define-key ibuffer-mode-map (kbd "M-j") 'evil-window-down)
+(define-key ibuffer-mode-map (kbd "M-k") 'evil-window-up)
 
 
 ;; ======= ivy =======

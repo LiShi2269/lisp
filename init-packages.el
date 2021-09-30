@@ -59,7 +59,8 @@
 	beacon
 	rainbow-delimiters
 	;; --- jupyter ---
-	;; jupyter
+	jupyter
+	;;emacs-websocket	;似乎不要也可以？
 	;; simple-httpd
 	;; markdown-mode	
 	;; zmq
