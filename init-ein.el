@@ -72,9 +72,9 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 (setq ein:use-smartrep t)
 
 
-;; (add-hook 'ein:notebook-mode-hook (lambda()(eldoc-mode -1)))
+(add-hook 'ein:notebook-mode-hook (lambda()(eldoc-mode -1)))
 
-;; (evil-define-minor-mode-key 'normal 'ein:notebook-mode (kbd ",") 'hydra-ein/body)
+(evil-define-minor-mode-key 'normal 'ein:notebook-mode (kbd ",") 'hydra-ein/body)
 ;; (evil-define-minor-mode-key 'normal 'ein:notebook-mode (kbd "<SPC> m") 'hydra-ein/body)
 (define-key ein:notebook-mode-map (kbd "C-<return>") 'ein:worksheet-execute-cell-and-goto-next-km)
 (define-key ein:notebook-mode-map (kbd "C-S-<return>") 'ein:worksheet-execute-cell-and-insert-below-km)
@@ -82,7 +82,10 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 (define-key ein:notebook-mode-map (kbd "C-k") 'ein:worksheet-goto-prev-input-km)
 
 
-
+;; 如果一直跳出
+;; Elpy is updating the RPC virtualenv (’c:/HOME/.emacs.d/elpy/rpc-venv’)
+;; 的解决方法, 再customize-group当中调整
+;; elpy-rpc-virtualenv-path: 
 
 
 

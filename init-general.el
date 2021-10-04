@@ -60,7 +60,11 @@
 
 ;; ============如果是有用ein模式则要换成这个方法=========
 (defun my-save-buffer()(interactive)
-       (if (bound-and-true-p ein:notebook)(ein:notebook-save-notebook-command-km)(save-buffer)))
+       (if (bound-and-true-p ein:notebook)(progn (ein:notebook-save-notebook-command-km)(turn-on-evil-mode))(save-buffer)))
+
+;; (defun my-save-buffer()(interactive)
+;;        (if (bound-and-true-p ein:notebook)(ein:notebook-save-notebook-command-km)(save-buffer)))
+
 
 (defun my-major-mode-fun()(interactive)
    " 如果major-mode是python

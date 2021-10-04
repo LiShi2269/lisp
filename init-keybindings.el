@@ -93,6 +93,7 @@
 
 ;; ======================== ivy-mode ======================
 (global-set-key (kbd "<f9>") 'ivy-mode)
+(global-set-key (kbd "<f8>") 'turn-on-evil-mode)
 
 
 
