@@ -54,6 +54,7 @@
 	powerline-evil
 	;; spaceline-all-the-icons
 	ace-jump-mode
+	ace-mc
 
 	minimap
 	beacon

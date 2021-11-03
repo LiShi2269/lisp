@@ -3,7 +3,7 @@
 (require 'org-ref)
 ;;---------bullets------------
 (require 'org-bullets)
-
+(add-hook 'org-mode-hook 'rainbow-delimiters-mode-enable)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
 (openwith-mode 1)
 ;; (setq header-line-format "    ")
@@ -140,6 +140,8 @@
     ("m" org-mode-config/body "org mode config")
 ;;org-open
     ("o" org-open-at-point "org open at point")
+;;ID
+    ("I" org-id-get-create "orgID")
   )
 
 (defhydra org-mode-config(:exit t)
@@ -187,6 +189,7 @@
  )
 
 
+
 (defhydra org-link(:exit t)
  ;; you need to use org-store-link
  ("i" org-insert-link "insert")
@@ -217,8 +220,10 @@
  )
 
 
+(defun org-to-imagelink()(interactive)(progn (evil-first-non-blank)(insert "[[")(end-of-line)(insert "]]")))
 (defhydra org-image(:exit t)
  ("t" org-toggle-inline-images "toggleImage")
+ ("l" org-to-imagelink "link")
  )
 
 
@@ -327,7 +332,9 @@
 
 ;; (setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
-(setq org-src-preserve-indentation nil)
+(setq org-src-preserve-indentation nil
+      org-edit-src-content-indentation 0)
+
 
  	
 ;;====================== latex ===========================
@@ -446,6 +453,13 @@
 (setq org-roam-graph-viewer "c:/Program Files/Google/Chrome/Application/chrome.exe")
 ;; (setq org-roam-graph-viewer nil)
 
+
+;; If you use this setting and don’t want to see images in a specific file, add this at the top of the org files that are not to display images: #+STARTUP: noinlineimages
+
+
+
+;; always show images
+(setq org-startup-with-inline-images t)
 ;; (require 'org-download)
 ;; (setq org-download-method 'attach)
 

@@ -46,4 +46,3 @@
 
 
 (provide 'init-treemacs)
-G

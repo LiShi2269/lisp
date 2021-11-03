@@ -212,6 +212,8 @@
     "sl" 'linum-relative-toggle
     "syn" 'yas-new-snippet
     "syv" 'yas-visit-snippet-file
+    "sm" 'ace-mc-add-multiple-cursors
+    "ss" 'ace-mc-add-single-cursor
 
     "r" '(:ignore t :which-key "orgRoam")
     "rt" 'org-roam-buffer-toggle-display
@@ -222,6 +224,7 @@
     "rt" 'org-roam-buffer-toggle
     "rA" 'org-roam-alias-add
     "rR" 'org-roam-alias-remove
+    "rr" '(:ignore t :which-key "Roam-ref")
     "rra" 'org-roam-ref-add
     "rrr" 'org-roam-ref-remove
 

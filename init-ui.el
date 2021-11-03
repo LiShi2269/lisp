@@ -203,25 +203,25 @@
 
 
 ;; =============== which-key-posframe ========================
-(use-package which-key-posframe
-  ;; :load-path "path/to/which-key-posframe.el"
-  :init
-  (which-key-posframe-mode 1)
-;; position
-(setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-left-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-right-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-right-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-left-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-right-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-left-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-right-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-top-left-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
-  )
+;; (use-package which-key-posframe
+;;   ;; :load-path "path/to/which-key-posframe.el"
+;;   :init
+;;   (which-key-posframe-mode 1)
+;; ;; position
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-left-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-right-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-right-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-left-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-right-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-left-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-right-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-top-left-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
+;;   )
 
 
 ;; ===============  font  ========================
@@ -240,7 +240,7 @@
  (set-face-attribute 'font-lock-comment-face nil :foreground "dark sea green"   )
  (set-face-attribute 'font-lock-builtin-face nil :foreground "#1bd1a5"   )
  (set-face-attribute 'font-lock-string-face nil :foreground "deep sky blue"   )
- ;; (set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   )
+ (set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   )
  )
 
 
