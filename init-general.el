@@ -146,6 +146,7 @@
     ;; Add current file to the list of agenda files. The file is added to the front of the list. If it was already in the list, it is moved to the front. With a prefix argument, file is added/moved to the end.
     "Af" 'org-agenda-file-to-front
     "Ar" 'org-remove-file
+    "AC" 'org-cycle-agenda-files
     "A>" 'org-agenda-set-restriction-lock
     "A<" 'org-agenda/org-agenda-remove-restriction-lock-and-exit
 

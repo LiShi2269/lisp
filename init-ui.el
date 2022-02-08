@@ -4,7 +4,7 @@
 (perfect-margin-mode 1)
 ;; =========================== org mode =========================
 
-;; (set-face-attribute 'org-verbatim nil :foreground "deep sky blue" :slant 'italic )
+(set-face-attribute 'org-verbatim  nil :underline t)
 (set-face-attribute 'bold nil :foreground "gold" )
 ;; ====================================================
 (use-package rainbow-delimiters
