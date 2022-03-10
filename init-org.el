@@ -78,23 +78,16 @@
 
 
 
-;; (general-define-key
-;;  :keymaps 'org-mode-map
-;;  "C-j" 'org-next-visible-heading
-;;  "C-k" 'org-previous-visible-heading
-;;  "C-S-j" (lambda()(interactive)(progn (search-forward "#+begin_src" nil t)(next-line)))
-;;  "C-S-k" (lambda()(interactive)(progn (search-backward "#+begin_src" nil t)
-;; 				      (search-backward "#+begin_src" nil t)
-;; 				      (next-line)))
-;;  )
-
 (general-define-key
  :keymaps 'org-mode-map
  "C-j" 'org-next-visible-heading
  "C-k" 'org-previous-visible-heading
- "C-S-j" 'org-babel-next-src-block
- "C-S-k" 'org-babel-previous-src-block
+ "C-S-j" (lambda()(interactive)(progn (search-forward "#+begin_src" nil t)(next-line)))
+ "C-S-k" (lambda()(interactive)(progn (search-backward "#+begin_src" nil t)
+				      (search-backward "#+begin_src" nil t)
+				      (next-line)))
  )
+
 
 
 (evil-define-key '('normal 'visual) org-mode-map (kbd ",") 'hydra-org/body)
