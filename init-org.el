@@ -462,6 +462,6 @@
 (setq org-startup-with-inline-images t)
 ;; (require 'org-download)
 ;; (setq org-download-method 'attach)
-
+(setq package-check-signature nil)
 ;; ======= provide =======
 (provide 'init-org)

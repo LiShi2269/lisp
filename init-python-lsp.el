@@ -12,6 +12,12 @@
 ;; WORKON_HOME
 
 
+(elpy-enable)
+;; (elpy-nav-backward-indent)
+;; ctrl + 左右的快捷键在elpy mode 中取消
+(define-key elpy-mode-map (kbd "C-<left>") nil)
+(define-key elpy-mode-map (kbd "C-<right>") nil)
+
 ;; ------- my functions -------
 (defun my-run-python()
 "左边是原来的py右边是ipython，光标在左边"
@@ -231,5 +237,4 @@
 
 
 
-(elpy-enable)
 (provide 'init-python-lsp)

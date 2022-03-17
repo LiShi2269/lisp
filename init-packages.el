@@ -179,7 +179,7 @@
       	;; --- test package ---
 	;; google-this
       	;; --- windows 不能用 ---
-	;; auctex
+	auctex
 	)
  "Default packages")
 

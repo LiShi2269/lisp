@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ref
+# key: \rt
+# --
+~\ref{tab$0}
