@@ -11,6 +11,10 @@
 
 ;; WORKON_HOME
 
+;; (elpy-nav-backward-indent)
+;; ctrl + 左右的快捷键在elpy mode 中取消
+(define-key elpy-mode-map (kbd "C-<left>") nil)
+(define-key elpy-mode-map (kbd "C-<right>") nil)
 
 (elpy-enable)
 ;; (elpy-nav-backward-indent)
