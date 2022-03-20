@@ -75,7 +75,10 @@
 
 
 
-
+(defun insert-now-timestamp()
+  "Insert org mode timestamp at point with current date and time."
+  (interactive)
+  (org-insert-time-stamp (current-time) t))
 
 
 (general-define-key
@@ -175,7 +178,7 @@
 ("i" org-clock-in "clockIn")
 ("o" org-clock-out "clockOut")
 ("l" org-clock-in-last "clockLast")
-;; (".c" org-evaluate-time-range)
+("t" insert-now-timestamp "nowTime")
 ("q" org-clock-cancel "clockCancel")
 ("v" org-clock-display "clockDisplay")
 )
