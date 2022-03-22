@@ -8,5 +8,7 @@
 
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
+
+(add-to-list 'auto-mode-alist '("\\.aux\\'" . tex-mode))
 ;; ======= provide =======
 (provide 'init-latex)
