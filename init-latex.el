@@ -1,5 +1,6 @@
 
  	
+(add-to-list 'auto-mode-alist '("\\.aux\\'" . tex-mode))
 
 (setq bibtex-dialect 'biblatex)
 (use-package tex
