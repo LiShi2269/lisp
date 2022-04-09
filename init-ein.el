@@ -1,5 +1,4 @@
 
-
 (require 'hydra)
 (require 'ein)
 (require 'ein-notebook)
@@ -73,6 +72,7 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 
 
 (add-hook 'ein:notebook-mode-hook (lambda()(eldoc-mode -1)))
+(add-hook 'python-mode (lambda()(undo-tree-mode 1)))
 
 (evil-define-minor-mode-key 'normal 'ein:notebook-mode (kbd ",") 'hydra-ein/body)
 ;; (evil-define-minor-mode-key 'normal 'ein:notebook-mode (kbd "<SPC> m") 'hydra-ein/body)

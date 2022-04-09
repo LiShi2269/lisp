@@ -14,6 +14,14 @@
 )
 			   ))
 
+
+
+;; (setq org-image-actual-width nil)
+;; 关于org src 模式导出是不是前面要有空格
+(setq org-src-preserve-indentation nil
+      org-edit-src-content-indentation 0)
+
+
 ;; ------key-map-set-----
 ;; (setq org-log-done nil)
 
@@ -333,10 +341,6 @@
 
 
 
-;; (setq org-image-actual-width nil)
-;; 关于org src 模式导出是不是前面要有空格
-(setq org-src-preserve-indentation nil
-      org-edit-src-content-indentation 0)
 
 
  	
