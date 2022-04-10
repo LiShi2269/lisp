@@ -302,7 +302,7 @@
 ;; --------- todo list -----------
 (setq org-todo-keywords
       '(
-	(sequence "TODO" "DELAY" "|" "CHANGE" "DONE" "CANCEL" )
+	(sequence "TODO" "DELAY" "|" "CHANGE" "DONE" "CANCELLED" )
 	(sequence "one" "two" "three" "four" "five" "|" "DONE")
 	;; (sequence "a" "b" "c" "e" "f" "|" "DONE")
 	;; (sequence "1" "2" "3" "4" "5" "|" "DONE")
