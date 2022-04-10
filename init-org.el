@@ -409,6 +409,13 @@
 (setq org-roam-v2-ack t)
 
 
+
+;; -------------- org-roam ---------------------
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+
+
+
+
 ;; One can also set org-roam-db-node-include-function. For example, to exclude all headlines with the ATTACH tag from the Org-roam database, one can set:
 ;; (setq org-roam-db-node-include-function
 ;;       (lambda ()
