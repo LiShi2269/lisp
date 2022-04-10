@@ -27,8 +27,8 @@ InteractiveShell.ast_node_interactivity = 'all'
 
 
 
-
-
+treemacs 出现问题的时候
+查看 treemacs-python-executable 这个变量的值有没有指向你的Python3
 
 
 warning: LF will be replaced by CRLF in 
