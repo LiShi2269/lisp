@@ -302,7 +302,7 @@
 ;; --------- todo list -----------
 (setq org-todo-keywords
       '(
-	(sequence "TODO" "DELAY" "|" "CHANGE" "DONE" "GiveUp" )
+	(sequence "TODO" "DELAY" "|" "CHANGE" "DONE" "CANCEL" )
 	(sequence "one" "two" "three" "four" "five" "|" "DONE")
 	;; (sequence "a" "b" "c" "e" "f" "|" "DONE")
 	;; (sequence "1" "2" "3" "4" "5" "|" "DONE")
@@ -407,6 +407,13 @@
 (setq org-roam-directory "f:/org-roam/")
 (org-roam-db-autosync-mode)
 (setq org-roam-v2-ack t)
+
+
+
+;; -------------- org-roam ---------------------
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+
+
 
 
 ;; One can also set org-roam-db-node-include-function. For example, to exclude all headlines with the ATTACH tag from the Org-roam database, one can set:
