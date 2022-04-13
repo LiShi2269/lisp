@@ -117,6 +117,8 @@
  :states  '(normal motion )
  :keymaps 'override 
  :prefix "SPC"
+
+    "c" 'org-capture 
     ;; ---- dir ----
     "<SPC>" 'smex
     "a" '(:ignore t :which-key "mode")
@@ -269,22 +271,22 @@
 (winum-mode)
 
 
-(defun kill-treemacs-buffer()
-    (condition-case nil
-	(kill-buffer "Treemacs Update Single File Process")
-	(error nil))
-    (setq a 2)
-    (while (< a 10)
-      (condition-case nil
-	  (kill-buffer
-	   (concatenate 'string "Treemacs Update Single File Process<" (number-to-string a) ">")
-	   )
-	(error nil)
-	  )
-      ;; (print (concatenate 'string "asdf" (number-to-string a) "asdcf"))
-      (setq a (+ a 1))
-      )
-  )
+;; (defun kill-treemacs-buffer()
+;;     (condition-case nil
+;; 	(kill-buffer "Treemacs Update Single File Process")
+;; 	(error nil))
+;;     (setq a 2)
+;;     (while (< a 10)
+;;       (condition-case nil
+;; 	  (kill-buffer
+;; 	   (concatenate 'string "Treemacs Update Single File Process<" (number-to-string a) ">")
+;; 	   )
+;; 	(error nil)
+;; 	  )
+;;       ;; (print (concatenate 'string "asdf" (number-to-string a) "asdcf"))
+;;       (setq a (+ a 1))
+;;       )
+;;   )
 
 
 

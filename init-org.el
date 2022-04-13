@@ -470,6 +470,31 @@
 
 ;; If you use this setting and don’t want to see images in a specific file, add this at the top of the org files that are not to display images: #+STARTUP: noinlineimages
 
+;; org capture templates
+(setq org-capture-templates
+      '(
+	("t" "task" entry (file+headline "f:/task/task.org" "temp" )
+         "** TODO %?\n  %i\n  %a")
+
+        ("e" "Event" entry (file+datetree "f:/task/Event.org" )
+         "* %?\nEntered on %U\n  %i\n  %a")
+
+        ("F" "path" plain (file "f:/task/Note.org" )
+         "%?\n  %F")
+
+        ("n" "Note" entry (file "f:/task/Note.org" )
+         "* %?\n  %i  %a")
+
+        ("c" "killring" plain (file "f:/task/Note.org" )
+         "%?\n  %c  %a")
+
+        ("x" "clipboard" plain (file "f:/task/Note.org" )
+         "%?\n  %x  %a")
+	))
+
+
+
+
 
 
 ;; always show images
