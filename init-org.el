@@ -474,7 +474,7 @@
 (setq org-capture-templates
       '(
 	("t" "task" entry (file+headline "f:/task/task.org" "temp" )
-         "** TODO %?\n  %i\n  %a")
+         "** TODO %?  %i  %a")
 
         ("e" "Event" entry (file+datetree "f:/task/Event.org" )
          "* %?\nEntered on %U\n  %i\n  %a")

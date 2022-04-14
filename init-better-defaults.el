@@ -165,7 +165,7 @@
 
 ;;====== minimap =============
 ;; (require 'minimap)
-
+(setq diary-file "f:/task/diary")
 
 ;; ====== neotree =============
 (use-package neotree
