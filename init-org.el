@@ -1,3 +1,9 @@
+
+
+;; the jupyter-ipython in org width: update the ipystata 
+
+
+
 ;; init file for org-mode
 (require 'org)
 (require 'org-ref)
@@ -18,8 +24,8 @@
 
 ;; (setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
-(setq org-src-preserve-indentation nil
-      org-edit-src-content-indentation 0)
+(setq org-src-preserve-indentation t
+      org-edit-src-content-indentation t)
 
 
 ;; ------key-map-set-----
