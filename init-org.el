@@ -157,7 +157,23 @@
     ("o" org-open-at-point "org open at point")
 ;;ID
     ("I" org-id-get-create "orgID")
+    ;; 快速加上print(原内容)
+    ("(" my-org-add-print "add-print()")
   )
+
+(defun my-org-add-print()(interactive)
+       (progn   (evil-normal-state)
+		(evil-next-line-1-first-non-blank)
+		(insert "(")
+		(evil-end-of-line)
+		(evil-append 1)
+		(insert ")")
+		(evil-normal-state)
+		(evil-next-line-1-first-non-blank)
+		(insert "print")
+	      ) )
+
+
 
 (defhydra org-mode-config(:exit t)
 ("n" org-num-face "orgNum")
