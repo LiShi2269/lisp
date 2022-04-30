@@ -1,8 +1,10 @@
-#+Title： Edit workspace
-# asdf
-# asdf
-* default Workspace
-** task
- - path :: f:/task
-** lisp
- - path :: ~/.emacs.d/lisp
+
+;; (global-set-key  (kbd "<f7>") nil)
+(global-set-key  (kbd "<f7>") 'test)
+
+(defun test()
+  (interactive)
+  (if (org-in-clocktable-p)(message "yes")(message "no")))
+
+
+
