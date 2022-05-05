@@ -87,7 +87,8 @@
 	(t (hydra-org/body))
 	))
 
-
+;; C-<return> 在 org 里面
+;; org-insert-heading-respect-content &optional INVISIBLE-OK
 
 
 (add-hook 'bookmark-bmenu-mode-hook 'myset-bookmark-menu-function)

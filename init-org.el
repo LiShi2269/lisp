@@ -102,8 +102,15 @@
  "C-S-j" 'org-babel-next-src-block
  "C-S-k" 'org-babel-previous-src-block
  "C-'" nil
+ "C-<return>" 'my-C-turn
  )
 
+(defun my-C-turn()
+  (interactive)
+  (cond ( (org-in-src-block-p) (org-babel-execute-src-block-maybe))
+	(t (org-insert-heading-respect-content))
+	))
+  
 
 
 ;; (evil-define-key '('normal 'visual) org-mode-map (kbd ",") 'hydra-org/body)
@@ -130,8 +137,6 @@
   ("a" org-agenda/body "agenda")
 ;; S SparseTree
   ("S" org-Sparsetree/body "Sparse")
-;; $ archive
-  ("$" org-archive-subtree "Archive")
 ;; i image
   ("i" org-image/body "image")
 ;; | table
@@ -187,6 +192,7 @@
 ("x" org-cut-subtree "cut")
 ("c" org-copy-subtree "copy")
 ("p" org-paste-subtree "paste")
+("$" org-archive-subtree "Archive")
   )
 
 (defhydra org-env(:exit t)
