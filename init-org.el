@@ -233,7 +233,7 @@
 
 (defhydra org-link(:exit t)
  ;; you need to use org-store-link
- ("i" org-insert-link "insert")
+ ("l" org-insert-link "insert")
  ("j" org-next-link "next")
  ("k" org-previous-link "previous")
  )
@@ -401,7 +401,10 @@
 ;;       ;; org-odd-levels-only t
 ;;       )
 
+;; org-block-bege
 (custom-set-faces
+ '(org-block-begin-line ((default :background "brown")))
+ '(org-block-end-line ((default :background "brown")))
  '(header-line ((default :background "#161a1f")))
  '(org-headline-done ((t :height 1.3 :weight normal :foreground "light sky blue")))
  '(org-level-1 ((t :height 1.3 :weight normal :foreground "light sky blue")))
