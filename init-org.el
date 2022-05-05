@@ -101,6 +101,7 @@
  "C-k" 'org-previous-visible-heading
  "C-S-j" 'org-babel-next-src-block
  "C-S-k" 'org-babel-previous-src-block
+ "C-'" nil
  )
 
 
@@ -436,6 +437,8 @@
 
 ;; -------------- org-roam ---------------------
 (setq org-default-notes-file (concat org-directory "/notes.org"))
+
+
 
 
 
