@@ -129,6 +129,8 @@
   ("a" org-agenda/body "agenda")
 ;; S SparseTree
   ("S" org-Sparsetree/body "Sparse")
+;; $ archive
+  ("$" org-archive-subtree "Archive")
 ;; i image
   ("i" org-image/body "image")
 ;; | table
@@ -151,8 +153,9 @@
     ("C" org-src/body "src")
 ;;edit-special
     ("'" org-edit-special "org special edit")
-;;mode-setting
-    ("m" org-mode-config/body "org mode config")
+;;mark ring
+    ("<left>" org-mark-ring-push "org mode config")
+    ("<right>" org-mark-ring-goto "org mode config")
 ;;org-open
     ("o" org-open-at-point "org open at point")
 ;;ID
@@ -393,6 +396,7 @@
 
 (custom-set-faces
  '(header-line ((default :background "#161a1f")))
+ '(org-headline-done ((t :height 1.3 :weight normal :foreground "light sky blue")))
  '(org-level-1 ((t :height 1.3 :weight normal :foreground "light sky blue")))
  '(org-level-2 ((t :height 1.2 :weight normal :foreground "pale turquoise")))
  '(org-level-3 ((t :height 1.1 :weight bold :foreground "salmon")))
@@ -497,7 +501,7 @@
          "** TODO %?  %i  %a")
 
         ("e" "Event" entry (file+datetree "f:/task/Event.org" )
-         "* %?\nEntered on %U\n  %i\n  %a")
+         "* %?\nEntered on %U\n  %i\n  %a \n")
 
         ("F" "path" plain (file "f:/task/Note.org" )
          "%?\n  %F")
