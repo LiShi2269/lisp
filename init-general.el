@@ -75,11 +75,17 @@
        (cond ((equal major-mode 'python-mode)
 		    (if (bound-and-true-p ein:notebook-mode)  (hydra-ein/body) (hydra-python/body))) 
 	     ((equal major-mode 'emacs-lisp-mode) (print " emacs-lisp-mode do not have mode key")) 
-             ((equal major-mode 'org-mode) (hydra-org/body))
+             ((equal major-mode 'org-mode) (my-org-major))
 	     )
        )
 
-
+(defun my-org-major()
+  (interactive)
+  (cond ( (org-in-src-block-p) (org-src/body))
+	( (org-at-table-p)(org-table/body))
+	( (org-at-heading-p)(org-subtree/body))
+	(t (hydra-org/body))
+	))
 
 
 

@@ -106,7 +106,7 @@
 
 
 
-(evil-define-key '('normal 'visual) org-mode-map (kbd ",") 'hydra-org/body)
+;; (evil-define-key '('normal 'visual) org-mode-map (kbd ",") 'hydra-org/body)
 
 
 
