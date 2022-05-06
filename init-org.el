@@ -193,6 +193,8 @@
 ("c" org-copy-subtree "copy")
 ("p" org-paste-subtree "paste")
 ("$" org-archive-subtree "Archive")
+("p" org-property/body "Archive")
+("D" org-deadline-date/body "Archive")
   )
 
 (defhydra org-env(:exit t)
