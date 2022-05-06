@@ -215,7 +215,7 @@
 
 ;; (setq elpy-rpc-virtualenv-path 'current)
 
-(setq lsp-enable-snippet t)
+(setq lsp-enable-snippet nil)		;如果开启的话 yas-snippet 的补全久无法使用了
 (setq lsp-completion-enable nil)
 
 (key-chord-define python-mode-map ".." 'myinsert)
