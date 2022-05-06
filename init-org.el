@@ -177,8 +177,6 @@
     ("o" org-open-at-point "org open at point")
 ;;ID
     ("I" org-id-get-create "orgID")
-    ;; 快速加上print(原内容)
-    ("(" my-org-add-print "add-print()")
   )
 
 (defun my-org-add-print()(interactive)
@@ -343,6 +341,8 @@
  ("/" org-babel-demarcate-block   "split")
  ("h" org-babel-insert-header-arg   "headerArg")
  ("u" org-babel-goto-src-block-head   "headerArg")
+;; 快速加上print(原内容)
+("(" my-org-add-print "add-print()")
  )
 
 
