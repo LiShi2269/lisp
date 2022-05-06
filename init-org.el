@@ -97,13 +97,24 @@
 
 (general-define-key
  :keymaps 'org-mode-map
- "C-j" 'org-next-visible-heading
- "C-k" 'org-previous-visible-heading
- "C-S-j" 'org-babel-next-src-block
- "C-S-k" 'org-babel-previous-src-block
+ "C-j" 'my-C-j
+ "C-k" 'my-C-k
  "C-'" nil
  "C-<return>" 'my-C-turn
  )
+
+(defun my-C-j()
+  (interactive)
+  (cond ( (org-in-src-block-p) (org-babel-next-src-block))
+	(t (org-next-visible-heading 1))
+	))
+
+(defun my-C-k()
+  (interactive)
+  (cond ( (org-in-src-block-p) (org-babel-previous-src-block))
+	(t (org-previous-visible-heading 1))
+	))
+
 
 (defun my-C-turn()
   (interactive)
@@ -148,7 +159,7 @@
 ;; T tag
   ("T" org-tag/body "tag")
 ;; p property
-  ("p" org-property/body "property")
+  ("P" org-property/body "property")
 ;; v show
   ("v" org-show/body "vision")
 ;; e envirenment
@@ -193,8 +204,8 @@
 ("c" org-copy-subtree "copy")
 ("p" org-paste-subtree "paste")
 ("$" org-archive-subtree "Archive")
-("p" org-property/body "Archive")
-("D" org-deadline-date/body "Archive")
+("P" org-property/body "property")
+("D" org-deadline-date/body "deadline")
   )
 
 (defhydra org-env(:exit t)
@@ -324,7 +335,14 @@
 
 (defhydra org-src(:exit t)
  ("ij" jupyter-org-insert-src-block "insert")
- ("s" org-edit-special "edit-special")
+ ("s" org-babel-execute-subtree "executeSubtree")
+ ("o" org-babel-open-src-block-result "Open")
+ ("n" org-babel-goto-named-src-block  "namedSrc")
+ ("N" org-babel-goto-named-result  "namedResult")
+ ("b" org-babel-execute-buffer   "executeBuffer")
+ ("/" org-babel-demarcate-block   "split")
+ ("h" org-babel-insert-header-arg   "headerArg")
+ ("u" org-babel-goto-src-block-head   "headerArg")
  )
 
 

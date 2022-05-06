@@ -3,11 +3,13 @@
 (global-set-key  (kbd "<f7>") 'test4)
 
 
-(defun test4
+(defun test4()
   (interactive)
   (cond ( (org-in-src-block-p) (message "src"))
 	( (org-at-table-p)(message "table"))
 	( (org-in-archived-heading-p)(message "archived"))
+	( (org-in-commented-heading-p)(message "heading"))
+	( (org-in-subtree-not-table-p)(message "subtree"))
 	(t (message "othedr"))
 	))
 
