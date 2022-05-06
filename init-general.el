@@ -79,6 +79,9 @@
 	     )
        )
 
+
+
+
 (defun my-org-major()
   (interactive)
   (cond ( (org-in-src-block-p) (org-src/body))
@@ -87,8 +90,6 @@
 	(t (hydra-org/body))
 	))
 
-;; C-<return> 在 org 里面
-;; org-insert-heading-respect-content &optional INVISIBLE-OK
 
 
 (add-hook 'bookmark-bmenu-mode-hook 'myset-bookmark-menu-function)
