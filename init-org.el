@@ -118,7 +118,7 @@
 
 (defun my-C-turn()
   (interactive)
-  (cond ( (org-in-src-block-p) (org-babel-execute-src-block-maybe))
+  (cond ( (org-in-src-block-p) (progn (org-babel-execute-src-block-maybe)(org-babel-next-src-block)))
 	(t (org-insert-heading-respect-content))
 	))
   
@@ -129,7 +129,7 @@
 
 
 (defhydra hydra-org(:exit t)
-  ("o" 'org-open-at-point "openwith")
+  ("o" org-open-at-point "openwith")
 ;; s sub
   ("s" org-subtree/body "subtree")
 ;; * heading
@@ -288,6 +288,7 @@
  ("x" org-table-cut-region "cut")
  ("p" org-table-paste-rectangle "paste")
  ("`" org-table-edit-field "edit")
+  ("o" org-open-at-point "openwith")
  )
 
 
@@ -428,15 +429,15 @@
  '(org-block-begin-line ((default :background "brown")))
  '(org-block-end-line ((default :background "brown")))
  '(header-line ((default :background "#161a1f")))
- '(org-headline-done ((t :height 1.3 :weight normal :foreground "light sky blue")))
  '(org-level-1 ((t :height 1.3 :weight normal :foreground "light sky blue")))
  '(org-level-2 ((t :height 1.2 :weight normal :foreground "pale turquoise")))
  '(org-level-3 ((t :height 1.1 :weight bold :foreground "salmon")))
  '(org-level-4 ((t :height 1.1 :foreground "DarkTurquoise")))
  '(org-level-5 ((t :height 1.1 :foreground "medium aquamarine")))
  '(org-level-6 ((t :height 1.1 :foreground "indian red")))
- '(org-level-6 ((t :height 1.1 :foreground "violet")))
- ;; '(org-blank-before-new-entry ((heading . always) (plain-list-item . auto)))
+ '(org-level-7 ((t :height 1.1 :foreground "violet")))
+ '(org-headline-done ((t :weight normal :foreground "SeaGreen1")))
+ '(org-headline-todo ((t :weight bold :foreground "HotPink")))
  )
 
 ;; (setq org-cycle-separator-lines 0)
