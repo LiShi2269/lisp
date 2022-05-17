@@ -97,23 +97,23 @@
 
 (general-define-key
  :keymaps 'org-mode-map
- "C-j" 'my-C-j
- "C-k" 'my-C-k
+ "C-S-j" 'org-babel-next-src-block
+ "C-S-k" 'org-babel-previous-src-block
  "C-'" nil
  "C-<return>" 'my-C-turn
  )
 
-(defun my-C-j()
-  (interactive)
-  (cond ( (org-in-src-block-p) (org-babel-next-src-block))
-	(t (org-next-visible-heading 1))
-	))
+;; (defun my-C-j()
+;;   (interactive)
+;;   (cond ( (org-in-src-block-p) (org-babel-next-src-block))
+;; 	(t (org-next-visible-heading 1))
+;; 	))
 
-(defun my-C-k()
-  (interactive)
-  (cond ( (org-in-src-block-p) (org-babel-previous-src-block))
-	(t (org-previous-visible-heading 1))
-	))
+;; (defun my-C-k()
+;;   (interactive)
+;;   (cond ( (org-in-src-block-p) (org-babel-previous-src-block))
+;; 	(t (org-previous-visible-heading 1))
+;; 	))
 
 
 (defun my-C-turn()
@@ -163,11 +163,11 @@
 ;; v show
   ("v" org-show/body "vision")
 ;; e envirenment
-  ("e" org-env/body "environments")
+  ("E" org-env/body "environments")
 ;;sort
     ("`" org-sort "sort")
 ;;src-code
-    ("C" org-src/body "src")
+    ("e" org-src/body "Execute")
 ;;edit-special
     ("'" org-edit-special "org special edit")
 ;;mark ring
@@ -204,6 +204,9 @@
 ("$" org-archive-subtree "Archive")
 ("P" org-property/body "property")
 ("D" org-deadline-date/body "deadline")
+("e" org-babel-execute-subtree "Execute")
+("s" org-subtree/body "self")
+("n" org-narrow/body "narrow")
   )
 
 (defhydra org-env(:exit t)
@@ -282,6 +285,7 @@
 (defhydra org-table(:exit t)
  ;; -------table--------
  ("i" org-table-create-or-convert-from-region "insert")
+ ("l" org-link/body "link")
  ("r" org-table-align "align")
  ("<SPC>" org-table-blank-field "blank")
  ("c" org-table-copy-region "copy")
@@ -343,6 +347,7 @@
  ("h" org-babel-insert-header-arg   "headerArg")
  ("D" org-babel-remove-result   "removeResults")
  ("u" org-babel-goto-src-block-head   "headerArg")
+("e" org-src/body "Execute")
  ("'" org-edit-special "SpecialEdit")
 ;; 快速加上print(原内容)
 ("(" my-org-add-print "add-print()")
