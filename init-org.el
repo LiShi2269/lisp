@@ -99,8 +99,8 @@
  :keymaps 'org-mode-map
  "C-S-j" 'org-babel-next-src-block
  "C-S-k" 'org-babel-previous-src-block
- "C-j" 'org-previous-visible-heading
- "C-k" 'org-next-visible-heading
+ "C-k" 'org-previous-visible-heading
+ "C-j" 'org-next-visible-heading
  "C-'" nil
  "C-<return>" 'my-C-turn
  )
