@@ -99,6 +99,8 @@
  :keymaps 'org-mode-map
  "C-S-j" 'org-babel-next-src-block
  "C-S-k" 'org-babel-previous-src-block
+ "C-j" 'org-previous-visible-heading
+ "C-k" 'org-next-visible-heading
  "C-'" nil
  "C-<return>" 'my-C-turn
  )
@@ -207,6 +209,7 @@
 ("e" org-babel-execute-subtree "Execute")
 ("s" org-subtree/body "self")
 ("n" org-narrow/body "narrow")
+("T" org-tag/body "tag")
   )
 
 (defhydra org-env(:exit t)
