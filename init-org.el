@@ -490,15 +490,15 @@
  '(org-block-begin-line ((default :background "brown")))
  '(org-block-end-line ((default :background "brown")))
  '(header-line ((default :background "#161a1f")))
- '(org-level-1 ((t :height 1.3 :weight normal :foreground "light sky blue")))
- '(org-level-2 ((t :height 1.2 :weight normal :foreground "pale turquoise")))
- '(org-level-3 ((t :height 1.1 :weight bold :foreground "salmon")))
+ '(org-level-1 ((t :height 1.1 :weight bold :foreground "light sky blue")))
+ '(org-level-2 ((t :height 1.1 :weight normal :foreground "pale turquoise")))
+ '(org-level-3 ((t :height 1.1 :weight thin :foreground "salmon")))
  '(org-level-4 ((t :height 1.1 :foreground "DarkTurquoise")))
  '(org-level-5 ((t :height 1.1 :foreground "medium aquamarine")))
  '(org-level-6 ((t :height 1.1 :foreground "indian red")))
  '(org-level-7 ((t :height 1.1 :foreground "violet")))
  '(org-headline-done ((t :weight normal :foreground "SeaGreen1")))
- '(org-headline-todo ((t :weight bold :foreground "HotPink")))
+ '(org-headline-todo ((t :weight normal :foreground "HotPink")))
  )
 
 ;; (setq org-cycle-separator-lines 0)
@@ -515,12 +515,6 @@
 (add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
 (add-hook 'after-init-hook 'org-roam-mode)
 
-;; Define key bindings for Org-roam
-;; (global-set-key (kbd "C-c n r") #'org-roam-buffer-toggle-display)
-;; (global-set-key (kbd "C-c n i") #'org-roam-insert)
-;; (global-set-key (kbd "C-c n /") #'org-roam-find-file)
-;; (global-set-key (kbd "C-c n b") #'org-roam-switch-to-buffer)
-;; (global-set-key (kbd "C-c n d") #'org-roam-find-directory)
 
 (setq org-roam-directory "f:/org-roam/")
 (org-roam-db-autosync-mode)
