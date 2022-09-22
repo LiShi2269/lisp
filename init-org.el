@@ -263,6 +263,8 @@
 ("s" org-subtree/body "self")
 ("n" org-narrow/body "narrow")
 ("T" org-tag/body "tag")
+("l" org-link/body "link")
+("o" org-open-at-point "link")
   )
 
 (defhydra org-env(:exit t)
@@ -406,6 +408,7 @@
 ("e" org-src/body "Execute")
  ("'" org-edit-special "SpecialEdit")
  ("c" org-babel-remove-result "clear")
+ ("l" org-link "link")
 ;; 快速加上print(原内容)
 ("(" my-org-add-print "add-print()")
  )
