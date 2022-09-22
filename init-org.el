@@ -405,6 +405,7 @@
  ("u" org-babel-goto-src-block-head   "headerArg")
 ("e" org-src/body "Execute")
  ("'" org-edit-special "SpecialEdit")
+ ("c" org-babel-remove-result "clear")
 ;; 快速加上print(原内容)
 ("(" my-org-add-print "add-print()")
  )
