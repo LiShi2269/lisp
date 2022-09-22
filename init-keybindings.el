@@ -48,31 +48,38 @@
 
 
 
+(defun my-org-edit-buffer()
+  (interactive)
+  (cond ((org-in-src-block-p) (progn(org-edit-src-code)(evil-window-move-far-right))  )
+	((org-src-edit-buffer-p) (progn (my-save-buffer)(org-edit-src-exit)))
+	;; (t )
+    )
+  )
 
 ;; ;; ======= key-chord=======
-(require 'key-chord)
-(key-chord-define evil-visual-state-map ",," 'evil-force-normal-state)
-(key-chord-define evil-insert-state-map ",," 'evil-normal-state)
-(key-chord-define evil-replace-state-map ",," 'evil-normal-state)
-(key-chord-define ivy-mode-map ",," 'keyboard-escape-quit)
-;; (key-chord-define elpy-mode-map "KK" 'beginning-of-defun)
+;; (require 'key-chord)
+(key-chord-define evil-visual-state-map ",," 'my-org-edit-buffer)
+(key-chord-define evil-insert-state-map ",," 'my-org-edit-buffer)
+(key-chord-define evil-replace-state-map ",," 'my-org-edit-buffer)
+(key-chord-define ivy-mode-map ",," 'my-org-edit-buffer)
+;; ;; (key-chord-define elpy-mode-map "KK" 'beginning-of-defun)
 ;; (key-chord-define elpy-mode-map "JJ" 'end-of-defun)
 ;; (key-chord-define evil-insert-state-map ".." 'myinsert)
 (setq key-chord-one-key-delay 0.4)     
 (key-chord-mode +1)
 
 
-(defun myinsert()
-  (interactive)
-  ;; (evil-normal-state)
-  (progn
-    (evil-normal-state)
-    (evil-append 1)
-    (insert "()")
-    (evil-normal-state)
-    (evil-insert 1)
-  )
-  )
+;; (defun myinsert()
+;;   (interactive)
+;;   ;; (evil-normal-state)
+;;   (progn
+;;     (evil-normal-state)
+;;     (evil-append 1)
+;;     (insert "()")
+;;     (evil-normal-state)
+;;     (evil-insert 1)
+;;   )
+;;   )
 
 
 
