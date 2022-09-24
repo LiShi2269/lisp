@@ -1,5 +1,6 @@
 ;; (require 'cl-lib)
 ;; ======= dashboard =======
+(server-start)
 (use-package dashboard
   ;; :config ((dashboard-setup-startup-hook t)
   :ensure
@@ -20,8 +21,8 @@
                         ;; (registers . 5)
 			))
  ;; 在dashboard使用openwith外部打开
- ;; :bind(:map dashboard-mode-map
-	    ;; ("C-<return>" . (lambda()(interactive)(progn(openwith-mode 1)(evil-ret)))))
+ :bind(:map dashboard-mode-map
+	    ("C-<return>" . (lambda()(interactive)(progn(openwith-mode 1)(evil-ret)))))
   )
  
 ;; (visual-line-mode 1)
@@ -49,9 +50,13 @@
     (smartparens-global-mode)		;enable
     (show-smartparens-global-mode)
     :config
-    (add-hook 'emacs-lisp-mode-hook  (sp-pair "'" nil :actions :rem))
-    (add-hook 'lisp-interaction-mode-hook  (sp-pair "'" nil :actions :rem))
+    ;; (add-hook 'emacs-lisp-mode-hook  (sp-pair "'" nil :actions :rem))
+    ;; (add-hook 'lisp-interaction-mode-hook  (sp-pair "'" nil :actions :rem))
+    ;; (sp-local-pair 'lisp-interaction-mode "'" nil :actions :rem)
+    (sp-local-pair 'emacs-lisp-mode "'" nil :unless nil)
+    (sp-local-pair 'lisp-interaction-mode "'" nil :unless nil)
   )
+
 
 ;; 自动加载外部修改过的文件
 (global-auto-revert-mode 1)
@@ -83,12 +88,12 @@
 
 
 
-
-(setq default-buffer-file-coding-system 'utf-8)
+;; (setq default-buffer-file-coding-system 'utf-8)
 ;; Default coding system (for new files) 默认buffer编码是utf-8,(写文件)
 
 (prefer-coding-system 'utf-8)
 ;; 指定文件编码,此时buffer新建和读取都默认是utf-8,也可以M-x prefer-coding-system 只执行一次
+;; (set-language-environment "Chinese-GB18030")
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 ;; ======= iswitch =======
@@ -160,7 +165,7 @@
 
 ;;====== minimap =============
 ;; (require 'minimap)
-
+(setq diary-file "f:/task/diary")
 
 ;; ====== neotree =============
 (use-package neotree
@@ -169,8 +174,8 @@
 	     ("C-<return>" . (lambda()(interactive)(progn (openwith-mode 1)(neotree-enter)))))
   )
 ;; ====== undo-tree =============
-;; (require 'undo-tree)
-;; (global-undo-tree-mode t)
+(require 'undo-tree)
+(global-undo-tree-mode t)
 (use-package undo-tree
   :init
   (global-undo-tree-mode 1)
@@ -189,7 +194,7 @@
   (openwith-mode 0)
 
  '(openwith-associations
-   '(("\\.pdf\\'" "PDF-Viewer"
+   '(("\\.pdf\\'" "PDF-XChange Editer"
       (file))
      ;; ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer"
       ;; ("-idx" file))
@@ -200,15 +205,28 @@
 
 
 
-;; ====== pdf configuration =============
-(use-package org-pdftools
-  :hook (org-mode . org-pdftools-setup-link))
 
-(use-package org-noter-pdftools
-  :after org-noter
-  :config
-  (with-eval-after-load 'pdf-annot
-    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+;; ====== for folding mode in lisp =============
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+
+
+;; ====== company 补全 org-roam =============
+;;(add-to-list 'company-backends '(company-capf))
+
+;; ====== pdf configuration =============
+;; (use-package org-pdftools
+;;   :hook (org-mode . org-pdftools-setup-link))
+
+;; (use-package org-noter-pdftools
+;;   :after org-noter
+;;   :config
+;;   (with-eval-after-load 'pdf-annot
+;;     (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+
+(winner-mode +1)
+(define-key winner-mode-map (kbd "<C-left>") #'winner-undo)
+(define-key winner-mode-map (kbd "<C-right>") #'winner-redo)
 
 ;; ======= provide =======
 (provide 'init-better-defaults)

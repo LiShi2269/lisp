@@ -8,7 +8,11 @@
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")			
 			      )))
 
-
+;; https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/main/30.setup-org-roam.md
+;; (require 'package)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (package-initialize)
+;; (setq package-check-signature nil)
 
 ;; 注意 elpa.emacs-china.org 是 Emacs China 中文社区在国内搭建的一个 ELPA 镜像
 
@@ -27,7 +31,7 @@
 	company
 	;; --- Mini Buffer completion ---
 	ivy
-	evil-magit
+	
 	;; --- Better Editing ---
 	neotree
 	proxy-mode
@@ -49,15 +53,18 @@
 	powerline
 	powerline-evil
 	;; spaceline-all-the-icons
+	ace-jump-mode
+	ace-mc
 
 	minimap
 	beacon
 	rainbow-delimiters
 	;; --- jupyter ---
 	jupyter
-	simple-httpd
-	markdown-mode	
-	zmq
+	;;emacs-websocket	;似乎不要也可以？
+	;; simple-httpd
+	;; markdown-mode	
+	;; zmq
 	;; --- treemacs ---
 	treemacs
 	treemacs-evil
@@ -65,7 +72,7 @@
 	treemacs-magit
 	treemacs-icons-dired
 	treemacs-all-the-icons
-	undo-tree
+	;; undo-tree
 
 	posframe
 	which-key-posframe
@@ -87,8 +94,8 @@
 
 	dashboard
 
-	dracula-theme
-	monokai-theme
+	;; dracula-theme
+	;; monokai-theme
 	;; atom-one-dark-theme
 	;; 不能用?
 	;; doom-themes
@@ -114,11 +121,17 @@
 	pandoc
 	openwith
 
-	pdf-tools
-	org-pdftools
-	org-noter-pdftools
-	org-noter
+	;; pdf-tools
+	;; org-pdftools
+	;; org-noter-pdftools
+	;; org-noter
 
+	org-roam
+	emacsql-sqlite3
+	;; org-download              ;windows好像不可以
+	;;org-roam-server
+	;;org-roam-bibtex
+	;;org-ref
 	ein
 
 	use-package
@@ -139,7 +152,7 @@
 	;;default
 	anaconda-mode
 	python-mode
-	;;flycheck	
+	flycheck	
 	blacken
 	lsp-jedi
 	;; lsp-python-ms
@@ -149,8 +162,8 @@
 	py-autopep8
 	lsp-mode
 	lsp-ui
-	;; lsp-treemacs
-	;; lsp-ivy
+	lsp-treemacs
+	lsp-ivy
 	;; dap-mode
 	;; company-lsp已经不用了，见github相关
 	;; company-lsp
@@ -166,7 +179,7 @@
       	;; --- test package ---
 	;; google-this
       	;; --- windows 不能用 ---
-	;; auctex
+	auctex
 	)
  "Default packages")
 
@@ -186,7 +199,14 @@
        (when (not (package-installed-p pkg))
          (package-install pkg))))
 
-
+;; 能下载图片直接放到org里面去
+;; (use-package org-download
+;;   :after org
+;;   :bind
+;;   ;; (:map org-mode-map
+;;         ;; (("s-Y" . org-download-screenshot)
+;;          ;; ("s-y" . org-download-yank)))
+;;   )
 
 
 ;; ======= probide =======

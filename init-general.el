@@ -5,17 +5,18 @@
 (evil-mode )
 
 
-
 ;; ===== beacon mode =====
 ;; 为了使用beacon把evil-next-line 换成 next-line
 ;; (evil-define-key 'normal 'global "j" (lambda()(interactive)(next-line 1)))
 ;; (evil-define-key 'normal 'global "k" (lambda()(interactive)(previous-line 1)))
 
 
+;; ===== undo tree mode =====
+(evil-define-key 'normal 'global "u" 'undo-tree-undo)
+(evil-define-key 'normal 'global (kbd "C-r") 'undo-tree-redo)
 
 (require 'evil-leader)
 ;; (global-evil-leader-mode)
-
 
 
 
@@ -57,9 +58,13 @@
  ;; (kbd "<f6>") 'my-test-fun
  )
 
+;; ============如果是有用ein模式则要换成这个方法=========
 (defun my-save-buffer()(interactive)
-       (if (bound-and-true-p ein:notebook)(ein:notebook-save-notebook-command-km)(save-buffer))
-       )
+       (if (bound-and-true-p ein:notebook)(progn (ein:notebook-save-notebook-command-km)(turn-on-evil-mode))(save-buffer)))
+
+;; (defun my-save-buffer()(interactive)
+;;        (if (bound-and-true-p ein:notebook)(ein:notebook-save-notebook-command-km)(save-buffer)))
+
 
 (defun my-major-mode-fun()(interactive)
    " 如果major-mode是python
@@ -70,12 +75,20 @@
        (cond ((equal major-mode 'python-mode)
 		    (if (bound-and-true-p ein:notebook-mode)  (hydra-ein/body) (hydra-python/body))) 
 	     ((equal major-mode 'emacs-lisp-mode) (print " emacs-lisp-mode do not have mode key")) 
-             ((equal major-mode 'org-mode) (hydra-org/body))
+             ((equal major-mode 'org-mode) (my-org-major))
 	     )
        )
 
 
 
+
+(defun my-org-major()
+  (interactive)
+  (cond ( (org-in-src-block-p) (org-src/body))
+	( (org-at-table-p)(org-table/body))
+	( (org-at-heading-p)(org-subtree/body))
+	(t (hydra-org/body))
+	))
 
 
 
@@ -86,8 +99,8 @@
     ;; (define-key bookmark-bmenu-mode-map (kbd "ESC") 'quit-window)
   )
 
-
-
+;; 在进入ipython的时候evil应该要采用normal-state
+(evil-set-initial-state 'inferior-python-mode 'normal)
 
  
 (general-define-key
@@ -98,6 +111,42 @@
  (kbd "M-j") 'evil-window-down
  (kbd "M-k") 'evil-window-up
  )
+(require 'treemacs)
+(defun delete-other-window-and-quite-treemacs()(interactive)
+       "删除出了当前窗口外的所有窗口并且关掉treemacs窗口"
+       (progn (if (treemacs-get-local-window) (treemacs)())
+	      (neotree-hide)
+	      (delete-other-windows))
+       )
+
+
+(defun xah-copy-file-path (&optional DirPathOnlyQ)
+  "Copy current buffer file path or dired path. Result is full path.
+If `universal-argument' is called first, copy only the dir path.
+If in dired, copy the current or marked files.
+If a buffer is not file and not dired, copy value of `default-directory'.
+URL `http://xahlee.info/emacs/emacs/emacs_copy_file_path.html'
+Version 2018-06-18 2021-09-30"
+  (interactive "P")
+  (let (($fpath
+         (if (string-equal major-mode 'dired-mode)
+             (progn
+               (let (($result (mapconcat 'identity (dired-get-marked-files) "\n")))
+                 (if (equal (length $result) 0)
+                     (progn default-directory )
+                   (progn $result))))
+           (if (buffer-file-name)
+               (buffer-file-name)
+             (expand-file-name default-directory)))))
+    (kill-new
+     (if DirPathOnlyQ
+         (progn
+           (message "Directory copied: %s" (file-name-directory $fpath))
+           (file-name-directory $fpath))
+       (progn
+         (message "File path copied: %s" $fpath)
+         $fpath )))))
+
 
 
 
@@ -107,20 +156,25 @@
  :states  '(normal motion )
  :keymaps 'override 
  :prefix "SPC"
+
+    "c" 'org-capture 
     ;; ---- dir ----
- "<SPC>" 'smex
+    "<SPC>" 'smex
     "a" '(:ignore t :which-key "mode")
     "ad" 'deer
     "ar" 'ranger
     "an" 'neotree-toggle
     "at" 'treemacs
     ;; ---- treemacs ----
+    "aT" '(:ignore t  :which-key "treemacs")
     "aTe" 'treemacs-edit-workspaces
     "aTf" 'treemacs-finish-edit
     "aTB" 'treemacs-set-fallback-workspace
     "aTa" 'treemacs-add-and-display-current-project
     "aTr" 'treemacs-remove-project-from-workspace
     "aTs" 'treemacs-switch-workspace
+
+    ;; ---- treemacs ----
 
     ;; ---- agenda ----
     "A" '(:ignore t  :which-key "agenda")
@@ -133,6 +187,7 @@
     ;; Add current file to the list of agenda files. The file is added to the front of the list. If it was already in the list, it is moved to the front. With a prefix argument, file is added/moved to the end.
     "Af" 'org-agenda-file-to-front
     "Ar" 'org-remove-file
+    "AC" 'org-cycle-agenda-files
     "A>" 'org-agenda-set-restriction-lock
     "A<" 'org-agenda/org-agenda-remove-restriction-lock-and-exit
 
@@ -145,7 +200,8 @@
     "<tab>" 'mode-line-other-buffer
     "b" '(:ignore t :which-key "buffer")
     ;; "bb" 'buffer-menu
-    "bb" (lambda()(interactive) (progn (kill-treemacs-buffer)(buffer-menu)))
+    "bb" 'ibuffer
+    "bc" 'xah-copy-file-path
     ;; 返回dashboard
     "bh" (lambda()(interactive)(progn(switch-to-buffer "*dashboard*")))
     "bd" 'kill-this-buffer
@@ -157,12 +213,14 @@
     "uu" 'undo-tree-visualize
     "us" 'undo-tree-save-history
     "ul" 'undo-tree-load-history
+    "U" 'undo
     ;; ---- window ----
     "w" '(:ignore t :which-key "window")
     "w-" 'split-window-below
     "w/" 'split-window-horizontally
     "wd" 'delete-window
-    "wD" 'delete-other-windows 
+    ;; "wD" 'delete-other-windows 
+    "wD" 'delete-other-window-and-quite-treemacs
     "wl" 'evil-window-right
     "wL" 'evil-window-move-far-right
     "wh" 'evil-window-left
@@ -187,7 +245,7 @@
     "qR" 'eval-buffer
     "qs" 'save-buffers-kill-emacs
 
-    "s" '(:ignore t :which-key "setEdit")
+    ;; "s" '(:ignore t :which-key File is missing: Cannot open load file, No such file or directory, ob-jupyter"setEdit")
     ;; ---- iedit ----
     "se" 'iedit-mode
     ;; ---- Hight-symbol ----
@@ -197,8 +255,25 @@
     "sl" 'linum-relative-toggle
     "syn" 'yas-new-snippet
     "syv" 'yas-visit-snippet-file
+    "sm" 'ace-mc-add-multiple-cursors
+    "ss" 'ace-mc-add-single-cursor
 
+    "r" '(:ignore t :which-key "orgRoam")
+    "rt" 'org-roam-buffer-toggle-display
+    "rs" 'org-roam-db-sync
+    "ri" 'org-roam-node-insert
+    "r/" 'org-roam-node-find
+    "rc" 'org-roam-capture
+    "rt" 'org-roam-buffer-toggle
+    "rA" 'org-roam-alias-add
+    "rR" 'org-roam-alias-remove
+    "rr" '(:ignore t :which-key "Roam-ref")
+    "rra" 'org-roam-ref-add
+    "rrr" 'org-roam-ref-remove
 
+    ;; ---- ace-jump ----
+    "j" '(:ignore t :which-key "AceJump")
+    "j" 'ace-jump-mode
     ;; ---- iedit ----
     "`"  'shell)
 
@@ -206,8 +281,13 @@
 ;; (define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )
 ;; (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 
+;; One can also set org-roam-db-node-include-function. For example, to exclude all headlines with the ATTACH tag from the Org-roam database, one can set:
+;; (setq org-roam-db-node-include-function
+;;       (lambda ()
+;;         (not (member "ATTACH" (org-get-tags)))))
 
-
+;; 不自动保存
+;; However, depending on how large your Org files are, database updating can be a slow operation. You can disable the automatic updating of the database by setting org-roam-db-update-on-save to nil.
 
 
 
@@ -231,23 +311,24 @@
 (winum-mode)
 
 
-(defun kill-treemacs-buffer()
-    (condition-case nil
-	(kill-buffer "Treemacs Update Single File Process")
-	(error nil))
-    (setq a 2)
-    (while (< a 10)
-      (condition-case nil
-	  (kill-buffer
-	   (concatenate 'string "Treemacs Update Single File Process<" (number-to-string a) ">")
-	   )
-	(error nil)
-	  )
-      ;; (print (concatenate 'string "asdf" (number-to-string a) "asdcf"))
-      (setq a (+ a 1))
-      )
-  )
+;; (defun kill-treemacs-buffer()
+;;     (condition-case nil
+;; 	(kill-buffer "Treemacs Update Single File Process")
+;; 	(error nil))
+;;     (setq a 2)
+;;     (while (< a 10)
+;;       (condition-case nil
+;; 	  (kill-buffer
+;; 	   (concatenate 'string "Treemacs Update Single File Process<" (number-to-string a) ">")
+;; 	   )
+;; 	(error nil)
+;; 	  )
+;;       ;; (print (concatenate 'string "asdf" (number-to-string a) "asdcf"))
+;;       (setq a (+ a 1))
+;;       )
+;;   )
 
+;; ==== undefine-key =====
 
 
 

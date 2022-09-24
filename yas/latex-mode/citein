@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: citein
+# key: \c
+# --
+\cite{RN$0}

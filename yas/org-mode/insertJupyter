@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: insertJupyter
+# key: jupyter
+# --
+
+
+#+BEGIN_SRC jupyter-python :results display
+$0
+#+END_SRC                                                                                   

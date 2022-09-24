@@ -2,8 +2,11 @@
 
 (require 'perfect-margin)
 (perfect-margin-mode 1)
+;; =========================== org mode =========================
 
-
+(set-face-attribute 'org-verbatim  nil :underline t)
+(set-face-attribute 'bold nil :foreground "gold" )
+;; ====================================================
 (use-package rainbow-delimiters
 ;; :ensure t
   :config
@@ -84,7 +87,7 @@
  '(zoom-size '(0.618 . 0.618))
  ;; 忽略的模式
  '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode neotree-mode evil-leader-mode))
- '(zoom-ignored-buffer-names '("*nswbuff*" ))
+ ;; '(zoom-ignored-buffer-names '(" *nswbuff*" ))
  '(temp-buffer-resize-mode t)
  ;; '(zoom-ignored-buffer-name-regexps '("^ .*nswbuff.*" "^\b.*Minibuf.*"))
  )
@@ -109,7 +112,7 @@
 )))
 ;; ===============  dashboard color ========================
 (custom-set-variables
- (set-face-attribute 'page-break-lines nil :foreground "dark slate grey"   )
+ ;; (set-face-attribute 'page-break-lines nil :foreground "dark slate grey"   )
  (set-face-attribute 'dashboard-footer nil :foreground "Deep Sky Blue1"   )
  )
 
@@ -171,7 +174,6 @@
  ;; (set-face-attribute 'cursor nil :background "#c1a187" )
  (set-face-attribute 'cursor nil :background "#82a7a7" )
  
-
 ;; =============== which key face========================
  ;; (set-face-attribute 'which-key-posframe nil :background "#2f4f4f" )
  )
@@ -195,30 +197,31 @@
 ;; (set-face-attribute 'region nil :weight 'normal :box "#FFFFFF" :underline nil)
 ;; (set-face-attribute 'region nil :weight 'normal :box nil :underline "#FFFFFF")
 
-(set-face-attribute 'hl-line nil :weight 'normal :box nil :underline nil :background "dark slate gray")
+;; (set-face-attribute 'hl-line nil :weight 'normal :box nil :underline nil :background "dark slate gray")
+(set-face-attribute 'hl-line nil  :box nil :underline nil :background "dark slate gray")
 (set-face-attribute 'region nil  :background "royal blue")
 
 
 ;; =============== which-key-posframe ========================
-(use-package which-key-posframe
-  ;; :load-path "path/to/which-key-posframe.el"
-  :init
-  (which-key-posframe-mode 1)
-;; position
-(setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-left-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-right-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-right-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-left-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-right-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-left-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-right-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-top-left-corner)
-;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
-  )
+;; (use-package which-key-posframe
+;;   ;; :load-path "path/to/which-key-posframe.el"
+;;   :init
+;;   (which-key-posframe-mode 1)
+;; ;; position
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-left-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-right-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-right-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-left-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-right-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-left-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-right-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-top-left-corner)
+;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
+;;   )
 
 
 ;; ===============  font  ========================
@@ -228,7 +231,7 @@
  (set-fontset-font t 'han (font-spec :family f :height h :foreground fcolor :background bgcolor) )
   )
 
-(set-font "等距更纱黑体 SC" 170 "#E9E7EF" "#161823")
+(set-font "等距更纱黑体 SC" 150 "#E9E7EF" "#161823")
 
 
 ;  ===============  other color  ========================
@@ -237,8 +240,8 @@
  (set-face-attribute 'font-lock-comment-face nil :foreground "dark sea green"   )
  (set-face-attribute 'font-lock-builtin-face nil :foreground "#1bd1a5"   )
  (set-face-attribute 'font-lock-string-face nil :foreground "deep sky blue"   )
+ (set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   )
  )
-
 
 
 

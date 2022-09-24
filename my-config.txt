@@ -1,6 +1,6 @@
 
 ::python 清华源
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython pandas numpy jupyter notebook pylint jedi-language-server
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython xlrd pandas numpy jupyter notebook pylint 
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
 ::pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper-win
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper
@@ -20,3 +20,18 @@ python -m pip install -i  https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade pi
 ::强制重新安装
 pip install -i  https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade --force-reinstall --no-cache-dir jupyter
 
+jupyter 不只输出最后一行的结果
+from IPython.core.interactiveshell import InteractiveShell 
+InteractiveShell.ast_node_interactivity = 'all' 
+
+
+
+
+treemacs 出现问题的时候
+查看 treemacs-python-executable 这个变量的值有没有指向你的Python3
+
+
+warning: LF will be replaced by CRLF in 
+原因是存在符号转义问题
+windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执行add . 时出现提示，解决办法：
+git config --global core.autocrlf false

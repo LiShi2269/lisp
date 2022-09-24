@@ -1,5 +1,4 @@
 
-
 (require 'hydra)
 (require 'ein)
 (require 'ein-notebook)
@@ -72,17 +71,23 @@ _O_: InsAbo  _p_: Paste  _/_: Split
 (setq ein:use-smartrep t)
 
 
-;; (add-hook 'ein:notebook-mode-hook (lambda()(eldoc-mode -1)))
+(add-hook 'ein:notebook-mode-hook (lambda()(eldoc-mode -1)))
+(add-hook 'python-mode (lambda()(undo-tree-mode 1)))
 
-;; (evil-define-minor-mode-key 'normal 'ein:notebook-mode (kbd ",") 'hydra-ein/body)
+(evil-define-minor-mode-key 'normal 'ein:notebook-mode (kbd ",") 'hydra-ein/body)
 ;; (evil-define-minor-mode-key 'normal 'ein:notebook-mode (kbd "<SPC> m") 'hydra-ein/body)
 (define-key ein:notebook-mode-map (kbd "C-<return>") 'ein:worksheet-execute-cell-and-goto-next-km)
 (define-key ein:notebook-mode-map (kbd "C-S-<return>") 'ein:worksheet-execute-cell-and-insert-below-km)
-(define-key ein:notebook-mode-map (kbd "C-j") 'ein:worksheet-goto-next-input-km)
-(define-key ein:notebook-mode-map (kbd "C-k") 'ein:worksheet-goto-prev-input-km)
+;; (define-key ein:notebook-mode-map (kbd "C-j") 'ein:worksheet-goto-next-input-km)
+;; (define-key ein:notebook-mode-map (kbd "C-k") 'ein:worksheet-goto-prev-input-km)
+;; 不知道为什么一直会取消evil-mode
+(define-key ein:notebook-mode-map (kbd "C-j") (lambda() (interactive)(progn (ein:worksheet-goto-next-input-km)(turn-on-evil-mode))))
+(define-key ein:notebook-mode-map (kbd "C-k") (lambda() (interactive)(progn (ein:worksheet-goto-prev-input-km)(turn-on-evil-mode))))
 
-
-
+;; 如果一直跳出
+;; Elpy is updating the RPC virtualenv (’c:/HOME/.emacs.d/elpy/rpc-venv’)
+;; 的解决方法, 再customize-group当中调整
+;; elpy-rpc-virtualenv-path: 
 
 
 

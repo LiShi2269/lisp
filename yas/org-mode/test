@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: test
+# key: thisistest
+# --
+test word
+$0
+$1 test word $1
+test word

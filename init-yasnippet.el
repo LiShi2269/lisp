@@ -4,10 +4,9 @@
 
 
 (setq yas-snippet-dirs
-      '("c:/emacs/.emacs.d/snippets"
-	"e:/emacs/snippets"
+      '("c:/HOME/.emacs.d/lisp/yas/"
         ))
-(define-key yas-minor-mode-map (kbd "M-/") 'yas-expand-from-trigger-key)
+;; (define-key yas-minor-mode-map (kbd "M-/") 'yas-expand-from-trigger-key)
 (require 'yasnippet)
 (yas-global-mode 1)
 

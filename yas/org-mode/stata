@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Stata insert
+# key: %%
+# --
+
+#+begin_src jupyter-python :results display :session $1
+\%\%stata$2
+#+end_src

@@ -17,15 +17,27 @@
 (add-hook 'ido-setup-hook 'ido-my-keys)
 
 
+
+;; ======= iBuffer =======
+(define-key ibuffer-mode-map (kbd "j") 'next-line)
+(define-key ibuffer-mode-map (kbd "k") 'previous-line)
+(define-key ibuffer-mode-map (kbd "M-l") 'evil-window-right)
+(define-key ibuffer-mode-map (kbd "M-h") 'evil-window-left)
+(define-key ibuffer-mode-map (kbd "M-j") 'evil-window-down)
+(define-key ibuffer-mode-map (kbd "M-k") 'evil-window-up)
+
+
 ;; ======= ivy =======
 (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
 
-
+;; ======= shell-mode =======
+(define-key shell-mode-map (kbd "C-j") 'comint-next-input)
+(define-key shell-mode-map (kbd "C-k") 'comint-previous-input)
 
 ;; ========== nswbuff 快速切换 ===============
-(global-set-key (kbd "C-S-h") 'nswbuff-switch-to-previous-buffer)
 (global-set-key (kbd "C-S-l") 'nswbuff-switch-to-next-buffer)
+(global-set-key (kbd "C-S-h") 'nswbuff-switch-to-previous-buffer)
 ;; 是否循环切换buffer
 (setq nswbuff-display-intermediate-buffers t)
 ;; 是否过滤一些内容
@@ -36,29 +48,38 @@
 
 
 
+(defun my-org-edit-buffer()
+  (interactive)
+  (cond ((org-in-src-block-p) (progn(org-edit-src-code)(evil-window-move-far-right))  )
+	((org-src-edit-buffer-p) (progn (my-save-buffer)(org-edit-src-exit)))
+	;; (t )
+    )
+  )
 
 ;; ;; ======= key-chord=======
-(require 'key-chord)
-(key-chord-define evil-visual-state-map ",," 'evil-force-normal-state)
-(key-chord-define evil-insert-state-map ",," 'evil-normal-state)
-(key-chord-define evil-replace-state-map ",," 'evil-normal-state)
-(key-chord-define ivy-mode-map ",," 'keyboard-escape-quit)
-(key-chord-define evil-insert-state-map ".." 'myinsert)
+;; (require 'key-chord)
+(key-chord-define evil-visual-state-map ",," 'my-org-edit-buffer)
+(key-chord-define evil-insert-state-map ",," 'my-org-edit-buffer)
+(key-chord-define evil-replace-state-map ",," 'my-org-edit-buffer)
+(key-chord-define ivy-mode-map ",," 'my-org-edit-buffer)
+;; ;; (key-chord-define elpy-mode-map "KK" 'beginning-of-defun)
+;; (key-chord-define elpy-mode-map "JJ" 'end-of-defun)
+;; (key-chord-define evil-insert-state-map ".." 'myinsert)
 (setq key-chord-one-key-delay 0.4)     
 (key-chord-mode +1)
 
 
-(defun myinsert()
-  (interactive)
-  ;; (evil-normal-state)
-  (progn
-    (evil-normal-state)
-    (evil-append 1)
-    (insert "()")
-    (evil-normal-state)
-    (evil-insert 1)
-  )
-  )
+;; (defun myinsert()
+;;   (interactive)
+;;   ;; (evil-normal-state)
+;;   (progn
+;;     (evil-normal-state)
+;;     (evil-append 1)
+;;     (insert "()")
+;;     (evil-normal-state)
+;;     (evil-insert 1)
+;;   )
+;;   )
 
 
 
@@ -79,6 +100,7 @@
 
 ;; ======================== ivy-mode ======================
 (global-set-key (kbd "<f9>") 'ivy-mode)
+(global-set-key (kbd "<f8>") 'turn-on-evil-mode)
 
 
 

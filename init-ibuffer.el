@@ -7,9 +7,6 @@
  )
 
 
-;; (evil-leader/set-key
-;;     "BB" 'ibuffer
-;; )
 
 
 
