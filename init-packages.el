@@ -211,3 +211,8 @@
 
 ;; ======= probide =======
 (provide 'init-packages)
+
+
+
+;; (setq perfect-margin-ignore-filters "posframe")
+;; (setq perfect-margin-ignore-regexps "nil")

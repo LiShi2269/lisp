@@ -211,7 +211,19 @@
 
 
 ;; ====== company 补全 org-roam =============
-;;(add-to-list 'company-backends '(company-capf))
+;; (use-package company
+;;   :hook ((prog-mode . company-mode)
+;;          (org-mode . company-mode)
+;; 	 (org-src-mode . company-mode)
+;; 	 ))
+;; ;; ;;(add-to-list 'company-backends '(company-capf))
+(setq company-minimum-prefix-length nil)
+(setq company-minimum-prefix-length nil)
+
+
+
+
+
 
 ;; ====== pdf configuration =============
 ;; (use-package org-pdftools

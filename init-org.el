@@ -532,6 +532,12 @@
 
 
 
+;; org-specil-mode 使用 compay
+;; (use-package company-org-block
+;;   :ensure t
+;;   :hook ((org-mode . (lambda () (setq-local company-backends '(company-org-block))(company-mode +1)))))
+
+
 
 
 ;; One can also set org-roam-db-node-include-function. For example, to exclude all headlines with the ATTACH tag from the Org-roam database, one can set:

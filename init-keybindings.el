@@ -61,7 +61,7 @@
 (key-chord-define evil-visual-state-map ",," 'my-org-edit-buffer)
 (key-chord-define evil-insert-state-map ",," 'my-org-edit-buffer)
 (key-chord-define evil-replace-state-map ",," 'my-org-edit-buffer)
-;; (key-chord-define ivy-mode-map ",," 'my-org-edit-buffer)
+(key-chord-define ivy-mode-map ",," 'my-org-edit-buffer)
 ;; ;; (key-chord-define elpy-mode-map "KK" 'beginning-of-defun)
 ;; (key-chord-define elpy-mode-map "JJ" 'end-of-defun)
 ;; (key-chord-define evil-insert-state-map ".." 'myinsert)
