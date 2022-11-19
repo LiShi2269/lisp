@@ -212,14 +212,13 @@
 
 ;; ====== company 补全 org-roam =============
 ;; (use-package company
-;;   :hook ((prog-mode . company-mode)
-;;          (org-mode . company-mode)
+  ;; :hook ((prog-mode . company-mode)
+         ;; (org-mode . company-mode)
 ;; 	 (org-src-mode . company-mode)
-;; 	 ))
+	 ;; ))
 ;; ;; ;;(add-to-list 'company-backends '(company-capf))
-(setq company-minimum-prefix-length nil)
-(setq company-minimum-prefix-length nil)
-
+(setq company-minimum-prefix-length 1)
+(setq company-idle-delay 0)
 
 
 
