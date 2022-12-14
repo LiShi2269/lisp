@@ -626,5 +626,21 @@
 ;; (require 'org-download)
 ;; (setq org-download-method 'attach)
 (setq package-check-signature nil)
+
+
+
+
+
+
+
+;; calfw
+(require 'calfw)
+(require 'calfw-org)
+
+
+
+
+
+
 ;; ======= provide =======
 (provide 'init-org)

@@ -127,6 +127,10 @@
 	;; org-noter
 
 	org-roam
+
+	calfw
+	calfw-org
+
 	emacsql-sqlite3
 	;; org-download              ;windows好像不可以
 	;;org-roam-server
