@@ -4,6 +4,6 @@
 # --
 
 
-#+BEGIN_SRC jupyter-python :results display :session $1
+#+BEGIN_SRC jupyter-python :results display
 $0
 #+END_SRC                                                                                   

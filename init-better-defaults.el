@@ -53,8 +53,8 @@
     ;; (add-hook 'emacs-lisp-mode-hook  (sp-pair "'" nil :actions :rem))
     ;; (add-hook 'lisp-interaction-mode-hook  (sp-pair "'" nil :actions :rem))
     ;; (sp-local-pair 'lisp-interaction-mode "'" nil :actions :rem)
-    (sp-local-pair 'emacs-lisp-mode "'" nil :unless nil)
-    (sp-local-pair 'lisp-interaction-mode "'" nil :unless nil)
+    ;; (sp-local-pair 'emacs-lisp-mode "'" nil :unless nil)
+    ;; (sp-local-pair 'lisp-interaction-mode "'" nil :unless nil)
   )
 
 
