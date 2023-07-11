@@ -1,23 +1,92 @@
 
-|          | MON | TUE |   WED | THURS | FRI | Sat | Sun |
-|----------+-----+-----+-------+-------+-----+-----+-----|
-|          |     |     |       |     1 |   2 |   3 |  4e |
-| withbaby |     |     |       |       |     |     |     |
-| write    |     |     |       |       |     |     |     |
-| lu       |     |     |       |       |     |     |     |
-|          |   5 |   6 |     7 |     8 |   9 |  10 |  11 |
-| withbaby |     |     |       |       |     |     |     |
-| write    |     |     |       |       |     |     |     |
-| lu       |     |     |       |       |     |     |     |
-|          |  12 |  13 |    14 |    15 |  16 |  17 |  18 |
-| withbaby |     |     |     0 |       |     |     |     |
-| write    |     |     |       |       |     |     |     |
-| lu       |     |     | ~YES~ |       |     |     |     |
-|          |  19 |  20 |    21 |    22 |  23 |  24 |  25 |
-| withbaby |     |     |       |       |     |     |     |
-| write    |     |     |       |       |     |     |     |
-| lu       |     |     |       |       |     |     |     |
-|          |  26 |  27 |    28 |    29 |  30 |  31 |     |
-| withbaby |     |     |       |       |     |     |     |
-| write    |     |     |       |       |     |     |     |
-| lu       |     |     |       |       |     |     |     |
+
+#+BEGIN_SRC jupyter-python :results display :session t2
+import stata_setup
+stata_setup.config("C:/Program Files/Stata17", "mp")
+# from pystata import config
+# from pystata import stata
+# config.init("mp")
+# stata.run("")
+#+END_SRC                                                                                   
+
+#+RESULTS:
+:RESULTS:
+# [goto error]
+#+begin_example
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[3], line 2
+      1 import stata_setup
+----> 2 stata_setup.config("C:/Program Files/Stata17", "mp")
+      3 # from pystata import config
+      4 # from pystata import stata
+      5 # config.init("mp")
+      6 # stata.run("")
+
+File c:\HOME\python\Lib\site-packages\stata_setup.py:45, in config(path, edition, splash)
+     43 sys.path.append(os.path.join(path, 'utilities'))
+     44 from pystata import config 
+---> 45 config.init(edition, splash=splash)
+
+TypeError: init() got an unexpected keyword argument 'splash'
+#+end_example
+:END:
+
+#+BEGIN_SRC jupyter-python :results display :session t2
+from pystatauimport config
+config.status()
+#+END_SRC                                                                                   
+
+#+RESULTS:
+#+begin_example
+    System information
+      Python version         3.9.2
+      Stata version          MP
+      Stata library path     C:\Program Files\Stata17\mp-64.dll
+      Stata initialized      True
+      sfi initialized        True
+
+    Settings
+      graphic display        True
+      graphic size           width = default, height = default
+      graphic format         svg
+#+end_example
+
+
+#+BEGIN_SRC jupyter-python :results display :session t2
+config.set_output_file(filename='output.log', replace=True)
+#+END_SRC                                                                                   
+
+#+RESULTS:
+
+
+#+BEGIN_SRC jupyter-python :results display :session t2
+from pystata import stata
+#+END_SRC                                                                                   
+
+#+RESULTS:
+:RESULTS:
+# [goto error]
+#+begin_example
+---------------------------------------------------------------------------
+ModuleNotFoundError                       Traceback (most recent call last)
+Cell In[27], line 1
+----> 1 from pystata import stata
+
+File C:/Program Files/Stata17\utilities\pystata\stata.py:16
+     13 else:
+     14     from queue import LifoQueue
+---> 16 import sfi
+     17 from pystata.core import stout
+     18 import codeop
+
+ModuleNotFoundError: No module named 'sfi'
+#+end_example
+:END:
+
+#+BEGIN_SRC jupyter-python :results display :session t2
+print("at")
+#+END_SRC                                                                                   
+
+#+RESULTS:
+: at
