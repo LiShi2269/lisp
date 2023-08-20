@@ -49,7 +49,7 @@
 ;;        ))
 
 ;; org-ref
-(setq reftex-default-bibliography '("f:/test/Graduate-Thesis.bib"))
+;; (setq reftex-default-bibliography '("f:/Zotero/bib/旅游-双碳-初步了解.bib"))
 
 
 
@@ -65,7 +65,7 @@
 
 ;; see org-ref for use of these variables
 (setq org-ref-bibliography-notes "f:/test/test.org"
-      org-ref-default-bibliography '("f:/org-roam/Graduate.bib")
+      org-ref-default-bibliography '("f:/Zotero/bib/旅游-双碳-初步了解.bib")
       )
 
 ;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
