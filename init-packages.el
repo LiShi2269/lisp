@@ -133,9 +133,13 @@
 
 	emacsql-sqlite3
 	;; org-download              ;windows好像不可以
-	;;org-roam-server
-	;;org-roam-bibtex
-	;;org-ref
+	;; org-roam-server
+	org-roam-bibtex
+	org-ref
+
+	ivy-bibtex
+	;; ebib 文献管理 不知道为什么不能用
+	
 	ein
 
 	use-package

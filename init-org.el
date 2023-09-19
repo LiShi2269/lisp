@@ -6,7 +6,6 @@
 
 ;; init file for org-mode
 (require 'org)
-(require 'org-ref)
 ;;---------bullets------------
 (require 'org-bullets)
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode-enable)
@@ -48,13 +47,14 @@
 ;; 	     ((equal major-mode 'python-mode (elpy-shell-send-satement-and-step)) 
 ;;        ))
 
-;; org-ref
-;; (setq reftex-default-bibliography '("f:/Zotero/bib/旅游-双碳-初步了解.bib"))
 
-
-
-
-
+;; citar
+;; (use-package citar
+  ;; :custom
+  ;; (citar-bibliography '("~/bib/references.bib")))
+;; (use-package citar-org-roam
+  ;; :after (citar org-roam)
+  ;; :config (citar-org-roam-mode))
 
 ;; v2 是否使用
 ;; (setq org-roam-v2-ack t)
@@ -63,10 +63,57 @@
 (setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe")
 
 
-;; see org-ref for use of these variables
-(setq org-ref-bibliography-notes "f:/test/test.org"
-      org-ref-default-bibliography '("f:/Zotero/bib/旅游-双碳-初步了解.bib")
+
+(use-package org-ref
+  :ensure t
+  :config
+  (setq reftex-default-bibliography '("f:/zoterofiles/我的文库.bib"))
+  ;; (setq org-ref-bibliography-notes "path/to/your/notes.org")
+  (setq org-ref-default-citation-link "cite:"))
+
+
+(require 'org-ref)
+(require 'org-ref-ivy)
+(require 'ivy-bibtex)
+(setq bibtex-completion-bibliography '(
+				       "f:/zoterofiles/我的文库.bib"
+				       )
       )
+					;可以直接添加到后面不需要逗号
+
+(setq bibtex-completion-library-path '("f:/zotero/"))
+(setq bibtex-completion-pdf-field "file")
+
+
+
+
+
+
+
+
+
+
+
+
+
+;; test
+;; (defun my/org-ref-open-pdf-at-point ()
+;;   "Open the pdf for bibtex key under point if it exists."
+;;   (interactive)
+;;   (let* ((results (org-ref-get-bibtex-key-and-file))
+;;          (key (car results))
+;;          (pdf-file (funcall org-ref-get-pdf-filename-function key))
+;;      (pdf-other (bibtex-completion-find-pdf key)))
+;;     (cond ((file-exists-p pdf-file)
+;;        (org-open-file pdf-file))
+;;       (pdf-other
+;;        (org-open-file pdf-other))
+;;       (message "No PDF found for %s" key))))
+;; (global-set-key (kbd "<f6>") 'my/org-ref-open-pdf-at-point)
+;; (setq org-ref-pdf-directory "f:/zotero/")
+;; (setq bibtex-completion-library-path "f:/zotero/")
+;; test
+
 
 ;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
 ;; (setq org-roam-graph-viewer nil)
