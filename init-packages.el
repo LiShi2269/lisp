@@ -72,7 +72,7 @@
 	treemacs-magit
 	treemacs-icons-dired
 	treemacs-all-the-icons
-	;; undo-tree
+	undo-tree
 
 	posframe
 	which-key-posframe
@@ -110,7 +110,7 @@
 	all-the-icons
 	all-the-icons-dired
 	;; 不知道怎么用的powerline
-	;; powerline
+	;; powerline	
 
 	perfect-margin
 	hydra
@@ -127,11 +127,10 @@
 	;; org-noter
 
 	org-roam
-	emacsql-sqlite3
-	;; org-download              ;windows好像不可以
-	;;org-roam-server
-	;;org-roam-bibtex
-	;;org-ref
+	emacsql-sqlite
+	;;org-download              ;windows好像不可以
+	org-roam-bibtex
+	org-ref
 	ein
 
 	use-package
