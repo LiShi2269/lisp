@@ -86,4 +86,4 @@
 
 (setq treemacs-python-executable "c:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe")
 (setq org-roam-v2-ack t)
-
+;;just mark
