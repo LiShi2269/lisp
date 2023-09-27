@@ -1,0 +1,33 @@
+
+#+BEGIN_SRC jupyter-python :results display :session test
+print("test")
+#+END_SRC                                                                                   
+
+#+RESULTS:
+: test
+
+
+
+
+|          | MON | TUE |   WED | THURS | FRI | Sat | Sun |
+|----------+-----+-----+-------+-------+-----+-----+-----|
+|          |     |     |       |     1 |   2 |   3 |  4e |
+| withbaby |     |     |       |       |     |     |     |
+| write    |     |     |       |       |     |     |     |
+| lu       |     |     |       |       |     |     |     |
+|          |   5 |   6 |     7 |     8 |   9 |  10 |  11 |
+| withbaby |     |     |       |       |     |     |     |
+| write    |     |     |       |       |     |     |     |
+| lu       |     |     |       |       |     |     |     |
+|          |  12 |  13 |    14 |    15 |  16 |  17 |  18 |
+| withbaby |     |     |     0 |       |     |     |     |
+| write    |     |     |       |       |     |     |     |
+| lu       |     |     | ~YES~ |       |     |     |     |
+|          |  19 |  20 |    21 |    22 |  23 |  24 |  25 |
+| withbaby |     |     |       |       |     |     |     |
+| write    |     |     |       |       |     |     |     |
+| lu       |     |     |       |       |     |     |     |
+|          |  26 |  27 |    28 |    29 |  30 |  31 |     |
+| withbaby |     |     |       |       |     |     |     |
+| write    |     |     |       |       |     |     |     |
+| lu       |     |     |       |       |     |     |     |

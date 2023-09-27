@@ -53,8 +53,8 @@
     ;; (add-hook 'emacs-lisp-mode-hook  (sp-pair "'" nil :actions :rem))
     ;; (add-hook 'lisp-interaction-mode-hook  (sp-pair "'" nil :actions :rem))
     ;; (sp-local-pair 'lisp-interaction-mode "'" nil :actions :rem)
-    (sp-local-pair 'emacs-lisp-mode "'" nil :unless nil)
-    (sp-local-pair 'lisp-interaction-mode "'" nil :unless nil)
+    ;; (sp-local-pair 'emacs-lisp-mode "'" nil :unless nil)
+    ;; (sp-local-pair 'lisp-interaction-mode "'" nil :unless nil)
   )
 
 
@@ -211,7 +211,18 @@
 
 
 ;; ====== company 补全 org-roam =============
+(use-package company
+  :hook ((prog-mode . company-mode)
+         (org-mode . company-mode)
+	 ))
 ;;(add-to-list 'company-backends '(company-capf))
+
+(setq company-minimum-prefix-length 1)
+(setq company-idle-delay 0)
+
+
+
+
 
 ;; ====== pdf configuration =============
 ;; (use-package org-pdftools

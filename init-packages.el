@@ -127,10 +127,19 @@
 	;; org-noter
 
 	org-roam
-	emacsql-sqlite
-	;;org-download              ;windows好像不可以
+
+	calfw
+	calfw-org
+
+	emacsql-sqlite3
+	;; org-download              ;windows好像不可以
+	;; org-roam-server
 	org-roam-bibtex
 	org-ref
+
+	ivy-bibtex
+	;; ebib 文献管理 不知道为什么不能用
+	
 	ein
 
 	use-package
@@ -210,3 +219,8 @@
 
 ;; ======= probide =======
 (provide 'init-packages)
+
+
+
+;; (setq perfect-margin-ignore-filters "posframe")
+;; (setq perfect-margin-ignore-regexps "nil")
