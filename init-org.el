@@ -102,6 +102,7 @@
  "C-k" 'org-previous-visible-heading
  "C-j" 'org-next-visible-heading
  "C-'" nil
+ "<tab>" 'org-cycle
  "C-<return>" 'my-C-turn
  )
 
