@@ -6,10 +6,12 @@
 ;; -----------------------------------------------------------------
 (require 'init-packages)
 (require 'init-better-defaults)
-;; (require 'init-evil)
 (require 'init-general)
+
+;; (require 'init-evil)
 (require 'init-ein)
 (require 'init-ibuffer)
+
 (require 'init-magit)
 (require 'init-ido)
 (require 'init-iedit)
@@ -20,7 +22,6 @@
 (require 'init-ranger)
 (require 'init-shell)
 (require 'init-smex)
-(require 'init-keybindings)
 (require 'init-winum)
 (require 'init-yasnippet)
 (require 'neotree_icons)
@@ -29,7 +30,7 @@
 (require 'init-org)
 (require 'init-ui)
 ;; (require 'init-latex)
-
+(require 'init-keybindings)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
