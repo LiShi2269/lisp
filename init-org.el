@@ -101,6 +101,7 @@
  "C-S-k" 'org-babel-previous-src-block
  "C-k" 'org-previous-visible-heading
  "C-j" 'org-next-visible-heading
+ "<tab>" 'org-cycle 
  "C-'" nil
  "C-<return>" 'my-C-turn
  )
