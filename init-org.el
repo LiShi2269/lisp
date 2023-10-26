@@ -60,13 +60,13 @@
 ;; (setq org-roam-v2-ack t)
 
 ;; 来源 https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/v1/90.org-protocol.md
-(setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe")
+;;(setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe") 这个是windows的 linux 直接用 org-roam-ui
 
 
 ;; see org-ref for use of these variables
-(setq org-ref-bibliography-notes "f:/test/test.org"
-      org-ref-default-bibliography '("f:/org-roam/Graduate.bib")
-      )
+;;(setq org-ref-bibliography-notes "f:/test/test.org"
+;;      org-ref-default-bibliography '("f:/org-roam/Graduate.bib")
+;;      )
 
 ;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
 ;; (setq org-roam-graph-viewer nil)

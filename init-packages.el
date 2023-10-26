@@ -132,6 +132,7 @@
 	;;org-download              ;windows好像不可以
 	org-roam-bibtex
 	org-ref
+	org-roam-ui
 	ein
 
 	use-package
