@@ -313,6 +313,7 @@
 ("T" org-tag/body "tag")
 ("l" org-link/body "link")
 ("o" org-open-at-point "link")
+("I" org-id-get-create "orgID")
   )
 
 (defhydra org-env(:exit t)
@@ -486,7 +487,7 @@
  'org-babel-load-languages
  '(
    ;; (emacs-lisp . t)
-   (python . t)
+   ;;(python . t)
    (jupyter . t)
    ))
 

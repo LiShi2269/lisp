@@ -174,11 +174,11 @@
 	     ("C-<return>" . (lambda()(interactive)(progn (openwith-mode 1)(neotree-enter)))))
   )
 ;; ====== undo-tree =============
-(require 'undo-tree)
-(global-undo-tree-mode t)
+;; (require 'undo-tree)
+;; (global-undo-tree-mode nil)
 (use-package undo-tree
   :init
-  (global-undo-tree-mode 1)
+  (global-undo-tree-mode nil)
   )
 
 ;; ====== sace-place =============

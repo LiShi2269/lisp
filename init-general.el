@@ -39,8 +39,6 @@
 
 
 
-
-
 (general-define-key
  :states  '(normal motion )
  :keymaps 'override 
