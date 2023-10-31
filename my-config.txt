@@ -1,10 +1,11 @@
 
 ::python 清华源
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython xlrd pandas numpy jupyter notebook pylint 
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
+:: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
 ::pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper-win
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper
+:: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-language-server[all]  
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-lsp-server
 
 ::stata
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple psutil ipystata

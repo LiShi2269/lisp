@@ -6,7 +6,6 @@
 
 ;; init file for org-mode
 (require 'org)
-(require 'org-ref)
 ;;---------bullets------------
 (require 'org-bullets)
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode-enable)
@@ -24,7 +23,7 @@
 
 ;; (setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
-(setq org-src-preserve-indentation t
+(setq org-src-preserve-indentation t 
       org-edit-src-content-indentation t)
 
 
@@ -48,13 +47,14 @@
 ;; 	     ((equal major-mode 'python-mode (elpy-shell-send-satement-and-step)) 
 ;;        ))
 
-;; org-ref
-(setq reftex-default-bibliography '("f:/test/Graduate-Thesis.bib"))
 
-
-
-
-
+;; citar
+;; (use-package citar
+  ;; :custom
+  ;; (citar-bibliography '("~/bib/references.bib")))
+;; (use-package citar-org-roam
+  ;; :after (citar org-roam)
+  ;; :config (citar-org-roam-mode))
 
 ;; v2 是否使用
 ;; (setq org-roam-v2-ack t)
@@ -63,10 +63,57 @@
 (setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe")
 
 
-;; see org-ref for use of these variables
-(setq org-ref-bibliography-notes "f:/test/test.org"
-      org-ref-default-bibliography '("f:/org-roam/Graduate.bib")
+
+(use-package org-ref
+  :ensure t
+  :config
+  (setq reftex-default-bibliography '("f:/zoterofiles/我的文库.bib"))
+  ;; (setq org-ref-bibliography-notes "path/to/your/notes.org")
+  (setq org-ref-default-citation-link "cite:"))
+
+
+(require 'org-ref)
+(require 'org-ref-ivy)
+(require 'ivy-bibtex)
+(setq bibtex-completion-bibliography '(
+				       "f:/zoterofiles/我的文库.bib"
+				       )
       )
+					;可以直接添加到后面不需要逗号
+
+(setq bibtex-completion-library-path '("f:/zotero/"))
+(setq bibtex-completion-pdf-field "file")
+
+
+
+
+
+
+
+
+
+
+
+
+
+;; test
+;; (defun my/org-ref-open-pdf-at-point ()
+;;   "Open the pdf for bibtex key under point if it exists."
+;;   (interactive)
+;;   (let* ((results (org-ref-get-bibtex-key-and-file))
+;;          (key (car results))
+;;          (pdf-file (funcall org-ref-get-pdf-filename-function key))
+;;      (pdf-other (bibtex-completion-find-pdf key)))
+;;     (cond ((file-exists-p pdf-file)
+;;        (org-open-file pdf-file))
+;;       (pdf-other
+;;        (org-open-file pdf-other))
+;;       (message "No PDF found for %s" key))))
+;; (global-set-key (kbd "<f6>") 'my/org-ref-open-pdf-at-point)
+;; (setq org-ref-pdf-directory "f:/zotero/")
+;; (setq bibtex-completion-library-path "f:/zotero/")
+;; test
+
 
 ;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
 ;; (setq org-roam-graph-viewer nil)
@@ -264,6 +311,9 @@
 ("s" org-subtree/body "self")
 ("n" org-narrow/body "narrow")
 ("T" org-tag/body "tag")
+("l" org-link/body "link")
+("o" org-open-at-point "link")
+("I" org-id-get-create "orgID")
   )
 
 (defhydra org-env(:exit t)
@@ -407,6 +457,7 @@
 ("e" org-src/body "Execute")
  ("'" org-edit-special "SpecialEdit")
  ("c" org-babel-remove-result "clear")
+ ("l" org-link "link")
 ;; 快速加上print(原内容)
 ("(" my-org-add-print "add-print()")
  )
@@ -436,7 +487,7 @@
  'org-babel-load-languages
  '(
    ;; (emacs-lisp . t)
-   (python . t)
+   ;;(python . t)
    (jupyter . t)
    ))
 
@@ -530,6 +581,12 @@
 
 
 
+;; org-specil-mode 使用 compay
+;; (use-package company-org-block
+;;   :ensure t
+;;   :hook ((org-mode . (lambda () (setq-local company-backends '(company-org-block))(company-mode +1)))))
+
+
 
 
 ;; One can also set org-roam-db-node-include-function. For example, to exclude all headlines with the ATTACH tag from the Org-roam database, one can set:
@@ -618,5 +675,24 @@
 ;; (require 'org-download)
 ;; (setq org-download-method 'attach)
 (setq package-check-signature nil)
+
+
+
+;; 解决 src-block 报错结果颜色显示的问题
+(defun display-ansi-colors ()
+  (ansi-color-apply-on-region (point-min) (point-max)))
+(add-hook 'org-babel-after-execute-hook #'display-ansi-colors)
+
+
+
+;; calfw
+(require 'calfw)
+(require 'calfw-org)
+
+
+
+
+
+
 ;; ======= provide =======
 (provide 'init-org)
