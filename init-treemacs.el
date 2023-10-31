@@ -18,7 +18,10 @@
 (setq treemacs-filewatch-mode t)
 ;; 能够相当于word文档的文档结构工具
 (treemacs-tag-follow-mode )
-(setq treemacs-python-executable "c:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe")
+
+;; pfuture-new: Spawning child process: Invalid argument [3 times] 错误的时候也需要做出正确的python位置
+(setq treemacs-python-executable "c:/Users/lishi/AppData/Local/Programs/Python/Python39/python.exe")
+
 ;; =-============= 能够自动切换工作空间 =================
 ;; (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
 ;;   :after treemacs persp-mode ;;or perspective vs. persp-mode
@@ -38,7 +41,8 @@
 ;; (treemacs-git-mode 'deferred)
 
   
-(setq treemacs-persist-file "/home/lishi/.emacs.d/lisp/treemacs-persist" )
+;; (setq treemacs-persist-file "/home/lishi/.emacs.d/lisp/treemacs-persist" )
+(setq treemacs-persist-file "c:/HOME/.emacs.d/lisp/treemacs-persist" )
 
 
 

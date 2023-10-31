@@ -94,11 +94,14 @@
 
 	dashboard
 
-	;; dracula-theme
-	;; monokai-theme
-	;; atom-one-dark-theme
+	dracula-theme
+	monokai-theme
+	atom-one-dark-theme
+	alect-themes
+	badger-theme
+      	
 	;; 不能用?
-	;; doom-themes
+	doom-themes
 	sublime-themes
 	
 	

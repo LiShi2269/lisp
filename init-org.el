@@ -678,7 +678,10 @@
 
 
 
-
+;; 解决 src-block 报错结果颜色显示的问题
+(defun display-ansi-colors ()
+  (ansi-color-apply-on-region (point-min) (point-max)))
+(add-hook 'org-babel-after-execute-hook #'display-ansi-colors)
 
 
 
