@@ -42,7 +42,7 @@
 
   
 ;; (setq treemacs-persist-file "/home/lishi/.emacs.d/lisp/treemacs-persist" )
-(setq treemacs-persist-file "c:/HOME/.emacs.d/lisp/treemacs-persist" )
+;; (setq treemacs-persist-file "c:/HOME/.emacs.d/lisp/treemacs-persist" )
 
 
 

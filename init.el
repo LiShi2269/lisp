@@ -25,7 +25,7 @@
 (require 'init-winum)
 (require 'init-yasnippet)
 (require 'neotree_icons)
-(require 'treemacs)
+(require 'init-treemacs)
 (require 'org-protocol)
 (require 'init-org)
 (require 'init-ui)
@@ -60,7 +60,6 @@
  '(shell-pop-window-position "bottom")
  '(shell-pop-window-size 30)
  '(temp-buffer-resize-mode t)
- '(treemacs-python-executable "c:\\HOME\\.pyenv\\pyenv-win\\shims\\python")
  '(zoom-ignored-major-modes
    '(dired-mode treemacs-mode ranger-mode neotree-mode evil-leader-mode))
  '(zoom-mode t nil (zoom))
@@ -88,6 +87,5 @@
  '(rainbow-delimiters-depth-7-face ((t (:foreground "spring green"))))
  '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1")))))
 
-(setq treemacs-python-executable "c:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe")
 (setq org-roam-v2-ack t)
 
