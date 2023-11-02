@@ -26,6 +26,8 @@
 (setq org-src-preserve-indentation t 
       org-edit-src-content-indentation t)
 
+;; 关于org-special-mode
+(setq org-src-window-setup 'split-window-right)
 
 ;; ------key-map-set-----
 ;; (setq org-log-done nil)
