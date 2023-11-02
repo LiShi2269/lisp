@@ -53,7 +53,6 @@
  :states  '(normal motion )
  :keymaps 'override 
  (kbd ",") 'my-major-mode-fun
- ;; (kbd "<f6>") 'my-test-fun
  )
 
 ;; ============如果是有用ein模式则要换成这个方法=========
