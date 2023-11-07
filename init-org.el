@@ -28,6 +28,7 @@
 
 ;; 关于org-special-mode
 (setq org-src-window-setup 'split-window-right)
+(setq org-edit-src-turn-on-auto-save t)
 
 ;; ------key-map-set-----
 ;; (setq org-log-done nil)
@@ -507,7 +508,7 @@
    (jupyter . t)
    ))
 
-;; (org-babel-jupyter-override-src-block "python")
+(org-babel-jupyter-override-src-block "python")
 
 ;;========== 出现 org-babel-execute-src-block: No org-babel-execute function 问题==========================================
 ;; jupyter-run-repl
@@ -688,6 +689,11 @@
 
 ;; always show images
 (setq org-startup-with-inline-images t)
+
+;; There is some room for improvement though. First, you can add the following hook if you don’t want to press this awkward keybinding every time:
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+;; At the same time, we can set the image width to prevent images from becoming too large. I prefer to do it inside a emacs-lisp code block in the same org file:
+(setq-local org-image-actual-width '(1024))
 ;; (require 'org-download)
 ;; (setq org-download-method 'attach)
 (setq package-check-signature nil)
