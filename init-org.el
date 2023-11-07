@@ -28,6 +28,7 @@
 
 ;; 关于org-special-mode
 (setq org-src-window-setup 'split-window-right)
+(setq org-edit-src-turn-on-auto-save t)
 
 ;; ------key-map-set-----
 ;; (setq org-log-done nil)
@@ -180,7 +181,8 @@
 
 
 
-(defhydra hydra-org(:exit t)
+(defhydra hydra-org(:exit t :columns 5)
+  "org"
   ("o" org-open-at-point "openwith")
 ;; s sub
   ("s" org-subtree/body "subtree")
@@ -302,7 +304,8 @@
 ("n" org-num-face "orgNum")
   )
 
-(defhydra org-subtree(:exit t)
+(defhydra org-subtree(:exit t :columns 6)
+  "subtree"
 ("x" org-cut-subtree "cut")
 ("c" org-copy-subtree "copy")
 ("p" org-paste-subtree "paste")
@@ -324,12 +327,14 @@
   )
 
 (defhydra org-narrow(:exit t)
+  "narrow"
 ("b" org-narrow-to-block "nBlock")
 ("s" org-narrow-to-subtree "nSubtree")
 ("w" widen "widen")
   )
 
-(defhydra org-time(:exit t)
+(defhydra org-time(:exit t :columns 6)
+  "org-time"
 ("." org-time-stamp "stamp")
 ("!" org-time-stamp-inactive "stampInactive")
 ("c" org-date-from-calendar "dateFromCalendar")
@@ -346,6 +351,7 @@
 
 
 (defhydra org-todo(:exit t)
+  "org-todo"
  ("t" org-todo "todo")
  ("vt" org-show-todo-tree "showTodoTree")
  ;; ("\\l" org-todo-list)
@@ -355,6 +361,7 @@
 
 
 (defhydra org-link(:exit t)
+  "org-link"
  ;; you need to use org-store-link
  ("l" org-insert-link "insert")
  ("j" org-next-link "next")
@@ -364,6 +371,7 @@
 
 
 (defhydra org-agenda(:exit t)
+  "org-agenda"
  ("i" org-agenda-file-to-front "insertTocalenda")
  ("d" org-remove-file "DeleteTocalenda")
  ;; org switchb 应该是 global
@@ -375,6 +383,7 @@
 
 
 (defhydra org-Sparsetree(:exit t)
+  "org-Sparsetree"
  ;; -------Sparse trees--------
  ("/" org-sparse-tree "sparseTree")
  ("m" org-match-sparse-tree "MatchSparse")
@@ -391,7 +400,8 @@
  )
 
 
-(defhydra org-table(:exit t)
+(defhydra org-table(:exit t :columns 5)
+  "org-table"
  ;; -------table--------
  ("i" org-table-create-or-convert-from-region "insert")
  ("l" org-link/body "link")
@@ -406,6 +416,7 @@
 
 
 (defhydra org-deadline-date(:exit t)
+  "org-deadline-date"
  ("i" org-deadline "insertDeadline")
  ("c" org-check-deadlines "checkDeadline")
  ("s" org-schedule "schedule")
@@ -421,12 +432,14 @@
 
 
 (defhydra org-tag(:exit t)
+  "org-tag"
 ("i" org-set-tags-command "insert")
 ("s" org-tags-view "view")
  )
 
 
 (defhydra org-property(:exit t)
+  "org-property"
  ;; -------property--------
  ("i" org-set-property "insert")
  ("d" org-delete-property "delete")
@@ -436,6 +449,7 @@
 
 
 (defhydra org-show(:exit t)
+  "org-show"
  ;; -------show something--------
  ("a" outline-show-all "showAll")
  ("1" org-set-startup-visibility "startupVisibility")
@@ -445,7 +459,8 @@
 
 
 
-(defhydra org-src(:exit t)
+(defhydra org-src(:exit t :columns 5)
+  "org-src"
  ("ij" jupyter-org-insert-src-block "insert")
  ("s" org-babel-execute-subtree "executeSubtree")
  ("o" org-babel-open-src-block-result "Open")
@@ -493,7 +508,7 @@
    (jupyter . t)
    ))
 
-;; (org-babel-jupyter-override-src-block "python")
+(org-babel-jupyter-override-src-block "python")
 
 ;;========== 出现 org-babel-execute-src-block: No org-babel-execute function 问题==========================================
 ;; jupyter-run-repl
@@ -674,6 +689,11 @@
 
 ;; always show images
 (setq org-startup-with-inline-images t)
+
+;; There is some room for improvement though. First, you can add the following hook if you don’t want to press this awkward keybinding every time:
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+;; At the same time, we can set the image width to prevent images from becoming too large. I prefer to do it inside a emacs-lisp code block in the same org file:
+(setq-local org-image-actual-width '(1024))
 ;; (require 'org-download)
 ;; (setq org-download-method 'attach)
 (setq package-check-signature nil)
