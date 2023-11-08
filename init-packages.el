@@ -94,11 +94,14 @@
 
 	dashboard
 
-	;; dracula-theme
-	;; monokai-theme
-	;; atom-one-dark-theme
+	dracula-theme
+	monokai-theme
+	atom-one-dark-theme
+	alect-themes
+	badger-theme
+      	
 	;; 不能用?
-	;; doom-themes
+	doom-themes
 	sublime-themes
 	
 	
@@ -127,12 +130,19 @@
 	;; org-noter
 
 	org-roam
-	emacsql
+
+	calfw
+	calfw-org
+
 	emacsql-sqlite
-	;;org-download              ;windows好像不可以
+	;; org-download              ;windows好像不可以
+	;; org-roam-server
 	org-roam-bibtex
 	org-ref
-	org-roam-ui
+
+	ivy-bibtex
+	;; ebib 文献管理 不知道为什么不能用
+	
 	ein
 
 	use-package
@@ -212,3 +222,8 @@
 
 ;; ======= probide =======
 (provide 'init-packages)
+
+
+
+;; (setq perfect-margin-ignore-filters "posframe")
+;; (setq perfect-margin-ignore-regexps "nil")

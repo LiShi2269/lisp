@@ -48,20 +48,20 @@
 
 
 
-(defun my-org-edit-buffer()
-  (interactive)
-  (cond ((org-in-src-block-p) (progn(org-edit-src-code)(evil-window-move-far-right))  )
-	((org-src-edit-buffer-p) (progn (my-save-buffer)(org-edit-src-exit)))
-	;; (t )
-    )
-  )
+;; (defun my-org-edit-buffer()
+;;   (interactive)
+;;   (cond ((org-in-src-block-p) (progn(org-edit-src-code)(evil-window-move-far-right))  )
+;; 	((org-src-edit-buffer-p) (progn (my-save-buffer)(org-edit-src-exit)))
+;; 	;; (t )
+;;     )
+;;   )
 
 ;; ;; ======= key-chord=======
 ;; (require 'key-chord)
-(key-chord-define evil-visual-state-map ",," 'my-org-edit-buffer)
-(key-chord-define evil-insert-state-map ",," 'my-org-edit-buffer)
-(key-chord-define evil-replace-state-map ",," 'my-org-edit-buffer)
-(key-chord-define ivy-mode-map ",," 'my-org-edit-buffer)
+;; (key-chord-define evil-visual-state-map ",," 'org-edit-special)
+;; (key-chord-define evil-insert-state-map ",," 'org-edit-special)
+;; (key-chord-define evil-replace-state-map ",," 'org-edit-special)
+;; (key-chord-define ivy-mode-map ",," 'org-edit-special)
 ;; ;; (key-chord-define elpy-mode-map "KK" 'beginning-of-defun)
 ;; (key-chord-define elpy-mode-map "JJ" 'end-of-defun)
 ;; (key-chord-define evil-insert-state-map ".." 'myinsert)

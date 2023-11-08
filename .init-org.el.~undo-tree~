@@ -1,6 +1,0 @@
-(undo-tree-save-format-version . 1)
-"937eb0b50678256802d246762ca23cff746df465"
-[nil nil nil nil (25892 45912 302727 608000) 0 nil]
-([nil nil ((#("f:/org-roam/" 0 12 (fontified t face font-lock-string-face)) . 14002) (undo-tree-id17 . -12) (undo-tree-id18 . -12) (undo-tree-id19 . -12) (undo-tree-id20 . -12) (undo-tree-id21 . 12) (undo-tree-id22 . -12) (undo-tree-id23 . -12) (undo-tree-id24 . -11) (t 25892 35194 944805 18000)) nil (25892 45912 302725 908000) 0 nil])
-([nil current ((14017 . 14018) (#("/" 0 1 (fontified nil)) . -14017) (14002 . 14018) (#("/mnt/f/or" 0 9 (fontified t face font-lock-string-face)) . -14002) (undo-tree-id0 . -9) (undo-tree-id1 . -7) (undo-tree-id2 . -6) (undo-tree-id3 . -8) (undo-tree-id4 . -7) (undo-tree-id5 . -8) (undo-tree-id6 . -8) (undo-tree-id7 . -9) (undo-tree-id8 . -8) (undo-tree-id9 . -9) (undo-tree-id10 . -9) (undo-tree-id11 . -9) (undo-tree-id12 . -9) (undo-tree-id13 . 9) (undo-tree-id14 . -9) (undo-tree-id15 . -9) 14011 (14009 . 14011) (14008 . 14009) (#("/" 0 1 (fontified nil)) . -14008) (14002 . 14009) (#("/mn" 0 3 (fontified t face font-lock-string-face)) . -14002) (undo-tree-id16 . -3) 14005 (14002 . 14005)) nil (25892 45912 302702 308000) 0 nil])
-nil

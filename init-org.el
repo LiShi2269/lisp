@@ -1,12 +1,10 @@
 
 
-;; the jupyter-ipython in org width: update the ipystata 
 
 
 
 ;; init file for org-mode
 (require 'org)
-(require 'org-ref)
 ;;---------bullets------------
 (require 'org-bullets)
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode-enable)
@@ -24,9 +22,12 @@
 
 ;; (setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
-(setq org-src-preserve-indentation t
+(setq org-src-preserve-indentation t 
       org-edit-src-content-indentation t)
 
+;; 关于org-special-mode
+(setq org-src-window-setup 'split-window-right)
+(setq org-edit-src-turn-on-auto-save t)
 
 ;; ------key-map-set-----
 ;; (setq org-log-done nil)
@@ -48,13 +49,14 @@
 ;; 	     ((equal major-mode 'python-mode (elpy-shell-send-satement-and-step)) 
 ;;        ))
 
-;; org-ref
-(setq reftex-default-bibliography '("f:/test/Graduate-Thesis.bib"))
 
-
-
-
-
+;; citar
+;; (use-package citar
+  ;; :custom
+  ;; (citar-bibliography '("~/bib/references.bib")))
+;; (use-package citar-org-roam
+  ;; :after (citar org-roam)
+  ;; :config (citar-org-roam-mode))
 
 ;; v2 是否使用
 ;; (setq org-roam-v2-ack t)
@@ -63,10 +65,54 @@
 ;;(setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe") 这个是windows的 linux 直接用 org-roam-ui
 
 
-;; see org-ref for use of these variables
-;;(setq org-ref-bibliography-notes "f:/test/test.org"
-;;      org-ref-default-bibliography '("f:/org-roam/Graduate.bib")
-;;      )
+
+;; (use-package org-ref
+;;   :ensure t
+;;   :config
+;;   (setq reftex-default-bibliography '("f:/zoterofiles/我的文库.bib"))
+;;   ;; (setq org-ref-bibliography-notes "path/to/your/notes.org")
+;;   (setq org-ref-default-citation-link "cite:"))
+
+
+(require 'org-ref)
+(require 'org-ref-ivy)
+(require 'ivy-bibtex)
+(setq bibtex-completion-bibliography '(
+				       "f:/zoterofiles/我的文库.bib"
+				       )
+      )
+					;可以直接添加到后面不需要逗号
+
+(setq bibtex-completion-library-path '("f:/zotero/"))
+(setq bibtex-completion-pdf-field "file")
+
+
+
+
+
+
+
+
+
+
+;; test
+;; (defun my/org-ref-open-pdf-at-point ()
+;;   "Open the pdf for bibtex key under point if it exists."
+;;   (interactive)
+;;   (let* ((results (org-ref-get-bibtex-key-and-file))
+;;          (key (car results))
+;;          (pdf-file (funcall org-ref-get-pdf-filename-function key))
+;;      (pdf-other (bibtex-completion-find-pdf key)))
+;;     (cond ((file-exists-p pdf-file)
+;;        (org-open-file pdf-file))
+;;       (pdf-other
+;;        (org-open-file pdf-other))
+;;       (message "No PDF found for %s" key))))
+;; (global-set-key (kbd "<f6>") 'my/org-ref-open-pdf-at-point)
+;; (setq org-ref-pdf-directory "f:/zotero/")
+;; (setq bibtex-completion-library-path "f:/zotero/")
+;; test
+
 
 ;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
 ;; (setq org-roam-graph-viewer nil)
@@ -103,6 +149,7 @@
  "C-j" 'org-next-visible-heading
  "<tab>" 'org-cycle 
  "C-'" nil
+ "<tab>" 'org-cycle
  "C-<return>" 'my-C-turn
  )
 
@@ -131,7 +178,8 @@
 
 
 
-(defhydra hydra-org(:exit t)
+(defhydra hydra-org(:exit t :columns 5)
+  "org"
   ("o" org-open-at-point "openwith")
 ;; s sub
   ("s" org-subtree/body "subtree")
@@ -253,7 +301,8 @@
 ("n" org-num-face "orgNum")
   )
 
-(defhydra org-subtree(:exit t)
+(defhydra org-subtree(:exit t :columns 6)
+  "subtree"
 ("x" org-cut-subtree "cut")
 ("c" org-copy-subtree "copy")
 ("p" org-paste-subtree "paste")
@@ -264,6 +313,9 @@
 ("s" org-subtree/body "self")
 ("n" org-narrow/body "narrow")
 ("T" org-tag/body "tag")
+("l" org-link/body "link")
+("o" org-open-at-point "link")
+("I" org-id-get-create "orgID")
   )
 
 (defhydra org-env(:exit t)
@@ -272,12 +324,14 @@
   )
 
 (defhydra org-narrow(:exit t)
+  "narrow"
 ("b" org-narrow-to-block "nBlock")
 ("s" org-narrow-to-subtree "nSubtree")
 ("w" widen "widen")
   )
 
-(defhydra org-time(:exit t)
+(defhydra org-time(:exit t :columns 6)
+  "org-time"
 ("." org-time-stamp "stamp")
 ("!" org-time-stamp-inactive "stampInactive")
 ("c" org-date-from-calendar "dateFromCalendar")
@@ -294,6 +348,7 @@
 
 
 (defhydra org-todo(:exit t)
+  "org-todo"
  ("t" org-todo "todo")
  ("vt" org-show-todo-tree "showTodoTree")
  ;; ("\\l" org-todo-list)
@@ -303,6 +358,7 @@
 
 
 (defhydra org-link(:exit t)
+  "org-link"
  ;; you need to use org-store-link
  ("l" org-insert-link "insert")
  ("j" org-next-link "next")
@@ -312,6 +368,7 @@
 
 
 (defhydra org-agenda(:exit t)
+  "org-agenda"
  ("i" org-agenda-file-to-front "insertTocalenda")
  ("d" org-remove-file "DeleteTocalenda")
  ;; org switchb 应该是 global
@@ -323,6 +380,7 @@
 
 
 (defhydra org-Sparsetree(:exit t)
+  "org-Sparsetree"
  ;; -------Sparse trees--------
  ("/" org-sparse-tree "sparseTree")
  ("m" org-match-sparse-tree "MatchSparse")
@@ -339,7 +397,8 @@
  )
 
 
-(defhydra org-table(:exit t)
+(defhydra org-table(:exit t :columns 5)
+  "org-table"
  ;; -------table--------
  ("i" org-table-create-or-convert-from-region "insert")
  ("l" org-link/body "link")
@@ -354,6 +413,7 @@
 
 
 (defhydra org-deadline-date(:exit t)
+  "org-deadline-date"
  ("i" org-deadline "insertDeadline")
  ("c" org-check-deadlines "checkDeadline")
  ("s" org-schedule "schedule")
@@ -369,12 +429,14 @@
 
 
 (defhydra org-tag(:exit t)
+  "org-tag"
 ("i" org-set-tags-command "insert")
 ("s" org-tags-view "view")
  )
 
 
 (defhydra org-property(:exit t)
+  "org-property"
  ;; -------property--------
  ("i" org-set-property "insert")
  ("d" org-delete-property "delete")
@@ -384,6 +446,7 @@
 
 
 (defhydra org-show(:exit t)
+  "org-show"
  ;; -------show something--------
  ("a" outline-show-all "showAll")
  ("1" org-set-startup-visibility "startupVisibility")
@@ -393,7 +456,8 @@
 
 
 
-(defhydra org-src(:exit t)
+(defhydra org-src(:exit t :columns 5)
+  "org-src"
  ("ij" jupyter-org-insert-src-block "insert")
  ("s" org-babel-execute-subtree "executeSubtree")
  ("o" org-babel-open-src-block-result "Open")
@@ -407,6 +471,7 @@
 ("e" org-src/body "Execute")
  ("'" org-edit-special "SpecialEdit")
  ("c" org-babel-remove-result "clear")
+ ("l" org-link "link")
 ;; 快速加上print(原内容)
 ("(" my-org-add-print "add-print()")
  )
@@ -436,11 +501,11 @@
  'org-babel-load-languages
  '(
    ;; (emacs-lisp . t)
-   (python . t)
+   ;;(python . t)
    (jupyter . t)
    ))
 
-;; (org-babel-jupyter-override-src-block "python")
+(org-babel-jupyter-override-src-block "python")
 
 ;;========== 出现 org-babel-execute-src-block: No org-babel-execute function 问题==========================================
 ;; jupyter-run-repl
@@ -530,6 +595,12 @@
 
 
 
+;; org-specil-mode 使用 compay
+;; (use-package company-org-block
+;;   :ensure t
+;;   :hook ((org-mode . (lambda () (setq-local company-backends '(company-org-block))(company-mode +1)))))
+
+
 
 
 ;; One can also set org-roam-db-node-include-function. For example, to exclude all headlines with the ATTACH tag from the Org-roam database, one can set:
@@ -615,8 +686,32 @@
 
 ;; always show images
 (setq org-startup-with-inline-images t)
+
+;; There is some room for improvement though. First, you can add the following hook if you don’t want to press this awkward keybinding every time:
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+;; At the same time, we can set the image width to prevent images from becoming too large. I prefer to do it inside a emacs-lisp code block in the same org file:
+(setq-local org-image-actual-width '(1024))
 ;; (require 'org-download)
 ;; (setq org-download-method 'attach)
 (setq package-check-signature nil)
+
+
+
+;; 解决 src-block 报错结果颜色显示的问题
+(defun display-ansi-colors ()
+  (ansi-color-apply-on-region (point-min) (point-max)))
+(add-hook 'org-babel-after-execute-hook #'display-ansi-colors)
+
+
+
+;; calfw
+(require 'calfw)
+(require 'calfw-org)
+
+
+
+
+
+
 ;; ======= provide =======
 (provide 'init-org)

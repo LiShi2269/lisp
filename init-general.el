@@ -39,8 +39,6 @@
 
 
 
-
-
 (general-define-key
  :states  '(normal motion )
  :keymaps 'override 
@@ -55,7 +53,6 @@
  :states  '(normal motion )
  :keymaps 'override 
  (kbd ",") 'my-major-mode-fun
- ;; (kbd "<f6>") 'my-test-fun
  )
 
 ;; ============如果是有用ein模式则要换成这个方法=========
@@ -245,7 +242,7 @@ Version 2018-06-18 2021-09-30"
     "qR" 'eval-buffer
     "qs" 'save-buffers-kill-emacs
 
-    ;; "s" '(:ignore t :which-key File is missing: Cannot open load file, No such file or directory, ob-jupyter"setEdit")
+    "s" '(:ignore t :which-key "special")
     ;; ---- iedit ----
     "se" 'iedit-mode
     ;; ---- Hight-symbol ----
@@ -253,6 +250,7 @@ Version 2018-06-18 2021-09-30"
     "sD" 'dynamic-spaces-mode
     "sm" 'minimap-mode
     "sl" 'linum-relative-toggle
+    "sy" '(:ignore t :which-key "yas")
     "syn" 'yas-new-snippet
     "syv" 'yas-visit-snippet-file
     "sm" 'ace-mc-add-multiple-cursors
@@ -274,6 +272,9 @@ Version 2018-06-18 2021-09-30"
     ;; ---- ace-jump ----
     "j" '(:ignore t :which-key "AceJump")
     "j" 'ace-jump-mode
+
+    ;; ---- ace-jump ----
+    "m" 'imenu
     ;; ---- iedit ----
     "`"  'shell)
 
