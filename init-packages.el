@@ -124,8 +124,8 @@
 	pandoc
 	openwith
 
-	;; pdf-tools
-	;; org-pdftools
+	pdf-tools
+	org-pdftools
 	;; org-noter-pdftools
 	;; org-noter
 
@@ -139,11 +139,12 @@
 	;; org-roam-server
 	org-roam-bibtex
 	org-ref
+	citar
 
 	ivy-bibtex
 	;; ebib 文献管理 不知道为什么不能用
 	
-	ein
+	;; ein
 
 	use-package
 	
@@ -156,7 +157,7 @@
 	key-chord
 	
 	;; --- Python ---
-	ein
+	;; ein
 	elpy
 	;;jedi是专门给auto-company使用的，company-jedi才是company用的
 	company-jedi
@@ -166,6 +167,7 @@
 	flycheck	
 	blacken
 	lsp-jedi
+
 	;; lsp-python-ms
 	;; lsp-pyright
 	

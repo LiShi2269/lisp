@@ -50,88 +50,33 @@
 ;;        ))
 
 
-;; citar
-;; (use-package citar
-  ;; :custom
-  ;; (citar-bibliography '("~/bib/references.bib")))
-;; (use-package citar-org-roam
-  ;; :after (citar org-roam)
-  ;; :config (citar-org-roam-mode))
+;; citar 如果只是在org-mode中使用的话
+(use-package citar
+  :hook
+  (LaTeX-mode . citar-capf-setup)
+  (org-mode . citar-capf-setup)
+  :no-require
+  :custom
+  (org-cite-global-bibliography '("~/zotero/我的文库.bib"))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-bibliography org-cite-global-bibliography)
+  ;; optional: org-cite-insert is also bound to C-c C-x C-@
+  ;; :bind
+  ;; (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+  )
 
-;; v2 是否使用
-;; (setq org-roam-v2-ack t)
-
-;; 来源 https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/v1/90.org-protocol.md
-;;(setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe") 这个是windows的 linux 直接用 org-roam-ui
-
-
-
-;; (use-package org-ref
-;;   :ensure t
-;;   :config
-;;   (setq reftex-default-bibliography '("f:/zoterofiles/我的文库.bib"))
-;;   ;; (setq org-ref-bibliography-notes "path/to/your/notes.org")
-;;   (setq org-ref-default-citation-link "cite:"))
+;; (setq citar-file-parser-functions
+  ;; '(citar-file-parser-default citar-file-parser-triplet))
 
 
-(require 'org-ref)
-(require 'org-ref-ivy)
-(require 'ivy-bibtex)
-(setq bibtex-completion-bibliography '(
-				       "f:/zoterofiles/我的文库.bib"
-				       )
-      )
-					;可以直接添加到后面不需要逗号
 
-(setq bibtex-completion-library-path '("f:/zotero/"))
+  (setq citar-library-path '("/mnt/f/zoteroAttachments/myAllPDF/"))
+
+
 (setq bibtex-completion-pdf-field "file")
 
-
-
-
-
-
-
-
-
-
-;; test
-;; (defun my/org-ref-open-pdf-at-point ()
-;;   "Open the pdf for bibtex key under point if it exists."
-;;   (interactive)
-;;   (let* ((results (org-ref-get-bibtex-key-and-file))
-;;          (key (car results))
-;;          (pdf-file (funcall org-ref-get-pdf-filename-function key))
-;;      (pdf-other (bibtex-completion-find-pdf key)))
-;;     (cond ((file-exists-p pdf-file)
-;;        (org-open-file pdf-file))
-;;       (pdf-other
-;;        (org-open-file pdf-other))
-;;       (message "No PDF found for %s" key))))
-;; (global-set-key (kbd "<f6>") 'my/org-ref-open-pdf-at-point)
-;; (setq org-ref-pdf-directory "f:/zotero/")
-;; (setq bibtex-completion-library-path "f:/zotero/")
-;; test
-
-
-;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
-;; (setq org-roam-graph-viewer nil)
-
-;; (require 'org-protocol)
-;; (require 'org-roam-protocol)
-;; (load-file "~/.emacs.d/lisp/+org-protocol-check-filename-for-protocol.el")
-;; (advice-add 'org-protocol-check-filename-for-protocol :override '+org-protocol-check-filename-for-protocol)
-
-;; (require 'org-roam-server)
-;; (setq org-roam-server-host "127.0.0.1"
-;;       org-roam-server-port 8181
-;;       org-roam-server-export-inline-images t
-;;       org-roam-server-authenticate nil
-;;       org-roam-server-network-poll t
-;;       org-roam-server-network-arrows nil
-;;       org-roam-server-network-label-truncate t
-;;       org-roam-server-network-label-truncate-length 60
-;;       org-roam-server-network-label-wrap-length 20)
 
 
 
@@ -500,12 +445,13 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
-   ;; (emacs-lisp . t)
+   (emacs-lisp . t)
    ;;(python . t)
    (jupyter . t)
    ))
 
 (org-babel-jupyter-override-src-block "python")
+
 
 ;;========== 出现 org-babel-execute-src-block: No org-babel-execute function 问题==========================================
 ;; jupyter-run-repl

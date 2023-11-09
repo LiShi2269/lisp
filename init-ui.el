@@ -231,7 +231,8 @@
  (set-fontset-font t 'han (font-spec :family f :height h :foreground fcolor :background bgcolor) )
   )
 
-(set-font "等距更纱黑体 SC" 150 "#E9E7EF" "#161823")
+;; (set-font "等距更纱黑体 SC" 150 "#E9E7EF" "#161823")
+(set-font "Sarasa Mono SC" 150 "#E9E7EF" "#161823")
 
 
 ;  ===============  other color  ========================
