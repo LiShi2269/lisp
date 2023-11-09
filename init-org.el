@@ -80,6 +80,42 @@
 
 
 
+;; (use-package citar-denote
+;;   :custom
+;;   ;; Use package defaults
+;;   (citar-open-always-create-notes nil)
+;;   (citar-denote-file-type 'org)
+;;   (citar-denote-subdir nil)
+;;   (citar-denote-keyword "bib")
+;;   (citar-denote-use-bib-keywords nil)
+;;   (citar-denote-title-format "title")
+;;   (citar-denote-title-format-authors 1)
+;;   (citar-denote-title-format-andstr "and")
+;;   :init
+;;   (citar-denote-mode)
+;;   ;; Bind all available commands
+;;   :bind (("C-c w c c" . citar-create-note)
+;;          ("C-c w c n" . citar-denote-open-note)
+;;          ("C-c w c d" . citar-denote-dwim)
+;;          ("C-c w c e" . citar-denote-open-reference-entry)
+;;          ("C-c w c a" . citar-denote-add-citekey)
+;;          ("C-c w c k" . citar-denote-remove-citekey)
+;;          ("C-c w c r" . citar-denote-find-reference)
+;;          ("C-c w c f" . citar-denote-find-citation)
+;;          ("C-c w c l" . citar-denote-link-reference)))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 (defun insert-now-timestamp()

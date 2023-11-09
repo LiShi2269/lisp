@@ -127,7 +127,7 @@
 	pdf-tools
 	org-pdftools
 	;; org-noter-pdftools
-	;; org-noter
+	org-noter
 
 	org-roam
 
