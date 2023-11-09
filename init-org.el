@@ -1,8 +1,6 @@
 
 
 
-
-
 ;; init file for org-mode
 (require 'org)
 ;;---------bullets------------
@@ -126,6 +124,7 @@
 (defhydra hydra-org(:exit t :columns 5)
   "org"
   ("o" org-open-at-point "openwith")
+  ("c" org-citarr/body "citar")
 ;; s sub
   ("s" org-subtree/body "subtree")
 ;; * heading
@@ -245,6 +244,14 @@
 (defhydra org-mode-config(:exit t)
 ("n" org-num-face "orgNum")
   )
+
+
+(defhydra org-citarr()
+("c" 'citar-insert-citation "citaion")
+("b" 'citar-insert-bibtex "bibtex")
+("r" 'citar-insert-reference "reference")
+  )
+
 
 (defhydra org-subtree(:exit t :columns 6)
   "subtree"
