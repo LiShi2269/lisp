@@ -1,8 +1,6 @@
 
 
 
-
-
 ;; init file for org-mode
 (require 'org)
 ;;---------bullets------------
@@ -50,41 +48,78 @@
 ;;        ))
 
 
-;; citar
-;; (use-package citar
-  ;; :custom
-  ;; (citar-bibliography '("~/bib/references.bib")))
-;; (use-package citar-org-roam
-  ;; :after (citar org-roam)
-  ;; :config (citar-org-roam-mode))
+;; citar 如果只是在org-mode中使用的话
+(use-package citar
+  :hook
+  (LaTeX-mode . citar-capf-setup)
+  (org-mode . citar-capf-setup)
+  :no-require
+  :custom
+  (org-cite-global-bibliography '("~/zotero/我的文库.bib"))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-bibliography org-cite-global-bibliography)
+  ;; optional: org-cite-insert is also bound to C-c C-x C-@
+  ;; :bind
+  ;; (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+  )
 
-;; v2 是否使用
-;; (setq org-roam-v2-ack t)
-
-;; 来源 https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/v1/90.org-protocol.md
-;;(setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe") 这个是windows的 linux 直接用 org-roam-ui
-
-
-
-;; (use-package org-ref
-;;   :ensure t
-;;   :config
-;;   (setq reftex-default-bibliography '("f:/zoterofiles/我的文库.bib"))
-;;   ;; (setq org-ref-bibliography-notes "path/to/your/notes.org")
-;;   (setq org-ref-default-citation-link "cite:"))
-
-
-(require 'org-ref)
-(require 'org-ref-ivy)
-(require 'ivy-bibtex)
-(setq bibtex-completion-bibliography '(
-				       "f:/zoterofiles/我的文库.bib"
-				       )
-      )
-					;可以直接添加到后面不需要逗号
-
-(setq bibtex-completion-library-path '("f:/zotero/"))
+(setq citar-library-path '("/mnt/f/zoteroAttachments/myAllPDF/"))
 (setq bibtex-completion-pdf-field "file")
+;; rich UI
+ (setq citar-templates
+      '((main . "${author editor:30%sn}     ${date year issued:4}     ${title:48}")
+        (suffix . "          ${=key= id:15}    ${=type=:12}    ${tags keywords:*}")
+        (preview . "${author editor:%etal} (${year issued date}) ${title}, ${journal journaltitle publisher container-title collection-title}.\n")
+        (note . "Notes on ${author editor:%etal}, ${title}")))
+
+
+(require 'pdf-tools)
+(pdf-tools-install)
+(use-package org-pdftools
+  :hook (org-mode . org-pdftools-setup-link))
+
+
+
+
+(use-package org-noter
+  :config
+  ;; Your org-noter config ........
+  (require 'org-noter-pdftools))
+
+(use-package org-noter-pdftools
+  :after org-noter
+  :config
+  ;; Add a function to ensure precise note is inserted
+  (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((org-noter-insert-note-no-questions (if toggle-no-questions
+                                                   (not org-noter-insert-note-no-questions)
+                                                 org-noter-insert-note-no-questions))
+           (org-pdftools-use-isearch-link t)
+           (org-pdftools-use-freepointer-annot t))
+       (org-noter-insert-note (org-noter--get-precise-info)))))
+
+  ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
+  (defun org-noter-set-start-location (&optional arg)
+    "When opening a session with this document, go to the current location.
+With a prefix ARG, remove start location."
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((inhibit-read-only t)
+           (ast (org-noter--parse-root))
+           (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+       (with-current-buffer (org-noter--session-notes-buffer session)
+         (org-with-wide-buffer
+          (goto-char (org-element-property :begin ast))
+          (if arg
+              (org-entry-delete nil org-noter-property-note-location)
+            (org-entry-put nil org-noter-property-note-location
+                           (org-noter--pretty-print-location location))))))))
+  (with-eval-after-load 'pdf-annot
+    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 
 
@@ -95,43 +130,11 @@
 
 
 
-;; test
-;; (defun my/org-ref-open-pdf-at-point ()
-;;   "Open the pdf for bibtex key under point if it exists."
-;;   (interactive)
-;;   (let* ((results (org-ref-get-bibtex-key-and-file))
-;;          (key (car results))
-;;          (pdf-file (funcall org-ref-get-pdf-filename-function key))
-;;      (pdf-other (bibtex-completion-find-pdf key)))
-;;     (cond ((file-exists-p pdf-file)
-;;        (org-open-file pdf-file))
-;;       (pdf-other
-;;        (org-open-file pdf-other))
-;;       (message "No PDF found for %s" key))))
-;; (global-set-key (kbd "<f6>") 'my/org-ref-open-pdf-at-point)
-;; (setq org-ref-pdf-directory "f:/zotero/")
-;; (setq bibtex-completion-library-path "f:/zotero/")
-;; test
 
 
-;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
-;; (setq org-roam-graph-viewer nil)
 
-;; (require 'org-protocol)
-;; (require 'org-roam-protocol)
-;; (load-file "~/.emacs.d/lisp/+org-protocol-check-filename-for-protocol.el")
-;; (advice-add 'org-protocol-check-filename-for-protocol :override '+org-protocol-check-filename-for-protocol)
 
-;; (require 'org-roam-server)
-;; (setq org-roam-server-host "127.0.0.1"
-;;       org-roam-server-port 8181
-;;       org-roam-server-export-inline-images t
-;;       org-roam-server-authenticate nil
-;;       org-roam-server-network-poll t
-;;       org-roam-server-network-arrows nil
-;;       org-roam-server-network-label-truncate t
-;;       org-roam-server-network-label-truncate-length 60
-;;       org-roam-server-network-label-wrap-length 20)
+
 
 
 
@@ -181,12 +184,14 @@
 (defhydra hydra-org(:exit t :columns 5)
   "org"
   ("o" org-open-at-point "openwith")
+  ("c" org-citarr/body "citar")
+  ("U"'org-roam-ui-mode "UI")
 ;; s sub
   ("s" org-subtree/body "subtree")
 ;; * heading
   ("*" org-toggle-heading "heading")
 ;; U up heading
-  ("U" outline-up-heading "up")
+  ("u" outline-up-heading "up")
 ;; n narrow
   ("n" org-narrow/body "narrow")
 ;; . time
@@ -300,6 +305,14 @@
 (defhydra org-mode-config(:exit t)
 ("n" org-num-face "orgNum")
   )
+
+
+(defhydra org-citarr()
+("c" citar-insert-citation "citaion")
+("b" citar-insert-bibtex "bibtex")
+("r" citar-insert-reference "reference")
+  )
+
 
 (defhydra org-subtree(:exit t :columns 6)
   "subtree"
@@ -500,12 +513,13 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
-   ;; (emacs-lisp . t)
+   (emacs-lisp . t)
    ;;(python . t)
    (jupyter . t)
    ))
 
 (org-babel-jupyter-override-src-block "python")
+
 
 ;;========== 出现 org-babel-execute-src-block: No org-babel-execute function 问题==========================================
 ;; jupyter-run-repl
@@ -576,14 +590,13 @@
 
 ;; -------------- org-roam ---------------------
 ;; 需要在环境变量当中添加下面的文件夹
-(add-to-list 'exec-path "c:/HOME/sqlite/sqlite3.exe")
-(add-to-list 'exec-path "c:/HOME/sqlite")
-(add-to-list 'exec-path "c:/HOME/msys64/usr/bin/cc.exe")
-(add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
+;; (add-to-list 'exec-path "c:/HOME/sqlite/sqlite3.exe")
+;; (add-to-list 'exec-path "c:/HOME/sqlite")
+;; (add-to-list 'exec-path "c:/HOME/msys64/usr/bin/cc.exe")
+;; (add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
 (add-hook 'after-init-hook 'org-roam-mode)
 
-
-(setq org-roam-directory "/mnt/f/org-roam/")
+(setq org-roam-directory "/mnt/f/org-roam/") ;only one org-roam path
 (org-roam-db-autosync-mode)
 (setq org-roam-v2-ack t)
 
@@ -648,14 +661,36 @@
 ;; roam 在任何位置可以补全
 (setq org-roam-completion-everywhere t)
 
-;; org-roam 图需要用注册表 graphviz 软件
+(use-package websocket
+    :after org-roam)
+
+(use-package org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 
 ;; 用chrome打开
-(setq org-roam-graph-viewer "c:/Program Files/Google/Chrome/Application/chrome.exe")
+;; sudo apt install graphviz 先安装这个
+;; (setq org-roam-graph-executable "neato")
+;; (setq org-roam-graph-executable "neato")
+;; (setq org-roam-graph-viewer "/usr/bin/google-chrome-stable")
 ;; (setq org-roam-graph-viewer nil)
 
 
 ;; If you use this setting and don’t want to see images in a specific file, add this at the top of the org files that are not to display images: #+STARTUP: noinlineimages
+
+
+
+
+
+
 
 ;; org capture templates
 (setq org-capture-templates
