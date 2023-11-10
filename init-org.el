@@ -185,12 +185,13 @@ With a prefix ARG, remove start location."
   "org"
   ("o" org-open-at-point "openwith")
   ("c" org-citarr/body "citar")
+  ("U"'org-roam-ui-mode "UI")
 ;; s sub
   ("s" org-subtree/body "subtree")
 ;; * heading
   ("*" org-toggle-heading "heading")
 ;; U up heading
-  ("U" outline-up-heading "up")
+  ("u" outline-up-heading "up")
 ;; n narrow
   ("n" org-narrow/body "narrow")
 ;; . time
