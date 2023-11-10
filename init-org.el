@@ -185,12 +185,13 @@ With a prefix ARG, remove start location."
   "org"
   ("o" org-open-at-point "openwith")
   ("c" org-citarr/body "citar")
+  ("U"'org-roam-ui-mode "UI")
 ;; s sub
   ("s" org-subtree/body "subtree")
 ;; * heading
   ("*" org-toggle-heading "heading")
 ;; U up heading
-  ("U" outline-up-heading "up")
+  ("u" outline-up-heading "up")
 ;; n narrow
   ("n" org-narrow/body "narrow")
 ;; . time
@@ -595,8 +596,7 @@ With a prefix ARG, remove start location."
 ;; (add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
 (add-hook 'after-init-hook 'org-roam-mode)
 
-
-(setq org-roam-directory "/mnt/f/org-roam/")
+(setq org-roam-directory "/mnt/f/org-roam/") ;only one org-roam path
 (org-roam-db-autosync-mode)
 (setq org-roam-v2-ack t)
 
