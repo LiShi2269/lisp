@@ -66,7 +66,6 @@
   )
 
 (setq citar-library-path '("/mnt/f/zoteroAttachments/myAllPDF/"))
-
 (setq bibtex-completion-pdf-field "file")
 ;; rich UI
  (setq citar-templates
@@ -76,33 +75,54 @@
         (note . "Notes on ${author editor:%etal}, ${title}")))
 
 
+(require 'pdf-tools)
+(pdf-tools-install)
+(use-package org-pdftools
+  :hook (org-mode . org-pdftools-setup-link))
 
 
 
 
-;; (use-package citar-denote
-;;   :custom
-;;   ;; Use package defaults
-;;   (citar-open-always-create-notes nil)
-;;   (citar-denote-file-type 'org)
-;;   (citar-denote-subdir nil)
-;;   (citar-denote-keyword "bib")
-;;   (citar-denote-use-bib-keywords nil)
-;;   (citar-denote-title-format "title")
-;;   (citar-denote-title-format-authors 1)
-;;   (citar-denote-title-format-andstr "and")
-;;   :init
-;;   (citar-denote-mode)
-;;   ;; Bind all available commands
-;;   :bind (("C-c w c c" . citar-create-note)
-;;          ("C-c w c n" . citar-denote-open-note)
-;;          ("C-c w c d" . citar-denote-dwim)
-;;          ("C-c w c e" . citar-denote-open-reference-entry)
-;;          ("C-c w c a" . citar-denote-add-citekey)
-;;          ("C-c w c k" . citar-denote-remove-citekey)
-;;          ("C-c w c r" . citar-denote-find-reference)
-;;          ("C-c w c f" . citar-denote-find-citation)
-;;          ("C-c w c l" . citar-denote-link-reference)))
+(use-package org-noter
+  :config
+  ;; Your org-noter config ........
+  (require 'org-noter-pdftools))
+
+(use-package org-noter-pdftools
+  :after org-noter
+  :config
+  ;; Add a function to ensure precise note is inserted
+  (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((org-noter-insert-note-no-questions (if toggle-no-questions
+                                                   (not org-noter-insert-note-no-questions)
+                                                 org-noter-insert-note-no-questions))
+           (org-pdftools-use-isearch-link t)
+           (org-pdftools-use-freepointer-annot t))
+       (org-noter-insert-note (org-noter--get-precise-info)))))
+
+  ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
+  (defun org-noter-set-start-location (&optional arg)
+    "When opening a session with this document, go to the current location.
+With a prefix ARG, remove start location."
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((inhibit-read-only t)
+           (ast (org-noter--parse-root))
+           (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+       (with-current-buffer (org-noter--session-notes-buffer session)
+         (org-with-wide-buffer
+          (goto-char (org-element-property :begin ast))
+          (if arg
+              (org-entry-delete nil org-noter-property-note-location)
+            (org-entry-put nil org-noter-property-note-location
+                           (org-noter--pretty-print-location location))))))))
+  (with-eval-after-load 'pdf-annot
+    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+
+
 
 
 
@@ -569,10 +589,10 @@
 
 ;; -------------- org-roam ---------------------
 ;; 需要在环境变量当中添加下面的文件夹
-(add-to-list 'exec-path "c:/HOME/sqlite/sqlite3.exe")
-(add-to-list 'exec-path "c:/HOME/sqlite")
-(add-to-list 'exec-path "c:/HOME/msys64/usr/bin/cc.exe")
-(add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
+;; (add-to-list 'exec-path "c:/HOME/sqlite/sqlite3.exe")
+;; (add-to-list 'exec-path "c:/HOME/sqlite")
+;; (add-to-list 'exec-path "c:/HOME/msys64/usr/bin/cc.exe")
+;; (add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
 (add-hook 'after-init-hook 'org-roam-mode)
 
 
@@ -641,14 +661,36 @@
 ;; roam 在任何位置可以补全
 (setq org-roam-completion-everywhere t)
 
-;; org-roam 图需要用注册表 graphviz 软件
+(use-package websocket
+    :after org-roam)
+
+(use-package org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 
 ;; 用chrome打开
-(setq org-roam-graph-viewer "c:/Program Files/Google/Chrome/Application/chrome.exe")
+;; sudo apt install graphviz 先安装这个
+;; (setq org-roam-graph-executable "neato")
+;; (setq org-roam-graph-executable "neato")
+;; (setq org-roam-graph-viewer "/usr/bin/google-chrome-stable")
 ;; (setq org-roam-graph-viewer nil)
 
 
 ;; If you use this setting and don’t want to see images in a specific file, add this at the top of the org files that are not to display images: #+STARTUP: noinlineimages
+
+
+
+
+
+
 
 ;; org capture templates
 (setq org-capture-templates

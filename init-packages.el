@@ -62,7 +62,7 @@
 	;; --- jupyter ---
 	jupyter
 	;;emacs-websocket	;似乎不要也可以？
-	;; simple-httpd
+	simple-httpd
 	;; markdown-mode	
 	;; zmq
 	;; --- treemacs ---
@@ -126,10 +126,14 @@
 
 	pdf-tools
 	org-pdftools
-	;; org-noter-pdftools
+	org-noter-pdftools
 	org-noter
+	nov
+	djvu
+
 
 	org-roam
+	websocket
 
 	calfw
 	calfw-org
@@ -138,6 +142,7 @@
 	;; org-download              ;windows好像不可以
 	;; org-roam-server
 	org-roam-bibtex
+	org-roam-ui
 	org-ref
 	citar
 
@@ -201,7 +206,7 @@
  (setq package-selected-packages my/packages)
 
  (defun my/packages-installed-p ()
-     (loop for pkg in my/packages
+     (cl-loop for pkg in my/packages
            when (not (package-installed-p pkg)) do (return nil)
            finally (return t)))
 
