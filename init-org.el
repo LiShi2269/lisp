@@ -317,7 +317,8 @@ With a prefix ARG, remove start location."
 (defhydra org-subtree(:exit t :columns 6)
   "subtree"
 ("x" org-cut-subtree "cut")
-("c" org-copy-subtree "copy")
+("C" org-copy-subtree "copy")
+("c" org-citarr/body "citar")
 ("p" org-paste-subtree "paste")
 ("$" org-archive-subtree "Archive")
 ("P" org-property/body "property")

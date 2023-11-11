@@ -72,10 +72,11 @@
 	treemacs-magit
 	treemacs-icons-dired
 	treemacs-all-the-icons
-	undo-tree
+	;; undo-tree
 
 	posframe
 	which-key-posframe
+	evil-pdf-tools
 	
 	
 
