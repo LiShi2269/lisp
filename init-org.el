@@ -8,7 +8,7 @@
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode-enable)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
 (openwith-mode 1)
-;; (setq header-line-format "    ")
+;; (setq openwith-associations '(("\\.pdf\\'" "okular" (file)))) ;想要用特定的程序打开特定的文件
 (setq line-spacing 0.2)
 (toggle-truncate-lines t)
 (custom-set-faces
@@ -65,6 +65,46 @@
   ;; (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
   )
 
+
+
+
+
+(defcustom citar-file-open-functions (list (cons "html" #'citar-file-open-external)
+					   (cons "pdf" #'citar-file-open-external)
+                                           (cons t #'find-file))
+  "Functions used by `citar-file-open` to open files.
+Should be an alist where each entry is of the form (EXTENSION .
+FUNCTION). A file whose name ends with EXTENSION will be opened
+using FUNCTION. If no entries are found with a matching
+extension, FUNCTION associated with key t will be used as the
+default.
+我通过改写是的citar可以用外部程序打开pdf，系统目前使用okular
+"
+  :group 'citar
+  :type '(repeat (cons
+                  (choice (string :tag "Extension")
+                          (symbol :tag "Default" t))
+                  (function :tag "Function"))))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (setq citar-library-path '("/mnt/f/zoteroAttachments/myAllPDF/"))
 (setq bibtex-completion-pdf-field "file")
 ;; rich UI
@@ -76,10 +116,10 @@
 
 
 (require 'pdf-tools)
+(require 'evil-pdf-tools)
 (pdf-tools-install)
 (use-package org-pdftools
-  :hook (org-mode . org-pdftools-setup-link))
-
+  :hook ((org-mode evil-pdf-tools). org-pdftools-setup-link))
 
 
 
