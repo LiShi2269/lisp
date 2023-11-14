@@ -88,23 +88,6 @@ default.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 (setq citar-library-path '("/mnt/f/zoteroAttachments/myAllPDF/"))
 (setq bibtex-completion-pdf-field "file")
 ;; rich UI
