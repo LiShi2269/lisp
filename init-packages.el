@@ -62,7 +62,7 @@
 	;; --- jupyter ---
 	jupyter
 	;;emacs-websocket	;似乎不要也可以？
-	;; simple-httpd
+	simple-httpd
 	;; markdown-mode	
 	;; zmq
 	;; --- treemacs ---
@@ -72,10 +72,11 @@
 	treemacs-magit
 	treemacs-icons-dired
 	treemacs-all-the-icons
-	undo-tree
+	;; undo-tree
 
 	posframe
 	which-key-posframe
+	evil-pdf-tools
 	
 	
 
@@ -94,11 +95,14 @@
 
 	dashboard
 
-	;; dracula-theme
-	;; monokai-theme
-	;; atom-one-dark-theme
+	dracula-theme
+	monokai-theme
+	atom-one-dark-theme
+	alect-themes
+	badger-theme
+      	
 	;; 不能用?
-	;; doom-themes
+	doom-themes
 	sublime-themes
 	
 	
@@ -121,17 +125,32 @@
 	pandoc
 	openwith
 
-	;; pdf-tools
-	;; org-pdftools
-	;; org-noter-pdftools
-	;; org-noter
+	pdf-tools
+	org-pdftools
+	org-noter-pdftools
+	org-noter
+	nov
+	djvu
+
 
 	org-roam
+	websocket
+
+	calfw
+	calfw-org
+
 	emacsql-sqlite
-	;;org-download              ;windows好像不可以
+	;; org-download              ;windows好像不可以
+	;; org-roam-server
 	org-roam-bibtex
+	org-roam-ui
 	org-ref
-	ein
+	citar
+
+	ivy-bibtex
+	;; ebib 文献管理 不知道为什么不能用
+	
+	;; ein
 
 	use-package
 	
@@ -144,7 +163,7 @@
 	key-chord
 	
 	;; --- Python ---
-	ein
+	;; ein
 	elpy
 	;;jedi是专门给auto-company使用的，company-jedi才是company用的
 	company-jedi
@@ -154,6 +173,7 @@
 	flycheck	
 	blacken
 	lsp-jedi
+
 	;; lsp-python-ms
 	;; lsp-pyright
 	
@@ -187,7 +207,7 @@
  (setq package-selected-packages my/packages)
 
  (defun my/packages-installed-p ()
-     (loop for pkg in my/packages
+     (cl-loop for pkg in my/packages
            when (not (package-installed-p pkg)) do (return nil)
            finally (return t)))
 
@@ -210,3 +230,8 @@
 
 ;; ======= probide =======
 (provide 'init-packages)
+
+
+
+;; (setq perfect-margin-ignore-filters "posframe")
+;; (setq perfect-margin-ignore-regexps "nil")

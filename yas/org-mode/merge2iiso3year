@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: merge2iiso3year
+# key: merge2iiso3year
+# --
+
+df = pd.merge(df,$1,how="left",left_on=["iiso3","year"],right_on=["iso3","year"])
+df.drop(columns=["iso3"],inplace=True)

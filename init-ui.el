@@ -82,15 +82,17 @@
 ;; (setq golden-ratio-auto-scale t)
 ;; =============== zoom ========================
 (require 'zoom)
+
 (custom-set-variables
  '(zoom-mode t)
  '(zoom-size '(0.618 . 0.618))
  ;; 忽略的模式
  '(zoom-ignored-major-modes '(dired-mode treemacs-mode ranger-mode neotree-mode evil-leader-mode))
- ;; '(zoom-ignored-buffer-names '(" *nswbuff*" ))
+'(zoom-ignored-buffer-names '(" *nswbuff*"))
  '(temp-buffer-resize-mode t)
- ;; '(zoom-ignored-buffer-name-regexps '("^ .*nswbuff.*" "^\b.*Minibuf.*"))
  )
+(setq nswbuff-status-window-layout 'minibuffer)
+
 
 
 ;; =============== line-spacing ========================
@@ -203,10 +205,10 @@
 
 
 ;; =============== which-key-posframe ========================
-;; (use-package which-key-posframe
+(use-package which-key-posframe
 ;;   ;; :load-path "path/to/which-key-posframe.el"
-;;   :init
-;;   (which-key-posframe-mode 1)
+  :init
+  (which-key-posframe-mode 1)
 ;; ;; position
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
@@ -214,15 +216,15 @@
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-right-corner)
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-right-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
+(setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-left-corner)
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-right-corner)
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-left-corner)
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-right-corner)
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-top-left-corner)
 ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
-;;   )
-
+  )
+;; (setq perfect-margin-visible-width 200) ;posframe 中间看得见了                                                                                                                                 
 
 ;; ===============  font  ========================
 (defun set-font(f h fcolor bgcolor)
@@ -231,7 +233,8 @@
  (set-fontset-font t 'han (font-spec :family f :height h :foreground fcolor :background bgcolor) )
   )
 
-(set-font "等距更纱黑体 SC" 150 "#E9E7EF" "#161823")
+;; (set-font "等距更纱黑体 SC" 150 "#E9E7EF" "#161823")
+(set-font "Sarasa Mono SC" 150 "#E9E7EF" "#161823")
 
 
 ;  ===============  other color  ========================
@@ -242,6 +245,13 @@
  (set-face-attribute 'font-lock-string-face nil :foreground "deep sky blue"   )
  (set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   )
  )
+
+
+
+;; test new theme
+
+
+
 
 
 

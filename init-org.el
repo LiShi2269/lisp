@@ -1,18 +1,14 @@
 
 
-;; the jupyter-ipython in org width: update the ipystata 
-
-
 
 ;; init file for org-mode
 (require 'org)
-(require 'org-ref)
 ;;---------bullets------------
 (require 'org-bullets)
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode-enable)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
 (openwith-mode 1)
-;; (setq header-line-format "    ")
+;; (setq openwith-associations '(("\\.pdf\\'" "okular" (file)))) ;想要用特定的程序打开特定的文件
 (setq line-spacing 0.2)
 (toggle-truncate-lines t)
 (custom-set-faces
@@ -24,9 +20,12 @@
 
 ;; (setq org-image-actual-width nil)
 ;; 关于org src 模式导出是不是前面要有空格
-(setq org-src-preserve-indentation t
+(setq org-src-preserve-indentation t 
       org-edit-src-content-indentation t)
 
+;; 关于org-special-mode
+(setq org-src-window-setup 'split-window-right)
+(setq org-edit-src-turn-on-auto-save t)
 
 ;; ------key-map-set-----
 ;; (setq org-log-done nil)
@@ -48,44 +47,117 @@
 ;; 	     ((equal major-mode 'python-mode (elpy-shell-send-satement-and-step)) 
 ;;        ))
 
-;; org-ref
-(setq reftex-default-bibliography '("f:/test/Graduate-Thesis.bib"))
+
+;; citar 如果只是在org-mode中使用的话
+(use-package citar
+  :hook
+  (LaTeX-mode . citar-capf-setup)
+  (org-mode . citar-capf-setup)
+  :no-require
+  :custom
+  (org-cite-global-bibliography '("~/zotero/我的文库.bib"))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-bibliography org-cite-global-bibliography)
+  ;; optional: org-cite-insert is also bound to C-c C-x C-@
+  ;; :bind
+  ;; (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+  )
+
+
+
+
+
+(defcustom citar-file-open-functions (list (cons "html" #'citar-file-open-external)
+					   (cons "pdf" #'citar-file-open-external)
+                                           (cons t #'find-file))
+  "Functions used by `citar-file-open` to open files.
+Should be an alist where each entry is of the form (EXTENSION .
+FUNCTION). A file whose name ends with EXTENSION will be opened
+using FUNCTION. If no entries are found with a matching
+extension, FUNCTION associated with key t will be used as the
+default.
+我通过改写是的citar可以用外部程序打开pdf，系统目前使用okular
+"
+  :group 'citar
+  :type '(repeat (cons
+                  (choice (string :tag "Extension")
+                          (symbol :tag "Default" t))
+                  (function :tag "Function"))))
+
+
+
+(setq citar-library-path '("/mnt/f/zoteroAttachments/myAllPDF/"))
+(setq bibtex-completion-pdf-field "file")
+;; rich UI
+ (setq citar-templates
+      '((main . "${author editor:30%sn}     ${date year issued:4}     ${title:48}")
+        (suffix . "          ${=key= id:15}    ${=type=:12}    ${tags keywords:*}")
+        (preview . "${author editor:%etal} (${year issued date}) ${title}, ${journal journaltitle publisher container-title collection-title}.\n")
+        (note . "Notes on ${author editor:%etal}, ${title}")))
+
+
+(require 'pdf-tools)
+(require 'evil-pdf-tools)
+(pdf-tools-install)
+(use-package org-pdftools
+  :hook ((org-mode evil-pdf-tools). org-pdftools-setup-link))
+
+
+
+(use-package org-noter
+  :config
+  ;; Your org-noter config ........
+  (require 'org-noter-pdftools))
+
+(use-package org-noter-pdftools
+  :after org-noter
+  :config
+  ;; Add a function to ensure precise note is inserted
+  (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((org-noter-insert-note-no-questions (if toggle-no-questions
+                                                   (not org-noter-insert-note-no-questions)
+                                                 org-noter-insert-note-no-questions))
+           (org-pdftools-use-isearch-link t)
+           (org-pdftools-use-freepointer-annot t))
+       (org-noter-insert-note (org-noter--get-precise-info)))))
+
+  ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
+  (defun org-noter-set-start-location (&optional arg)
+    "When opening a session with this document, go to the current location.
+With a prefix ARG, remove start location."
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((inhibit-read-only t)
+           (ast (org-noter--parse-root))
+           (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+       (with-current-buffer (org-noter--session-notes-buffer session)
+         (org-with-wide-buffer
+          (goto-char (org-element-property :begin ast))
+          (if arg
+              (org-entry-delete nil org-noter-property-note-location)
+            (org-entry-put nil org-noter-property-note-location
+                           (org-noter--pretty-print-location location))))))))
+  (with-eval-after-load 'pdf-annot
+    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 
 
 
 
 
-;; v2 是否使用
-;; (setq org-roam-v2-ack t)
-
-;; 来源 https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/v1/90.org-protocol.md
-(setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe")
 
 
-;; see org-ref for use of these variables
-(setq org-ref-bibliography-notes "f:/test/test.org"
-      org-ref-default-bibliography '("f:/org-roam/Graduate.bib")
-      )
 
-;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
-;; (setq org-roam-graph-viewer nil)
 
-;; (require 'org-protocol)
-;; (require 'org-roam-protocol)
-;; (load-file "~/.emacs.d/lisp/+org-protocol-check-filename-for-protocol.el")
-;; (advice-add 'org-protocol-check-filename-for-protocol :override '+org-protocol-check-filename-for-protocol)
 
-;; (require 'org-roam-server)
-;; (setq org-roam-server-host "127.0.0.1"
-;;       org-roam-server-port 8181
-;;       org-roam-server-export-inline-images t
-;;       org-roam-server-authenticate nil
-;;       org-roam-server-network-poll t
-;;       org-roam-server-network-arrows nil
-;;       org-roam-server-network-label-truncate t
-;;       org-roam-server-network-label-truncate-length 60
-;;       org-roam-server-network-label-wrap-length 20)
+
+
+
+
 
 
 
@@ -101,7 +173,9 @@
  "C-S-k" 'org-babel-previous-src-block
  "C-k" 'org-previous-visible-heading
  "C-j" 'org-next-visible-heading
+ "<tab>" 'org-cycle 
  "C-'" nil
+ "<tab>" 'org-cycle
  "C-<return>" 'my-C-turn
  )
 
@@ -130,14 +204,17 @@
 
 
 
-(defhydra hydra-org(:exit t)
+(defhydra hydra-org(:exit t :columns 5)
+  "org"
   ("o" org-open-at-point "openwith")
+  ("c" org-citarr/body "citar")
+  ("U"'org-roam-ui-mode "UI")
 ;; s sub
   ("s" org-subtree/body "subtree")
 ;; * heading
   ("*" org-toggle-heading "heading")
 ;; U up heading
-  ("U" outline-up-heading "up")
+  ("u" outline-up-heading "up")
 ;; n narrow
   ("n" org-narrow/body "narrow")
 ;; . time
@@ -252,9 +329,19 @@
 ("n" org-num-face "orgNum")
   )
 
-(defhydra org-subtree(:exit t)
+
+(defhydra org-citarr()
+("c" citar-insert-citation "citaion")
+("b" citar-insert-bibtex "bibtex")
+("r" citar-insert-reference "reference")
+  )
+
+
+(defhydra org-subtree(:exit t :columns 6)
+  "subtree"
 ("x" org-cut-subtree "cut")
-("c" org-copy-subtree "copy")
+("C" org-copy-subtree "copy")
+("c" org-citarr/body "citar")
 ("p" org-paste-subtree "paste")
 ("$" org-archive-subtree "Archive")
 ("P" org-property/body "property")
@@ -263,6 +350,9 @@
 ("s" org-subtree/body "self")
 ("n" org-narrow/body "narrow")
 ("T" org-tag/body "tag")
+("l" org-link/body "link")
+("o" org-open-at-point "link")
+("I" org-id-get-create "orgID")
   )
 
 (defhydra org-env(:exit t)
@@ -271,12 +361,14 @@
   )
 
 (defhydra org-narrow(:exit t)
+  "narrow"
 ("b" org-narrow-to-block "nBlock")
 ("s" org-narrow-to-subtree "nSubtree")
 ("w" widen "widen")
   )
 
-(defhydra org-time(:exit t)
+(defhydra org-time(:exit t :columns 6)
+  "org-time"
 ("." org-time-stamp "stamp")
 ("!" org-time-stamp-inactive "stampInactive")
 ("c" org-date-from-calendar "dateFromCalendar")
@@ -293,6 +385,7 @@
 
 
 (defhydra org-todo(:exit t)
+  "org-todo"
  ("t" org-todo "todo")
  ("vt" org-show-todo-tree "showTodoTree")
  ;; ("\\l" org-todo-list)
@@ -302,6 +395,7 @@
 
 
 (defhydra org-link(:exit t)
+  "org-link"
  ;; you need to use org-store-link
  ("l" org-insert-link "insert")
  ("j" org-next-link "next")
@@ -311,6 +405,7 @@
 
 
 (defhydra org-agenda(:exit t)
+  "org-agenda"
  ("i" org-agenda-file-to-front "insertTocalenda")
  ("d" org-remove-file "DeleteTocalenda")
  ;; org switchb 应该是 global
@@ -322,6 +417,7 @@
 
 
 (defhydra org-Sparsetree(:exit t)
+  "org-Sparsetree"
  ;; -------Sparse trees--------
  ("/" org-sparse-tree "sparseTree")
  ("m" org-match-sparse-tree "MatchSparse")
@@ -338,7 +434,8 @@
  )
 
 
-(defhydra org-table(:exit t)
+(defhydra org-table(:exit t :columns 5)
+  "org-table"
  ;; -------table--------
  ("i" org-table-create-or-convert-from-region "insert")
  ("l" org-link/body "link")
@@ -353,6 +450,7 @@
 
 
 (defhydra org-deadline-date(:exit t)
+  "org-deadline-date"
  ("i" org-deadline "insertDeadline")
  ("c" org-check-deadlines "checkDeadline")
  ("s" org-schedule "schedule")
@@ -368,12 +466,14 @@
 
 
 (defhydra org-tag(:exit t)
+  "org-tag"
 ("i" org-set-tags-command "insert")
 ("s" org-tags-view "view")
  )
 
 
 (defhydra org-property(:exit t)
+  "org-property"
  ;; -------property--------
  ("i" org-set-property "insert")
  ("d" org-delete-property "delete")
@@ -383,6 +483,7 @@
 
 
 (defhydra org-show(:exit t)
+  "org-show"
  ;; -------show something--------
  ("a" outline-show-all "showAll")
  ("1" org-set-startup-visibility "startupVisibility")
@@ -392,7 +493,8 @@
 
 
 
-(defhydra org-src(:exit t)
+(defhydra org-src(:exit t :columns 5)
+  "org-src"
  ("ij" jupyter-org-insert-src-block "insert")
  ("s" org-babel-execute-subtree "executeSubtree")
  ("o" org-babel-open-src-block-result "Open")
@@ -406,6 +508,7 @@
 ("e" org-src/body "Execute")
  ("'" org-edit-special "SpecialEdit")
  ("c" org-babel-remove-result "clear")
+ ("l" org-link "link")
 ;; 快速加上print(原内容)
 ("(" my-org-add-print "add-print()")
  )
@@ -434,12 +537,13 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
-   ;; (emacs-lisp . t)
-   (python . t)
+   (emacs-lisp . t)
+   ;;(python . t)
    (jupyter . t)
    ))
 
-;; (org-babel-jupyter-override-src-block "python")
+(org-babel-jupyter-override-src-block "python")
+
 
 ;;========== 出现 org-babel-execute-src-block: No org-babel-execute function 问题==========================================
 ;; jupyter-run-repl
@@ -510,14 +614,13 @@
 
 ;; -------------- org-roam ---------------------
 ;; 需要在环境变量当中添加下面的文件夹
-(add-to-list 'exec-path "c:/HOME/sqlite/sqlite3.exe")
-(add-to-list 'exec-path "c:/HOME/sqlite")
-(add-to-list 'exec-path "c:/HOME/msys64/usr/bin/cc.exe")
-(add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
+;; (add-to-list 'exec-path "c:/HOME/sqlite/sqlite3.exe")
+;; (add-to-list 'exec-path "c:/HOME/sqlite")
+;; (add-to-list 'exec-path "c:/HOME/msys64/usr/bin/cc.exe")
+;; (add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
 (add-hook 'after-init-hook 'org-roam-mode)
 
-
-(setq org-roam-directory "f:/org-roam/")
+(setq org-roam-directory "/mnt/f/org-roam/") ;only one org-roam path
 (org-roam-db-autosync-mode)
 (setq org-roam-v2-ack t)
 
@@ -527,6 +630,12 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 
+
+
+;; org-specil-mode 使用 compay
+;; (use-package company-org-block
+;;   :ensure t
+;;   :hook ((org-mode . (lambda () (setq-local company-backends '(company-org-block))(company-mode +1)))))
 
 
 
@@ -576,14 +685,36 @@
 ;; roam 在任何位置可以补全
 (setq org-roam-completion-everywhere t)
 
-;; org-roam 图需要用注册表 graphviz 软件
+(use-package websocket
+    :after org-roam)
+
+(use-package org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 
 ;; 用chrome打开
-(setq org-roam-graph-viewer "c:/Program Files/Google/Chrome/Application/chrome.exe")
+;; sudo apt install graphviz 先安装这个
+;; (setq org-roam-graph-executable "neato")
+;; (setq org-roam-graph-executable "neato")
+;; (setq org-roam-graph-viewer "/usr/bin/google-chrome-stable")
 ;; (setq org-roam-graph-viewer nil)
 
 
 ;; If you use this setting and don’t want to see images in a specific file, add this at the top of the org files that are not to display images: #+STARTUP: noinlineimages
+
+
+
+
+
+
 
 ;; org capture templates
 (setq org-capture-templates
@@ -614,8 +745,32 @@
 
 ;; always show images
 (setq org-startup-with-inline-images t)
+
+;; There is some room for improvement though. First, you can add the following hook if you don’t want to press this awkward keybinding every time:
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+;; At the same time, we can set the image width to prevent images from becoming too large. I prefer to do it inside a emacs-lisp code block in the same org file:
+(setq-local org-image-actual-width '(1024))
 ;; (require 'org-download)
 ;; (setq org-download-method 'attach)
 (setq package-check-signature nil)
+
+
+
+;; 解决 src-block 报错结果颜色显示的问题
+(defun display-ansi-colors ()
+  (ansi-color-apply-on-region (point-min) (point-max)))
+(add-hook 'org-babel-after-execute-hook #'display-ansi-colors)
+
+
+
+;; calfw
+(require 'calfw)
+(require 'calfw-org)
+
+
+
+
+
+
 ;; ======= provide =======
 (provide 'init-org)
