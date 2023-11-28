@@ -62,7 +62,7 @@
 	;; --- jupyter ---
 	jupyter
 	;;emacs-websocket	;似乎不要也可以？
-	;; simple-httpd
+	simple-httpd
 	;; markdown-mode	
 	;; zmq
 	;; --- treemacs ---
@@ -199,7 +199,7 @@
  (setq package-selected-packages my/packages)
 
  (defun my/packages-installed-p ()
-     (loop for pkg in my/packages
+     (cl-loop for pkg in my/packages
            when (not (package-installed-p pkg)) do (return nil)
            finally (return t)))
 

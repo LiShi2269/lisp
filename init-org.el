@@ -1,8 +1,6 @@
 
 
 
-
-
 ;; init file for org-mode
 (require 'org)
 ;;---------bullets------------
@@ -147,6 +145,7 @@
  "C-S-k" 'org-babel-previous-src-block
  "C-k" 'org-previous-visible-heading
  "C-j" 'org-next-visible-heading
+ "<tab>" 'org-cycle 
  "C-'" nil
  "<tab>" 'org-cycle
  "C-<return>" 'my-C-turn
@@ -300,10 +299,19 @@
 ("n" org-num-face "orgNum")
   )
 
+
+(defhydra org-citarr()
+("c" citar-insert-citation "citaion")
+("b" citar-insert-bibtex "bibtex")
+("r" citar-insert-reference "reference")
+  )
+
+
 (defhydra org-subtree(:exit t :columns 6)
   "subtree"
 ("x" org-cut-subtree "cut")
-("c" org-copy-subtree "copy")
+("C" org-copy-subtree "copy")
+("c" org-citarr/body "citar")
 ("p" org-paste-subtree "paste")
 ("$" org-archive-subtree "Archive")
 ("P" org-property/body "property")
@@ -499,12 +507,13 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
-   ;; (emacs-lisp . t)
+   (emacs-lisp . t)
    ;;(python . t)
    (jupyter . t)
    ))
 
 (org-babel-jupyter-override-src-block "python")
+
 
 ;;========== 出现 org-babel-execute-src-block: No org-babel-execute function 问题==========================================
 ;; jupyter-run-repl

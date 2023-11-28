@@ -9,7 +9,7 @@
 (require 'init-general)
 
 ;; (require 'init-evil)
-(require 'init-ein)
+;; (require 'init-ein)
 (require 'init-ibuffer)
 
 (require 'init-magit)
@@ -71,6 +71,9 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:background nil))))
  '(header-line ((default :background "#161a1f")))
+ '(org-block-begin-line ((default :background "brown")))
+ '(org-block-end-line ((default :background "brown")))
+ '(org-headline-done ((t :weight normal :foreground "SeaGreen1")))
  '(org-headline-todo ((t :weight normal :foreground "HotPink")))
  '(org-level-1 ((t :height 1.1 :weight bold :foreground "light sky blue")))
  '(org-level-2 ((t :height 1.1 :weight normal :foreground "pale turquoise")))
@@ -78,6 +81,7 @@
  '(org-level-4 ((t :height 1.1 :foreground "DarkTurquoise")))
  '(org-level-5 ((t :height 1.1 :foreground "medium aquamarine")))
  '(org-level-6 ((t :height 1.1 :foreground "indian red")))
+ '(org-level-7 ((t :height 1.1 :foreground "violet")))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "cyan"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "deep pink"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "chartreuse"))))
@@ -88,4 +92,4 @@
  '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1")))))
 
 (setq org-roam-v2-ack t)
-
+;;just mark
