@@ -55,7 +55,8 @@
   (org-mode . citar-capf-setup)
   :no-require
   :custom
-  (org-cite-global-bibliography '("~/zotero/我的文库.bib"))
+  ;; "/mnt/f/zotero/better-bibtex/我的文库.bib"
+  (org-cite-global-bibliography '("/mnt/f/zotero/better-bibtex/我的文库.bib"))
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
@@ -254,6 +255,8 @@ With a prefix ARG, remove start location."
     ("<right>" org-mark-ring-goto "org mode config")
 ;;org-open
     ("o" org-open-at-point "org open at point")
+;;org-ui
+    ("U" org-roam-ui-open "org-ui")
 ;;ID
     ("I" org-id-get-create "orgID")
 
@@ -702,10 +705,10 @@ With a prefix ARG, remove start location."
 
 ;; 用chrome打开
 ;; sudo apt install graphviz 先安装这个
-;; (setq org-roam-graph-executable "neato")
-;; (setq org-roam-graph-executable "neato")
-;; (setq org-roam-graph-viewer "/usr/bin/google-chrome-stable")
-;; (setq org-roam-graph-viewer nil)
+(setq org-roam-graph-executable "neato")
+(setq org-roam-graph-executable "neato")
+(setq org-roam-graph-viewer "/usr/bin/google-chrome-stable")
+(setq org-roam-graph-viewer nil)
 
 
 ;; If you use this setting and don’t want to see images in a specific file, add this at the top of the org files that are not to display images: #+STARTUP: noinlineimages
