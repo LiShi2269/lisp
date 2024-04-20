@@ -9,7 +9,7 @@
 ;; ====================================================
 (use-package rainbow-delimiters
 ;; :ensure t
-  :config
+:config
 
 (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'python-mode-hook #'rainbow-delimiters-mode)
@@ -28,8 +28,7 @@
  '(rainbow-delimiters-depth-5-face ((t (:foreground "yellow"))))
  '(rainbow-delimiters-depth-6-face ((t (:foreground "orchid"))))
  '(rainbow-delimiters-depth-7-face ((t (:foreground "spring green"))))
- '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1")))))
-  )
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1"))))))
 
 
 
@@ -102,7 +101,8 @@
 
 
 ;; =============== just dashboard transparency ========================
-(add-hook 'window-configuration-change-hook (lambda()(openwith-mode 0)
+(add-hook 'window-configuration-change-hook (lambda()
+					      (openwith-mode 0)
 (cond
 ((equal 'dashboard-mode major-mode) (progn (set-frame-parameter (selected-frame) 'alpha 85) (evil-goto-first-line) (next-line 8) (evil-forward-WORD-begin)))
 ;; ((equal 'dashboard-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 85))
@@ -113,10 +113,6 @@
 (t (set-frame-parameter (selected-frame) 'alpha 100) )
 )))
 ;; ===============  dashboard color ========================
-(custom-set-variables
- ;; (set-face-attribute 'page-break-lines nil :foreground "dark slate grey"   )
- (set-face-attribute 'dashboard-footer nil :foreground "Deep Sky Blue1"   )
- )
 
 
 

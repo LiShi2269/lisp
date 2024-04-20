@@ -6,15 +6,27 @@
 ;;---------bullets------------
 (require 'org-bullets)
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode-enable)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
-(openwith-mode 1)
-;; (setq openwith-associations '(("\\.pdf\\'" "okular" (file)))) ;想要用特定的程序打开特定的文件
-(setq line-spacing 0.2)
-(toggle-truncate-lines t)
-(custom-set-faces
- '(header-line ((default :background "#161a1f")))
-)
+
+
+
+
+
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (org-bullets-mode 1)
+	    (openwith-mode 1)
+	    ;; (setq openwith-associations '(("\\.pdf\\'" "okular" (file)))) ;想要用特定的程序打开特定的文件
+	    (setq line-spacing 0.2)
+	    (toggle-truncate-lines t)
 			   ))
+
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (custom-set-faces
+		'(header-line ((default :background "#161a1f")))
+	    )
+			   ))
+
 
 
 
@@ -99,32 +111,6 @@ default.
         (note . "Notes on ${author editor:%etal}, ${title}")))
 
 
-(require 'pdf-tools)
-(require 'evil-pdf-tools)
-(pdf-tools-install)
-(use-package org-pdftools
-  :hook ((org-mode evil-pdf-tools). org-pdftools-setup-link))
-
-
-
-(use-package org-noter
-  :config
-  ;; Your org-noter config ........
-  (require 'org-noter-pdftools))
-
-(use-package org-noter-pdftools
-  :after org-noter
-  :config
-  ;; Add a function to ensure precise note is inserted
-  (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
-    (interactive "P")
-    (org-noter--with-valid-session
-     (let ((org-noter-insert-note-no-questions (if toggle-no-questions
-                                                   (not org-noter-insert-note-no-questions)
-                                                 org-noter-insert-note-no-questions))
-           (org-pdftools-use-isearch-link t)
-           (org-pdftools-use-freepointer-annot t))
-       (org-noter-insert-note (org-noter--get-precise-info)))))
 
   ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
   (defun org-noter-set-start-location (&optional arg)
@@ -142,8 +128,9 @@ With a prefix ARG, remove start location."
               (org-entry-delete nil org-noter-property-note-location)
             (org-entry-put nil org-noter-property-note-location
                            (org-noter--pretty-print-location location))))))))
-  (with-eval-after-load 'pdf-annot
-    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+;;  (with-eval-after-load 'pdf-annot
+;;    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 
 
