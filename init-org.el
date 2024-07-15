@@ -67,8 +67,7 @@
   (org-mode . citar-capf-setup)
   :no-require
   :custom
-  ;; "/mnt/f/zotero/better-bibtex/我的文库.bib"
-  (org-cite-global-bibliography '("/mnt/f/zotero/better-bibtex/我的文库.bib"))
+  (org-cite-global-bibliography '("/home/lishi/zotero/mylibrary.bib"))
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
@@ -693,7 +692,8 @@ With a prefix ARG, remove start location."
 ;; 用chrome打开
 ;; sudo apt install graphviz 先安装这个
 (setq org-roam-graph-executable "neato")
-(setq org-roam-graph-executable "neato")
+;; 安装方法 sudo apt-get install graphviz
+;; (setq org-roam-graph-executable "/usr/local/bin/neato")
 (setq org-roam-graph-viewer "/usr/bin/google-chrome-stable")
 (setq org-roam-graph-viewer nil)
 

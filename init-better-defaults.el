@@ -174,12 +174,12 @@
 	     ("C-<return>" . (lambda()(interactive)(progn (openwith-mode 1)(neotree-enter)))))
   )
 ;; ====== undo-tree =============
-;; (require 'undo-tree)
-;; (global-undo-tree-mode nil)
-;;(use-package undo-tree
-;;  :init
-;;  (global-undo-tree-mode nil)
-;;  )
+(require 'undo-tree)
+(global-undo-tree-mode nil)
+(use-package undo-tree
+ :init
+ (global-undo-tree-mode nil)
+ )
 
 ;; ====== sace-place =============
 (add-to-list 'load-path "~/.emacs.d/lisp/save-place.el")
