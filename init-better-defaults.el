@@ -165,7 +165,7 @@
 
 ;;====== minimap =============
 ;; (require 'minimap)
-(setq diary-file "f:/task/diary")
+;; (setq diary-file "f:/task/diary")
 
 ;; ====== neotree =============
 (use-package neotree
@@ -181,7 +181,7 @@
  (global-undo-tree-mode nil)
  )
 
-;; ====== sace-place =============
+;; ====== save-place =============
 (add-to-list 'load-path "~/.emacs.d/lisp/save-place.el")
 (require 'saveplace)
 (save-place-mode 1)

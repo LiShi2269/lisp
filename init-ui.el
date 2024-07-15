@@ -117,7 +117,10 @@
 
 
 ;; =============== which-key-config ========================
-;; (setq which-key-popup-type 'side-window)
+(setq which-key-popup-type 'side-window) ;;side-window
+(which-key-setup-side-window-right-bottom) ;;优先右边，没有空间再下面
+(setq which-key-side-window-max-width 0.3) ;;调整宽度
+;; (setq which-key-popup-type 'minibuffer) ;;minibuffer
 ;; (which-key-setup-side-window-bottom)
 ;; (setq which-key-side-window-location 'bottom)
 ;; (setq which-key-popup-type 'frame)
@@ -201,26 +204,27 @@
 
 
 ;; =============== which-key-posframe ========================
-(use-package which-key-posframe
-;;   ;; :load-path "path/to/which-key-posframe.el"
-  :init
-  (which-key-posframe-mode 1)
-;; ;; position
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-left-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-right-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-right-corner)
-(setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-left-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-right-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-left-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-right-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-top-left-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
-  )
-;; (setq perfect-margin-visible-width 200) ;posframe 中间看得见了                                                                                                                                 
+;; 这个是从中间跳出的，但是有时候好像不是很全面？
+;; (use-package which-key-posframe
+;; ;;   ;; :load-path "path/to/which-key-posframe.el"
+;;   :init
+;;   (which-key-posframe-mode 1)
+;; ;; ;; position
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-left-corner)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-right-corner)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-right-corner)
+;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-left-corner)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-right-corner)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-left-corner)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-right-corner)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-top-left-corner)
+;; ;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
+;;   )
+;; ;; (setq perfect-margin-visible-width 200) ;posframe 中间看得见了                                                                                                                                 
 
 ;; ===============  font  ========================
 (defun set-font(f h fcolor bgcolor)
