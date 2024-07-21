@@ -513,7 +513,11 @@
    ))
 
 (org-babel-jupyter-override-src-block "python")
-
+(setq org-babel-default-header-args:jupyter-julia '((:async . "yes")
+                                                    ;; (:session . "jl")
+                                                    ;; (:kernel . "julia-1.0")
+						    ))
+    
 
 ;;========== 出现 org-babel-execute-src-block: No org-babel-execute function 问题==========================================
 ;; jupyter-run-repl
