@@ -250,6 +250,7 @@ With a prefix ARG, remove start location."
     ("_" my-org-_-line "__")
     ("/" my-org-/-line "//")
     ("+" my-org-+-line "++")
+    ("R" org-mode-restart "Restart")
   )
 
 (defun my-org-bold-line()(interactive)
@@ -584,9 +585,9 @@ With a prefix ARG, remove start location."
  '(org-block-begin-line ((default :background "brown")))
  '(org-block-end-line ((default :background "brown")))
  '(header-line ((default :background "#161a1f")))
- '(org-level-1 ((t :height 1.1 :weight bold :foreground "light sky blue")))
- '(org-level-2 ((t :height 1.1 :weight normal :foreground "pale turquoise")))
- '(org-level-3 ((t :height 1.1 :weight thin :foreground "salmon")))
+ '(org-level-1 ((t :height 1.3 :weight bold :foreground "light sky blue")))
+ '(org-level-2 ((t :height 1.2 :weight bold :foreground "pale turquoise")))
+ '(org-level-3 ((t :height 1.1 :weight normal :foreground "salmon")))
  '(org-level-4 ((t :height 1.1 :foreground "DarkTurquoise")))
  '(org-level-5 ((t :height 1.1 :foreground "medium aquamarine")))
  '(org-level-6 ((t :height 1.1 :foreground "indian red")))
@@ -759,7 +760,7 @@ With a prefix ARG, remove start location."
 
 
 
-
+(setq citar-org-roam-note-title-template "${author} - ${title}")
 
 
 ;; ======= provide =======
