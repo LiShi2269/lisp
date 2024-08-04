@@ -103,7 +103,10 @@
 (global-set-key (kbd "<f8>") 'turn-on-evil-mode)
 
 
-
+;; ================ 在org-agend ddl 菜单栏 里面 可以自由的 上下 移动啦！！ ===============
+(with-eval-after-load 'org-agenda
+  (define-key org-agenda-mode-map (kbd "C-j") 'org-agenda-next-line)
+  (define-key org-agenda-mode-map (kbd "C-k") 'org-agenda-previous-line))
  ;; pdf-view-mode
 ;; (evil-set-initial-state 'pdf-view-mode 'normal)
 ;; (define-key pdf-view-mode-map (kbd "j") pdf-view )
