@@ -595,7 +595,7 @@
 (add-hook 'after-init-hook 'org-roam-mode)
 
 
-(setq org-roam-directory "f:/org-roam/")
+(setq org-roam-directory "f:/roam/")
 (org-roam-db-autosync-mode)
 (setq org-roam-v2-ack t)
 
