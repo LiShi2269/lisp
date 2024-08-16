@@ -166,17 +166,6 @@ With a prefix ARG, remove start location."
  "C-<return>" 'my-C-turn
  )
 
-;; (defun my-C-j()
-;;   (interactive)
-;;   (cond ( (org-in-src-block-p) (org-babel-next-src-block))
-;; 	(t (org-next-visible-heading 1))
-;; 	))
-
-;; (defun my-C-k()
-;;   (interactive)
-;;   (cond ( (org-in-src-block-p) (org-babel-previous-src-block))
-;; 	(t (org-previous-visible-heading 1))
-;; 	))
 
 
 (defun my-C-turn()
@@ -336,8 +325,11 @@ With a prefix ARG, remove start location."
 ("$" org-archive-subtree "Archive")
 ("P" org-property/body "property")
 ("D" org-deadline-date/body "deadline")
+("s" org-schedule "Schedule")
+("S" org-Sparsetree/body "Sparse")
+("." org-time/body "TimeMenu")
 ("e" org-babel-execute-subtree "Execute")
-("s" org-subtree/body "self")
+;; ("s" org-subtree/body "self")
 ("n" org-narrow/body "narrow")
 ("T" org-tag/body "tag")
 ("l" org-link/body "link")
@@ -361,8 +353,8 @@ With a prefix ARG, remove start location."
   "org-time"
 ("." org-time-stamp "stamp")
 ("!" org-time-stamp-inactive "stampInactive")
-("c" org-date-from-calendar "dateFromCalendar")
-("C" org-date-goto-calendar "dateGotoCalendar")
+("fc" org-date-from-calendar "dateFromCalendar")
+("gc" org-date-goto-calendar "dateGotoCalendar")
 ;; ("o" org-open-at-point) ;;what is this?
 ("r" org-evaluate-time-range "tameRange")
 ("i" org-clock-in "clockIn")
@@ -371,6 +363,12 @@ With a prefix ARG, remove start location."
 ("t" insert-now-timestamp "nowTime")
 ("q" org-clock-cancel "clockCancel")
 ("v" org-clock-display "clockDisplay")
+("j" org-clock-goto "clock_goto")
+("cD" org-check-deadlines "check_DDL")
+("cb" org-check-before-date "check_Before_date")
+("ca" org-check-after-date "check_After_date")
+("e" org-set-effort "set-Effort")
+("E" org-clock-modify-effort-estimate "modify-effort-estimate")
 )
 
 
@@ -599,7 +597,9 @@ With a prefix ARG, remove start location."
 ;; (setq org-cycle-separator-lines 0)
 
 
-
+;; org-effort-property?
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
 
 
 ;; -------------- org-roam ---------------------
@@ -610,8 +610,8 @@ With a prefix ARG, remove start location."
 ;; (add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
 (add-hook 'after-init-hook 'org-roam-mode)
 
-(setq org-roam-directory "/mnt/f/org-roam/") ;only one org-roam path
-(org-roam-db-autosync-mode)
+(setq org-roam-directory "/mnt/f/roam/") ;only one org-roam path
+(org-roam-db-autosync-mode 1)
 (setq org-roam-v2-ack t)
 
 
