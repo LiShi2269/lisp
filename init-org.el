@@ -171,6 +171,18 @@
 	))
   
 
+(defun wrap-line-with-print ()
+  "Wrap the current line with print()."
+  (interactive)
+  (let ((line-text (buffer-substring-no-properties
+                    (line-beginning-position)
+                    (line-end-position))))
+    ;; 删除当前行的内容
+    (delete-region (line-beginning-position) (line-end-position))
+    ;; 插入新的内容
+    (insert (format "print(%s)" line-text))
+    ;; 保留行末的换行符
+    (newline)))
 
 ;; (evil-define-key '('normal 'visual) org-mode-map (kbd ",") 'hydra-org/body)
 
@@ -231,7 +243,13 @@
     ("_" my-org-_-line "__")
     ("/" my-org-/-line "//")
     ("+" my-org-+-line "++")
+
   )
+
+
+
+
+
 
 (defun my-org-bold-line()(interactive)
        (progn   (evil-normal-state)
@@ -480,7 +498,9 @@
  ("c" org-babel-remove-result "clear")
  ("l" org-link "link")
 ;; 快速加上print(原内容)
-("(" my-org-add-print "add-print()")
+;; ("(" my-org-add-print "add-print()")
+
+  ("p" wrap-line-with-print "print")
  )
 
 
