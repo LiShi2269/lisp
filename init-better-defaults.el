@@ -222,6 +222,33 @@
 
 
 
+;; ====== ibuffer =============
+(setq ibuffer-formats
+      '((mark modified read-only locked " "
+              (name 40 50 :left :elide)   ;; 这里是修改后的 MRL/name 列宽度，宽度从 18 增加到 30
+              " "
+              (size 9 -1 :right)
+              " "
+              (mode 16 16 :left :elide)
+              " " filename-and-process)))
+
+(setq ibuffer-saved-filter-groups
+      '(("default"
+         ("Org Files" (filename . "\\.org$"))
+         ;; ("Python Files" (filename . "\\.py$"))
+         ;; ("C/C++ Files" (or (filename . "\\.c$")
+         ;;                    (filename . "\\.cpp$")
+         ;;                    (filename . "\\.h$")))
+         ;; ("Shell Scripts" (filename . "\\.sh$"))
+         ;; ("Text Files" (filename . "\\.txt$"))
+         ("Dired" (mode . dired-mode))
+         ("Emacs Lisp" (filename . "\\.el$"))
+         ("Others" (name . ".*")))))
+
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-switch-to-saved-filter-groups "default")))
+
 
 
 ;; ====== pdf configuration =============
