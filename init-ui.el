@@ -1,7 +1,16 @@
 
-
 (require 'perfect-margin)
 (perfect-margin-mode 1)
+(set-fringe-mode 0) ;; 关闭 fringe
+
+
+
+
+;; =========================== load-theme =========================
+(setq custom-safe-themes t) ;;不然的话，每次打开主题都要询问我
+(load-theme 'doom-dracula)
+(set-background-color "#000000") ;; 将 "#1c1c1c" 替换为你想要的颜色
+
 ;; =========================== org mode =========================
 
 (set-face-attribute 'org-verbatim  nil :underline t)
@@ -9,7 +18,7 @@
 ;; ====================================================
 (use-package rainbow-delimiters
 ;; :ensure t
-  :config
+:config
 
 (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'python-mode-hook #'rainbow-delimiters-mode)
@@ -28,23 +37,12 @@
  '(rainbow-delimiters-depth-5-face ((t (:foreground "yellow"))))
  '(rainbow-delimiters-depth-6-face ((t (:foreground "orchid"))))
  '(rainbow-delimiters-depth-7-face ((t (:foreground "spring green"))))
- '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1")))))
-  )
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1"))))))
 
 
+;; ====== background color =============
+(set-background-color "#000000") ;; 将 "#1c1c1c" 替换为你想要的颜色
 
-;; ====== power-line =============
-;; (require 'powerline)
-;; (powerline-default-theme)
-;; (powerline-center-theme)
-;; (powerline-center-evil-theme)
-;; (powerline-vim-theme)
-;; (powerline-nano-theme)
-
-
-;; ====== powerline-evil =============
-;; (require 'powerline-evil)
-;; (powerline-evil-vim-color-theme)
 
 
 
@@ -61,12 +59,6 @@
 (setq spaceline-workspace-numbers-unicode t)
 (setq spaceline-window-numbers-unicode t)
 
-;; modeline use all the icons but doesn't work
-;; (propertize (all-the-icons-octicon "package")
-            ;; 'face `(:family ,(all-the-icons-octicon-family) :height 1.2)
-            ;; 'display '(raise -0.1))
-
-
 
 
 ;; =============== all-the-icons ========================
@@ -74,12 +66,6 @@
 (use-package all-the-icons)
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
-
-;; =============== golden-ratio ========================
-;; 用鼠标才可以，差评
-;; (require 'golden-ratio)
-;; (golden-ratio-mode 1)
-;; (setq golden-ratio-auto-scale t)
 ;; =============== zoom ========================
 (require 'zoom)
 
@@ -102,7 +88,8 @@
 
 
 ;; =============== just dashboard transparency ========================
-(add-hook 'window-configuration-change-hook (lambda()(openwith-mode 0)
+(add-hook 'window-configuration-change-hook (lambda()
+					      (openwith-mode 0)
 (cond
 ((equal 'dashboard-mode major-mode) (progn (set-frame-parameter (selected-frame) 'alpha 85) (evil-goto-first-line) (next-line 8) (evil-forward-WORD-begin)))
 ;; ((equal 'dashboard-mode major-mode) (set-frame-parameter (selected-frame) 'alpha 85))
@@ -113,24 +100,19 @@
 (t (set-frame-parameter (selected-frame) 'alpha 100) )
 )))
 ;; ===============  dashboard color ========================
-(custom-set-variables
- ;; (set-face-attribute 'page-break-lines nil :foreground "dark slate grey"   )
- (set-face-attribute 'dashboard-footer nil :foreground "Deep Sky Blue1"   )
- )
 
 
 
 ;; =============== which-key-config ========================
-;; (setq which-key-popup-type 'side-window)
+(setq which-key-popup-type 'side-window) ;;side-window
+(which-key-setup-side-window-right-bottom) ;;优先右边，没有空间再下面
+(setq which-key-side-window-max-width 0.3) ;;调整宽度
+;; (setq which-key-popup-type 'minibuffer) ;;minibuffer
 ;; (which-key-setup-side-window-bottom)
 ;; (setq which-key-side-window-location 'bottom)
 ;; (setq which-key-popup-type 'frame)
 ;; max width of which-key frame: number of columns (an integer)
 ;; (setq which-key-frame-max-width 60)
-
-;; max height of which-key frame: number of lines (an integer)
-;; (setq which-key-frame-max-height 20)
-
 
 
 
@@ -154,16 +136,6 @@
 
 
 
-;; =============== company tool ========================
-;; (custom-set-variables
-;;  (set-face-attribute 'company-scrollbar-bg nil :background "#2f4f4f")
-;;  (set-face-attribute 'company-scrollbar-fg nil :background "#293b3b")
-;;  (set-face-attribute 'company-tooltip nil :background "#2f4f4f" :foreground "ivory")
-;;  (set-face-attribute 'company-tooltip-selection nil :background "dim gray" )
-;;  (set-face-attribute 'company-tooltip-common nil :foreground "#c19696" )
-;;  (set-face-attribute 'cursor nil :background "#82a7a7" )
-
-;;  )
 
 
 ;; =============== company tool ========================
@@ -175,9 +147,6 @@
  (set-face-attribute 'company-tooltip-common nil :foreground "#c19696" )
  ;; (set-face-attribute 'cursor nil :background "#c1a187" )
  (set-face-attribute 'cursor nil :background "#82a7a7" )
- 
-;; =============== which key face========================
- ;; (set-face-attribute 'which-key-posframe nil :background "#2f4f4f" )
  )
 
 
@@ -204,27 +173,6 @@
 (set-face-attribute 'region nil  :background "royal blue")
 
 
-;; =============== which-key-posframe ========================
-(use-package which-key-posframe
-;;   ;; :load-path "path/to/which-key-posframe.el"
-  :init
-  (which-key-posframe-mode 1)
-;; ;; position
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-left-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-right-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-right-corner)
-(setq which-key-posframe-poshandler 'posframe-poshandler-window-center)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-left-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-top-right-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-left-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-window-bottom-right-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-top-left-corner)
-;; ;; (setq which-key-posframe-poshandler 'posframe-poshandler-point-bottom-left-corner)
-  )
-;; (setq perfect-margin-visible-width 200) ;posframe 中间看得见了                                                                                                                                 
 
 ;; ===============  font  ========================
 (defun set-font(f h fcolor bgcolor)
@@ -245,9 +193,6 @@
  (set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   )
  )
 
-
-
-;; test new theme
 
 
 

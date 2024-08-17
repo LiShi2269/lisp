@@ -6,15 +6,27 @@
 ;;---------bullets------------
 (require 'org-bullets)
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode-enable)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
-(openwith-mode 1)
-;; (setq header-line-format "    ")
-(setq line-spacing 0.2)
-(toggle-truncate-lines t)
-(custom-set-faces
- '(header-line ((default :background "#161a1f")))
-)
+
+
+
+
+
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (org-bullets-mode 1)
+	    (openwith-mode 1)
+	    ;; (setq openwith-associations '(("\\.pdf\\'" "okular" (file)))) ;想要用特定的程序打开特定的文件
+	    (setq line-spacing 0.2)
+	    (toggle-truncate-lines t)
 			   ))
+
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (custom-set-faces
+		'(header-line ((default :background "#161a1f")))
+	    )
+			   ))
+
 
 
 
@@ -48,13 +60,22 @@
 ;;        ))
 
 
-;; citar
-;; (use-package citar
-  ;; :custom
-  ;; (citar-bibliography '("~/bib/references.bib")))
-;; (use-package citar-org-roam
-  ;; :after (citar org-roam)
-  ;; :config (citar-org-roam-mode))
+;; citar 如果只是在org-mode中使用的话
+(use-package citar
+  :hook
+  (LaTeX-mode . citar-capf-setup)
+  (org-mode . citar-capf-setup)
+  :no-require
+  :custom
+  (org-cite-global-bibliography '("/home/lishi/zotero/mylibrary.bib"))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-bibliography org-cite-global-bibliography)
+  ;; optional: org-cite-insert is also bound to C-c C-x C-@
+  ;; :bind
+  ;; (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+  )
 
 ;; v2 是否使用
 ;; (setq org-roam-v2-ack t)
@@ -86,11 +107,25 @@
 
 
 
+  ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
+  (defun org-noter-set-start-location (&optional arg)
+    "When opening a session with this document, go to the current location.
+With a prefix ARG, remove start location."
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((inhibit-read-only t)
+           (ast (org-noter--parse-root))
+           (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+       (with-current-buffer (org-noter--session-notes-buffer session)
+         (org-with-wide-buffer
+          (goto-char (org-element-property :begin ast))
+          (if arg
+              (org-entry-delete nil org-noter-property-note-location)
+            (org-entry-put nil org-noter-property-note-location
+                           (org-noter--pretty-print-location location))))))))
 
-
-
-
-
+;;  (with-eval-after-load 'pdf-annot
+;;    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 
 ;; test
@@ -151,17 +186,6 @@
  "C-<return>" 'my-C-turn
  )
 
-;; (defun my-C-j()
-;;   (interactive)
-;;   (cond ( (org-in-src-block-p) (org-babel-next-src-block))
-;; 	(t (org-next-visible-heading 1))
-;; 	))
-
-;; (defun my-C-k()
-;;   (interactive)
-;;   (cond ( (org-in-src-block-p) (org-babel-previous-src-block))
-;; 	(t (org-previous-visible-heading 1))
-;; 	))
 
 
 (defun my-C-turn()
@@ -236,6 +260,8 @@
     ("<right>" org-mark-ring-goto "org mode config")
 ;;org-open
     ("o" org-open-at-point "org open at point")
+;;org-ui
+    ("U" org-roam-ui-open "org-ui")
 ;;ID
     ("I" org-id-get-create "orgID")
 
@@ -243,7 +269,7 @@
     ("_" my-org-_-line "__")
     ("/" my-org-/-line "//")
     ("+" my-org-+-line "++")
-
+    ("R" org-mode-restart "Restart")
   )
 
 
@@ -252,52 +278,52 @@
 
 
 (defun my-org-bold-line()(interactive)
-       (progn   (evil-normal-state)
-		(evil-first-non-blank)
-		(insert "*")
-		(whitespace-cleanup)
-		(evil-end-of-line)
-		(evil-append 1)
-		(insert "*")
-		(evil-normal-state)
-		(evil-next-line)
-       ))
+  (save-excursion
+    (let* ((bounds (bounds-of-thing-at-point 'word))
+           (begin (car bounds))
+           (end (cdr bounds)))
+      (when bounds
+        (goto-char end)
+        (insert "*")
+        (goto-char begin)
+        (insert "*"))))
+  )
 
 (defun my-org-/-line()(interactive)
-       (progn   (evil-normal-state)
-		(evil-first-non-blank)
-		(insert "/")
-		(whitespace-cleanup)
-		(evil-end-of-line)
-		(evil-append 1)
-		(insert "/")
-		(evil-normal-state)
-		(evil-next-line)
-       ))
+  (save-excursion
+    (let* ((bounds (bounds-of-thing-at-point 'word))
+           (begin (car bounds))
+           (end (cdr bounds)))
+      (when bounds
+        (goto-char end)
+        (insert "/")
+        (goto-char begin)
+        (insert "/"))))
+       )
 
 (defun my-org-+-line()(interactive)
-       (progn   (evil-normal-state)
-		(evil-first-non-blank)
-		(insert "+")
-		(whitespace-cleanup)
-		(evil-end-of-line)
-		(evil-append 1)
-		(insert "+")
-		(evil-normal-state)
-		(evil-next-line)
-       ))
+  (save-excursion
+    (let* ((bounds (bounds-of-thing-at-point 'word))
+           (begin (car bounds))
+           (end (cdr bounds)))
+      (when bounds
+        (goto-char end)
+        (insert "+")
+        (goto-char begin)
+        (insert "+"))))
+       )
 
 (defun my-org-_-line()(interactive)
-       (progn   (evil-normal-state)
-		(evil-first-non-blank)
-		(insert "_")
-		(whitespace-cleanup)
-		(evil-end-of-line)
-		(evil-append 1)
-		(insert "_")
-		(evil-normal-state)
-		(evil-next-line)
-       ))
+  (save-excursion
+    (let* ((bounds (bounds-of-thing-at-point 'word))
+           (begin (car bounds))
+           (end (cdr bounds)))
+      (when bounds
+        (goto-char end)
+        (insert "_")
+        (goto-char begin)
+        (insert "_"))))
+       )
 
 (defun my-org-add-print()(interactive)
        (progn   (evil-normal-state)
@@ -334,8 +360,11 @@
 ("$" org-archive-subtree "Archive")
 ("P" org-property/body "property")
 ("D" org-deadline-date/body "deadline")
+("s" org-schedule "Schedule")
+("S" org-Sparsetree/body "Sparse")
+("." org-time/body "TimeMenu")
 ("e" org-babel-execute-subtree "Execute")
-("s" org-subtree/body "self")
+;; ("s" org-subtree/body "self")
 ("n" org-narrow/body "narrow")
 ("T" org-tag/body "tag")
 ("l" org-link/body "link")
@@ -359,8 +388,8 @@
   "org-time"
 ("." org-time-stamp "stamp")
 ("!" org-time-stamp-inactive "stampInactive")
-("c" org-date-from-calendar "dateFromCalendar")
-("C" org-date-goto-calendar "dateGotoCalendar")
+("fc" org-date-from-calendar "dateFromCalendar")
+("gc" org-date-goto-calendar "dateGotoCalendar")
 ;; ("o" org-open-at-point) ;;what is this?
 ("r" org-evaluate-time-range "tameRange")
 ("i" org-clock-in "clockIn")
@@ -369,6 +398,12 @@
 ("t" insert-now-timestamp "nowTime")
 ("q" org-clock-cancel "clockCancel")
 ("v" org-clock-display "clockDisplay")
+("j" org-clock-goto "clock_goto")
+("cD" org-check-deadlines "check_DDL")
+("cb" org-check-before-date "check_Before_date")
+("ca" org-check-after-date "check_After_date")
+("e" org-set-effort "set-Effort")
+("E" org-clock-modify-effort-estimate "modify-effort-estimate")
 )
 
 
@@ -589,9 +624,9 @@
  '(org-block-begin-line ((default :background "brown")))
  '(org-block-end-line ((default :background "brown")))
  '(header-line ((default :background "#161a1f")))
- '(org-level-1 ((t :height 1.1 :weight bold :foreground "light sky blue")))
- '(org-level-2 ((t :height 1.1 :weight normal :foreground "pale turquoise")))
- '(org-level-3 ((t :height 1.1 :weight thin :foreground "salmon")))
+ '(org-level-1 ((t :height 1.3 :weight bold :foreground "light sky blue")))
+ '(org-level-2 ((t :height 1.2 :weight bold :foreground "pale turquoise")))
+ '(org-level-3 ((t :height 1.1 :weight normal :foreground "salmon")))
  '(org-level-4 ((t :height 1.1 :foreground "DarkTurquoise")))
  '(org-level-5 ((t :height 1.1 :foreground "medium aquamarine")))
  '(org-level-6 ((t :height 1.1 :foreground "indian red")))
@@ -603,7 +638,9 @@
 ;; (setq org-cycle-separator-lines 0)
 
 
-
+;; org-effort-property?
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
 
 
 ;; -------------- org-roam ---------------------
@@ -614,9 +651,8 @@
 (add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
 (add-hook 'after-init-hook 'org-roam-mode)
 
-
-(setq org-roam-directory "f:/roam/")
-(org-roam-db-autosync-mode)
+(setq org-roam-directory "/mnt/f/roam/") ;only one org-roam path
+(org-roam-db-autosync-mode 1)
 (setq org-roam-v2-ack t)
 
 
@@ -683,8 +719,12 @@
 ;; org-roam 图需要用注册表 graphviz 软件
 
 ;; 用chrome打开
-(setq org-roam-graph-viewer "c:/Program Files/Google/Chrome/Application/chrome.exe")
-;; (setq org-roam-graph-viewer nil)
+;; sudo apt install graphviz 先安装这个
+(setq org-roam-graph-executable "neato")
+;; 安装方法 sudo apt-get install graphviz
+;; (setq org-roam-graph-executable "/usr/local/bin/neato")
+(setq org-roam-graph-viewer "/usr/bin/google-chrome-stable")
+(setq org-roam-graph-viewer nil)
 
 
 ;; If you use this setting and don’t want to see images in a specific file, add this at the top of the org files that are not to display images: #+STARTUP: noinlineimages
@@ -742,7 +782,7 @@
 
 
 
-
+(setq citar-org-roam-note-title-template "${author} - ${title}")
 
 
 ;; ======= provide =======
