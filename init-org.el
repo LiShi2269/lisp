@@ -125,6 +125,12 @@
 
 
 
+
+
+;;  (with-eval-after-load 'pdf-annot
+;;    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+
 ;; test
 ;; (defun my/org-ref-open-pdf-at-point ()
 ;;   "Open the pdf for bibtex key under point if it exists."
@@ -275,52 +281,52 @@
 
 
 (defun my-org-bold-line()(interactive)
-  (save-excursion
-    (let* ((bounds (bounds-of-thing-at-point 'word))
-           (begin (car bounds))
-           (end (cdr bounds)))
-      (when bounds
-        (goto-char end)
-        (insert "*")
-        (goto-char begin)
-        (insert "*"))))
-  )
+       (progn   (evil-normal-state)
+		(evil-first-non-blank)
+		(insert "*")
+		(whitespace-cleanup)
+		(evil-end-of-line)
+		(evil-append 1)
+		(insert "*")
+		(evil-normal-state)
+		(evil-next-line)
+       ))
 
 (defun my-org-/-line()(interactive)
-  (save-excursion
-    (let* ((bounds (bounds-of-thing-at-point 'word))
-           (begin (car bounds))
-           (end (cdr bounds)))
-      (when bounds
-        (goto-char end)
-        (insert "/")
-        (goto-char begin)
-        (insert "/"))))
-       )
+       (progn   (evil-normal-state)
+		(evil-first-non-blank)
+		(insert "/")
+		(whitespace-cleanup)
+		(evil-end-of-line)
+		(evil-append 1)
+		(insert "/")
+		(evil-normal-state)
+		(evil-next-line)
+       ))
 
 (defun my-org-+-line()(interactive)
-  (save-excursion
-    (let* ((bounds (bounds-of-thing-at-point 'word))
-           (begin (car bounds))
-           (end (cdr bounds)))
-      (when bounds
-        (goto-char end)
-        (insert "+")
-        (goto-char begin)
-        (insert "+"))))
-       )
+       (progn   (evil-normal-state)
+		(evil-first-non-blank)
+		(insert "+")
+		(whitespace-cleanup)
+		(evil-end-of-line)
+		(evil-append 1)
+		(insert "+")
+		(evil-normal-state)
+		(evil-next-line)
+       ))
 
 (defun my-org-_-line()(interactive)
-  (save-excursion
-    (let* ((bounds (bounds-of-thing-at-point 'word))
-           (begin (car bounds))
-           (end (cdr bounds)))
-      (when bounds
-        (goto-char end)
-        (insert "_")
-        (goto-char begin)
-        (insert "_"))))
-       )
+       (progn   (evil-normal-state)
+		(evil-first-non-blank)
+		(insert "_")
+		(whitespace-cleanup)
+		(evil-end-of-line)
+		(evil-append 1)
+		(insert "_")
+		(evil-normal-state)
+		(evil-next-line)
+       ))
 
 (defun my-org-add-print()(interactive)
        (progn   (evil-normal-state)
