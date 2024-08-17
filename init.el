@@ -8,8 +8,6 @@
 (require 'init-better-defaults)
 (require 'init-general)
 
-;; (require 'init-evil)
-;; (require 'init-ein)
 (require 'init-ibuffer)
 
 (require 'init-magit)
@@ -17,19 +15,17 @@
 (require 'init-iedit)
 (require 'init-ivy)
 (require 'init-projectile)
-;; (require 'init-python)     ;现在不用了
 (require 'init-python-lsp)
 (require 'init-ranger)
 (require 'init-shell)
 (require 'init-smex)
 (require 'init-winum)
 (require 'init-yasnippet)
-(require 'neotree_icons)
 (require 'init-treemacs)
 (require 'org-protocol)
 (require 'init-org)
 (require 'init-ui)
-;; (require 'init-latex)
+(require 'init-latex)
 (require 'init-keybindings)
 
 (custom-set-variables

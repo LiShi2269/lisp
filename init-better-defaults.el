@@ -174,14 +174,14 @@
 	     ("C-<return>" . (lambda()(interactive)(progn (openwith-mode 1)(neotree-enter)))))
   )
 ;; ====== undo-tree =============
-;; (require 'undo-tree)
-;; (global-undo-tree-mode nil)
+(require 'undo-tree)
+(global-undo-tree-mode nil)
 (use-package undo-tree
-  :init
-  (global-undo-tree-mode nil)
-  )
+ :init
+ (global-undo-tree-mode nil)
+ )
 
-;; ====== sace-place =============
+;; ====== save-place =============
 (add-to-list 'load-path "~/.emacs.d/lisp/save-place.el")
 (require 'saveplace)
 (save-place-mode 1)
@@ -227,5 +227,7 @@
 (define-key winner-mode-map (kbd "<C-left>") #'winner-undo)
 (define-key winner-mode-map (kbd "<C-right>") #'winner-redo)
 
+
+(setq package-install-upgrade-built-in t)
 ;; ======= provide =======
 (provide 'init-better-defaults)
