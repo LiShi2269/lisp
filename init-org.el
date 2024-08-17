@@ -6,18 +6,6 @@
 ;;---------bullets------------
 (require 'org-bullets)
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode-enable)
-
-
-
-
-
-(add-hook 'org-mode-hook
-	  (lambda ()
-	    (org-bullets-mode 1)
-	    (openwith-mode 1)
-	    ;; (setq openwith-associations '(("\\.pdf\\'" "okular" (file)))) ;想要用特定的程序打开特定的文件
-	    (setq line-spacing 0.2)
-	    (toggle-truncate-lines t)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
 (openwith-mode 1)
 ;; (setq header-line-format "    ")
@@ -27,14 +15,6 @@
  '(header-line ((default :background "#161a1f")))
 )
 			   ))
-
-(add-hook 'org-mode-hook
-	  (lambda ()
-	    (custom-set-faces
-		'(header-line ((default :background "#161a1f")))
-	    )
-			   ))
-
 
 
 
@@ -68,22 +48,6 @@
 ;;        ))
 
 
-;; citar 如果只是在org-mode中使用的话
-(use-package citar
-  :hook
-  (LaTeX-mode . citar-capf-setup)
-  (org-mode . citar-capf-setup)
-  :no-require
-  :custom
-  (org-cite-global-bibliography '("/home/lishi/zotero/mylibrary.bib"))
-  (org-cite-insert-processor 'citar)
-  (org-cite-follow-processor 'citar)
-  (org-cite-activate-processor 'citar)
-  (citar-bibliography org-cite-global-bibliography)
-  ;; optional: org-cite-insert is also bound to C-c C-x C-@
-  ;; :bind
-  ;; (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
-  )
 ;; citar
 ;; (use-package citar
   ;; :custom
@@ -127,8 +91,6 @@
 
 
 
-;;  (with-eval-after-load 'pdf-annot
-;;    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 
 ;; test
@@ -189,6 +151,17 @@
  "C-<return>" 'my-C-turn
  )
 
+;; (defun my-C-j()
+;;   (interactive)
+;;   (cond ( (org-in-src-block-p) (org-babel-next-src-block))
+;; 	(t (org-next-visible-heading 1))
+;; 	))
+
+;; (defun my-C-k()
+;;   (interactive)
+;;   (cond ( (org-in-src-block-p) (org-babel-previous-src-block))
+;; 	(t (org-previous-visible-heading 1))
+;; 	))
 
 
 (defun my-C-turn()
@@ -263,8 +236,6 @@
     ("<right>" org-mark-ring-goto "org mode config")
 ;;org-open
     ("o" org-open-at-point "org open at point")
-;;org-ui
-    ("U" org-roam-ui-open "org-ui")
 ;;ID
     ("I" org-id-get-create "orgID")
 
@@ -272,7 +243,7 @@
     ("_" my-org-_-line "__")
     ("/" my-org-/-line "//")
     ("+" my-org-+-line "++")
-    ("R" org-mode-restart "Restart")
+
   )
 
 
@@ -363,11 +334,8 @@
 ("$" org-archive-subtree "Archive")
 ("P" org-property/body "property")
 ("D" org-deadline-date/body "deadline")
-("s" org-schedule "Schedule")
-("S" org-Sparsetree/body "Sparse")
-("." org-time/body "TimeMenu")
 ("e" org-babel-execute-subtree "Execute")
-;; ("s" org-subtree/body "self")
+("s" org-subtree/body "self")
 ("n" org-narrow/body "narrow")
 ("T" org-tag/body "tag")
 ("l" org-link/body "link")
@@ -391,8 +359,8 @@
   "org-time"
 ("." org-time-stamp "stamp")
 ("!" org-time-stamp-inactive "stampInactive")
-("fc" org-date-from-calendar "dateFromCalendar")
-("gc" org-date-goto-calendar "dateGotoCalendar")
+("c" org-date-from-calendar "dateFromCalendar")
+("C" org-date-goto-calendar "dateGotoCalendar")
 ;; ("o" org-open-at-point) ;;what is this?
 ("r" org-evaluate-time-range "tameRange")
 ("i" org-clock-in "clockIn")
@@ -401,12 +369,6 @@
 ("t" insert-now-timestamp "nowTime")
 ("q" org-clock-cancel "clockCancel")
 ("v" org-clock-display "clockDisplay")
-("j" org-clock-goto "clock_goto")
-("cD" org-check-deadlines "check_DDL")
-("cb" org-check-before-date "check_Before_date")
-("ca" org-check-after-date "check_After_date")
-("e" org-set-effort "set-Effort")
-("E" org-clock-modify-effort-estimate "modify-effort-estimate")
 )
 
 
@@ -627,9 +589,9 @@
  '(org-block-begin-line ((default :background "brown")))
  '(org-block-end-line ((default :background "brown")))
  '(header-line ((default :background "#161a1f")))
- '(org-level-1 ((t :height 1.3 :weight bold :foreground "light sky blue")))
- '(org-level-2 ((t :height 1.2 :weight bold :foreground "pale turquoise")))
- '(org-level-3 ((t :height 1.1 :weight normal :foreground "salmon")))
+ '(org-level-1 ((t :height 1.1 :weight bold :foreground "light sky blue")))
+ '(org-level-2 ((t :height 1.1 :weight normal :foreground "pale turquoise")))
+ '(org-level-3 ((t :height 1.1 :weight thin :foreground "salmon")))
  '(org-level-4 ((t :height 1.1 :foreground "DarkTurquoise")))
  '(org-level-5 ((t :height 1.1 :foreground "medium aquamarine")))
  '(org-level-6 ((t :height 1.1 :foreground "indian red")))
@@ -641,9 +603,7 @@
 ;; (setq org-cycle-separator-lines 0)
 
 
-;; org-effort-property?
-(setq org-clock-persist 'history)
-(org-clock-persistence-insinuate)
+
 
 
 ;; -------------- org-roam ---------------------
@@ -782,7 +742,7 @@
 
 
 
-(setq citar-org-roam-note-title-template "${author} - ${title}")
+
 
 
 ;; ======= provide =======

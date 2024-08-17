@@ -144,23 +144,7 @@ Version 2018-06-18 2021-09-30"
          (message "File path copied: %s" $fpath)
          $fpath )))))
 
-(defun my/mode-line-other-buffer ()
-  "Return the most recent buffer that is not the current buffer or ibuffer."
-  (let ((buffers (delq (current-buffer) (buffer-list))))
-    (catch 'found
-      (dolist (buf buffers)
-        (unless (or (string-match-p "^ ?\\*" (buffer-name buf))  ;; 忽略特殊缓冲区，如 *scratch*
-                    (eq buf (get-buffer "ibuffer"))             ;; 忽略 ibuffer 缓冲区
-                    (minibufferp buf))                          ;; 忽略 minibuffer
-          (throw 'found buf))))))
 
-(setq mode-line-buffer-identification
-      '((:eval (propertize (buffer-name)
-                           'face (if (and (buffer-modified-p)
-                                          (buffer-file-name))
-                                     'mode-line-modified
-                                   'mode-line-buffer-id)))
-        " (" (:eval (my/mode-line-other-buffer)) ")"))
 
 
 

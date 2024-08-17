@@ -76,6 +76,7 @@
 
 	posframe
 	which-key-posframe
+	;;evil-pdf-tools
 	
 	
 
