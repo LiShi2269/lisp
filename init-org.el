@@ -77,37 +77,33 @@
   ;; (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
   )
 
+;; v2 是否使用
+;; (setq org-roam-v2-ack t)
+
+;; 来源 https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/v1/90.org-protocol.md
+(setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe")
 
 
 
-
-(defcustom citar-file-open-functions (list (cons "html" #'citar-file-open-external)
-					   (cons "pdf" #'citar-file-open-external)
-                                           (cons t #'find-file))
-  "Functions used by `citar-file-open` to open files.
-Should be an alist where each entry is of the form (EXTENSION .
-FUNCTION). A file whose name ends with EXTENSION will be opened
-using FUNCTION. If no entries are found with a matching
-extension, FUNCTION associated with key t will be used as the
-default.
-我通过改写是的citar可以用外部程序打开pdf，系统目前使用okular
-"
-  :group 'citar
-  :type '(repeat (cons
-                  (choice (string :tag "Extension")
-                          (symbol :tag "Default" t))
-                  (function :tag "Function"))))
+;; (use-package org-ref
+;;   :ensure t
+;;   :config
+;;   (setq reftex-default-bibliography '("f:/zoterofiles/我的文库.bib"))
+;;   ;; (setq org-ref-bibliography-notes "path/to/your/notes.org")
+;;   (setq org-ref-default-citation-link "cite:"))
 
 
+(require 'org-ref)
+(require 'org-ref-ivy)
+(require 'ivy-bibtex)
+(setq bibtex-completion-bibliography '(
+				       "f:/zoterofiles/我的文库.bib"
+				       )
+      )
+					;可以直接添加到后面不需要逗号
 
-(setq citar-library-path '("/mnt/f/zoteroAttachments/myAllPDF/"))
+(setq bibtex-completion-library-path '("f:/zotero/"))
 (setq bibtex-completion-pdf-field "file")
-;; rich UI
- (setq citar-templates
-      '((main . "${author editor:30%sn}     ${date year issued:4}     ${title:48}")
-        (suffix . "          ${=key= id:15}    ${=type=:12}    ${tags keywords:*}")
-        (preview . "${author editor:%etal} (${year issued date}) ${title}, ${journal journaltitle publisher container-title collection-title}.\n")
-        (note . "Notes on ${author editor:%etal}, ${title}")))
 
 
 
@@ -132,19 +128,43 @@ With a prefix ARG, remove start location."
 ;;    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 
+;; test
+;; (defun my/org-ref-open-pdf-at-point ()
+;;   "Open the pdf for bibtex key under point if it exists."
+;;   (interactive)
+;;   (let* ((results (org-ref-get-bibtex-key-and-file))
+;;          (key (car results))
+;;          (pdf-file (funcall org-ref-get-pdf-filename-function key))
+;;      (pdf-other (bibtex-completion-find-pdf key)))
+;;     (cond ((file-exists-p pdf-file)
+;;        (org-open-file pdf-file))
+;;       (pdf-other
+;;        (org-open-file pdf-other))
+;;       (message "No PDF found for %s" key))))
+;; (global-set-key (kbd "<f6>") 'my/org-ref-open-pdf-at-point)
+;; (setq org-ref-pdf-directory "f:/zotero/")
+;; (setq bibtex-completion-library-path "f:/zotero/")
+;; test
 
 
+;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
+;; (setq org-roam-graph-viewer nil)
 
+;; (require 'org-protocol)
+;; (require 'org-roam-protocol)
+;; (load-file "~/.emacs.d/lisp/+org-protocol-check-filename-for-protocol.el")
+;; (advice-add 'org-protocol-check-filename-for-protocol :override '+org-protocol-check-filename-for-protocol)
 
-
-
-
-
-
-
-
-
-
+;; (require 'org-roam-server)
+;; (setq org-roam-server-host "127.0.0.1"
+;;       org-roam-server-port 8181
+;;       org-roam-server-export-inline-images t
+;;       org-roam-server-authenticate nil
+;;       org-roam-server-network-poll t
+;;       org-roam-server-network-arrows nil
+;;       org-roam-server-network-label-truncate t
+;;       org-roam-server-network-label-truncate-length 60
+;;       org-roam-server-network-label-wrap-length 20)
 
 
 
@@ -175,6 +195,18 @@ With a prefix ARG, remove start location."
 	))
   
 
+(defun wrap-line-with-print ()
+  "Wrap the current line with print()."
+  (interactive)
+  (let ((line-text (buffer-substring-no-properties
+                    (line-beginning-position)
+                    (line-end-position))))
+    ;; 删除当前行的内容
+    (delete-region (line-beginning-position) (line-end-position))
+    ;; 插入新的内容
+    (insert (format "print(%s)" line-text))
+    ;; 保留行末的换行符
+    (newline)))
 
 ;; (evil-define-key '('normal 'visual) org-mode-map (kbd ",") 'hydra-org/body)
 
@@ -183,14 +215,12 @@ With a prefix ARG, remove start location."
 (defhydra hydra-org(:exit t :columns 5)
   "org"
   ("o" org-open-at-point "openwith")
-  ("c" org-citarr/body "citar")
-  ("U"'org-roam-ui-mode "UI")
 ;; s sub
   ("s" org-subtree/body "subtree")
 ;; * heading
   ("*" org-toggle-heading "heading")
 ;; U up heading
-  ("u" outline-up-heading "up")
+  ("U" outline-up-heading "up")
 ;; n narrow
   ("n" org-narrow/body "narrow")
 ;; . time
@@ -241,6 +271,11 @@ With a prefix ARG, remove start location."
     ("+" my-org-+-line "++")
     ("R" org-mode-restart "Restart")
   )
+
+
+
+
+
 
 (defun my-org-bold-line()(interactive)
   (save-excursion
@@ -498,7 +533,9 @@ With a prefix ARG, remove start location."
  ("c" org-babel-remove-result "clear")
  ("l" org-link "link")
 ;; 快速加上print(原内容)
-("(" my-org-add-print "add-print()")
+;; ("(" my-org-add-print "add-print()")
+
+  ("p" wrap-line-with-print "print")
  )
 
 
@@ -531,7 +568,11 @@ With a prefix ARG, remove start location."
    ))
 
 (org-babel-jupyter-override-src-block "python")
-
+(setq org-babel-default-header-args:jupyter-julia '((:async . "yes")
+                                                    ;; (:session . "jl")
+                                                    ;; (:kernel . "julia-1.0")
+						    ))
+    
 
 ;;========== 出现 org-babel-execute-src-block: No org-babel-execute function 问题==========================================
 ;; jupyter-run-repl
@@ -604,10 +645,10 @@ With a prefix ARG, remove start location."
 
 ;; -------------- org-roam ---------------------
 ;; 需要在环境变量当中添加下面的文件夹
-;; (add-to-list 'exec-path "c:/HOME/sqlite/sqlite3.exe")
-;; (add-to-list 'exec-path "c:/HOME/sqlite")
-;; (add-to-list 'exec-path "c:/HOME/msys64/usr/bin/cc.exe")
-;; (add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
+(add-to-list 'exec-path "c:/HOME/sqlite/sqlite3.exe")
+(add-to-list 'exec-path "c:/HOME/sqlite")
+(add-to-list 'exec-path "c:/HOME/msys64/usr/bin/cc.exe")
+(add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
 (add-hook 'after-init-hook 'org-roam-mode)
 
 (setq org-roam-directory "/mnt/f/roam/") ;only one org-roam path
@@ -675,20 +716,7 @@ With a prefix ARG, remove start location."
 ;; roam 在任何位置可以补全
 (setq org-roam-completion-everywhere t)
 
-(use-package websocket
-    :after org-roam)
-
-(use-package org-roam-ui
-    :after org-roam ;; or :after org
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+;; org-roam 图需要用注册表 graphviz 软件
 
 ;; 用chrome打开
 ;; sudo apt install graphviz 先安装这个
@@ -700,12 +728,6 @@ With a prefix ARG, remove start location."
 
 
 ;; If you use this setting and don’t want to see images in a specific file, add this at the top of the org files that are not to display images: #+STARTUP: noinlineimages
-
-
-
-
-
-
 
 ;; org capture templates
 (setq org-capture-templates

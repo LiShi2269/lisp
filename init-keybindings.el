@@ -112,5 +112,8 @@
 ;; (define-key pdf-view-mode-map (kbd "j") pdf-view )
 ;; (def)
 
+
+
+
 ;; ======= provide =======
 (provide 'init-keybindings)

@@ -124,16 +124,12 @@
 	pandoc
 	openwith
 
-	pdf-tools
-	org-pdftools
-	org-noter-pdftools
-	org-noter
-	nov
-	djvu
-
+	;; pdf-tools
+	;; org-pdftools
+	;; org-noter-pdftools
+	;; org-noter
 
 	org-roam
-	websocket
 
 	calfw
 	calfw-org
@@ -142,14 +138,12 @@
 	;; org-download              ;windows好像不可以
 	;; org-roam-server
 	org-roam-bibtex
-	org-roam-ui
 	org-ref
-	citar
 
 	ivy-bibtex
 	;; ebib 文献管理 不知道为什么不能用
 	
-	;; ein
+	ein
 
 	use-package
 	
@@ -162,7 +156,7 @@
 	key-chord
 	
 	;; --- Python ---
-	;; ein
+	ein
 	elpy
 	;;jedi是专门给auto-company使用的，company-jedi才是company用的
 	company-jedi

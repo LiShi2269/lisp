@@ -9,7 +9,7 @@
 ;; =========================== load-theme =========================
 (setq custom-safe-themes t) ;;不然的话，每次打开主题都要询问我
 (load-theme 'doom-dracula)
-(set-background-color "#1e1f28") ;; 将 "#1c1c1c" 替换为你想要的颜色
+(set-background-color "#000000") ;; 将 "#1c1c1c" 替换为你想要的颜色
 
 ;; =========================== org mode =========================
 
@@ -181,8 +181,7 @@
  (set-fontset-font t 'han (font-spec :family f :height h :foreground fcolor :background bgcolor) )
   )
 
-;; (set-font "等距更纱黑体 SC" 150 "#E9E7EF" "#161823")
-(set-font "Sarasa Mono SC" 150 "#E9E7EF" "#161823")
+(set-font "等距更纱黑体 SC" 150 "#E9E7EF" "#161823")
 
 
 ;  ===============  other color  ========================

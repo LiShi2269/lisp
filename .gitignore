@@ -1,2 +1,4 @@
 
 *.~undo-tree~
+
+*.el#

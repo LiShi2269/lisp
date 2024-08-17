@@ -213,9 +213,9 @@
 ;; ====== company 补全 org-roam =============
 (use-package company
   :hook ((prog-mode . company-mode)
-         (org-mode . company-mode)
+         ;; (org-mode . company-mode)
 	 ))
-;;(add-to-list 'company-backends '(company-capf))
+;; (add-to-list 'company-backends '(company-capf))
 
 (setq company-minimum-prefix-length 1)
 (setq company-idle-delay 0)
@@ -248,18 +248,6 @@
 (add-hook 'ibuffer-mode-hook
           (lambda ()
             (ibuffer-switch-to-saved-filter-groups "default")))
-
-
-
-;; ====== pdf configuration =============
-;; (use-package org-pdftools
-;;   :hook (org-mode . org-pdftools-setup-link))
-
-;; (use-package org-noter-pdftools
-;;   :after org-noter
-;;   :config
-;;   (with-eval-after-load 'pdf-annot
-;;     (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 
 (winner-mode +1)
