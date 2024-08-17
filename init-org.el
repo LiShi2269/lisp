@@ -620,7 +620,7 @@
 (add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
 (add-hook 'after-init-hook 'org-roam-mode)
 
-(setq org-roam-directory "/mnt/f/roam/") ;only one org-roam path
+(setq org-roam-directory "f:/roam/") ;only one org-roam path
 (org-roam-db-autosync-mode 1)
 (setq org-roam-v2-ack t)
 
