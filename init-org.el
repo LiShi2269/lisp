@@ -77,6 +77,29 @@
   ;; (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
   )
 
+(defcustom citar-file-open-functions (list (cons "html" #'citar-file-open-external)
+					   (cons "pdf" #'citar-file-open-external)
+                                           (cons t #'find-file))
+  "Functions used by `citar-file-open` to open files.
+Should be an alist where each entry is of the form (EXTENSION .
+FUNCTION). A file whose name ends with EXTENSION will be opened
+using FUNCTION. If no entries are found with a matching
+extension, FUNCTION associated with key t will be used as the
+default.
+我通过改写是的citar可以用外部程序打开pdf，系统目前使用okular
+"
+  :group 'citar
+  :type '(repeat (cons
+                  (choice (string :tag "Extension")
+                          (symbol :tag "Default" t))
+                  (function :tag "Function"))))
+
+
+
+
+
+
+
 ;; v2 是否使用
 ;; (setq org-roam-v2-ack t)
 
@@ -270,6 +293,7 @@ With a prefix ARG, remove start location."
     ("/" my-org-/-line "//")
     ("+" my-org-+-line "++")
     ("R" org-mode-restart "Restart")
+    ("c" org-citarr/body "citar")
   )
 
 
