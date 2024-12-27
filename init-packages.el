@@ -134,7 +134,7 @@
 	calfw
 	calfw-org
 
-	emacsql-sqlite
+	;;emacsql-sqlite
 	;; org-download              ;windows好像不可以
 	;; org-roam-server
 	org-roam-bibtex
