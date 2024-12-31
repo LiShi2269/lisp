@@ -128,6 +128,7 @@
 	;; org-pdftools
 	;; org-noter-pdftools
 	;; org-noter
+	ob-ipython
 
 	org-roam
 

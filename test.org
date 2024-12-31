@@ -1,3 +1,47 @@
+#+property: header-args :session test
+#+PROPERTY: header-args:python+ :async yes
+#+TITLE: 
+
+#+BEGIN_SRC python  :results value
+import pandas as pd
+import numpy as np
+df = pd.DataFrame([1,2,3])
+df = pd.DataFrame
+return(df)
+#+END_SRC                                                                                   
+
+#+RESULTS:
+: c:/Users/lishi/AppData/Local/Temp/babel-XVMAfC/python-XefAnv
+
+
+
+#+begin_src python :results output
+print(df)
+#+end_src
+
+#+RESULTS:
+:    0
+: 0  1
+: 1  2
+: 2  3
+
+
+
+
+
+
+
+
+#+BEGIN_SRC ipython :results raw  :session t2 :async t
+print(df)
+print(df)
+#+END_SRC                                                                                   
+
+#+RESULTS:
+# Out[8]:
+
+0 - c78a8452-aa1c-4fed-aec2-b2ef1fc5e271
+
 
 
 #+BEGIN_SRC jupyter-python :results display :session t2

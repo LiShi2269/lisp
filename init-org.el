@@ -528,15 +528,18 @@
 ;; -------jupyter--------
 (setq org-confirm-babel-evaluate nil)
 
+(require 'ob-ipython)
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
    (emacs-lisp . t)
-   ;;(python . t)
-   (jupyter . t)
+   (python . t)
+   ;; (ipython . t)
+   ;;(jupyter . t)
    ))
 
-(org-babel-jupyter-override-src-block "python")
+;;(org-babel-jupyter-override-src-block "python")
 (setq org-babel-default-header-args:jupyter-julia '((:async . "yes")
                                                     ;; (:session . "jl")
                                                     ;; (:kernel . "julia-1.0")
