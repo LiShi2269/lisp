@@ -104,7 +104,7 @@ default.
 ;; (setq org-roam-v2-ack t)
 
 ;; 来源 https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/v1/90.org-protocol.md
-(setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe")
+;;(setq org-roam-graph-executable "c:/HOME/Graphviz/dot.exe")
 
 
 
@@ -583,15 +583,45 @@ With a prefix ARG, remove start location."
 ;; -------jupyter--------
 (setq org-confirm-babel-evaluate nil)
 
+(require 'ob-ipython)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
    (emacs-lisp . t)
-   ;;(python . t)
-   (jupyter . t)
+   (ipython . t)
+   ;;(jupyter . t)
    ))
 
-(org-babel-jupyter-override-src-block "python")
+
+
+
+
+;;来自于 https://github.com/gregsexton/ob-ipython/issues/135
+;;看看是不是ipython版本问题？
+(defun ob-ipython--collect-json ()
+ ;; hacks here
+  (when (re-search-forward "{" nil t)
+    (backward-char))
+  ;; hacks end
+  (let ((json-array-type 'list))
+    (let (acc)
+      (while (not (= (point) (point-max)))
+        (setq acc (cons (json-read) acc))
+        (forward-line))
+      (nreverse acc))))
+
+
+
+
+
+
+
+
+
+
+
+
+;;(org-babel-jupyter-override-src-block "python")
 (setq org-babel-default-header-args:jupyter-julia '((:async . "yes")
                                                     ;; (:session . "jl")
                                                     ;; (:kernel . "julia-1.0")
@@ -669,10 +699,11 @@ With a prefix ARG, remove start location."
 
 ;; -------------- org-roam ---------------------
 ;; 需要在环境变量当中添加下面的文件夹
-(add-to-list 'exec-path "c:/HOME/sqlite/sqlite3.exe")
-(add-to-list 'exec-path "c:/HOME/sqlite")
-(add-to-list 'exec-path "c:/HOME/msys64/usr/bin/cc.exe")
-(add-to-list 'exec-path "c:/HOME/msys64/usr/bin")
+(add-to-list 'exec-path "/opt/homebrew/opt/sqlite")
+(add-to-list 'exec-path "/opt/homebrew/opt/sqlite3")
+(add-to-list 'exec-path "/Users/lishi/.pyenv/shims/python3.12")
+(add-to-list 'exec-path "/Users/lishi/.pyenv/versions/3.12.8/bin/python")
+;;(add-to-list 'exec-path "/Users/lishi/.pyenv/shims/python")
 (add-hook 'after-init-hook 'org-roam-mode)
 
 

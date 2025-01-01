@@ -72,7 +72,7 @@
 	treemacs-magit
 	treemacs-icons-dired
 	treemacs-all-the-icons
-	;; undo-tree
+	undo-tree
 
 	posframe
 	which-key-posframe
@@ -172,6 +172,7 @@
 	
 
 	py-autopep8
+	ob-ipython
 	lsp-mode
 	lsp-ui
 	lsp-treemacs
