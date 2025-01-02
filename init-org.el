@@ -595,9 +595,8 @@ With a prefix ARG, remove start location."
 
 
 
-
+(setq company-dabbrev-downcase nil) ; 大小写问题
 ;;来自于 https://github.com/gregsexton/ob-ipython/issues/135
-;;看看是不是ipython版本问题？
 (defun ob-ipython--collect-json ()
  ;; hacks here
   (when (re-search-forward "{" nil t)

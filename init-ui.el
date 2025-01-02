@@ -177,7 +177,7 @@
  (set-face-attribute 'font-lock-comment-face nil :foreground "dark sea green"   )
  (set-face-attribute 'font-lock-builtin-face nil :foreground "#1bd1a5"   )
  (set-face-attribute 'font-lock-string-face nil :foreground "deep sky blue"   )
- ;;(set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   )
+ ;; (set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   ) ; 这个不知道为什么在这里没有
  )
 
 
