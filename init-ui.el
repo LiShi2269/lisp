@@ -168,7 +168,7 @@
  (set-fontset-font t 'han (font-spec :family f :height h :foreground fcolor :background bgcolor) )
   )
 
-(set-font "等距更纱黑体 SC" 250 "#E9E7EF" "#161823")
+(set-font "等距更纱黑体 Slab SC" 250 "#E9E7EF" "#161823")
 
 
 ;  ===============  other color  ========================
