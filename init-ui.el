@@ -132,15 +132,15 @@
 
 
 ;; =============== company tool ========================
-(custom-set-variables
- (set-face-attribute 'company-scrollbar-bg nil :background "#2f4f4f")
- (set-face-attribute 'company-scrollbar-fg nil :background "#293b3b")
- (set-face-attribute 'company-tooltip nil :background "#2f4f4f" :foreground "ivory")
- (set-face-attribute 'company-tooltip-selection nil :background "dim gray" )
- (set-face-attribute 'company-tooltip-common nil :foreground "#c19696" )
- ;; (set-face-attribute 'cursor nil :background "#c1a187" )
- (set-face-attribute 'cursor nil :background "#82a7a7" )
- )
+;;(custom-set-variables
+ ;;(set-face-attribute 'company-scrollbar-bg nil :background "#2f4f4f")
+ ;;(set-face-attribute 'company-scrollbar-fg nil :background "#293b3b")
+ ;;(set-face-attribute 'company-tooltip nil :background "#2f4f4f" :foreground "ivory")
+ ;;(set-face-attribute 'company-tooltip-selection nil :background "dim gray" )
+ ;;(set-face-attribute 'company-tooltip-common nil :foreground "#c19696" )
+ ;;;; (set-face-attribute 'cursor nil :background "#c1a187" )
+ ;;(set-face-attribute 'cursor nil :background "#82a7a7" )
+ ;;)
 
 
 
@@ -168,7 +168,7 @@
  (set-fontset-font t 'han (font-spec :family f :height h :foreground fcolor :background bgcolor) )
   )
 
-(set-font "等距更纱黑体 SC" 150 "#E9E7EF" "#161823")
+(set-font "等距更纱黑体 SC" 250 "#E9E7EF" "#161823")
 
 
 ;  ===============  other color  ========================
@@ -177,7 +177,7 @@
  (set-face-attribute 'font-lock-comment-face nil :foreground "dark sea green"   )
  (set-face-attribute 'font-lock-builtin-face nil :foreground "#1bd1a5"   )
  (set-face-attribute 'font-lock-string-face nil :foreground "deep sky blue"   )
- (set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   )
+ ;;(set-face-attribute 'highlight-indentation-face nil :background "dark cyan"   )
  )
 
 
