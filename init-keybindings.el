@@ -1,4 +1,10 @@
 
+
+
+;; ======= for Mac key=======
+(setq mac-command-modifier 'control)
+(setq mac-command-option 'Meta)
+
 ;; ======= completionS=======
 (global-company-mode 1)
 (define-key company-active-map (kbd "C-j") 'company-select-next)
