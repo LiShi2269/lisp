@@ -1,29 +1,76 @@
-#+property: header-args :session test
-#+PROPERTY: header-args:python+ :async yes
-#+TITLE: 
+#+property: header-args :session j
+#+PROPERTY: header-args:python+ :async no
 
-#+BEGIN_SRC python  :results value
-import pandas as pd
-import numpy as np
-df = pd.DataFrame([1,2,3])
-df = pd.DataFrame
-return(df)
+#+BEGIN_SRC ipython  :results raw
+print("2")
 #+END_SRC                                                                                   
 
 #+RESULTS:
-: c:/Users/lishi/AppData/Local/Temp/babel-XVMAfC/python-XefAnv
+# Out[8]:
 
+#+BEGIN_SRC ipython  :results output
+print("test")
+#+END_SRC                                                                                   
 
+#+RESULTS:
+: test
 
-#+begin_src python :results output
+#+BEGIN_SRC ipython  :results output :session t
+print("asd")
+#+END_SRC                                                                                   
+
+#+RESULTS:
+: asd
+
+#+BEGIN_SRC ipython  :session test  :results output :async t
+import pandas as pd
+import numpy as np
+import tabulate
+df = pd.DataFrame([1, 2, 3])
 print(df)
-#+end_src
+print(tabulate.tabulate(df.head(), headers = df.columns, tablefmt="orgtbl"))
+#+END_SRC                                                                                   
 
 #+RESULTS:
 :    0
 : 0  1
 : 1  2
 : 2  3
+: |    |   0 |
+: |----+-----|
+: |  0 |   1 |
+: |  1 |   2 |
+: |  2 |   3 |
+
+# Out[16]:
+# Out[15]:
+
+
+
+
+
+
+
+
+#+BEGIN_SRC python  :results output :session test :exports both
+print(df)
+import pandas as pdf
+df = pd.DataFrame()
+df = pd.DataFrame()
+print
+
+#+END_SRC                                                                                   
+
+#+RESULTS:
+
+
+
+#+begin_src ipython :results output
+print("test")
+#+end_src
+
+#+RESULTS:
+: test
 
 
 

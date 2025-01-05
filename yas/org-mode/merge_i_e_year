@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: merge_i_e_year
-# key: merge_i_e_year
-# --
-
-df = pd.merge(df,$1,how="left",left_on=["iiso3","eiso3","year"],right_on=["eiso3","eiso3","year"])

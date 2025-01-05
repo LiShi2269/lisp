@@ -4,5 +4,5 @@
 # --
 
 #+property: header-args :session $1
-#+PROPERTY: header-args:python+ :async yes
+#+PROPERTY: header-args:python+ :async no
 #+TITLE: $2

@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: pd_merge
-# key: pd.m
-# --
-
-$1=pd.merge($2,$3,left_on = [$4],right_on = [$4],how='left')
