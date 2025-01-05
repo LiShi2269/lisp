@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: org
-# key: org
-# --
-#+property: header-args :session $1
