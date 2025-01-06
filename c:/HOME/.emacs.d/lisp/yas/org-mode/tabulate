@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: tabulate
+# key: tabulate
+# --
+
+print(tabulate.tabulate($1.head(), headers = $1.columns, tablefmt="orgtbl"))

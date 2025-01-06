@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: raw
+# key: raw
+# --
+
+#+BEGIN_SRC ipython :results raw
+$0
+#+END_SRC                                                                                   
