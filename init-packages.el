@@ -29,6 +29,7 @@
 	projectile
 	;; --- Auto-completion ---
 	company
+	yasnippet
 	;; --- Mini Buffer completion ---
 	ivy
 	
@@ -90,7 +91,6 @@
 	youdao-dictionary
 
 
-	yasnippet
 
 	dashboard
 

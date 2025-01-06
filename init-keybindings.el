@@ -52,7 +52,9 @@
 ;; (setq nswbuff-exclude-buffer-regexps '("^\*.*\*$" ))
 ;; test
 
-
+;; ========== yasnippets ===============
+(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
+(define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
 
 ;; (defun my-org-edit-buffer()
 ;;   (interactive)
