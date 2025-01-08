@@ -3,6 +3,8 @@
 
 
 (elpy-enable)
+(setq elpy-rpc-python-command "c:/Program Files/Python312/python.exe")
+
 ;; (elpy-nav-backward-indent)
 ;; ctrl + 左右的快捷键在elpy mode 中取消
 (define-key elpy-mode-map (kbd "C-<left>") nil)
@@ -194,8 +196,8 @@
 
 ;; lsp-completion-mode会导致不能在lspmode中补全路径
 (add-hook 'lsp-mode-hook (lambda () (flycheck-mode 1)(hs-minor-mode 1)(lsp-completion-mode 0)))
-(setq lsp-python-ms-python-executable "c:/Users/lishi/AppData/Local/Programs/Python/Python39/python.exe")
-(setq lsp-python-ms-extra-paths  '("c:/Users/lishi/AppData/Local/Programs/Python/Python39/python.exe"))
+(setq lsp-python-ms-python-executable "c:/Program Files/Python312/python.exe")
+(setq lsp-python-ms-extra-paths  '("c:/Program Files/Python312/python.exe"))
 ;; 使用pyenv的时候
 ;; (setq lsp-python-ms-python-executable  "C:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe")
 ;; (setq lsp-python-ms-extra-paths  '("C:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe" ))

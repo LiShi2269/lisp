@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: draw
+# key: draw
+# --
+
+#+BEGIN_SRC ipython  :results draw
+$0
+#+END_SRC                                                                                   

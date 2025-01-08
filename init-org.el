@@ -97,24 +97,6 @@
 ;;    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 
-;; test
-;; (defun my/org-ref-open-pdf-at-point ()
-;;   "Open the pdf for bibtex key under point if it exists."
-;;   (interactive)
-;;   (let* ((results (org-ref-get-bibtex-key-and-file))
-;;          (key (car results))
-;;          (pdf-file (funcall org-ref-get-pdf-filename-function key))
-;;      (pdf-other (bibtex-completion-find-pdf key)))
-;;     (cond ((file-exists-p pdf-file)
-;;        (org-open-file pdf-file))
-;;       (pdf-other
-;;        (org-open-file pdf-other))
-;;       (message "No PDF found for %s" key))))
-;; (global-set-key (kbd "<f6>") 'my/org-ref-open-pdf-at-point)
-;; (setq org-ref-pdf-directory "f:/zotero/")
-;; (setq bibtex-completion-library-path "f:/zotero/")
-;; test
-
 
 ;; (setq org-roam-graph-viewer "C:/Program Files/Google/Chrome/Application/chrome.exe")
 ;; (setq org-roam-graph-viewer nil)
@@ -525,11 +507,10 @@
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
-;; -------jupyter--------
-(setq org-confirm-babel-evaluate nil)
 
-(add-to-list 'company-backends 'company-ob-ipython) ;补全模式启动
-(require 'ob-ipython)
+
+
+
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -546,6 +527,50 @@
                                                     ;; (:kernel . "julia-1.0")
 						    ))
     
+
+
+
+
+
+
+
+;; -------src运行确认--------
+(setq org-confirm-babel-evaluate nil)
+
+(require 'ob-ipython)
+(add-to-list 'company-backends 'company-ob-ipython) ;补全模式启动
+
+
+
+;; ;; ;; test
+;;   (defun run-python-first (&rest args)
+;;     "Start a inferior python if there isn't one."
+;;     (or (comint-check-proc "*Python*") (run-python)))
+
+;;   (advice-add 'org-babel-execute:ipython :after
+;;               (lambda (body params)
+;;                 "Send body to `inferior-python'."
+;;                 (run-python-first)
+;;                 (python-shell-send-string body)))
+;;  (add-hook 'org-mode-hook
+;;             (lambda ()
+;;               (setq-local completion-at-point-functions
+;;                           '(pcomplete-completions-at-point python-completion-at-point))))
+
+;; ;; test
+
+;; (setq company-backends '(company-ob-ipython))
+
+
+
+
+
+
+
+
+
+
+
 
 
 
