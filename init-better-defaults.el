@@ -213,7 +213,7 @@
 ;; ====== company 补全 org-roam =============
 (use-package company
   :hook ((prog-mode . company-mode)
-         ;; (org-mode . company-mode)
+         (org-mode . company-mode)
 	 ))
 ;; (add-to-list 'company-backends '(company-capf))
 

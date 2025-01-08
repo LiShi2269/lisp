@@ -20,8 +20,7 @@
 (treemacs-tag-follow-mode )
 
 ;; pfuture-new: Spawning child process: Invalid argument [3 times] 错误的时候也需要做出正确的python位置
-(setq treemacs-python-executable "c:/Users/lishi/AppData/Local/Programs/Python/Python39/python.exe")
-
+(setq treemacs-python-executable "c:/Program Files/Python312/python.exe")
 ;; =-============= 能够自动切换工作空间 =================
 ;; (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
 ;;   :after treemacs persp-mode ;;or perspective vs. persp-mode
