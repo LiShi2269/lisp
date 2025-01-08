@@ -800,6 +800,25 @@ its results, otherwise display STDERR with
 
 
 
+;; test
+;;来自于 https://github.com/gregsexton/ob-ipython/issues/135
+(defun ob-ipython--collect-json ()
+ ;; hacks here
+  (when (re-search-forward "{" nil t)
+    (backward-char))
+  ;; hacks end
+  (let ((json-array-type 'list))
+    (let (acc)
+      (while (not (= (point) (point-max)))
+        (setq acc (cons (json-read) acc))
+        (forward-line))
+      (nreverse acc))))
+
+;; test
+
+
+
+
 ;; calfw
 (require 'calfw)
 (require 'calfw-org)

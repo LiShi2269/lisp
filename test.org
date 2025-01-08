@@ -2,10 +2,13 @@
 #+PROPERTY: header-args:python+ :async no
 
 #+BEGIN_SRC ipython  :results raw
-print("2")
+import pandas as pd
+df = pd.Dat
 #+END_SRC                                                                                   
 
 #+RESULTS:
+# Out[1]:
+# Out[3]:
 # Out[8]:
 
 #+BEGIN_SRC ipython  :results output
