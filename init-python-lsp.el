@@ -184,8 +184,8 @@
 
 
 ;; ------- use ipython as interpretor -------
-(setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "-i --simple-prompt")
+;; (setq python-shell-interpreter "ipython"
+;;       python-shell-interpreter-args "-i --simple-prompt")
 
 
 ;; -------completion-------
@@ -194,8 +194,12 @@
 
 ;; lsp-completion-mode会导致不能在lspmode中补全路径
 (add-hook 'lsp-mode-hook (lambda () (flycheck-mode 1)(hs-minor-mode 1)(lsp-completion-mode 0)))
-(setq lsp-python-ms-python-executable "/usr/local/bin/python3")
-(setq lsp-python-ms-extra-paths  '("/usr/local/bin/python3"))
+;; (setq lsp-python-ms-python-executable "/usr/local/bin/python3")
+;; (setq lsp-python-ms-extra-paths  '("/usr/local/bin/python3"))
+
+(setq lsp-python-ms-python-executable "/Library/Frameworks/Python.framework/Python")
+(setq lsp-python-ms-extra-paths  '("/Library/Frameworks/Python.framework/Python"))
+
 ;; 使用pyenv的时候
 ;; (setq lsp-python-ms-python-executable  "C:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe")
 ;; (setq lsp-python-ms-extra-paths  '("C:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe" ))
@@ -208,6 +212,9 @@
       (lsp)))) ; or lsp-deferred
 
 ;; (setq elpy-rpc-virtualenv-path 'current)
+
+(setq elpy-rpc-python-command "python3") ;这里是的elpy可以使用了。
+
 
 (setq lsp-enable-snippet nil)		;如果开启的话 yas-snippet 的补全久无法使用了
 (setq lsp-completion-enable nil)
