@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: python
+# key: python
+# --
+
+#+property: header-args :session $1
+#+PROPERTY: header-args:python+ :async yes
+$2
