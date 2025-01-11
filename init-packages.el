@@ -65,7 +65,7 @@
 	;;emacs-websocket	;似乎不要也可以？
 	simple-httpd
 	;; markdown-mode	
-	;; zmq
+	zmq
 	;; --- treemacs ---
 	treemacs
 	treemacs-evil

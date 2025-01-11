@@ -1,4 +1,13 @@
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
+
+
+;; (setq python-shell-interpreter "/Library/Frameworks/Python.framework/Versions/3.12/Python")
+
 
 
 ;; init file for org-mode
@@ -6,10 +15,6 @@
 ;;---------bullets------------
 (require 'org-bullets)
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode-enable)
-
-
-
-
 
 (add-hook 'org-mode-hook
 	  (lambda ()
@@ -19,6 +24,7 @@
 	    (setq line-spacing 0.2)
 	    (toggle-truncate-lines t)
 			   ))
+
 
 (add-hook 'org-mode-hook
 	  (lambda ()
@@ -60,40 +66,44 @@
 ;;        ))
 
 
-;; citar 如果只是在org-mode中使用的话
-(use-package citar
-  :hook
-  (LaTeX-mode . citar-capf-setup)
-  (org-mode . citar-capf-setup)
-  :no-require
-  :custom
-  (org-cite-global-bibliography '("/home/lishi/zotero/mylibrary.bib"))
-  (org-cite-insert-processor 'citar)
-  (org-cite-follow-processor 'citar)
-  (org-cite-activate-processor 'citar)
-  (citar-bibliography org-cite-global-bibliography)
-  ;; optional: org-cite-insert is also bound to C-c C-x C-@
-  ;; :bind
-  ;; (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
-  )
 
-(defcustom citar-file-open-functions (list (cons "html" #'citar-file-open-external)
-					   (cons "pdf" #'citar-file-open-external)
-                                           (cons t #'find-file))
-  "Functions used by `citar-file-open` to open files.
-Should be an alist where each entry is of the form (EXTENSION .
-FUNCTION). A file whose name ends with EXTENSION will be opened
-using FUNCTION. If no entries are found with a matching
-extension, FUNCTION associated with key t will be used as the
-default.
-我通过改写是的citar可以用外部程序打开pdf，系统目前使用okular
-"
-  :group 'citar
-  :type '(repeat (cons
-                  (choice (string :tag "Extension")
-                          (symbol :tag "Default" t))
-                  (function :tag "Function"))))
 
+;; ;; citar 2025年1月暂时冻结
+;; ;; citar 如果只是在org-mode中使用的话
+;; (use-package citar
+;;   :hook
+;;   (LaTeX-mode . citar-capf-setup)
+;;   (org-mode . citar-capf-setup)
+;;   :no-require
+;;   :custom
+;;   (org-cite-global-bibliography '("/home/lishi/zotero/mylibrary.bib"))
+;;   (org-cite-insert-processor 'citar)
+;;   (org-cite-follow-processor 'citar)
+;;   (org-cite-activate-processor 'citar)
+;;   (citar-bibliography org-cite-global-bibliography)
+;;   ;; optional: org-cite-insert is also bound to C-c C-x C-@
+;;   ;; :bind
+;;   ;; (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+;;   )
+
+;; (defcustom citar-file-open-functions (list (cons "html" #'citar-file-open-external)
+;; 					   (cons "pdf" #'citar-file-open-external)
+;;                                            (cons t #'find-file))
+;;   "Functions used by `citar-file-open` to open files.
+;; Should be an alist where each entry is of the form (EXTENSION .
+;; FUNCTION). A file whose name ends with EXTENSION will be opened
+;; using FUNCTION. If no entries are found with a matching
+;; extension, FUNCTION associated with key t will be used as the
+;; default.
+;; 我通过改写是的citar可以用外部程序打开pdf，系统目前使用okular
+;; "
+;;   :group 'citar
+;;   :type '(repeat (cons
+;;                   (choice (string :tag "Extension")
+;;                           (symbol :tag "Default" t))
+;;                   (function :tag "Function"))))
+
+;; ;; citar 2025年1月暂时冻结
 
 
 
@@ -108,47 +118,41 @@ default.
 
 
 
-;; (use-package org-ref
-;;   :ensure t
-;;   :config
-;;   (setq reftex-default-bibliography '("f:/zoterofiles/我的文库.bib"))
-;;   ;; (setq org-ref-bibliography-notes "path/to/your/notes.org")
-;;   (setq org-ref-default-citation-link "cite:"))
 
 
-(require 'org-ref)
-(require 'org-ref-ivy)
-(require 'ivy-bibtex)
-(setq bibtex-completion-bibliography '(
-				       "f:/zoterofiles/我的文库.bib"
-				       )
-      )
-					;可以直接添加到后面不需要逗号
+;; (require 'org-ref)
+;; (require 'org-ref-ivy)
+;; (require 'ivy-bibtex)
+;; (setq bibtex-completion-bibliography '(
+;; 				       "f:/zoterofiles/我的文库.bib"
+;; 				       )
+;;       )
+;; 					;可以直接添加到后面不需要逗号
 
-(setq bibtex-completion-library-path '("f:/zotero/"))
-(setq bibtex-completion-pdf-field "file")
+;; (setq bibtex-completion-library-path '("f:/zotero/"))
+;; (setq bibtex-completion-pdf-field "file")
 
 
 
-  ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
-  (defun org-noter-set-start-location (&optional arg)
-    "When opening a session with this document, go to the current location.
-With a prefix ARG, remove start location."
-    (interactive "P")
-    (org-noter--with-valid-session
-     (let ((inhibit-read-only t)
-           (ast (org-noter--parse-root))
-           (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
-       (with-current-buffer (org-noter--session-notes-buffer session)
-         (org-with-wide-buffer
-          (goto-char (org-element-property :begin ast))
-          (if arg
-              (org-entry-delete nil org-noter-property-note-location)
-            (org-entry-put nil org-noter-property-note-location
-                           (org-noter--pretty-print-location location))))))))
+;;   ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
+;;   (defun org-noter-set-start-location (&optional arg)
+;;     "When opening a session with this document, go to the current location.
+;; With a prefix ARG, remove start location."
+;;     (interactive "P")
+;;     (org-noter--with-valid-session
+;;      (let ((inhibit-read-only t)
+;;            (ast (org-noter--parse-root))
+;;            (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+;;        (with-current-buffer (org-noter--session-notes-buffer session)
+;;          (org-with-wide-buffer
+;;           (goto-char (org-element-property :begin ast))
+;;           (if arg
+;;               (org-entry-delete nil org-noter-property-note-location)
+;;             (org-entry-put nil org-noter-property-note-location
+;;                            (org-noter--pretty-print-location location))))))))
 
-;;  (with-eval-after-load 'pdf-annot
-;;    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+;; ;;  (with-eval-after-load 'pdf-annot
+;; ;;    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 
 ;; test
@@ -583,31 +587,35 @@ With a prefix ARG, remove start location."
 ;; -------jupyter--------
 (setq org-confirm-babel-evaluate nil)
 
-(require 'ob-ipython)
+;; (require 'ob-ipython)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
    (emacs-lisp . t)
-   (ipython . t)
-   ;;(jupyter . t)
+   (jupyter . t)
    ))
 
 
 
 
 (setq company-dabbrev-downcase nil) ; 大小写问题
-;;来自于 https://github.com/gregsexton/ob-ipython/issues/135
-(defun ob-ipython--collect-json ()
- ;; hacks here
-  (when (re-search-forward "{" nil t)
-    (backward-char))
-  ;; hacks end
-  (let ((json-array-type 'list))
-    (let (acc)
-      (while (not (= (point) (point-max)))
-        (setq acc (cons (json-read) acc))
-        (forward-line))
-      (nreverse acc))))
+
+
+
+
+
+;; ;;来自于 https://github.com/gregsexton/ob-ipython/issues/135
+;; (defun ob-ipython--collect-json ()
+;;  ;; hacks here
+;;   (when (re-search-forward "{" nil t)
+;;     (backward-char))
+;;   ;; hacks end
+;;   (let ((json-array-type 'list))
+;;     (let (acc)
+;;       (while (not (= (point) (point-max)))
+;;         (setq acc (cons (json-read) acc))
+;;         (forward-line))
+;;       (nreverse acc))))
 
 
 
@@ -618,9 +626,7 @@ With a prefix ARG, remove start location."
 
 
 
-
-
-;;(org-babel-jupyter-override-src-block "python")
+(org-babel-jupyter-override-src-block "python")
 (setq org-babel-default-header-args:jupyter-julia '((:async . "yes")
                                                     ;; (:session . "jl")
                                                     ;; (:kernel . "julia-1.0")
@@ -698,11 +704,12 @@ With a prefix ARG, remove start location."
 
 ;; -------------- org-roam ---------------------
 ;; 需要在环境变量当中添加下面的文件夹
-(add-to-list 'exec-path "/opt/homebrew/opt/sqlite")
-(add-to-list 'exec-path "/opt/homebrew/opt/sqlite3")
-(add-to-list 'exec-path "/Users/lishi/.pyenv/shims/python3.12")
-(add-to-list 'exec-path "/Users/lishi/.pyenv/versions/3.12.8/bin/python")
-;;(add-to-list 'exec-path "/Users/lishi/.pyenv/shims/python")
+;; (add-to-list 'exec-path "/opt/homebrew/opt/sqlite")
+;; (add-to-list 'exec-path "/opt/homebrew/opt/sqlite3")
+;; (add-to-list 'exec-path "")
+;; (add-to-list 'exec-path "/Users/lishi/.pyenv/versions/3.12.8/bin/python")
+(add-to-list 'exec-path "/Library/Frameworks/Python.framework/Versions/3.12/Python")
+;; ;;(add-to-list 'exec-path "/Users/lishi/.pyenv/shims/python")
 (add-hook 'after-init-hook 'org-roam-mode)
 
 
@@ -712,7 +719,7 @@ With a prefix ARG, remove start location."
 
 
 ;; -------------- org-roam ---------------------
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+;; (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 
 
@@ -774,11 +781,11 @@ With a prefix ARG, remove start location."
 
 ;; 用chrome打开
 ;; sudo apt install graphviz 先安装这个
-(setq org-roam-graph-executable "neato")
+;; (setq org-roam-graph-executable "neato")
 ;; 安装方法 sudo apt-get install graphviz
 ;; (setq org-roam-graph-executable "/usr/local/bin/neato")
-(setq org-roam-graph-viewer "/usr/bin/google-chrome-stable")
-(setq org-roam-graph-viewer nil)
+;; (setq org-roam-graph-viewer "/usr/bin/google-chrome-stable")
+;; (setq org-roam-graph-viewer nil)
 
 
 ;; If you use this setting and don’t want to see images in a specific file, add this at the top of the org files that are not to display images: #+STARTUP: noinlineimages

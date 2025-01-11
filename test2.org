@@ -1,0 +1,29 @@
+
+
+#+BEGIN_SRC ipython :results raw
+print("adsf")
+#+END_SRC                                                                                   
+
+#+RESULTS:
+# Out[1]:
+
+tabulate
+#+BEGIN_SRC ipython :results output
+import pandas as pd
+df = pd.DataFrame([1,2,3])
+print(tabulate.tabulate(df.head(), headers = df.columns, tablefmt="orgtbl"))
+#+END_SRC                                                                                   
+
+#+RESULTS:
+: |    |   0 |
+: |----+-----|
+: |  0 |   1 |
+: |  1 |   2 |
+: |  2 |   3 |
+
+#+BEGIN_SRC ipython :results raw
+import tabulate
+#+END_SRC                                                                                   
+
+#+RESULTS:
+# Out[1]:

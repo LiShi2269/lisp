@@ -42,3 +42,12 @@ git config --global core.autocrlf false
 org 开头两句
 #+property: header-args :session dataclean
 #+PROPERTY: header-args:python+ :async yes
+
+emacs-jupyter 不能使用的问题
+首先，要给系统软连接到python
+ln -s python的真实路径 /usr/local/bin/python
+python的真实路径 通过 import sys sys.executable 获得
+其次，zmq无法正确安装问题
+直接到github的zmq里面下载相关内容到elpa文件夹的正确位置。然后你会发现相关的文件不能使用，需要下面的命令才可以开放权限。
+xattr -d com.apple.quarantine /Users/lishi/.emacs.d/elpa/zmq-20241006.1857/emacs-zmq.dylib
+这样就允许了emacs 加载这个动态库
