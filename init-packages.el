@@ -88,6 +88,7 @@
 	dynamic-spaces
 	py-autopep8
 	youdao-dictionary
+	pyenv-mode
 
 
 	yasnippet

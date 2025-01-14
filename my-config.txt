@@ -1,12 +1,10 @@
 
 ::python 清华源
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython xlrd pandas numpy jupyter notebook pylint 
-:: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
-::pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper-win
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython xlrd pandas numpy jupyter notebook pylint tabulate
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper-win
 :: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenvwrapper
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-language-server[all]  
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-lsp-server
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-language-server[all]  python-lsp-server ipython jedi autopep8 yapf black
 
 ::stata
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple psutil ipystata
@@ -21,6 +19,9 @@ python -m pip install -i  https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade pi
 
 ::强制重新安装
 pip install -i  https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade --force-reinstall --no-cache-dir jupyter
+pip install -i  https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade --force-reinstall --no-cache-dir  python-language-server[all]  python-lsp-server ipython jedi autopep8 yapf black
+pip install -i  https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade --force-reinstall --no-cache-dir virtualenv virtualenvwrapper-win
+
 
 jupyter 不只输出最后一行的结果
 from IPython.core.interactiveshell import InteractiveShell 
