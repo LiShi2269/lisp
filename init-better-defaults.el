@@ -256,5 +256,24 @@
 
 
 (setq package-install-upgrade-built-in t)
+
+
+
+;; ======= fold =======
+(require 'vimish-fold)
+(vimish-fold-global-mode 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
 ;; ======= provide =======
 (provide 'init-better-defaults)

@@ -292,7 +292,21 @@ Version 2018-06-18 2021-09-30"
     ;; ---- ace-jump ----
     "m" 'imenu
     ;; ---- iedit ----
-    "`"  'shell)
+    "`"  'shell
+    ;; ---- vimish ----
+    "v" '(:ignore t :which-key "vimish")
+    "vv" 'vimish-fold
+    "vd" 'vimish-fold-delete
+    "vD" 'vimish-fold-delete-all
+    "vu" 'vimish-fold-unfold
+    "vU" 'vimish-fold-unfold-all
+    "vr" 'vimish-fold-refold
+    "vR" 'vimish-fold-refold-all
+    "vt" 'vimish-fold-toggle
+    "vT" 'vimish-fold-toggle-all
+    "va" 'vimish-fold-avy
+    "vm" 'vimish-fold-from-marks
+    )
 
 (add-hook 'after-make-frame-functions 'toggle-frame-fullscreen)
 ;; (define-key evil-normal-state-map (kbd "L") 'evil-end-of-line )

@@ -185,6 +185,7 @@
       	;; --- evil mode---
 	evil
 	evil-leader
+	vimish-fold
 	;; --- window ---
 	winum
 	;; --- Themes ---
