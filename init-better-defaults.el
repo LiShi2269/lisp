@@ -235,7 +235,7 @@
 (setq ibuffer-saved-filter-groups
       '(("default"
          ("Org Files" (filename . "\\.org$"))
-         ;; ("Python Files" (filename . "\\.py$"))
+         ("Python Files" (filename . "\\.py$"))
          ;; ("C/C++ Files" (or (filename . "\\.c$")
          ;;                    (filename . "\\.cpp$")
          ;;                    (filename . "\\.h$")))
