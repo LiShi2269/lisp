@@ -194,16 +194,10 @@
 
 ;; lsp-completion-mode会导致不能在lspmode中补全路径
 (add-hook 'lsp-mode-hook (lambda () (flycheck-mode 1)(hs-minor-mode 1)(lsp-completion-mode 0)))
-;; (setq lsp-python-ms-python-executable "/usr/local/bin/python3")
-;; (setq lsp-python-ms-extra-paths  '("/usr/local/bin/python3"))
-
-(setq lsp-python-ms-python-executable "/Library/Frameworks/Python.framework/Python")
-(setq lsp-python-ms-extra-paths  '("/Library/Frameworks/Python.framework/Python"))
-
 ;; 使用pyenv的时候
-;; (setq lsp-python-ms-python-executable  "C:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe")
-;; (setq lsp-python-ms-extra-paths  '("C:/HOME/.pyenv/pyenv-win/versions/3.9.2/python.exe" ))
-
+(setq lsp-python-ms-python-executable  "c:/Users/lishi/.pyenv/pyenv-win/versions/3.13.1/python.exe")
+(setq lsp-python-ms-extra-paths  '("c:/Users/lishi/.pyenv/pyenv-win/versions/3.13.1/python.exe" ))
+(setq elpy-rpc-python-command "python")
 
 (add-hook 'hack-local-variables-hook
       (lambda ()
