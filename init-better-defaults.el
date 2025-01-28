@@ -235,12 +235,12 @@
 (setq ibuffer-saved-filter-groups
       '(("default"
          ("Org Files" (filename . "\\.org$"))
-         ;; ("Python Files" (filename . "\\.py$"))
+         ("Python Files" (filename . "\\.py$"))
          ;; ("C/C++ Files" (or (filename . "\\.c$")
          ;;                    (filename . "\\.cpp$")
          ;;                    (filename . "\\.h$")))
          ;; ("Shell Scripts" (filename . "\\.sh$"))
-         ;; ("Text Files" (filename . "\\.txt$"))
+         ("Text Files" (filename . "\\.txt$"))
          ("Dired" (mode . dired-mode))
          ("Emacs Lisp" (filename . "\\.el$"))
          ("Others" (name . ".*")))))

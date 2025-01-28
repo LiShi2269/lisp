@@ -846,5 +846,7 @@
 (setq citar-org-roam-note-title-template "${author} - ${title}")
 
 
+(setq yas-fallback-behavior 'call-other-command) ;; yas 找不到内容的时候执行其他程序，避免了yas和org-mode的冲突
+
 ;; ======= provide =======
 (provide 'init-org)
