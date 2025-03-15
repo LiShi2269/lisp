@@ -44,3 +44,7 @@ git config --global core.autocrlf false
 org 开头两句
 #+property: header-args :session dataclean
 #+PROPERTY: header-args:python+ :async yes
+
+语言设置
+需要设置微软拼音 然后设置不同app不同输入法
+sogo会占用ctrol+space ctrol+0 ctrol+shift+0 切换两个语言
