@@ -55,7 +55,10 @@
     ;; (sp-local-pair 'lisp-interaction-mode "'" nil :actions :rem)
     ;; (sp-local-pair 'emacs-lisp-mode "'" nil :unless nil)
     ;; (sp-local-pair 'lisp-interaction-mode "'" nil :unless nil)
+(sp-with-modes 'org-mode
+  (sp-local-pair "\"" "\"" :actions '(insert))
   )
+
 
 
 ;; 自动加载外部修改过的文件
