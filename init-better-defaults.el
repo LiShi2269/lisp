@@ -55,8 +55,6 @@
     ;; (sp-local-pair 'lisp-interaction-mode "'" nil :actions :rem)
     ;; (sp-local-pair 'emacs-lisp-mode "'" nil :unless nil)
     ;; (sp-local-pair 'lisp-interaction-mode "'" nil :unless nil)
-(sp-with-modes 'org-mode
-  (sp-local-pair "\"" "\"" :actions '(insert))
   )
 
 
