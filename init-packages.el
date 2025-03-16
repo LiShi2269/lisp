@@ -194,6 +194,10 @@
 	;; google-this
       	;; --- windows 不能用 ---
 	auctex
+
+
+	;; zotero
+	zotxt
 	)
  "Default packages")
 
