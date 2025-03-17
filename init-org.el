@@ -5,11 +5,6 @@
   (exec-path-from-shell-initialize))
 
 
-
-;; (setq python-shell-interpreter "/Library/Frameworks/Python.framework/Versions/3.12/Python")
-
-
-
 ;; init file for org-mode
 (require 'org)
 ;;---------bullets------------

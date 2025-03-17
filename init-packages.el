@@ -181,6 +181,7 @@
 	;; company-lsp已经不用了，见github相关
 	;; company-lsp
 	;;virtualenvwrapper
+	zotxt
 	
       	;; --- evil mode---
 	evil
